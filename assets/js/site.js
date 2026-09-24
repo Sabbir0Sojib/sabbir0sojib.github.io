@@ -94,11 +94,13 @@
       var status = r.status ? '<span class="status' + (done ? " status--done" : "") + '">' + esc(r.status) + "</span>" : "";
       var title = r.link ? '<a href="' + esc(r.link) + '" target="_blank" rel="noopener">' + esc(r.title) + "</a>" : esc(r.title);
       return '<li class="story" data-cat="' + esc(r.type) + '">' +
-        '<p class="story__kind"><span class="mono">' + esc(r.year) + "</span>" + esc(TYPE_LABEL[r.type] || r.type) + status + "</p>" +
-        '<h2 class="story__title">' + title + "</h2>" +
-        (r.authors ? '<p class="story__byline">' + boldOwner(r.authors) + "</p>" : "") +
-        (r.venue ? '<p class="story__venue">' + esc(r.venue) + "</p>" : "") +
-        (r.note ? '<p class="story__note">' + esc(r.note) + "</p>" : "") + "</li>";
+        '<div class="story__meta"><span class="story__year">' + esc(r.year) + '</span><span class="story__type">' + esc(TYPE_LABEL[r.type] || r.type) + "</span>" + status + "</div>" +
+        '<div class="story__main">' +
+          '<h2 class="story__title">' + title + "</h2>" +
+          (r.authors ? '<p class="story__byline">' + boldOwner(r.authors) + "</p>" : "") +
+          (r.venue ? '<p class="story__venue">' + esc(r.venue) + "</p>" : "") +
+          (r.note ? '<p class="story__note">' + esc(r.note) + "</p>" : "") +
+        "</div></li>";
     }).join("");
   }
 

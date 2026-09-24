@@ -27,6 +27,11 @@ colors:
   map-bangladesh: "#EAF4EE"
   map-border: "#BFC8C0"
 typography:
+  research-title:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(1.1875rem, 1rem + 0.5vw, 1.375rem)"
+    fontWeight: 650
+    lineHeight: 1.35
   display:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(2.5rem, 1.6rem + 3.4vw, 4rem)"
@@ -180,7 +185,8 @@ Flat. Project cards lift 3px with a soft shadow on hover. The gallery viewer is 
 - **Contact cards:** two-column grid of white cards (icon in a green-tint circle, small label, full value that wraps, icon-only copy button). One card per email, ORCID, LinkedIn and GitHub.
 - **Ordering:** projects and research render newest year first; items in the same year keep their CMS order.
 - **Gallery (photos):** the same borderless card for photos of conferences, fieldwork and the lab.
-- **Research story row:** year, type and status on one line, then title, authors (owner in bold), venue and an optional one-line note. Filter chips by type.
+- **Research card:** white card, year (green, large) with type and status on the left, then title, authors (owner bold), venue and an optional note in a grey box on the right; stacks on phones.
+- **Research story row (older name):** year, type and status on one line, then title, authors (owner in bold), venue and an optional one-line note. Filter chips by type.
 - **Project map card (Projects page):** full-bleed map with 16px corners and no border box, title and meta underneath; filter chips above; masonry columns keep each map's natural shape; click opens the viewer with previous, next, open original and click-to-zoom.
 - **Pin the Place:** level tabs (Easy divisions, Medium districts, Hard upazilas, Landmarks), progress dots coloured by score, the correct area highlighted in yellow after each guess; on phones the level tabs, question and map stack and a floating Lock in button sits on the map. Five random places per game; click to drop a pin, lock in, see the distance line, points (1000 at 0 km, falling off exponentially with a 75 km scale) and a fact; the end screen shows total, rating, best score on the device and a map recap of every guess. The map shows unlabeled satellite imagery (Esri World Imagery, fallback EOX Sentinel-2 cloudless, no API key) with a yellow Bangladesh outline, white neighbour borders, yellow answer pins and white distance lines.
 

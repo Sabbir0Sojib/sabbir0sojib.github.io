@@ -17,6 +17,7 @@ History of how this site was built, what was tried and why things are the way th
 11. **Workflow note.** The owner commits to `main` via Pages CMS; merge `origin/main` before every push.
 12. **Game levels.** Pin the Place gained Easy (divisions), Medium (districts), Hard (upazilas) and Landmarks levels, on unlabeled satellite imagery (Esri, EOX fallback), with a new layout for desktop and mobile.
 13. **Projects vs Maps.** Split into Projects (GitHub repos, `content/projects.json`) and Maps (single maps, `content/maps.json`). Landmarks level got 37 famous tourist spots.
+14. **Readable research and final audit.** Research items became two-column cards (year, type and status on the left; paper on the right). Full-site check with all four skills: Taste pre-flight clean, Impeccable detector clean except the known padding false positive, Playwright sweep of 6 pages at 1440 and 390 px with no errors, broken images, broken links, overflow or wrapped buttons; Awesome Design rules (single accent, small radius scale, flat cards) hold. Header made solid on phones.
 
 ## Open items
 
