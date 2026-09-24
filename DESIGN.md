@@ -2,48 +2,27 @@
 name: Md Sabbir Islam, portfolio
 description: A clean, light, five-page research portfolio with one river-green accent.
 colors:
-  monsoon-green: "#14532D"
-  monsoon-green-deep: "#0E4222"
-  monsoon-green-soft: "#E1ECE3"
+  forest-green: "#166534"
+  forest-green-deep: "#14532D"
+  green-tint: "#EAF4EE"
   mustard: "#E9B824"
   mustard-bright: "#F3C53A"
-  ink: "#16201A"
-  ink-soft: "#394540"
-  muted: "#5B6760"
-  page: "#F7F9F6"
-  surface: "#ECF1EC"
-  line: "#DDE4DD"
-  line-strong: "#C3CDC4"
-  on-green: "#F5F2E8"
-  on-green-soft: "rgba(245, 242, 232, 0.78)"
+  ink: "#111827"
+  ink-soft: "#374151"
+  muted: "#5F6672"
+  page: "#FFFFFF"
+  surface: "#F4F6F5"
+  line: "#E5E7EB"
+  line-strong: "#D1D5DB"
+  on-green: "#FFFFFF"
+  on-green-soft: "rgba(255, 255, 255, 0.8)"
   scrim: "rgba(12, 14, 16, 0.72)"
   float-shadow: "rgba(10, 12, 14, 0.35)"
   map-water: "#D6E4E4"
   map-land: "#F4F6F2"
-  map-bangladesh: "#E1ECE3"
+  map-bangladesh: "#EAF4EE"
   map-border: "#BFC8C0"
 typography:
-  poster:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(3rem, 1.6rem + 5.4vw, 6rem)"
-    fontWeight: 700
-    lineHeight: 0.95
-    letterSpacing: "-0.04em"
-  story-stat:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(3rem, 2rem + 3.6vw, 5.25rem)"
-    fontWeight: 700
-    lineHeight: 0.95
-    letterSpacing: "-0.045em"
-  story-lede:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(1.125rem, 1rem + 0.5vw, 1.375rem)"
-    fontWeight: 400
-    lineHeight: 1.55
-  finale-mail:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(1.25rem, 0.9rem + 1.6vw, 2.25rem)"
-    fontWeight: 650
   display:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(2.5rem, 1.6rem + 3.4vw, 4rem)"
@@ -104,13 +83,13 @@ rounded:
   pill: "999px"
 components:
   button-primary:
-    backgroundColor: "{colors.mustard}"
-    textColor: "{colors.ink}"
+    backgroundColor: "{colors.forest-green}"
+    textColor: "{colors.on-green}"
     rounded: "{rounded.pill}"
     height: "46px"
     padding: "0 20px"
   button-primary-hover:
-    backgroundColor: "{colors.mustard-bright}"
+    backgroundColor: "{colors.forest-green-deep}"
   button-secondary:
     backgroundColor: "{colors.page}"
     textColor: "{colors.ink}"
@@ -153,19 +132,16 @@ Plain light pages, dark text, generous space and one river-green accent. Each pa
 
 ## Colors
 
-Monsoon: paddy green and mustard on warm white, chosen by the owner. Following Impeccable's colour guide, green owns whole regions (the profile panel and the footer); following the Binance reference, mustard is scarce and only marks primary actions, with ink text on it.
+Professional light theme chosen by the owner after rejecting the story layout: white page, dark ink text, one forest-green accent.
 
 ### Primary
-- **Monsoon Green** (monsoon-green): profile panel, footer band, page titles, links, current menu item, active filter chip, game map edge.
-
-### Secondary
-- **Mustard** (mustard): primary buttons (Email me, Lock in guess), text selection, the role line and fact labels inside the green panel. Never body text on light ground, never a large fill.
+- **Forest Green** (forest-green): primary buttons, links, role line, fact labels, active filter chip, current menu item text (on green-tint), tags, game map edge.
 
 ### Neutral
-- **Ink / Soft Ink / Muted**, **Page / Surface**, **Line / Strong Line**: warm neutrals tinted toward the green.
+- **Ink / Soft Ink / Muted**, **Page / Surface**, **Line / Strong Line**: cool neutral greys.
 
 ### Named Rules
-**The Scarce Mustard Rule.** Mustard marks the one thing to press. If a screen has two mustard buttons, one is wrong.
+**The One Green Rule.** Green marks what can be clicked or what matters most. The maps bring every other colour.
 
 ## Typography
 
@@ -180,7 +156,6 @@ Monsoon: paddy green and mustard on warm white, chosen by the owner. Following I
 
 ## Layout
 
-**Home is a scroll story** (owner's choice, after the Apple reference: full-bleed bands where the colour change is the divider). Green cover band with name, role, bio and actions; then chapters, one per map project with an image: text on the left (chapter count, big number, label, title, description, links) and a sticky map stage on the right that crossfades to the active chapter's map (IntersectionObserver, no scroll listeners); a mustard reading-progress line under the header (CSS scroll-driven animation where supported); a green "Email me" finale band. On phones the chapters stack with each map under its text. Projects without images are listed under "More projects". Other pages: About (full profile), Research, Gallery, Fun.
 
 
 A centred 1120px column. Each page opens with a title and a one-line intro, then sections separated by 1px lines. Two columns collapse to one below 820px; the top menu becomes a second row on phones. The game is a 340px panel beside the map on desktop and stacks above the map on phones.

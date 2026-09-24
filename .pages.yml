@@ -9,8 +9,8 @@ media:
 
 content:
   - name: projects
-    label: Projects (story chapters)
-    description: Every map project. Projects with an image become a chapter in the home page story, in this order (drag to reorder). Projects without an image appear under "More projects".
+    label: Projects
+    description: Every map project, in this order (drag to reorder). Projects without an image appear under "More projects".
     type: file
     path: content/projects.json
     format: json

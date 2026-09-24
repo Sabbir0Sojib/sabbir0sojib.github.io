@@ -71,7 +71,7 @@
         interactive: false,
         style: function (f) {
           return f.properties.name === "Bangladesh"
-            ? { color: "#14532D", weight: 1.6, fillColor: "#E1ECE3", fillOpacity: 1 }
+            ? { color: "#166534", weight: 1.6, fillColor: "#EAF4EE", fillOpacity: 1 }
             : { color: "#BFC8C0", weight: 0.8, fillColor: "#F4F6F2", fillOpacity: 1 };
         }
       }).addTo(map);
