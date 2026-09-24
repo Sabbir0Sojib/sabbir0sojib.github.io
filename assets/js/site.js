@@ -44,18 +44,18 @@
     document.body.removeChild(ta);
   }
 
-  /* ---------- Gallery filter chips ---------- */
+  /* ---------- Filter chips (Research and Projects) ---------- */
   var chips = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
-  var shots = Array.prototype.slice.call(document.querySelectorAll(".shot[data-cat]"));
-  var empty = document.querySelector(".gallery__empty");
+  var items = Array.prototype.slice.call(document.querySelectorAll("[data-cat]"));
+  var empty = document.querySelector(".list-empty");
   chips.forEach(function (chip) {
     chip.addEventListener("click", function () {
       var f = chip.getAttribute("data-filter");
       chips.forEach(function (c) { c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
       var shown = 0;
-      shots.forEach(function (sh) {
-        var on = f === "all" || sh.getAttribute("data-cat") === f;
-        sh.hidden = !on;
+      items.forEach(function (it) {
+        var on = f === "all" || it.getAttribute("data-cat") === f;
+        it.hidden = !on;
         if (on) shown++;
       });
       if (empty) empty.hidden = shown > 0;

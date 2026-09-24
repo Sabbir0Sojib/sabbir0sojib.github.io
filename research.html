@@ -4,27 +4,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Research | Md Sabbir Islam</title>
-  <meta name="description" content="Thesis on urban tree mapping with UAV and PlanetScope deep learning, plus publications by Md Sabbir Islam.">
+  <meta name="description" content="Papers, manuscripts and field work by Md Sabbir Islam.">
   <meta name="author" content="Md Sabbir Islam">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Research | Md Sabbir Islam">
-  <meta property="og:description" content="Thesis on urban tree mapping with UAV and PlanetScope deep learning, plus publications by Md Sabbir Islam.">
+  <meta property="og:description" content="Papers, manuscripts and field work by Md Sabbir Islam.">
   <meta property="og:image" content="https://sabbir0sojib.github.io/assets/img/sabbir-portrait.jpg">
   <meta name="theme-color" content="#FCFCFB">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/site.css?v=20260924c">
   <script>document.documentElement.classList.add("js");</script>
-  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/site.js?v=20260924c" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-head">
     <div class="wrap site-head__row">
-      <a class="brand" href="index.html">
-        <img class="brand__img" src="assets/img/sabbir-portrait.webp" alt="" width="36" height="36">
-        <span class="brand__name">Md Sabbir Islam</span>
-      </a>
+      <a class="brand" href="index.html">Md Sabbir Islam</a>
       <nav class="nav" aria-label="Main">
           <a href="index.html">Profile</a>
           <a href="research.html" aria-current="page">Research</a>
@@ -39,100 +36,49 @@
     <div class="wrap">
       <header class="page-head">
         <h1 class="page-head__title">Research</h1>
-        <p class="page-head__lede">Deep learning for urban trees, from drone to satellite, plus published and submitted work on lightning, air quality and tree cover.</p>
+        <p class="page-head__lede">Papers, manuscripts and field work, newest first.</p>
       </header>
-
-      <!-- ===== THESIS ===== -->
-      <section class="thesis reveal" aria-labelledby="thesis">
-        <h2 id="thesis" class="thesis__title">Characterization of Urban Trees with Deep Learning Techniques in Pabna Municipality</h2>
-        <p class="thesis__meta"><b>Undergraduate thesis</b>, 2025 to present</p>
-        <p class="thesis__meta">Supervisor: D. Eng. Md Rahedul Islam, Professor, Pabna University of Science and Technology</p>
-        <p class="thesis__meta">Geospatial Lab of Environment and Disaster</p>
-        <p class="thesis__text">Drone images show every tree crown but cover only small areas. Satellite images cover the whole city but at a much coarser resolution. The thesis trains deep learning models on 5 cm UAV imagery, then transfers what they learn to 3 m PlanetScope imagery to map tree canopy across Pabna and estimate its biomass and carbon.</p>
-        <ol class="flow">
-          <li class="flow__step">
-            <p class="flow__value">5 cm</p>
-            <p class="flow__unit">UAV pixel size</p>
-            <h3 class="flow__verb">Capture</h3>
-            <p class="flow__text">Drone flights over Pabna, processed in Agisoft Metashape and Pix4D.</p>
+      <div class="chips" role="toolbar" aria-label="Filter research by type">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-filter="journal" aria-pressed="false">Journal manuscripts</button>
+        <button class="chip" type="button" data-filter="conference" aria-pressed="false">Conference papers</button>
+        <button class="chip" type="button" data-filter="field" aria-pressed="false">Field work</button>
+      </div>
+      <!-- Add research: copy one <li class="story"> block. data-cat is journal, conference or field. -->
+      <ol class="stories">
+          <li class="story" data-cat="journal">
+            <p class="story__kind"><span class="mono">2026</span>Journal manuscript<span class="status">Under review</span></p>
+            <h2 class="story__title">Characterization of Urban Trees with Deep Learning Techniques in Pabna Municipality</h2>
+            <p class="story__byline"><b>Islam, M.S.</b>, and Islam, M.R.</p>
+            <p class="story__venue">Undergraduate thesis, Geospatial Lab of Environment and Disaster, Pabna University of Science and Technology</p>
+            <p class="story__note">Tree crowns delineated from 5 cm UAV imagery with deep learning, then scaled to 3 m PlanetScope imagery to map canopy, biomass and carbon across the city.</p>
           </li>
-          <li class="flow__step">
-            <p class="flow__value">0.944</p>
-            <p class="flow__unit">F1 score, SegFormer</p>
-            <h3 class="flow__verb">Delineate crowns</h3>
-            <p class="flow__text">U-Net, DeepLabV3+, Mask2Former and SegFormer compared. SegFormer performed best.</p>
+          <li class="story" data-cat="journal">
+            <p class="story__kind"><span class="mono">2026</span>Journal manuscript<span class="status">Under review</span></p>
+            <h2 class="story__title">Spatio-temporal Patterns of Lightning Events and Associated Casualties in Bangladesh: Linkages with Land Use and Land Cover</h2>
+            <p class="story__byline">Ali, M.Y., <b>Islam, M.S.</b>, and Islam, M.R.</p>
+            <p class="story__venue">Submitted to a peer-reviewed journal</p>
           </li>
-          <li class="flow__step">
-            <p class="flow__value">3 m</p>
-            <p class="flow__unit">PlanetScope, F1 0.82</p>
-            <h3 class="flow__verb">Scale to the city</h3>
-            <p class="flow__text">A Random Forest trained on UAV crowns maps canopy from PlanetScope SuperDove imagery.</p>
+          <li class="story" data-cat="conference">
+            <p class="story__kind"><span class="mono">2026</span>Conference paper<span class="status status--done">Presented</span></p>
+            <h2 class="story__title">Impact of Armed Conflict on Ambient Air Quality: A Multi-Pollutant Spatiotemporal Analysis Across Iranian Provinces, 2022 to 2026</h2>
+            <p class="story__byline"><b>Islam, M.S.</b>, Ali, M.Y., and Islam, M.R.</p>
+            <p class="story__venue">International Conference on Emerging Frontiers in Advanced Sciences and Technologies (EFAST 2026), Pabna, Bangladesh</p>
           </li>
-          <li class="flow__step">
-            <p class="flow__value">AGB</p>
-            <p class="flow__unit">Biomass and carbon</p>
-            <h3 class="flow__verb">Estimate</h3>
-            <p class="flow__text">Above-ground biomass and carbon stock from UAV-derived crown structure.</p>
+          <li class="story" data-cat="conference">
+            <p class="story__kind"><span class="mono">2025</span>Conference paper<span class="status status--done">Presented</span></p>
+            <h2 class="story__title">Urban Tree Cover Detection Using UAV, Remote Sensing and Deep Learning</h2>
+            <p class="story__byline"><b>Islam, M.S.</b>, and Islam, M.R.</p>
+            <p class="story__venue">1st International Conference on Life and Earth Sciences for Sustainable Development (ICLESSD-2025), Jagannath University, Dhaka</p>
           </li>
-        </ol>
-      </section>
-
-      <!-- ===== PUBLICATIONS ===== -->
-      <section class="block reveal" aria-labelledby="pubs" style="margin-top: 48px;">
-        <h2 id="pubs" class="block__title">Publications</h2>
-        <div class="pub-group">
-          <h3 class="pub-group__title">Journal manuscripts</h3>
-          <ul>
-          <li class="pub">
-            <p class="pub__year mono">2026</p>
-            <div>
-              <p class="pub__title">Characterization of Urban Trees with Deep Learning Techniques in Pabna Municipality</p>
-              <p class="pub__authors"><b>Islam, M.S.</b>, and Islam, M.R.</p>
-              <p class="pub__venue">Journal manuscript</p>
-            </div>
-            <span class="status">Under review</span>
+          <li class="story" data-cat="field">
+            <p class="story__kind"><span class="mono">2025</span>Field work</p>
+            <h2 class="story__title">CH4Rice Project</h2>
+            <p class="story__byline">Field Data Collector</p>
+            <p class="story__venue">JAXA Earth Observation Research Center and the Institute of Industrial Science, University of Tokyo</p>
           </li>
-          <li class="pub">
-            <p class="pub__year mono">2026</p>
-            <div>
-              <p class="pub__title">Spatio-temporal Patterns of Lightning Events and Associated Casualties in Bangladesh: Linkages with Land Use and Land Cover</p>
-              <p class="pub__authors">Ali, M.Y., <b>Islam, M.S.</b>, and Islam, M.R.</p>
-              <p class="pub__venue">Journal manuscript</p>
-            </div>
-            <span class="status">Under review</span>
-          </li>
-          </ul>
-        </div>
-        <div class="pub-group">
-          <h3 class="pub-group__title">Conference papers</h3>
-          <ul>
-          <li class="pub">
-            <p class="pub__year mono">2026</p>
-            <div>
-              <p class="pub__title">Impact of Armed Conflict on Ambient Air Quality: A Multi-Pollutant Spatiotemporal Analysis Across Iranian Provinces, 2022 to 2026</p>
-              <p class="pub__authors"><b>Islam, M.S.</b>, Ali, M.Y., and Islam, M.R.</p>
-              <p class="pub__venue">International Conference on Emerging Frontiers in Advanced Sciences and Technologies (EFAST 2026), Pabna, Bangladesh</p>
-            </div>
-            <span class="status status--done">Presented</span>
-          </li>
-          <li class="pub">
-            <p class="pub__year mono">2025</p>
-            <div>
-              <p class="pub__title">Urban Tree Cover Detection Using UAV, Remote Sensing and Deep Learning</p>
-              <p class="pub__authors"><b>Islam, M.S.</b>, and Islam, M.R.</p>
-              <p class="pub__venue">1st International Conference on Life and Earth Sciences for Sustainable Development (ICLESSD-2025), Jagannath University, Dhaka</p>
-            </div>
-            <span class="status status--done">Presented</span>
-          </li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- ===== FIELD WORK ===== -->
-      <section class="block reveal" aria-labelledby="field">
-        <h2 id="field" class="block__title">Field work</h2>
-        <p style="max-width:64ch;color:var(--ink-2)"><b style="color:var(--ink)">CH4Rice Project, 2025.</b> Field data collection in collaboration with the JAXA Earth Observation Research Center and the Institute of Industrial Science, University of Tokyo.</p>
-      </section>
+      </ol>
+      <p class="list-empty" hidden>Nothing here yet.</p>
     </div>
   </main>
 
@@ -140,9 +86,10 @@
     <div class="wrap site-foot__row">
       <p>&copy; 2026 Md Sabbir Islam. Pabna University of Science and Technology, Bangladesh.</p>
       <p class="site-foot__links">
-        <a class="icon-btn" href="mailto:mdsabbirislam820@gmail.com" aria-label="Email"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#envelope"/></svg></a>
-        <a class="icon-btn" href="https://www.linkedin.com/in/sabbir-sojib/" target="_blank" rel="me noopener" aria-label="LinkedIn"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#linkedin"/></svg></a>
-        <a class="icon-btn" href="https://github.com/Sabbir0Sojib" target="_blank" rel="me noopener" aria-label="GitHub"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#github"/></svg></a>
+        <a class="icon-btn" href="mailto:mdsabbirislam820@gmail.com" aria-label="Email"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924c#envelope"/></svg></a>
+        <a class="icon-btn" href="https://orcid.org/0009-0001-9474-9287" target="_blank" rel="me noopener" aria-label="ORCID"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924c#orcid"/></svg></a>
+        <a class="icon-btn" href="https://www.linkedin.com/in/sabbir-sojib/" target="_blank" rel="me noopener" aria-label="LinkedIn"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924c#linkedin"/></svg></a>
+        <a class="icon-btn" href="https://github.com/Sabbir0Sojib" target="_blank" rel="me noopener" aria-label="GitHub"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924c#github"/></svg></a>
       </p>
     </div>
   </footer>

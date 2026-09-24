@@ -37,7 +37,8 @@ Visitors arrive from a CV header, LinkedIn, GitHub, an email signature or a conf
 - Look (owner's choice): clean light, one accent colour. The owner rejected the earlier GIS-workspace and dark-hero versions.
 - Contact: sabbir.210908@s.pust.ac.bd and mdsabbirislam820@gmail.com, LinkedIn (linkedin.com/in/sabbir-sojib), GitHub (github.com/Sabbir0Sojib).
 - No phone number, no referee details, no CV download on the site.
-- ORCID: owner has one; ID not yet received. No Google Scholar yet.
+- ORCID: https://orcid.org/0009-0001-9474-9287. No Google Scholar yet.
+- Projects holds all maps; Gallery holds photos of the owner and his work. Research lists every item equally (owner asked not to highlight the thesis).
 - Map images are replaceable: the owner will upload higher quality versions later under the same filenames in `assets/img/work/`.
 - The owner edits text himself later, so content must be easy to find in the HTML.
 

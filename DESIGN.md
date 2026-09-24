@@ -114,11 +114,11 @@ components:
 
 **Creative North Star: "The Clean Field Report"**
 
-Plain light pages, dark text, generous space and one river-green accent. Each page does one job (Profile, Research, Projects, Gallery, Fun) and the maps supply the colour. The owner chose this look after rejecting a GIS-workspace layout and a dark hero. The Gallery follows the Pinterest reference in `.claude/design-references/pinterest`: the image is the card, filter chips flip to ink when active, and the only shadow is under the floating viewer.
+Plain light pages, dark text, generous space and one river-green accent. Each page does one job (Profile, Research, Projects, Gallery, Fun) and the maps supply the colour. The owner chose this look after rejecting a GIS-workspace layout and a dark hero. The Projects map grid follows the Pinterest reference in `.claude/design-references/pinterest` (the image is the card, filter chips flip to ink when active, the only shadow is under the floating viewer). The Research page follows the Wired reference: every item is an equal story row with a type line, title, byline and venue, split by 1px lines, with no highlighted numbers.
 
 **Key Characteristics:**
-- Separate pages with a sticky top menu; the current page is an ink pill.
-- River green only for primary actions, links, key numbers and the game's answer pins.
+- Separate pages with a sticky top menu showing the name as plain text; the current page is an ink pill.
+- River green only for primary actions, links, the role line, points and the game's answer pins.
 - Archivo throughout; JetBrains Mono only for years and small data.
 - A tight scale: ten font sizes, four radii (6, 10, 16, pill).
 
@@ -162,15 +162,17 @@ Flat. Project cards lift 3px with a soft shadow on hover. The gallery viewer is 
 ## Components
 
 - **Buttons:** pill, 46px; primary green, secondary white with a line; disabled at 45% opacity.
-- **Project card:** image (owner's map or GitHub preview, with a green fallback tile), title and year, one sentence, tool tags, "View code".
-- **Gallery pin card:** full-bleed map with 16px corners and no border box, title and meta underneath; filter chips above; masonry columns keep each map's natural shape; click opens the viewer with previous, next, open original and click-to-zoom.
+- **Gallery (photos):** the same borderless card for photos of conferences, fieldwork and the lab.
+- **Research story row:** year, type and status on one line, then title, authors (owner in bold), venue and an optional one-line note. Filter chips by type.
+- **Project map card (Projects page):** full-bleed map with 16px corners and no border box, title and meta underneath; filter chips above; masonry columns keep each map's natural shape; click opens the viewer with previous, next, open original and click-to-zoom.
 - **Pin the Place:** five random places from a list of 21; click to drop a pin, lock in, see the distance line, points (1000 at 0 km, falling off exponentially with a 75 km scale) and a fact; the end screen shows total, rating, best score on the device and a map recap of every guess.
 
 ## Do's and Don'ts
 
 ### Do:
 - **Do** keep each page focused on one topic.
-- **Do** add new maps to the Gallery with the right `data-cat` (hazard, water, land, city).
+- **Do** put maps in Projects (with `data-cat` hazard, water, land or city) and photos in Gallery.
+- **Do** keep every research item equal; no single item gets a bigger box or big numbers.
 - **Do** keep text free of em dash and en dash characters (owner rule).
 - **Do** stay on the ten-size, four-radius scale.
 
