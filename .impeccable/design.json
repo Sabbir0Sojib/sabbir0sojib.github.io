@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-24T16:00:00Z",
+  "title": "Design System: Md Sabbir Islam, portfolio",
+  "extensions": {
+    "colorMeta": {
+      "selection-yellow": { "role": "primary", "displayName": "Selection Yellow", "canonical": "#EDD35A", "tonalRamp": ["#3D3408", "#5F5210", "#836F17", "#A88F22", "#CDB133", "#EDD35A", "#F4E08E", "#FAF0C8"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#15191D", "tonalRamp": ["#15191D", "#262C32", "#394047", "#59616A", "#7C848C", "#B7BEC5", "#D6DBDF", "#F2F4F5"] },
+      "map-paper": { "role": "neutral", "displayName": "Map Paper", "canonical": "#FDFDFC" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The name in the hero and the contact heading." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles." },
+      "data": { "displayName": "Data", "purpose": "Coordinates, resolutions, metrics, dates and counts only." }
+    },
+    "shadows": [
+      { "name": "viewer-float", "value": "0 24px 64px rgba(10,14,18,0.28), 0 4px 12px rgba(10,14,18,0.12)", "purpose": "Only the full-size map viewer dialog." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "All state transitions and the hero map render." },
+      { "name": "hero-render", "value": "opacity 500ms, filter 1100ms, transform 1100ms", "purpose": "The one authored moment: hero map resolves from blur like tiles loading." }
+    ],
+    "breakpoints": [
+      { "name": "narrow", "value": "640px" },
+      { "name": "tablet", "value": "900px" },
+      { "name": "wide", "value": "1100px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button", "kind": "button", "refersTo": "button-primary",
+      "description": "One per intent, for example Email me.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Email me</a>",
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; height:44px; padding:0 18px; border-radius:6px; background:#15191D; color:#FAFBFB; font:600 0.9375rem Archivo, Arial, sans-serif; text-decoration:none; transition:background-color 160ms; } .ds-btn-primary:hover { background:#2C333A; } .ds-btn-primary:focus-visible { outline:2px solid #15191D; outline-offset:2px; box-shadow:0 0 0 5px rgba(237,211,90,0.3); } .ds-btn-primary:active { transform:scale(0.98); }"
+    },
+    {
+      "name": "Secondary Button", "kind": "button", "refersTo": "button-secondary",
+      "description": "Outlined companion action.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">View maps</a>",
+      "css": ".ds-btn-secondary { display:inline-flex; align-items:center; height:44px; padding:0 18px; border-radius:6px; border:1px solid #B7BEC5; color:#15191D; font:600 0.9375rem Archivo, Arial, sans-serif; text-decoration:none; } .ds-btn-secondary:hover { background:#F2F4F5; border-color:#394047; }"
+    },
+    {
+      "name": "Layer Row", "kind": "nav", "refersTo": "layer-item-active",
+      "description": "Navigation row in the Layers panel; the active section is selection yellow.",
+      "html": "<a class=\"ds-layer\" href=\"#\">Research</a><a class=\"ds-layer ds-layer--on\" href=\"#\">Maps <span>[16]</span></a>",
+      "css": ".ds-layer { display:flex; gap:10px; padding:7px 8px; border-radius:4px; color:#394047; font:0.9375rem Archivo, Arial, sans-serif; text-decoration:none; } .ds-layer:hover { background:#FAFBFB; color:#15191D; } .ds-layer--on { background:#EDD35A; color:#15191D; font-weight:600; } .ds-layer span { margin-left:auto; font:0.75rem 'JetBrains Mono', monospace; opacity:0.75; }"
+    },
+    {
+      "name": "Live Readout", "kind": "chip", "refersTo": "readout-live",
+      "description": "Coordinate readout while probing a map.",
+      "html": "<output class=\"ds-readout\">90.40°E  23.80°N</output>",
+      "css": ".ds-readout { display:inline-block; padding:4px 8px; border-radius:4px; background:#EDD35A; color:#15191D; font:0.8125rem 'JetBrains Mono', monospace; font-variant-numeric:tabular-nums; }"
+    },
+    {
+      "name": "Status Tag", "kind": "chip", "refersTo": "tag",
+      "description": "Publication status.",
+      "html": "<span class=\"ds-tag\">Under review</span> <span class=\"ds-tag ds-tag--done\">Presented</span>",
+      "css": ".ds-tag { display:inline-block; padding:2px 8px; border-radius:4px; border:1px solid #B7BEC5; color:#394047; font:650 0.75rem Archivo, Arial, sans-serif; } .ds-tag--done { background:#15191D; border-color:#15191D; color:#FAFBFB; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Open GIS Session",
+    "overview": "The site behaves like a desktop GIS workspace left open on a researcher's machine: a toolbar across the top, a Layers panel on the left, a canvas in the middle and a status bar along the bottom. Sections are layers, maps are figures you can probe, and publications sit in an attribute table. The chrome is quiet, cool and neutral so the maps carry all the colour.",
+    "keyCharacteristics": ["Cool neutral software chrome with hairline dividers and no decorative shadows.", "Selection yellow as the only accent, used only for selection and live state.", "Archivo across widths: expanded for display, normal width for interface text.", "JetBrains Mono only for coordinates, resolutions, metrics and dates.", "Maps always sit on light paper, in both themes."],
+    "rules": [
+      { "name": "The Selection Rule", "body": "Yellow means selected or live. If an element is not the active layer, a live readout, selected text or a focus halo, it is not yellow.", "section": "colors" },
+      { "name": "The Paper Rule", "body": "Maps never sit on a dark surface. In dark theme the map canvas stays map-paper.", "section": "colors" },
+      { "name": "The Printed Number Rule", "body": "Mono is for numbers a GIS would print (coordinates, resolutions, metrics, dates, counts). Instructions and prose are never mono.", "section": "typography" },
+      { "name": "The One Float Rule", "body": "Only a floating dialog casts a shadow. Everything on the page is either a hairline or a tone.", "section": "elevation" }
+    ],
+    "dos": ["Do keep selection yellow for selection and live state only (The Selection Rule).", "Do put every map on map paper, with alt text describing what the map shows.", "Do use mono only for coordinates, resolutions, metrics, dates and counts.", "Do keep one 6px corner scale and 1px hairlines.", "Do update the Layers panel counts when adding publications or maps."],
+    "donts": ["Don't use em dash or en dash characters anywhere in visible text (owner rule).", "Don't add small uppercase labels above headings; headings stand alone.", "Don't add shadows to cards or figures; only the viewer floats.", "Don't fill chips, dots or badges with yellow.", "Don't show a map twice on the page; each figure appears once."]
+  }
+}

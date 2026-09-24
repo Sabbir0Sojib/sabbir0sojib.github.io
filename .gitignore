@@ -1,0 +1,5 @@
+# Playwright CLI output (may contain credentials)
+.playwright-cli/
+
+# Design review screenshots (large, regenerated on demand)
+.impeccable/review/

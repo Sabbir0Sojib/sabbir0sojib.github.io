@@ -1,0 +1,11 @@
+# GitHub Pages settings. The site itself is plain HTML in index.html.
+title: Md Sabbir Islam
+exclude:
+  - README.md
+  - PRODUCT.md
+  - DESIGN.md
+  - skills-lock.json
+  - .claude
+  - .impeccable
+  - .playwright
+  - .playwright-cli
