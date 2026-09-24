@@ -29,7 +29,7 @@ content:
 
   - name: projects
     label: Projects
-    description: Every map project. The site shows them newest year first (same-year projects keep this order). Projects without an image appear under "More projects".
+    description: Every map project. The site shows them newest first, by date. Projects without an image appear under "More projects".
     type: file
     path: content/projects.json
     format: json
@@ -37,6 +37,7 @@ content:
     fields:
       - { name: title, label: Title, type: string, required: true }
       - { name: year, label: Year, type: string }
+      - { name: date, label: "Date (sets the order; newest shows first)", type: date }
       - name: theme
         label: Theme (filter button)
         type: select
@@ -62,6 +63,7 @@ content:
     list: true
     fields:
       - { name: year, label: Year, type: string }
+      - { name: date, label: "Date (optional; sets the order, newest first)", type: date }
       - name: type
         label: Type
         type: select

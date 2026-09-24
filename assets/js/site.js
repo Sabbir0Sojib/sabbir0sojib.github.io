@@ -206,11 +206,12 @@
       "</div>";
   }
 
-  // Newest year first; items from the same year keep their CMS order.
+  // Newest first by date (YYYY-MM-DD); items without a date count as the end of their year.
+  function sortKey(x) { return x.date ? String(x.date) : (String(x.year || "0000") + "-12-31"); }
   function newestFirst(list) {
     return list.map(function (x, i) { return { x: x, i: i }; }).sort(function (a, b) {
-      var ya = parseInt(a.x.year, 10) || 0, yb = parseInt(b.x.year, 10) || 0;
-      return yb - ya || a.i - b.i;
+      var ka = sortKey(a.x), kb = sortKey(b.x);
+      return ka < kb ? 1 : ka > kb ? -1 : a.i - b.i;
     }).map(function (o) { return o.x; });
   }
 

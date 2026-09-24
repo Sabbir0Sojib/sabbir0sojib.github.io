@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os
 OUT = "/home/user/sabbir0sojib.github.io"
-VER = "20260924j"   # bump to force browsers to load new CSS/JS
+VER = "20260924k"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
