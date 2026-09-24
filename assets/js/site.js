@@ -5,6 +5,20 @@
   "use strict";
 
   var VER = document.documentElement.getAttribute("data-v") || "1";
+
+  // Phone menu button
+  var head = document.querySelector(".site-head");
+  var toggle = document.querySelector(".nav-toggle");
+  if (head && toggle) {
+    var setOpen = function (on) {
+      head.classList.toggle("is-open", on);
+      toggle.setAttribute("aria-expanded", on ? "true" : "false");
+      toggle.setAttribute("aria-label", on ? "Close menu" : "Open menu");
+    };
+    toggle.addEventListener("click", function () { setOpen(!head.classList.contains("is-open")); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") setOpen(false); });
+    document.addEventListener("click", function (e) { if (!head.contains(e.target)) setOpen(false); });
+  }
   var OWNER = "Islam, M.S.";
 
   function esc(v) {
@@ -286,11 +300,6 @@
 
   /* ================= Behaviour (after render) ================= */
   function init() {
-    // Keep the current page visible in the scrollable phone menu
-    var cur = document.querySelector('.nav [aria-current="page"]');
-    var nav = document.querySelector('.nav');
-    if (cur && nav && nav.scrollWidth > nav.clientWidth) nav.scrollLeft = cur.offsetLeft - (nav.clientWidth - cur.offsetWidth) / 2;
-
     // Gentle reveal on scroll
     var reveals = document.querySelectorAll(".reveal");
     if ("IntersectionObserver" in window) {

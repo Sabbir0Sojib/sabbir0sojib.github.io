@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os
 OUT = "/home/user/sabbir0sojib.github.io"
-VER = "20260924y"   # bump to force browsers to load new CSS/JS
+VER = "20260924z"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -34,7 +34,10 @@ def page(fname, title, desc, body, extra_head="", extra_js=""):
   <header class="site-head">
     <div class="wrap site-head__row">
       <a class="brand" href="index.html">Md Sabbir Islam</a>
-      <nav class="nav" aria-label="Main">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        {icon("menu","i i--menu")}{icon("close","i i--close")}<span class="nav-toggle__label">Menu</span>
+      </button>
+      <nav class="nav" id="site-nav" aria-label="Main">
 {nav}
       </nav>
     </div>

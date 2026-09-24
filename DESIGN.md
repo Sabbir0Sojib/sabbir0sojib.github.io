@@ -181,6 +181,7 @@ Flat. Project cards lift 3px with a soft shadow on hover. The gallery viewer is 
 
 - **Content:** every page is rendered from `content/*.json`, edited through Pages CMS (`.pages.yml`). Components below are templates in `assets/js/site.js`.
 
+- **Header:** name left, page links right. Up to 820px the links collapse into a white pill Menu button (list icon, turns into a close icon) that opens a full-width white dropdown with large tap rows; the current page keeps the green-tint highlight.
 - **Buttons:** pill, 46px; primary green, secondary white with a line; disabled at 45% opacity.
 - **Contact cards:** two-column grid of white cards (icon in a green-tint circle, small label, full value that wraps, icon-only copy button). One card per email, ORCID, LinkedIn and GitHub.
 - **Ordering:** projects and research render newest year first; items in the same year keep their CMS order.
