@@ -110,7 +110,8 @@
       var code = p.code ? '<a class="link" href="' + esc(p.code) + '" target="_blank" rel="noopener">View code' + icon("arrow") + "</a>" : "";
       return '<figure class="shot" data-cat="' + esc(p.theme) + '">' +
         '<button class="shot__btn" type="button" data-lightbox="p' + i + '" aria-label="Open ' + esc(p.title) + ' full size">' +
-        '<img src="' + esc(src(p.image)) + '" alt="' + esc(p.image_alt || p.title) + '" loading="lazy"></button>' +
+        '<img src="' + esc(src(p.image)) + '" alt="' + esc(p.image_alt || p.title) + '" loading="lazy">' +
+        '<span class="shot__zoom" aria-hidden="true">' + icon("expand") + "View full size</span></button>" +
         '<figcaption><p class="shot__top"><span class="shot__title">' + esc(p.title) + '</span><span class="mono shot__year">' + esc(p.year) + "</span></p>" +
         '<p class="shot__meta">' + esc(p.description) + "</p>" + code + "</figcaption></figure>";
     }).join("");
