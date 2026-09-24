@@ -1,0 +1,132 @@
+# Pages CMS configuration (https://app.pagescms.org).
+# Sign in with GitHub, open this repository, and edit the website with forms.
+# Every save is a commit; GitHub Pages republishes the site in about a minute.
+
+media:
+  input: assets/img
+  output: /assets/img
+  extensions: [jpg, jpeg, png, webp, gif, svg]
+
+content:
+  - name: projects
+    label: Projects (maps)
+    description: Every map project. Projects with an image appear in the grid; projects without an image appear under "More projects".
+    type: file
+    path: content/projects.json
+    format: json
+    list: true
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: year, label: Year, type: string }
+      - name: theme
+        label: Theme (filter button)
+        type: select
+        options:
+          values:
+            - { value: hazard, label: Hazards and climate }
+            - { value: water, label: Water }
+            - { value: land, label: Land and terrain }
+            - { value: city, label: Cities }
+      - { name: description, label: Description, type: text }
+      - { name: image, label: Map image, type: image }
+      - { name: image_alt, label: Image description (for screen readers), type: string }
+      - { name: code, label: GitHub link (optional), type: string }
+
+  - name: research
+    label: Research
+    description: Papers, manuscripts and field work. Your name (Islam, M.S.) is made bold automatically.
+    type: file
+    path: content/research.json
+    format: json
+    list: true
+    fields:
+      - { name: year, label: Year, type: string }
+      - name: type
+        label: Type
+        type: select
+        options:
+          values:
+            - { value: journal, label: Journal manuscript }
+            - { value: conference, label: Conference paper }
+            - { value: field, label: Field work }
+            - { value: thesis, label: Thesis }
+            - { value: other, label: Other }
+      - { name: status, label: "Status (for example: Under review, Accepted, Published, Presented)", type: string }
+      - { name: title, label: Title, type: string, required: true }
+      - { name: authors, label: Authors, type: string }
+      - { name: venue, label: "Journal, conference or place", type: string }
+      - { name: note, label: One-line summary (optional), type: text }
+      - { name: link, label: Link to paper or DOI (optional), type: string }
+
+  - name: gallery
+    label: Gallery (photos)
+    description: Photos from conferences, fieldwork and the lab.
+    type: file
+    path: content/gallery.json
+    format: json
+    list: true
+    fields:
+      - { name: image, label: Photo, type: image, required: true }
+      - { name: title, label: Title, type: string }
+      - { name: caption, label: Caption, type: text }
+      - { name: alt, label: Photo description (for screen readers), type: string }
+
+  - name: profile
+    label: Profile
+    type: file
+    path: content/profile.json
+    format: json
+    fields:
+      - { name: name, label: Name, type: string }
+      - { name: role, label: Role line, type: string }
+      - { name: bio, label: Short bio, type: text }
+      - { name: photo, label: Photo, type: image }
+      - { name: photo_alt, label: Photo description, type: string }
+      - name: facts
+        label: Facts
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Label, type: string }
+          - { name: value, label: Value, type: string }
+      - { name: emails, label: Emails, type: string, list: true }
+      - { name: orcid, label: "ORCID iD (just the number, for example 0009-0001-9474-9287)", type: string }
+      - { name: linkedin, label: LinkedIn URL, type: string }
+      - { name: github, label: GitHub URL, type: string }
+      - { name: interests, label: Research interests, type: string, list: true }
+      - name: experience
+        label: Education and experience
+        type: object
+        list: true
+        fields:
+          - { name: when, label: When, type: string }
+          - { name: title, label: Title, type: string }
+          - { name: detail, label: Details, type: text }
+      - name: skills
+        label: Skills
+        type: object
+        list: true
+        fields:
+          - { name: group, label: Group, type: string }
+          - { name: items, label: Skills (comma separated), type: string }
+      - name: awards
+        label: Awards
+        type: object
+        list: true
+        fields:
+          - { name: year, label: Year, type: string }
+          - { name: text, label: Award, type: string }
+      - { name: languages, label: Languages, type: string, list: true }
+
+  - name: places
+    label: Fun game places
+    description: Places for the Pin the Place game. Latitude and longitude in decimal degrees.
+    type: file
+    path: content/places.json
+    format: json
+    list: true
+    fields:
+      - { name: name, label: Place name, type: string, required: true }
+      - { name: lat, label: Latitude, type: number }
+      - { name: lng, label: Longitude, type: number }
+      - { name: fact, label: Short fact, type: text }

@@ -318,8 +318,8 @@ cite { font-style: normal; }
 .game__recap li span:nth-child(2) { color: var(--muted); }
 .game__recap li span:nth-child(3) { color: var(--accent); font-weight: 650; text-align: right; }
 .game__keys { margin-top: auto; color: var(--muted); font-size: 0.8125rem; }
-.game__map { position: relative; min-height: 0; background: #E4ECEF; }
-#game-map { position: absolute; inset: 0; background: #E4ECEF; cursor: crosshair; }
+.game__map { position: relative; min-height: 0; background: #D9E6EC; }
+#game-map { position: absolute; inset: 0; background: #D9E6EC; cursor: crosshair; }
 #game-map:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
 .game__loading { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 500; color: var(--muted); background: rgba(255,255,255,0.9); padding: 8px 14px; border-radius: 999px; font-size: 0.9375rem; }
 .game__loading[hidden] { display: none; }
@@ -369,7 +369,7 @@ cite { font-style: normal; }
   .nav a { padding: 7px 11px; font-size: 0.9375rem; }
   .nav::-webkit-scrollbar { display: none; }
   .intro { grid-template-columns: 1fr; }
-  .intro picture { order: -1; }
+  .intro__photo { order: -1; }
   .intro__photo { max-width: 240px; }
   .facts { grid-template-columns: 1fr; }
   .two-col, .skills, .more { grid-template-columns: 1fr; }

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-v="20260924d">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,9 +13,9 @@
   <meta name="theme-color" content="#FCFCFB">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.css?v=20260924c">
+  <link rel="stylesheet" href="assets/css/site.css?v=20260924d">
   <script>document.documentElement.classList.add("js");</script>
-  <script src="assets/js/site.js?v=20260924c" defer></script>
+  <script src="assets/js/site.js?v=20260924d" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -45,122 +45,12 @@
         <button class="chip" type="button" data-filter="land" aria-pressed="false">Land and terrain</button>
         <button class="chip" type="button" data-filter="city" aria-pressed="false">Cities</button>
       </div>
-      <!-- Add a project: upload the map to assets/img/work/ and copy one <figure class="shot"> block.
-           data-cat is hazard, water, land or city. -->
-      <div class="gallery">
-        <figure class="shot" data-cat="hazard">
-          <button class="shot__btn" type="button" data-lightbox="cyclone" aria-label="Open Cyclone tracks and exposure corridor full size">
-            <img src="assets/img/work/cyclone-tracks-bangladesh.webp" width="800" height="742" alt="Map of Bangladesh showing 12 historical cyclone tracks from 1970 to 2024 over a coloured exposure corridor" loading="lazy">
-          </button>
-          <figcaption>
-            <p class="shot__top"><span class="shot__title">Cyclone tracks and exposure corridor</span><span class="mono shot__year">2026</span></p>
-            <p class="shot__meta">12 major storm tracks from 1970 to 2024 turned into a severity-weighted exposure corridor. geopandas, scipy, matplotlib</p>
-            <a class="link" href="https://github.com/Sabbir0Sojib/Bangladesh-Cyclone-Tracks-and-Exposure-Corridor" target="_blank" rel="noopener">View code<svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924c#arrow"/></svg></a>
-          </figcaption>
-        </figure>
-        <figure class="shot" data-cat="hazard">
-          <button class="shot__btn" type="button" data-lightbox="flood" aria-label="Open Flood delineation, Sylhet and Sunamganj, 2023 full size">
-            <img src="assets/img/work/flood-sylhet-sunamganj-2023.webp" width="800" height="565" alt="Map of Sylhet and Sunamganj districts with flooded areas in cyan, mostly in the west" loading="lazy">
-          </button>
-          <figcaption>
-            <p class="shot__top"><span class="shot__title">Flood delineation, Sylhet and Sunamganj, 2023</span><span class="mono shot__year">2025</span></p>
-            <p class="shot__meta">Flooded area mapped from Copernicus Sentinel-1 radar imagery.</p>
-            
-          </figcaption>
-        </figure>
-        <figure class="shot" data-cat="land">
-          <button class="shot__btn" type="button" data-lightbox="elevation" aria-label="Open Elevation, southeastern Bangladesh full size">
-            <img src="assets/img/work/elevation-southeast-bangladesh.webp" width="800" height="1514" alt="Hillshaded elevation map of the Chittagong Hill Tracts and coastal southeast Bangladesh" loading="lazy">
-          </button>
-          <figcaption>
-            <p class="shot__top"><span class="shot__title">Elevation, southeastern Bangladesh</span><span class="mono shot__year">2026</span></p>
-            <p class="shot__meta">Bandarban, Rangamati, Khagrachhari, Chittagong and Cox's Bazar. ALOS World 3D 30 m DEM.</p>
-            
-          </figcaption>
-        </figure>
-        <figure class="shot" data-cat="water">
-          <button class="shot__btn" type="button" data-lightbox="surfacewater" aria-label="Open Surface water temperature, Pabna District full size">
-            <img src="assets/img/work/surface-water-temperature-pabna.webp" width="1600" height="1247" alt="Map of Pabna District with surface water temperature along the Padma and Jamuna rivers" loading="lazy">
-          </button>
-          <figcaption>
-            <p class="shot__top"><span class="shot__title">Surface water temperature, Pabna District</span><span class="mono shot__year">2025</span></p>
-            <p class="shot__meta">Satellite thermal analysis of rivers and water bodies. Mean 25.39 °C, range 22.6 to 33.7 °C.</p>
-            <a class="link" href="https://github.com/Sabbir0Sojib/Pabna_Surface_Water_Analysis" target="_blank" rel="noopener">View code<svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924c#arrow"/></svg></a>
-          </figcaption>
-        </figure>
-        <figure class="shot" data-cat="hazard">
-          <button class="shot__btn" type="button" data-lightbox="coldwave" aria-label="Open Cold wave, 29 December 2025 full size">
-            <img src="assets/img/work/cold-wave-bangladesh-2025.webp" width="480" height="622" alt="Map of minimum temperature across Bangladesh on 29 December 2025, coldest around Nikli" loading="lazy">
-          </button>
-          <figcaption>
-            <p class="shot__top"><span class="shot__title">Cold wave, 29 December 2025</span><span class="mono shot__year">2025</span></p>
-            <p class="shot__meta">Daily minimum temperature from BMD data, made with my temperature map generator. Lowest: Nikli, 9.8 °C.</p>
-            <a class="link" href="https://github.com/Sabbir0Sojib/Bangladesh_Temperature_Map" target="_blank" rel="noopener">View code<svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924c#arrow"/></svg></a>
-          </figcaption>
-        </figure>
-        <figure class="shot" data-cat="water">
-          <button class="shot__btn" type="button" data-lightbox="groundwater" aria-label="Open Groundwater depth, Pabna District full size">
-            <img src="assets/img/work/groundwater-depth-pabna.webp" width="1600" height="1204" alt="Groundwater depth map of Pabna District, shallow in the east and deeper in the far west" loading="lazy">
-          </button>
-          <figcaption>
-            <p class="shot__top"><span class="shot__title">Groundwater depth, Pabna District</span><span class="mono shot__year">2025</span></p>
-            <p class="shot__meta">Depth to water interpolated from observation wells, 1.2 to 10.4 m.</p>
-            <a class="link" href="https://github.com/Sabbir0Sojib/pabna-groundwater-analysis" target="_blank" rel="noopener">View code<svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924c#arrow"/></svg></a>
-          </figcaption>
-        </figure>
-        <figure class="shot" data-cat="hazard">
-          <button class="shot__btn" type="button" data-lightbox="wind" aria-label="Open Prevailing 10 m wind, 2023 full size">
-            <img src="assets/img/work/wind-bangladesh-2023.webp" width="800" height="817" alt="Map of prevailing wind speed and direction over Bangladesh in 2023" loading="lazy">
-          </button>
-          <figcaption>
-            <p class="shot__top"><span class="shot__title">Prevailing 10 m wind, 2023</span><span class="mono shot__year">2026</span></p>
-            <p class="shot__meta">ERA5 reanalysis via Open-Meteo, with wind roses for Dhaka, Khulna and Chattogram.</p>
-            <a class="link" href="https://github.com/Sabbir0Sojib/Bangladesh-Prevailing-Wind-Direction-and-Speed" target="_blank" rel="noopener">View code<svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924c#arrow"/></svg></a>
-          </figcaption>
-        </figure>
-        <figure class="shot" data-cat="land">
-          <button class="shot__btn" type="button" data-lightbox="crop" aria-label="Open Crop suitability, Bangladesh full size">
-            <img src="assets/img/work/crop-suitability-bangladesh.webp" width="800" height="1035" alt="Crop suitability map of Bangladesh in five classes" loading="lazy">
-          </button>
-          <figcaption>
-            <p class="shot__top"><span class="shot__title">Crop suitability, Bangladesh</span><span class="mono shot__year">2026</span></p>
-            <p class="shot__meta">Five suitability classes from BARC data, weighted overlay.</p>
-            
-          </figcaption>
-        </figure>
-        <figure class="shot" data-cat="water">
-          <button class="shot__btn" type="button" data-lightbox="padma" aria-label="Open Stream order of the Padma River basin full size">
-            <img src="assets/img/work/padma-stream-order.webp" width="800" height="565" alt="Stream order map of the Padma River basin" loading="lazy">
-          </button>
-          <figcaption>
-            <p class="shot__top"><span class="shot__title">Stream order of the Padma River basin</span><span class="mono shot__year">2025</span></p>
-            <p class="shot__meta">Stream orders 1 to 4 derived from a DEM, with the watershed boundary. QGIS.</p>
-            
-          </figcaption>
-        </figure>
-        <figure class="shot" data-cat="city">
-          <button class="shot__btn" type="button" data-lightbox="korail" aria-label="Open Cycling accessibility from Korail, Dhaka full size">
-            <img src="assets/img/work/korail-cycling-accessibility.webp" width="800" height="861" alt="Isochrone map of cycling time from Korail, Dhaka, in 10 minute bands" loading="lazy">
-          </button>
-          <figcaption>
-            <p class="shot__top"><span class="shot__title">Cycling accessibility from Korail, Dhaka</span><span class="mono shot__year">2026</span></p>
-            <p class="shot__meta">2,000 sampled points routed with OpenRouteService, cubic spline interpolation.</p>
-            
-          </figcaption>
-        </figure>
-      </div>
+      <div class="gallery" data-render="projects" aria-busy="true"></div>
       <p class="list-empty" hidden>No projects in this theme yet.</p>
-
-      <section class="block reveal" aria-labelledby="more-work" style="margin-top: 32px;">
+      <noscript><p class="list-empty">This page needs JavaScript to show its content.</p></noscript>
+      <section class="block" aria-labelledby="more-work" style="margin-top: 32px;" data-render-wrap="projects-more" hidden>
         <h2 id="more-work" class="block__title">More projects</h2>
-        <ul class="more">
-          <li><p class="more__title">Landsat 8 harmonic modeling, Pabna District</p><p class="more__meta">Time series harmonic regression <a class="link" href="https://github.com/Sabbir0Sojib/Landsat8-Harmonic-Modeling-" target="_blank" rel="noopener">Code<svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924c#arrow"/></svg></a></p></li>
-          <li><p class="more__title">Sea level rise simulation, Bangladesh</p><p class="more__meta">SRTM 30 m DEM, bathtub inundation model, Python</p></li>
-          <li><p class="more__title">Earthquake hazard from recent events, Bangladesh</p><p class="more__meta">USGS events, IDW interpolation in ArcMap</p></li>
-          <li><p class="more__title">Land use and land cover, Dhaka District</p><p class="more__meta">Sentinel-2 classification</p></li>
-          <li><p class="more__title">Nepal flash flood, before and after</p><p class="more__meta">Betrawati-Gerkhu reach, Nuwakot District. Sentinel-2</p></li>
-          <li><p class="more__title">Landsat image of Bangladesh</p><p class="more__meta">Country-wide Landsat composite</p></li>
-        </ul>
+        <ul class="more" data-render="projects-more"></ul>
       </section>
     </div>
 
@@ -168,10 +58,10 @@
       <div class="lightbox__bar">
         <p id="lb-title" class="lightbox__title"></p>
         <div class="lightbox__tools">
-          <a class="icon-btn" data-lb-original href="#" target="_blank" rel="noopener" aria-label="Open original image"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924c#arrow"/></svg></a>
-          <button class="icon-btn" type="button" data-lb-prev aria-label="Previous"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924c#prev"/></svg></button>
-          <button class="icon-btn" type="button" data-lb-next aria-label="Next"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924c#next"/></svg></button>
-          <button class="icon-btn" type="button" data-lb-close aria-label="Close"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924c#close"/></svg></button>
+          <a class="icon-btn" data-lb-original href="#" target="_blank" rel="noopener" aria-label="Open original image"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924d#arrow"/></svg></a>
+          <button class="icon-btn" type="button" data-lb-prev aria-label="Previous"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924d#prev"/></svg></button>
+          <button class="icon-btn" type="button" data-lb-next aria-label="Next"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924d#next"/></svg></button>
+          <button class="icon-btn" type="button" data-lb-close aria-label="Close"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924d#close"/></svg></button>
         </div>
       </div>
       <div class="lightbox__view"><img class="lightbox__img" src="assets/img/work/cyclone-tracks-bangladesh.webp" alt=""></div>
@@ -183,10 +73,10 @@
     <div class="wrap site-foot__row">
       <p>&copy; 2026 Md Sabbir Islam. Pabna University of Science and Technology, Bangladesh.</p>
       <p class="site-foot__links">
-        <a class="icon-btn" href="mailto:mdsabbirislam820@gmail.com" aria-label="Email"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924c#envelope"/></svg></a>
-        <a class="icon-btn" href="https://orcid.org/0009-0001-9474-9287" target="_blank" rel="me noopener" aria-label="ORCID"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924c#orcid"/></svg></a>
-        <a class="icon-btn" href="https://www.linkedin.com/in/sabbir-sojib/" target="_blank" rel="me noopener" aria-label="LinkedIn"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924c#linkedin"/></svg></a>
-        <a class="icon-btn" href="https://github.com/Sabbir0Sojib" target="_blank" rel="me noopener" aria-label="GitHub"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924c#github"/></svg></a>
+        <a class="icon-btn" href="mailto:mdsabbirislam820@gmail.com" aria-label="Email"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924d#envelope"/></svg></a>
+        <a class="icon-btn" href="https://orcid.org/0009-0001-9474-9287" target="_blank" rel="me noopener" aria-label="ORCID"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924d#orcid"/></svg></a>
+        <a class="icon-btn" href="https://www.linkedin.com/in/sabbir-sojib/" target="_blank" rel="me noopener" aria-label="LinkedIn"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924d#linkedin"/></svg></a>
+        <a class="icon-btn" href="https://github.com/Sabbir0Sojib" target="_blank" rel="me noopener" aria-label="GitHub"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924d#github"/></svg></a>
       </p>
     </div>
   </footer>

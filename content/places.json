@@ -1,0 +1,128 @@
+[
+  {
+    "name": "Dhaka",
+    "lat": 23.8103,
+    "lng": 90.4125,
+    "fact": "The capital of Bangladesh, on the Buriganga River."
+  },
+  {
+    "name": "Chattogram",
+    "lat": 22.3569,
+    "lng": 91.7832,
+    "fact": "Home of the busiest seaport in Bangladesh."
+  },
+  {
+    "name": "Khulna",
+    "lat": 22.8456,
+    "lng": 89.5403,
+    "fact": "The gateway city to the Sundarbans mangrove forest."
+  },
+  {
+    "name": "Rajshahi",
+    "lat": 24.3745,
+    "lng": 88.6042,
+    "fact": "On the Padma, famous for its mangoes and silk."
+  },
+  {
+    "name": "Sylhet",
+    "lat": 24.8949,
+    "lng": 91.8687,
+    "fact": "Surrounded by tea gardens and haor wetlands."
+  },
+  {
+    "name": "Barishal",
+    "lat": 22.701,
+    "lng": 90.3535,
+    "fact": "A river city in the heart of the delta."
+  },
+  {
+    "name": "Rangpur",
+    "lat": 25.7439,
+    "lng": 89.2752,
+    "fact": "The headquarters of the northernmost division."
+  },
+  {
+    "name": "Mymensingh",
+    "lat": 24.7471,
+    "lng": 90.4203,
+    "fact": "On the banks of the Old Brahmaputra River."
+  },
+  {
+    "name": "Cox's Bazar",
+    "lat": 21.4272,
+    "lng": 92.0058,
+    "fact": "Home to one of the longest natural sea beaches in the world."
+  },
+  {
+    "name": "Pabna",
+    "lat": 24.0064,
+    "lng": 89.2372,
+    "fact": "Where I study, and where my thesis maps every tree crown in the city."
+  },
+  {
+    "name": "Cumilla",
+    "lat": 23.4607,
+    "lng": 91.1809,
+    "fact": "Close to the Mainamati Buddhist archaeological site."
+  },
+  {
+    "name": "Bogura",
+    "lat": 24.8465,
+    "lng": 89.3773,
+    "fact": "Near Mahasthangarh, one of the oldest city sites in Bangladesh."
+  },
+  {
+    "name": "Jashore",
+    "lat": 23.1664,
+    "lng": 89.2081,
+    "fact": "Close to Benapole, the busiest land port with India."
+  },
+  {
+    "name": "Dinajpur",
+    "lat": 25.6217,
+    "lng": 88.6354,
+    "fact": "Home of the terracotta Kantajew Temple."
+  },
+  {
+    "name": "Teknaf",
+    "lat": 20.8624,
+    "lng": 92.3058,
+    "fact": "The southern tip of mainland Bangladesh, on the Naf River."
+  },
+  {
+    "name": "Sreemangal",
+    "lat": 24.3065,
+    "lng": 91.7296,
+    "fact": "Often called the tea capital of Bangladesh."
+  },
+  {
+    "name": "Kuakata",
+    "lat": 21.8167,
+    "lng": 90.1206,
+    "fact": "A beach where you can watch both sunrise and sunset over the sea."
+  },
+  {
+    "name": "Saint Martin's Island",
+    "lat": 20.6237,
+    "lng": 92.3234,
+    "fact": "The only coral island of Bangladesh."
+  },
+  {
+    "name": "Rangamati",
+    "lat": 22.6574,
+    "lng": 92.1733,
+    "fact": "On Kaptai Lake in the Chittagong Hill Tracts."
+  },
+  {
+    "name": "Padma Bridge",
+    "lat": 23.446,
+    "lng": 90.26,
+    "fact": "The longest bridge in Bangladesh, opened in 2022."
+  },
+  {
+    "name": "Paharpur",
+    "lat": 25.0311,
+    "lng": 88.9767,
+    "fact": "Somapura Mahavihara, a UNESCO World Heritage Site."
+  }
+]

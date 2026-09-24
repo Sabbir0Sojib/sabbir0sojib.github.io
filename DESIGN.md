@@ -14,6 +14,10 @@ colors:
   line-strong: "#CDD1CD"
   scrim: "rgba(12, 14, 16, 0.72)"
   float-shadow: "rgba(10, 12, 14, 0.35)"
+  map-water: "#D9E6EC"
+  map-land: "#F6F6F3"
+  map-bangladesh: "#E6F0EC"
+  map-border: "#B9C0C4"
 typography:
   display:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
@@ -161,11 +165,13 @@ Flat. Project cards lift 3px with a soft shadow on hover. The gallery viewer is 
 
 ## Components
 
+- **Content:** every page is rendered from `content/*.json`, edited through Pages CMS (`.pages.yml`). Components below are templates in `assets/js/site.js`.
+
 - **Buttons:** pill, 46px; primary green, secondary white with a line; disabled at 45% opacity.
 - **Gallery (photos):** the same borderless card for photos of conferences, fieldwork and the lab.
 - **Research story row:** year, type and status on one line, then title, authors (owner in bold), venue and an optional one-line note. Filter chips by type.
 - **Project map card (Projects page):** full-bleed map with 16px corners and no border box, title and meta underneath; filter chips above; masonry columns keep each map's natural shape; click opens the viewer with previous, next, open original and click-to-zoom.
-- **Pin the Place:** five random places from a list of 21; click to drop a pin, lock in, see the distance line, points (1000 at 0 km, falling off exponentially with a 75 km scale) and a fact; the end screen shows total, rating, best score on the device and a map recap of every guess.
+- **Pin the Place:** five random places from a list of 21; click to drop a pin, lock in, see the distance line, points (1000 at 0 km, falling off exponentially with a 75 km scale) and a fact; the end screen shows total, rating, best score on the device and a map recap of every guess. The map uses only bundled Natural Earth outlines (water #D9E6EC, land #F6F6F3, Bangladesh #E6F0EC with a green edge); no tile service, no API key.
 
 ## Do's and Don'ts
 

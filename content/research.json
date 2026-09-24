@@ -1,0 +1,52 @@
+[
+  {
+    "year": "2026",
+    "type": "journal",
+    "status": "Under review",
+    "title": "Characterization of Urban Trees with Deep Learning Techniques in Pabna Municipality",
+    "authors": "Islam, M.S., and Islam, M.R.",
+    "venue": "Undergraduate thesis, Geospatial Lab of Environment and Disaster, Pabna University of Science and Technology",
+    "note": "Tree crowns delineated from 5 cm UAV imagery with deep learning, then scaled to 3 m PlanetScope imagery to map canopy, biomass and carbon across the city.",
+    "link": ""
+  },
+  {
+    "year": "2026",
+    "type": "journal",
+    "status": "Under review",
+    "title": "Spatio-temporal Patterns of Lightning Events and Associated Casualties in Bangladesh: Linkages with Land Use and Land Cover",
+    "authors": "Ali, M.Y., Islam, M.S., and Islam, M.R.",
+    "venue": "Submitted to a peer-reviewed journal",
+    "note": "",
+    "link": ""
+  },
+  {
+    "year": "2026",
+    "type": "conference",
+    "status": "Presented",
+    "title": "Impact of Armed Conflict on Ambient Air Quality: A Multi-Pollutant Spatiotemporal Analysis Across Iranian Provinces, 2022 to 2026",
+    "authors": "Islam, M.S., Ali, M.Y., and Islam, M.R.",
+    "venue": "International Conference on Emerging Frontiers in Advanced Sciences and Technologies (EFAST 2026), Pabna, Bangladesh",
+    "note": "",
+    "link": ""
+  },
+  {
+    "year": "2025",
+    "type": "conference",
+    "status": "Presented",
+    "title": "Urban Tree Cover Detection Using UAV, Remote Sensing and Deep Learning",
+    "authors": "Islam, M.S., and Islam, M.R.",
+    "venue": "1st International Conference on Life and Earth Sciences for Sustainable Development (ICLESSD-2025), Jagannath University, Dhaka",
+    "note": "",
+    "link": ""
+  },
+  {
+    "year": "2025",
+    "type": "field",
+    "status": "",
+    "title": "CH4Rice Project",
+    "authors": "Field Data Collector",
+    "venue": "JAXA Earth Observation Research Center and the Institute of Industrial Science, University of Tokyo",
+    "note": "",
+    "link": ""
+  }
+]

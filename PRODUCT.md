@@ -40,7 +40,7 @@ Visitors arrive from a CV header, LinkedIn, GitHub, an email signature or a conf
 - ORCID: https://orcid.org/0009-0001-9474-9287. No Google Scholar yet.
 - Projects holds all maps; Gallery holds photos of the owner and his work. Research lists every item equally (owner asked not to highlight the thesis).
 - Map images are replaceable: the owner will upload higher quality versions later under the same filenames in `assets/img/work/`.
-- The owner edits text himself later, so content must be easy to find in the HTML.
+- The owner edits content himself through Pages CMS (app.pagescms.org) or the GitHub website; all content lives in `content/*.json`.
 
 ## Brand Commitments
 

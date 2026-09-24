@@ -1,0 +1,100 @@
+{
+  "name": "Md Sabbir Islam",
+  "role": "Remote Sensing and Geospatial Deep Learning",
+  "bio": "I map Bangladesh from the air and from space. I pair drone imagery with satellite data and deep learning, and I build maps of cyclones, floods, groundwater and heat in Python, with the code open on GitHub.",
+  "photo": "/assets/img/sabbir-portrait.jpg",
+  "photo_alt": "Md Sabbir Islam at the ICLESSD-2025 conference, Jagannath University, Dhaka",
+  "facts": [
+    {
+      "label": "Studying",
+      "value": "B.Sc. (Honours) Geography and Environment, Pabna University of Science and Technology"
+    },
+    {
+      "label": "Lab",
+      "value": "Geospatial Lab of Environment and Disaster"
+    },
+    {
+      "label": "Focus",
+      "value": "UAV and satellite deep learning, hazard mapping"
+    },
+    {
+      "label": "Based in",
+      "value": "Pabna, Bangladesh"
+    }
+  ],
+  "emails": [
+    "mdsabbirislam820@gmail.com",
+    "sabbir.210908@s.pust.ac.bd"
+  ],
+  "orcid": "0009-0001-9474-9287",
+  "linkedin": "https://www.linkedin.com/in/sabbir-sojib/",
+  "github": "https://github.com/Sabbir0Sojib",
+  "interests": [
+    "Geospatial deep learning",
+    "Object detection",
+    "UAV and satellite data fusion",
+    "Tree crown delineation",
+    "Above-ground biomass",
+    "Land use and land cover change",
+    "Spatial statistics",
+    "Hazard and risk mapping",
+    "Environmental monitoring"
+  ],
+  "experience": [
+    {
+      "when": "2025 to present",
+      "title": "Undergraduate Thesis Researcher",
+      "detail": "Geospatial Lab of Environment and Disaster, Pabna University of Science and Technology. Supervised by D. Eng. Md Rahedul Islam, Professor."
+    },
+    {
+      "when": "2025",
+      "title": "Field Data Collector, CH4Rice Project",
+      "detail": "In collaboration with the JAXA Earth Observation Research Center and the Institute of Industrial Science, University of Tokyo."
+    },
+    {
+      "when": "Final result awaited",
+      "title": "B.Sc. (Honours) in Geography and Environment",
+      "detail": "Pabna University of Science and Technology. CGPA 3.56 / 4.00 across seven semesters; coursework completed."
+    }
+  ],
+  "skills": [
+    {
+      "group": "Deep learning",
+      "items": "PyTorch, SegFormer, U-Net, DeepLabV3+, Mask2Former, YOLO, Mask R-CNN"
+    },
+    {
+      "group": "Remote sensing",
+      "items": "Google Earth Engine, SNAP, Rasterio, GDAL, ArcGIS, QGIS"
+    },
+    {
+      "group": "Satellite data",
+      "items": "PlanetScope SuperDove, Sentinel-1, Sentinel-2, Landsat, MODIS"
+    },
+    {
+      "group": "UAV",
+      "items": "DJI platforms, Agisoft Metashape, Pix4D, point cloud processing"
+    },
+    {
+      "group": "Spatial statistics",
+      "items": "Moran's I, Getis-Ord Gi*, kernel density estimation, hotspot analysis"
+    },
+    {
+      "group": "Programming",
+      "items": "Python, R, JavaScript for Earth Engine, Git, LaTeX"
+    }
+  ],
+  "awards": [
+    {
+      "year": "2023",
+      "text": "Top 8 Team, FOREWARN Disaster Hackathon 1.0"
+    },
+    {
+      "year": "2023",
+      "text": "Runners-up, 6th Interdepartmental Language Debate, Pabna University of Science and Technology"
+    }
+  ],
+  "languages": [
+    "Bengali, native",
+    "English, professional working proficiency"
+  ]
+}

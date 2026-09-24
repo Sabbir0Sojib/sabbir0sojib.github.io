@@ -1,32 +1,10 @@
 /* Pin the Place: a Bangladesh geography game on a blank Leaflet map.
-   Add a place: copy one object in PLACES. Coordinates are [latitude, longitude]. */
+   Places come from content/places.json (name, lat, lng, fact). */
 (function () {
   "use strict";
 
-  var PLACES = [
-    { name: "Dhaka", at: [23.8103, 90.4125], fact: "The capital of Bangladesh, on the Buriganga River." },
-    { name: "Chattogram", at: [22.3569, 91.7832], fact: "Home of the busiest seaport in Bangladesh." },
-    { name: "Khulna", at: [22.8456, 89.5403], fact: "The gateway city to the Sundarbans mangrove forest." },
-    { name: "Rajshahi", at: [24.3745, 88.6042], fact: "On the Padma, famous for its mangoes and silk." },
-    { name: "Sylhet", at: [24.8949, 91.8687], fact: "Surrounded by tea gardens and haor wetlands." },
-    { name: "Barishal", at: [22.7010, 90.3535], fact: "A river city in the heart of the delta." },
-    { name: "Rangpur", at: [25.7439, 89.2752], fact: "The headquarters of the northernmost division." },
-    { name: "Mymensingh", at: [24.7471, 90.4203], fact: "On the banks of the Old Brahmaputra River." },
-    { name: "Cox's Bazar", at: [21.4272, 92.0058], fact: "Home to one of the longest natural sea beaches in the world." },
-    { name: "Pabna", at: [24.0064, 89.2372], fact: "Where I study, and where my thesis maps every tree crown in the city." },
-    { name: "Cumilla", at: [23.4607, 91.1809], fact: "Close to the Mainamati Buddhist archaeological site." },
-    { name: "Bogura", at: [24.8465, 89.3773], fact: "Near Mahasthangarh, one of the oldest city sites in Bangladesh." },
-    { name: "Jashore", at: [23.1664, 89.2081], fact: "Close to Benapole, the busiest land port with India." },
-    { name: "Dinajpur", at: [25.6217, 88.6354], fact: "Home of the terracotta Kantajew Temple." },
-    { name: "Teknaf", at: [20.8624, 92.3058], fact: "The southern tip of mainland Bangladesh, on the Naf River." },
-    { name: "Sreemangal", at: [24.3065, 91.7296], fact: "Often called the tea capital of Bangladesh." },
-    { name: "Kuakata", at: [21.8167, 90.1206], fact: "A beach where you can watch both sunrise and sunset over the sea." },
-    { name: "Saint Martin's Island", at: [20.6237, 92.3234], fact: "The only coral island of Bangladesh." },
-    { name: "Rangamati", at: [22.6574, 92.1733], fact: "On Kaptai Lake in the Chittagong Hill Tracts." },
-    { name: "Padma Bridge", at: [23.4460, 90.2600], fact: "The longest bridge in Bangladesh, opened in 2022." },
-    { name: "Paharpur", at: [25.0311, 88.9767], fact: "Somapura Mahavihara, a UNESCO World Heritage Site." }
-  ];
-  var ROUNDS = 5;
+  var PLACES = []; // loaded from content/places.json
+  var ROUNDS = 5; // capped by the number of places
   var BD = [[20.4, 87.9], [26.8, 92.8]];
 
   function haversineKm(a, b) {
@@ -54,6 +32,19 @@
 
   function start() {
     if (!window.L) { setTimeout(start, 50); return; }
+    if (!PLACES.length) {
+      var ver = document.documentElement.getAttribute("data-v") || "1";
+      fetch("content/places.json?v=" + ver, { cache: "no-cache" })
+        .then(function (r) { return r.json(); })
+        .then(function (list) {
+          PLACES = list.filter(function (p) { return p && p.name && isFinite(p.lat) && isFinite(p.lng); })
+            .map(function (p) { return { name: p.name, at: [Number(p.lat), Number(p.lng)], fact: p.fact || "" }; });
+          if (PLACES.length) start();
+          else { var l = document.querySelector("[data-loading]"); if (l) l.textContent = "No places to play yet."; }
+        })
+        .catch(function () { var l = document.querySelector("[data-loading]"); if (l) l.textContent = "The game could not load. Please refresh the page."; });
+      return;
+    }
     var L = window.L;
     var root = document.querySelector("[data-game]");
     if (!root) return;
@@ -65,26 +56,23 @@
                again: $("[data-again]"), loading: $("[data-loading]") };
 
     var map = L.map("game-map", {
-      zoomControl: true, attributionControl: true, minZoom: 6, maxZoom: 11,
-      maxBounds: [[18.5, 85.5], [28.5, 95.5]], maxBoundsViscosity: 0.8, keyboard: true
+      zoomControl: true, attributionControl: true, minZoom: 5.5, maxZoom: 10, zoomSnap: 0.25, zoomDelta: 0.5,
+      maxBounds: [[16.5, 83.5], [30.5, 97.5]], maxBoundsViscosity: 1, keyboard: true
     });
-    map.fitBounds(BD, { padding: [10, 10] });
+    map.fitBounds(BD, { padding: [6, 6] });
 
-    // Basemap without place names, so the map does not give the answers away
-    var tiles = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png", {
-      maxZoom: 18, subdomains: "abcd", attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
-    }).addTo(map);
-    tiles.on("load", function () { el.loading.hidden = true; });
-    setTimeout(function () { el.loading.hidden = true; }, 4000);
-
+    // No tile service: the map is drawn from bundled Natural Earth outlines, so it has
+    // no place names to give answers away and needs no API key.
+    map.attributionControl.setPrefix(false);
+    map.attributionControl.addAttribution("Boundaries: Natural Earth");
     // Country outlines bundled with the site
     fetch("assets/data/region.geojson").then(function (r) { return r.json(); }).then(function (gj) {
       L.geoJSON(gj, {
         interactive: false,
         style: function (f) {
           return f.properties.name === "Bangladesh"
-            ? { color: "#0E6B58", weight: 2, fillColor: "#0E6B58", fillOpacity: 0.08 }
-            : { color: "#9AA0A5", weight: 1, fillColor: "#FFFFFF", fillOpacity: 0.4 };
+            ? { color: "#0E6B58", weight: 1.6, fillColor: "#E6F0EC", fillOpacity: 1 }
+            : { color: "#B9C0C4", weight: 0.8, fillColor: "#F6F6F3", fillOpacity: 1 };
         }
       }).addTo(map);
       el.loading.hidden = true;
@@ -101,7 +89,7 @@
       phase = stage;
     }
     function newGame() {
-      queue = shuffle(PLACES).slice(0, ROUNDS);
+      queue = shuffle(PLACES).slice(0, Math.min(ROUNDS, PLACES.length));
       round = 0; total = 0; history = [];
       el.score.textContent = "0";
       nextRound();
@@ -111,8 +99,8 @@
       if (guessMarker) { map.removeLayer(guessMarker); guessMarker = null; }
       guess = null;
       el.lock.disabled = true;
-      if (round >= ROUNDS) return finish();
-      el.round.textContent = "Round " + (round + 1) + " of " + ROUNDS;
+      if (round >= queue.length) return finish();
+      el.round.textContent = "Round " + (round + 1) + " of " + queue.length;
       el.place.textContent = queue[round].name;
       show("ask");
       map.flyToBounds(BD, { padding: [10, 10], duration: 0.8 });
@@ -140,7 +128,7 @@
       el.points.textContent = pts;
       el.fact.textContent = target.name + ": " + target.fact;
       el.score.textContent = total.toLocaleString();
-      el.next.textContent = round + 1 >= ROUNDS ? "See your score" : "Next place";
+      el.next.textContent = round + 1 >= queue.length ? "See your score" : "Next place";
       show("result");
       round++;
       el.next.focus();
