@@ -32,7 +32,7 @@ Plain HTML, CSS and vanilla JavaScript. No framework, no npm build for the live 
 
 - HTML pages are thin shells with `data-render="..."` containers and `data-site="key"` text hooks.
 - `assets/js/site.js` fetches `content/*.json`, renders every page, then wires filters, lightbox (click to zoom), copy buttons and reveals. `newestFirst()` sorts by `date` (YYYY-MM-DD), falling back to end of `year`.
-- `assets/js/game.js` is the geography game: Leaflet map, bundled Natural Earth outlines (`assets/data/region.geojson`), **no tile service and no API key** (CARTO tiles started requiring a key, so they were removed). Distance by haversine, points = `round(1000 * exp(-km / 75))`.
+- `assets/js/game.js` is the geography game: Leaflet map, unlabeled satellite imagery from Esri World Imagery (no API key; automatic fallback to EOX Sentinel-2 cloudless) with bundled Natural Earth outlines (`assets/data/region.geojson`) drawn on top. CARTO tiles were removed because they started requiring a key. Distance by haversine, points = `round(1000 * exp(-km / 75))`.
 - `assets/css/site.css`: tokens at the top of `:root` (`--accent` is the green). Ten font sizes, radii 6 / 10 / 16 / pill.
 - `assets/icons.svg`: Phosphor icons (MIT) plus the ORCID logo (Simple Icons, CC0).
 - `assets/vendor/leaflet/`: Leaflet 1.9.4, self-hosted. Fonts self-hosted in `assets/fonts/` (Archivo, JetBrains Mono).

@@ -1,5 +1,6 @@
 /* Pin the Place: a Bangladesh geography game on a blank Leaflet map.
-   Places come from content/places.json (name, lat, lng, fact). */
+   Places come from content/places.json (name, lat, lng, fact).
+   Background: unlabeled satellite imagery (Esri, fallback EOX Sentinel-2). */
 (function () {
   "use strict";
 
@@ -56,23 +57,36 @@
                again: $("[data-again]"), loading: $("[data-loading]") };
 
     var map = L.map("game-map", {
-      zoomControl: true, attributionControl: true, minZoom: 5.5, maxZoom: 10, zoomSnap: 0.25, zoomDelta: 0.5,
+      zoomControl: true, attributionControl: true, minZoom: 5.5, maxZoom: 13, zoomSnap: 0.25, zoomDelta: 0.5,
       maxBounds: [[16.5, 83.5], [30.5, 97.5]], maxBoundsViscosity: 1, keyboard: true
     });
     map.fitBounds(BD, { padding: [6, 6] });
 
-    // No tile service: the map is drawn from bundled Natural Earth outlines, so it has
-    // no place names to give answers away and needs no API key.
+    // Satellite imagery without labels (no API key). Primary: Esri World Imagery (high resolution).
+    // Fallback: EOX Sentinel-2 cloudless, used automatically if Esri tiles fail to load.
     map.attributionControl.setPrefix(false);
-    map.attributionControl.addAttribution("Boundaries: Natural Earth");
+    var esri = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+      maxZoom: 18, attribution: "Imagery &copy; Esri, Maxar, Earthstar Geographics | Boundaries: Natural Earth"
+    });
+    var eox = L.tileLayer("https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2020_3857/default/g/{z}/{y}/{x}.jpg", {
+      maxZoom: 15, attribution: "Sentinel-2 cloudless 2020 by EOX (Copernicus Sentinel data) | Boundaries: Natural Earth"
+    });
+    var loaded = 0, failed = 0, switched = false;
+    esri.on("tileload", function () { loaded++; el.loading.hidden = true; });
+    esri.on("tileerror", function () {
+      failed++;
+      if (!switched && failed >= 6 && loaded === 0) { switched = true; map.removeLayer(esri); eox.addTo(map); }
+    });
+    eox.on("tileload", function () { el.loading.hidden = true; });
+    esri.addTo(map);
     // Country outlines bundled with the site
     fetch("assets/data/region.geojson").then(function (r) { return r.json(); }).then(function (gj) {
       L.geoJSON(gj, {
         interactive: false,
         style: function (f) {
           return f.properties.name === "Bangladesh"
-            ? { color: "#166534", weight: 1.6, fillColor: "#EAF4EE", fillOpacity: 1 }
-            : { color: "#BFC8C0", weight: 0.8, fillColor: "#F4F6F2", fillOpacity: 1 };
+            ? { color: "#FACC15", weight: 2, opacity: 0.95, fill: false }
+            : { color: "#FFFFFF", weight: 1, opacity: 0.55, fill: false };
         }
       }).addTo(map);
       el.loading.hidden = true;
@@ -120,7 +134,7 @@
       total += pts;
       history.push({ name: target.name, km: km, pts: pts, guess: guess, at: target.at });
 
-      L.polyline([guess, target.at], { color: "#16201A", weight: 2, dashArray: "6 6", interactive: false }).addTo(answerLayer);
+      L.polyline([guess, target.at], { color: "#FFFFFF", weight: 2.5, dashArray: "6 6", interactive: false }).addTo(answerLayer);
       L.marker(target.at, { icon: pinIcon("gpin--answer"), interactive: false }).addTo(answerLayer);
       map.flyToBounds(L.latLngBounds([guess, target.at]).pad(0.6), { maxZoom: 9, duration: 0.9 });
 
@@ -150,7 +164,7 @@
       answerLayer.clearLayers();
       if (guessMarker) { map.removeLayer(guessMarker); guessMarker = null; }
       history.forEach(function (h) {
-        L.polyline([h.guess, h.at], { color: "#16201A", weight: 1.5, dashArray: "5 6", interactive: false }).addTo(answerLayer);
+        L.polyline([h.guess, h.at], { color: "#FFFFFF", weight: 2, dashArray: "5 6", interactive: false }).addTo(answerLayer);
         L.marker(h.guess, { icon: pinIcon("gpin--guess"), interactive: false }).addTo(answerLayer);
         L.marker(h.at, { icon: pinIcon("gpin--answer"), interactive: false }).addTo(answerLayer)
           .bindTooltip(h.name, { permanent: true, direction: "right", offset: [10, 0], className: "gtip" });

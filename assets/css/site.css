@@ -325,8 +325,8 @@ cite { font-style: normal; }
 .game__recap li span:nth-child(2) { color: var(--muted); }
 .game__recap li span:nth-child(3) { color: var(--accent); font-weight: 650; text-align: right; }
 .game__keys { margin-top: auto; color: var(--muted); font-size: 0.8125rem; }
-.game__map { position: relative; min-height: 0; background: #D6E4E4; }
-#game-map { position: absolute; inset: 0; background: #D6E4E4; cursor: crosshair; }
+.game__map { position: relative; min-height: 0; background: #0B1F2A; }
+#game-map { position: absolute; inset: 0; background: #0B1F2A; cursor: crosshair; }
 #game-map:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
 .game__loading { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 500; color: var(--muted); background: rgba(255,255,255,0.9); padding: 8px 14px; border-radius: 999px; font-size: 0.9375rem; }
 .game__loading[hidden] { display: none; }
@@ -334,8 +334,8 @@ cite { font-style: normal; }
   display: block; width: 26px; height: 26px; border-radius: 50%;
   border: 3px solid #fff; box-shadow: 0 3px 10px rgba(23, 25, 28, 0.35);
 }
-.gpin--guess { background: var(--ink); }
-.gpin--answer { background: var(--accent); }
+.gpin--guess { background: #FFFFFF; border-color: #111827; }
+.gpin--answer { background: #FACC15; }
 @media (prefers-reduced-motion: no-preference) {
   .gpin { animation: drop 360ms var(--ease) both; }
   @keyframes drop { from { transform: translateY(-14px) scale(0.6); opacity: 0; } }

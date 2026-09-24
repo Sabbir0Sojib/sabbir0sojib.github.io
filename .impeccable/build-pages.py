@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os
 OUT = "/home/user/sabbir0sojib.github.io"
-VER = "20260924l"   # bump to force browsers to load new CSS/JS
+VER = "20260924m"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -130,7 +130,7 @@ write("gallery.html", page("gallery.html","Gallery | Md Sabbir Islam","Photos of
 fun = f'''    <div class="wrap">
       <header class="page-head page-head--compact">
         <h1 class="page-head__title" data-site="fun_title">Pin the Place</h1>
-        <p class="page-head__lede" data-site="fun_intro">How well do you know Bangladesh? Five places, one blank map. Click where you think each place is, then see how close you got.</p>
+        <p class="page-head__lede" data-site="fun_intro">How well do you know Bangladesh? Five places, one satellite map with no labels. Click where you think each place is, then see how close you got.</p>
       </header>
 
       <div class="game" data-game>
@@ -160,7 +160,7 @@ fun = f'''    <div class="wrap">
           <p class="game__keys">Keyboard: arrow keys move the map, Enter drops a pin at the centre.</p>
         </aside>
         <div class="game__map">
-          <div id="game-map" tabindex="0" aria-label="Blank map of Bangladesh. Click to place your guess."></div>
+          <div id="game-map" tabindex="0" aria-label="Unlabeled satellite map of Bangladesh. Click to place your guess."></div>
           <p class="game__loading" data-loading>Loading map...</p>
         </div>
       </div>
