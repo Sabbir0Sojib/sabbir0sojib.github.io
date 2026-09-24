@@ -1,13 +1,13 @@
 [
   {
-    "title": "Bangladesh Cyclone Tracks and Exposure Corridor",
+    "title": "Zero Hour Atlas",
     "year": "2026",
-    "date": "2026-09-03",
-    "description": "Reconstructs 12 major cyclone tracks toward Bangladesh from 1970 to 2024 and turns them into a severity-weighted exposure corridor.",
-    "tools": "Python, geopandas, scipy, matplotlib",
-    "repo": "https://github.com/Sabbir0Sojib/Bangladesh-Cyclone-Tracks-and-Exposure-Corridor",
-    "image": "/assets/img/work/cyclone-tracks-bangladesh.webp",
-    "image_alt": "Cyclone tracks and exposure corridor map of Bangladesh"
+    "date": "2026-09-11",
+    "description": "Maps early warning last-mile gaps in the Jamuna-Padma char corridor: where floods, failed roads and submerged mobile towers cut settlements off at the same time. Built for the RIMES Mapathon 2026.",
+    "tools": "Python, Google Earth Engine, Sentinel-1, QGIS",
+    "repo": "https://github.com/Sabbir0Sojib/Zero-Hour-Atlas",
+    "image": "/assets/img/work/zero-hour-index-jamuna-padma.webp",
+    "image_alt": "Zero Hour Index map of char settlements in the Jamuna-Padma corridor"
   },
   {
     "title": "Bangladesh Prevailing Wind Direction and Speed",
@@ -18,6 +18,36 @@
     "repo": "https://github.com/Sabbir0Sojib/Bangladesh-Prevailing-Wind-Direction-and-Speed",
     "image": "/assets/img/work/wind-bangladesh-2023.webp",
     "image_alt": "Prevailing wind map of Bangladesh, 2023"
+  },
+  {
+    "title": "Bangladesh Cyclone Tracks and Exposure Corridor",
+    "year": "2026",
+    "date": "2026-09-03",
+    "description": "Reconstructs 12 major cyclone tracks toward Bangladesh from 1970 to 2024 and turns them into a severity-weighted exposure corridor.",
+    "tools": "Python, geopandas, scipy, matplotlib",
+    "repo": "https://github.com/Sabbir0Sojib/Bangladesh-Cyclone-Tracks-and-Exposure-Corridor",
+    "image": "/assets/img/work/cyclone-tracks-bangladesh.webp",
+    "image_alt": "Cyclone tracks and exposure corridor map of Bangladesh"
+  },
+  {
+    "title": "Pabna Urban Forest",
+    "year": "2026",
+    "date": "2026-08-28",
+    "description": "Code for my thesis: a canopy model trained on UAV imagery labels a city-wide satellite classifier, then crowns are converted to biomass, carbon and ward statistics for Pabna Municipality.",
+    "tools": "Python, PyTorch, Random Forest, UAV",
+    "repo": "https://github.com/Sabbir0Sojib/Pabna_Urban_Forest",
+    "image": "",
+    "image_alt": ""
+  },
+  {
+    "title": "CVI-HazardFusion",
+    "year": "2026",
+    "date": "2026-03-26",
+    "description": "Fuses the Climate Vulnerability Index with satellite flood, drought and landslide signals into a Dynamic Risk Score for all 64 districts of Bangladesh.",
+    "tools": "Python, Google Earth Engine, Sentinel-1, MODIS, CHIRPS",
+    "repo": "https://github.com/Sabbir0Sojib/CVI_Hazard_Fusion",
+    "image": "",
+    "image_alt": ""
   },
   {
     "title": "Bangladesh Temperature Map Generator",
