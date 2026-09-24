@@ -310,7 +310,7 @@ cite { font-style: normal; }
 }
 .lvl {
   display: flex; flex-direction: column; align-items: flex-start; gap: 1px;
-  padding: 10px 14px; border: 1px solid transparent; border-radius: 10px;
+  padding: 10px 14px; border: 0; border-radius: 10px;
   background: transparent; cursor: pointer; text-align: left;
   transition: background-color 160ms var(--ease), border-color 160ms, box-shadow 160ms;
 }
