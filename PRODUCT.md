@@ -33,7 +33,7 @@ Visitors arrive from a CV header, LinkedIn, GitHub, an email signature or a conf
 
 ## Capabilities and Constraints
 
-- Separate pages (owner's choice): Profile (index.html), Research, Projects, Gallery, Fun (interactive map of work).
+- Separate pages (owner's choice): Profile (index.html), Research, Projects, Gallery, Fun (Pin the Place, a Bangladesh geography game).
 - Look (owner's choice): clean light, one accent colour. The owner rejected the earlier GIS-workspace and dark-hero versions.
 - Contact: sabbir.210908@s.pust.ac.bd and mdsabbirislam820@gmail.com, LinkedIn (linkedin.com/in/sabbir-sojib), GitHub (github.com/Sabbir0Sojib).
 - No phone number, no referee details, no CV download on the site.

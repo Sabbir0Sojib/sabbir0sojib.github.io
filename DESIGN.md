@@ -12,6 +12,8 @@ colors:
   surface: "#F3F4F2"
   line: "#E2E4E1"
   line-strong: "#CDD1CD"
+  scrim: "rgba(12, 14, 16, 0.72)"
+  float-shadow: "rgba(10, 12, 14, 0.35)"
 typography:
   display:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
@@ -19,16 +21,49 @@ typography:
     fontWeight: 700
     lineHeight: 1.02
     letterSpacing: "-0.035em"
+  page-title:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(2.25rem, 1.5rem + 3vw, 3.5rem)"
+    fontWeight: 700
+    lineHeight: 1.05
+    letterSpacing: "-0.03em"
+  stat:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(2rem, 1.4rem + 1.6vw, 2.75rem)"
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: "-0.03em"
   headline:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(1.5rem, 1.2rem + 1vw, 1.875rem)"
     fontWeight: 650
     lineHeight: 1.2
+    letterSpacing: "-0.02em"
+  lede:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem)"
+    fontWeight: 400
+    lineHeight: 1.65
+  title:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "1.1875rem"
+    fontWeight: 650
+    lineHeight: 1.3
   body:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
     fontSize: "1.0625rem"
     fontWeight: 400
     lineHeight: 1.65
+  small:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "0.9375rem"
+    fontWeight: 400
+    lineHeight: 1.5
+  caption:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "0.8125rem"
+    fontWeight: 400
+    lineHeight: 1.5
   data:
     fontFamily: "JetBrains Mono, ui-monospace, monospace"
     fontSize: "0.85em"
@@ -45,11 +80,27 @@ components:
     rounded: "{rounded.pill}"
     height: "46px"
     padding: "0 20px"
+  button-primary-hover:
+    backgroundColor: "{colors.river-green-deep}"
+  button-secondary:
+    backgroundColor: "{colors.page}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.pill}"
+    height: "46px"
+    padding: "0 20px"
   nav-current:
     backgroundColor: "{colors.ink}"
     textColor: "{colors.page}"
     rounded: "{rounded.pill}"
     padding: "8px 14px"
+  filter-chip:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.pill}"
+    padding: "9px 18px"
+  filter-chip-active:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.page}"
   tag:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.ink-soft}"
@@ -63,23 +114,24 @@ components:
 
 **Creative North Star: "The Clean Field Report"**
 
-Plain white pages, dark text, generous space and one river-green accent. Each page does one job (Profile, Research, Projects, Gallery, Fun) and the work, especially the maps, supplies the colour. The owner chose this look after rejecting a GIS-workspace layout and a dark hero.
+Plain light pages, dark text, generous space and one river-green accent. Each page does one job (Profile, Research, Projects, Gallery, Fun) and the maps supply the colour. The owner chose this look after rejecting a GIS-workspace layout and a dark hero. The Gallery follows the Pinterest reference in `.claude/design-references/pinterest`: the image is the card, filter chips flip to ink when active, and the only shadow is under the floating viewer.
 
 **Key Characteristics:**
-- Separate pages with a sticky top menu; the current page is a dark pill.
-- River green only for primary actions, links, key numbers and pins.
-- Archivo throughout, slightly expanded for headings; mono only for years and small data.
-- Soft grey panels, 1px lines, rounded 10 to 16px containers, pill buttons and tags.
+- Separate pages with a sticky top menu; the current page is an ink pill.
+- River green only for primary actions, links, key numbers and the game's answer pins.
+- Archivo throughout; JetBrains Mono only for years and small data.
+- A tight scale: ten font sizes, four radii (6, 10, 16, pill).
 
 ## Colors
 
 ### Primary
-- **River Green** (river-green): primary buttons, links, the role line, thesis numbers, map pins, Bangladesh outline on the map.
+- **River Green** (river-green): primary buttons, links, the role line, thesis numbers, points, answer pins, the Bangladesh outline.
 
 ### Neutral
-- **Ink / Soft Ink / Muted** (ink, ink-soft, muted): text hierarchy.
-- **Page / Surface** (page, surface): the page and soft panels (thesis box, contact rows, tags).
-- **Line / Strong Line** (line, line-strong): dividers and outlines.
+- **Ink / Soft Ink / Muted**: text hierarchy. Ink also marks the current page, active chip and the game's guess pin.
+- **Page / Surface**: the page and soft panels (thesis box, game panel, chips, tags, contact rows).
+- **Line / Strong Line**: dividers and outlines.
+- **Scrim / Float Shadow**: only for the gallery viewer.
 
 ### Named Rules
 **The One Green Rule.** Green marks what can be clicked or what matters most. Nothing else is coloured; the maps bring the colour.
@@ -88,38 +140,42 @@ Plain white pages, dark text, generous space and one river-green accent. Each pa
 
 **Font:** Archivo (variable width), with JetBrains Mono for years and small data.
 
-- **Display:** the name and page titles.
-- **Headline:** section titles.
-- **Body:** paragraphs, max about 64 characters wide.
-- **Data:** years and small numbers only.
+- **Display:** the name on the Profile page.
+- **Page title:** each page's heading.
+- **Stat:** thesis values, game distance and final score.
+- **Headline:** section titles and the game question.
+- **Lede:** page introductions and email addresses.
+- **Title / Body / Small / Caption:** card titles, paragraphs, metadata, fine print.
 
 ## Layout
 
-A centred 1120px column. Each page opens with a large title and one-line intro, then sections separated by 1px lines. Two columns collapse to one below 820px; the top menu becomes a second row on phones.
+A centred 1120px column. Each page opens with a title and a one-line intro, then sections separated by 1px lines. Two columns collapse to one below 820px; the top menu becomes a second row on phones. The game is a 340px panel beside the map on desktop and stacks above the map on phones.
 
 ## Elevation & Depth
 
-Flat. Project cards lift slightly on hover (translate 3px, soft shadow). The gallery lightbox is the only floating layer.
+Flat. Project cards lift 3px with a soft shadow on hover. The gallery viewer is the only floating layer (scrim plus float shadow). Game pins carry a small drop shadow so they read on the map.
 
 ## Shapes
 
-10px for panels, 16px for cards and the photo, pills for buttons, tags and the menu.
+6px for small controls, 10px for panels and rows, 16px for cards, gallery images, the photo and the game frame; pills for buttons, chips, tags and the menu.
 
 ## Components
 
-- **Buttons:** pill, 46px; primary is green, secondary is white with a line.
-- **Project card:** image on top (the owner's map or the GitHub preview, with a green fallback tile), title and year, one sentence, tool tags, "View code".
-- **Gallery:** masonry of maps on white; click opens a lightbox with previous, next, open original and click-to-zoom.
-- **Map of my work:** Leaflet map (CARTO light tiles, bundled country outlines), numbered green pins with popups, a side list that flies to each place, live coordinates.
+- **Buttons:** pill, 46px; primary green, secondary white with a line; disabled at 45% opacity.
+- **Project card:** image (owner's map or GitHub preview, with a green fallback tile), title and year, one sentence, tool tags, "View code".
+- **Gallery pin card:** full-bleed map with 16px corners and no border box, title and meta underneath; filter chips above; masonry columns keep each map's natural shape; click opens the viewer with previous, next, open original and click-to-zoom.
+- **Pin the Place:** five random places from a list of 21; click to drop a pin, lock in, see the distance line, points (1000 at 0 km, falling off exponentially with a 75 km scale) and a fact; the end screen shows total, rating, best score on the device and a map recap of every guess.
 
 ## Do's and Don'ts
 
 ### Do:
 - **Do** keep each page focused on one topic.
-- **Do** add new maps to the Gallery and, if they have a place, as a pin on the Fun map.
+- **Do** add new maps to the Gallery with the right `data-cat` (hazard, water, land, city).
 - **Do** keep text free of em dash and en dash characters (owner rule).
+- **Do** stay on the ten-size, four-radius scale.
 
 ### Don't:
 - **Don't** add a second accent colour.
 - **Don't** use dark full-width sections; the site is light throughout.
+- **Don't** put borders or boxes around gallery images; the map is the card.
 - **Don't** add empty diagrams or decorative grids; every visual shows real work.

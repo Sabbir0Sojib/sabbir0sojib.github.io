@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Map of my work | Md Sabbir Islam</title>
-  <meta name="description" content="An interactive map of every place Md Sabbir Islam has studied, mapped or presented.">
+  <title>Pin the Place | Md Sabbir Islam</title>
+  <meta name="description" content="A geography game: how well do you know Bangladesh? Pin five places on a blank map.">
   <meta name="author" content="Md Sabbir Islam">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Map of my work | Md Sabbir Islam">
-  <meta property="og:description" content="An interactive map of every place Md Sabbir Islam has studied, mapped or presented.">
+  <meta property="og:title" content="Pin the Place | Md Sabbir Islam">
+  <meta property="og:description" content="A geography game: how well do you know Bangladesh? Pin five places on a blank map.">
   <meta property="og:image" content="https://sabbir0sojib.github.io/assets/img/sabbir-portrait.jpg">
   <meta name="theme-color" content="#FCFCFB">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -18,7 +18,7 @@
   <script>document.documentElement.classList.add("js");</script>
   <script src="assets/js/site.js" defer></script>
   <script src="assets/vendor/leaflet/leaflet.js" defer></script>
-  <script src="assets/js/fun.js" defer></script>
+  <script src="assets/js/game.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -40,15 +40,45 @@
 
   <main id="main">
     <div class="wrap">
-      <header class="page-head">
-        <h1 class="page-head__title">Map of my work</h1>
-        <p class="page-head__lede">Every place I have studied, mapped or presented. Click a pin or a name in the list to fly there. Move over the map to see coordinates.</p>
+      <header class="page-head page-head--compact">
+        <h1 class="page-head__title">Pin the Place</h1>
+        <p class="page-head__lede">How well do you know Bangladesh? Five places, one blank map. Click where you think each place is, then see how close you got.</p>
       </header>
-      <div class="atlas">
-        <div class="atlas__list" id="place-list" aria-label="Places"></div>
-        <div class="atlas__map">
-          <div id="work-map" role="application" aria-label="Interactive map of Bangladesh with work locations"></div>
-          <p class="coords" id="coords" aria-hidden="true">Move over the map</p>
+
+      <div class="game" data-game>
+        <aside class="game__panel" aria-live="polite">
+          <div class="game__top">
+            <p class="game__round" data-round>Round 1 of 5</p>
+            <p class="game__score"><span data-score>0</span> points</p>
+          </div>
+
+          <div class="game__stage" data-stage="ask">
+            <p class="game__ask">Where is <b data-place>...</b>?</p>
+            <p class="game__hint">Click the map to drop your pin. You can move it before you lock it in.</p>
+            <button class="btn btn--primary game__btn" type="button" data-lock disabled>Lock in guess</button>
+          </div>
+
+          <div class="game__stage" data-stage="result" hidden>
+            <p class="game__distance"><span data-distance>0</span> km away</p>
+            <p class="game__points">+<span data-points>0</span> points</p>
+            <p class="game__fact" data-fact></p>
+            <button class="btn btn--primary game__btn" type="button" data-next>Next place</button>
+          </div>
+
+          <div class="game__stage" data-stage="end" hidden>
+            <p class="game__final"><span data-final>0</span><span class="game__of"> / 5000</span></p>
+            <p class="game__rating" data-rating></p>
+            <p class="game__best" data-best></p>
+            <ol class="game__recap" data-recap></ol>
+            <button class="btn btn--primary game__btn" type="button" data-again>Play again</button>
+          </div>
+
+          <p class="game__keys">Keyboard: arrow keys move the map, Enter drops a pin at the centre.</p>
+        </aside>
+
+        <div class="game__map">
+          <div id="game-map" tabindex="0" aria-label="Blank map of Bangladesh. Click to place your guess."></div>
+          <p class="game__loading" data-loading>Loading map...</p>
         </div>
       </div>
     </div>

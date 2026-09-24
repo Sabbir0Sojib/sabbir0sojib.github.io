@@ -281,44 +281,56 @@ projects = f'''    <div class="wrap">
 {card("Prevailing Wind Direction and Speed","2026","Annual 10 m wind over Bangladesh for 2023 with streamlines and wind roses for Dhaka, Khulna and Chattogram.",["ERA5","Open-Meteo","Python"],"Bangladesh-Prevailing-Wind-Direction-and-Speed","assets/img/work/wind-bangladesh-2023.webp","Prevailing wind map of Bangladesh, 2023")}
 {card("Bangladesh Temperature Map Generator","2025","Automated pipeline that turns a GeoJSON and a date into a daily temperature map, from Open-Meteo and BMD data.",["Open-Meteo","BMD","Python"],"Bangladesh_Temperature_Map")}
 {card("Pabna Surface Water Temperature","2025","Satellite thermal analysis of surface water dynamics across Pabna District, with maps and statistics.",["Landsat thermal","Python"],"Pabna_Surface_Water_Analysis")}
-{card("Groundwater Depletion in Pabna","2025","A geospatial analysis of falling groundwater levels across Pabna District.",["Python","Spatial analysis"],"pabna-groundwater-analysis")}
+{card("Groundwater Depth in Pabna","2025","Groundwater depth across Pabna District, interpolated from observation wells and mapped in Python.",["Python","Interpolation"],"pabna-groundwater-analysis","assets/img/work/groundwater-depth-pabna-alt.webp","Groundwater depth map of Pabna District")}
 {card("Landsat 8 Harmonic Modeling","2025","Harmonic regression on Landsat 8 time series for Pabna District to model seasonal land surface change.",["Landsat 8","Earth Engine"],"Landsat8-Harmonic-Modeling-")}
       </div>
     </div>'''
 write("projects.html", page("projects.html","Projects | Md Sabbir Islam","Open-source mapping projects by Md Sabbir Islam: cyclone tracks, wind, temperature, groundwater and more.", projects))
 
 # ================= GALLERY =================
-def shot(key, img, w, h, title, meta, alt):
-    return f'''        <figure class="shot reveal">
+def shot(key, cat, img, w, h, title, meta, alt):
+    return f"""        <figure class="shot" data-cat="{cat}">
           <button class="shot__btn" type="button" data-lightbox="{key}" aria-label="Open {title} full size">
             <img src="{img}" width="{w}" height="{h}" alt="{alt}" loading="lazy">
           </button>
           <figcaption><p class="shot__title">{title}</p><p class="shot__meta">{meta}</p></figcaption>
-        </figure>'''
+        </figure>"""
 def more(title, meta): return f'          <li><p class="more__title">{title}</p><p class="more__meta">{meta}</p></li>'
-gallery = f'''    <div class="wrap">
+W="assets/img/work/"
+gallery = f"""    <div class="wrap">
       <header class="page-head">
         <h1 class="page-head__title">Gallery</h1>
         <p class="page-head__lede">Maps I have made. Click any map to open it full size, then click again to zoom in.</p>
       </header>
-      <!-- Add a map: upload the image to assets/img/work/ and copy one <figure class="shot"> block. -->
-      <div class="gallery">
-{shot("cyclone","assets/img/work/cyclone-tracks-bangladesh.webp",800,742,"Cyclone tracks and exposure corridor, 1970 to 2024","12 storm tracks, severity-weighted corridor. Python","Map of Bangladesh showing 12 historical cyclone tracks from 1970 to 2024 over a colored exposure corridor")}
-{shot("wind","assets/img/work/wind-bangladesh-2023.webp",800,817,"Prevailing 10 m wind, Bangladesh, 2023","ERA5 reanalysis via Open-Meteo, Natural Earth boundaries","Map of prevailing wind speed and direction over Bangladesh in 2023 with wind roses")}
-{shot("korail","assets/img/work/korail-cycling-accessibility.webp",800,861,"Cycling accessibility from Korail, Dhaka","2,000 sampled points, OpenRouteService, cubic spline interpolation","Isochrone map of cycling time from Korail, Dhaka, in 10 minute bands")}
+
+      <div class="chips" role="toolbar" aria-label="Filter maps by theme">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-filter="hazard" aria-pressed="false">Hazards and climate</button>
+        <button class="chip" type="button" data-filter="water" aria-pressed="false">Water</button>
+        <button class="chip" type="button" data-filter="land" aria-pressed="false">Land and terrain</button>
+        <button class="chip" type="button" data-filter="city" aria-pressed="false">Cities</button>
       </div>
+
+      <!-- Add a map: upload the image to assets/img/work/ and copy one <figure class="shot"> block.
+           data-cat is one of: hazard, water, land, city. -->
+      <div class="gallery" aria-live="polite">
+{shot("cyclone","hazard",W+"cyclone-tracks-bangladesh.webp",800,742,"Cyclone tracks and exposure corridor, 1970 to 2024","12 storm tracks turned into a severity-weighted corridor. Python","Map of Bangladesh showing 12 historical cyclone tracks from 1970 to 2024 over a colored exposure corridor")}
+{shot("elevation","land",W+"elevation-southeast-bangladesh.webp",800,1514,"Elevation above sea level, southeastern Bangladesh","Bandarban, Rangamati, Khagrachhari, Chittagong and Cox's Bazar. ALOS World 3D 30 m","Hillshaded elevation map of the Chittagong Hill Tracts and coastal southeast Bangladesh, from sea level to above 1000 m")}
+{shot("groundwater","water",W+"groundwater-depth-pabna.webp",1600,1204,"Groundwater depth, Pabna District","Depth to water interpolated from observation wells, 1.2 to 10.4 m. Python","Groundwater depth map of Pabna District, shallow water in the east and deeper water in the far west")}
+{shot("wind","hazard",W+"wind-bangladesh-2023.webp",800,817,"Prevailing 10 m wind, Bangladesh, 2023","ERA5 reanalysis via Open-Meteo, Natural Earth boundaries","Map of prevailing wind speed and direction over Bangladesh in 2023 with wind roses")}
+{shot("crop","land",W+"crop-suitability-bangladesh.webp",800,1035,"Crop suitability, Bangladesh","Five suitability classes from BARC data, weighted overlay","Crop suitability map of Bangladesh in five classes, most suitable land in the west and least suitable along the coast and rivers")}
+{shot("padma","water",W+"padma-stream-order.webp",800,565,"Stream order of the Padma River basin","Stream orders 1 to 4 derived from a DEM, with the watershed boundary. QGIS","Stream order map of the Padma River basin across northern India, Nepal and Bangladesh")}
+{shot("korail","city",W+"korail-cycling-accessibility.webp",800,861,"Cycling accessibility from Korail, Dhaka","2,000 sampled points, OpenRouteService, cubic spline interpolation","Isochrone map of cycling time from Korail, Dhaka, in 10 minute bands")}
+      </div>
+      <p class="gallery__empty" hidden>No maps in this theme yet.</p>
 
       <section class="block reveal" aria-labelledby="more-maps" style="margin-top: 32px;">
         <h2 id="more-maps" class="block__title">More maps, images coming soon</h2>
         <ul class="more">
 {more("Sea level rise simulation, Bangladesh","SRTM 30 m DEM, bathtub inundation model, Python")}
 {more("Earthquake hazard from recent events, Bangladesh","USGS events, IDW interpolation in ArcMap")}
-{more("Crop suitability, Bangladesh","Bangladesh Agricultural Research Council data, weighted overlay")}
-{more("Elevation of the Chittagong Hill Tracts","ALOS World 3D, 30 m")}
-{more("Groundwater depletion, Pabna District","Geospatial analysis in Python")}
 {more("Land use and land cover, Dhaka District","Sentinel-2 classification")}
 {more("Nepal flash flood, before and after","Betrawati-Gerkhu reach, Nuwakot District. Sentinel-2")}
-{more("Stream order of the Padma River","DEM flow direction, flow accumulation and stream order in QGIS")}
 {more("Surface water temperature, Pabna District","Satellite thermal analysis")}
 {more("Landsat 8 harmonic modeling, Pabna District","Time series harmonic regression")}
 {more("Flood delineation map","Flood extent mapping")}
@@ -340,24 +352,54 @@ gallery = f'''    <div class="wrap">
       </div>
       <div class="lightbox__view"><img class="lightbox__img" src="assets/img/work/cyclone-tracks-bangladesh.webp" alt=""></div>
       <p class="lightbox__meta"></p>
-    </dialog>'''
-write("gallery.html", page("gallery.html","Gallery | Md Sabbir Islam","Maps by Md Sabbir Islam: cyclone tracks, wind, cycling accessibility and more across Bangladesh.", gallery))
+    </dialog>"""
+write("gallery.html", page("gallery.html","Gallery | Md Sabbir Islam","Maps by Md Sabbir Islam: cyclone tracks, elevation, groundwater, crop suitability, wind and more across Bangladesh.", gallery))
 
-# ================= FUN =================
-fun = f'''    <div class="wrap">
-      <header class="page-head">
-        <h1 class="page-head__title">Map of my work</h1>
-        <p class="page-head__lede">Every place I have studied, mapped or presented. Click a pin or a name in the list to fly there. Move over the map to see coordinates.</p>
+# ================= FUN: PIN THE PLACE =================
+fun = f"""    <div class="wrap">
+      <header class="page-head page-head--compact">
+        <h1 class="page-head__title">Pin the Place</h1>
+        <p class="page-head__lede">How well do you know Bangladesh? Five places, one blank map. Click where you think each place is, then see how close you got.</p>
       </header>
-      <div class="atlas">
-        <div class="atlas__list" id="place-list" aria-label="Places"></div>
-        <div class="atlas__map">
-          <div id="work-map" role="application" aria-label="Interactive map of Bangladesh with work locations"></div>
-          <p class="coords" id="coords" aria-hidden="true">Move over the map</p>
+
+      <div class="game" data-game>
+        <aside class="game__panel" aria-live="polite">
+          <div class="game__top">
+            <p class="game__round" data-round>Round 1 of 5</p>
+            <p class="game__score"><span data-score>0</span> points</p>
+          </div>
+
+          <div class="game__stage" data-stage="ask">
+            <p class="game__ask">Where is <b data-place>...</b>?</p>
+            <p class="game__hint">Click the map to drop your pin. You can move it before you lock it in.</p>
+            <button class="btn btn--primary game__btn" type="button" data-lock disabled>Lock in guess</button>
+          </div>
+
+          <div class="game__stage" data-stage="result" hidden>
+            <p class="game__distance"><span data-distance>0</span> km away</p>
+            <p class="game__points">+<span data-points>0</span> points</p>
+            <p class="game__fact" data-fact></p>
+            <button class="btn btn--primary game__btn" type="button" data-next>Next place</button>
+          </div>
+
+          <div class="game__stage" data-stage="end" hidden>
+            <p class="game__final"><span data-final>0</span><span class="game__of"> / 5000</span></p>
+            <p class="game__rating" data-rating></p>
+            <p class="game__best" data-best></p>
+            <ol class="game__recap" data-recap></ol>
+            <button class="btn btn--primary game__btn" type="button" data-again>Play again</button>
+          </div>
+
+          <p class="game__keys">Keyboard: arrow keys move the map, Enter drops a pin at the centre.</p>
+        </aside>
+
+        <div class="game__map">
+          <div id="game-map" tabindex="0" aria-label="Blank map of Bangladesh. Click to place your guess."></div>
+          <p class="game__loading" data-loading>Loading map...</p>
         </div>
       </div>
-    </div>'''
-write("fun.html", page("fun.html","Map of my work | Md Sabbir Islam","An interactive map of every place Md Sabbir Islam has studied, mapped or presented.", fun,
+    </div>"""
+write("fun.html", page("fun.html","Pin the Place | Md Sabbir Islam","A geography game: how well do you know Bangladesh? Pin five places on a blank map.", fun,
     extra_head='  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">\n',
-    extra_js='  <script src="assets/vendor/leaflet/leaflet.js" defer></script>\n  <script src="assets/js/fun.js" defer></script>\n'))
+    extra_js='  <script src="assets/vendor/leaflet/leaflet.js" defer></script>\n  <script src="assets/js/game.js" defer></script>\n'))
 print("pages written")

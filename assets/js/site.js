@@ -44,6 +44,24 @@
     document.body.removeChild(ta);
   }
 
+  /* ---------- Gallery filter chips ---------- */
+  var chips = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
+  var shots = Array.prototype.slice.call(document.querySelectorAll(".shot[data-cat]"));
+  var empty = document.querySelector(".gallery__empty");
+  chips.forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      var f = chip.getAttribute("data-filter");
+      chips.forEach(function (c) { c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
+      var shown = 0;
+      shots.forEach(function (sh) {
+        var on = f === "all" || sh.getAttribute("data-cat") === f;
+        sh.hidden = !on;
+        if (on) shown++;
+      });
+      if (empty) empty.hidden = shown > 0;
+    });
+  });
+
   /* ---------- Gallery lightbox ---------- */
   var lb = document.querySelector(".lightbox");
   var triggers = Array.prototype.slice.call(document.querySelectorAll("[data-lightbox]"));
@@ -56,9 +74,12 @@
     var current = 0, lastFocus = null;
 
     var unzoom = function () { view.classList.remove("is-zoomed"); img.style.width = ""; };
+    // only step through maps that are visible under the current filter
+    var visible = function () { return triggers.filter(function (t) { return !t.closest("figure").hidden; }); };
     var show = function (i) {
-      current = (i + triggers.length) % triggers.length;
-      var t = triggers[current];
+      var list = visible();
+      current = (i + list.length) % list.length;
+      var t = list[current];
       var src = t.querySelector("img");
       var fig = t.closest("figure");
       img.src = src.currentSrc || src.src;
@@ -68,8 +89,8 @@
       orig.href = img.src;
       unzoom();
     };
-    triggers.forEach(function (t, i) {
-      t.addEventListener("click", function () { lastFocus = t; show(i); lb.showModal(); });
+    triggers.forEach(function (t) {
+      t.addEventListener("click", function () { lastFocus = t; show(visible().indexOf(t)); lb.showModal(); });
     });
     lb.querySelector("[data-lb-close]").addEventListener("click", function () { lb.close(); });
     lb.querySelector("[data-lb-prev]").addEventListener("click", function () { show(current - 1); });
