@@ -173,6 +173,8 @@ Flat. Project cards lift 3px with a soft shadow on hover. The gallery viewer is 
 - **Content:** every page is rendered from `content/*.json`, edited through Pages CMS (`.pages.yml`). Components below are templates in `assets/js/site.js`.
 
 - **Buttons:** pill, 46px; primary green, secondary white with a line; disabled at 45% opacity.
+- **Contact cards:** two-column grid of white cards (icon in a green-tint circle, small label, full value that wraps, icon-only copy button). One card per email, ORCID, LinkedIn and GitHub.
+- **Ordering:** projects and research render newest year first; items in the same year keep their CMS order.
 - **Gallery (photos):** the same borderless card for photos of conferences, fieldwork and the lab.
 - **Research story row:** year, type and status on one line, then title, authors (owner in bold), venue and an optional one-line note. Filter chips by type.
 - **Project map card (Projects page):** full-bleed map with 16px corners and no border box, title and meta underneath; filter chips above; masonry columns keep each map's natural shape; click opens the viewer with previous, next, open original and click-to-zoom.

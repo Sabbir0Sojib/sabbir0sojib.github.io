@@ -82,7 +82,7 @@ cite { font-style: normal; }
 /* ---------- Header ---------- */
 .site-head {
   position: sticky; top: 0; z-index: 1000;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.97);
   backdrop-filter: saturate(1.4) blur(10px);
   -webkit-backdrop-filter: saturate(1.4) blur(10px);
   border-bottom: 1px solid var(--line);
@@ -346,6 +346,25 @@ cite { font-style: normal; }
 .page-head--compact { padding: clamp(28px, 4vw, 44px) 0 clamp(20px, 2.5vw, 28px); }
 .page-head--compact .page-head__title { font-size: clamp(2rem, 1.4rem + 1.6vw, 2.75rem); margin-bottom: 8px; }
 
+
+/* ---------- Contact cards ---------- */
+.contact__note { color: var(--ink-2); max-width: 60ch; margin: -12px 0 24px; }
+.ccards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 820px) { .ccards { grid-template-columns: 1fr; } }
+.ccard {
+  display: flex; align-items: center; gap: 14px; min-width: 0;
+  padding: 16px 16px 16px 18px; background: #fff;
+  border: 1px solid var(--line); border-radius: 16px;
+  transition: border-color 200ms var(--ease), box-shadow 250ms var(--ease);
+}
+.ccard:hover { border-color: var(--line-2); box-shadow: 0 12px 28px -20px rgba(17, 24, 39, 0.3); }
+.ccard__icon { display: grid; place-items: center; width: 42px; height: 42px; flex: none; border-radius: 50%; background: var(--accent-soft); color: var(--accent); }
+.ccard__body { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.ccard__label { font-size: 0.8125rem; font-weight: 650; color: var(--muted); }
+.ccard__value { font-weight: 600; color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
+.ccard__value:hover { color: var(--accent); text-decoration: underline; }
+.ccard .copy { background: #fff; padding: 0 10px; }
+.ccard .copy__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 
 /* ---------- Project cards ---------- */
 .project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }

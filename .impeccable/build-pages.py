@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os
 OUT = "/home/user/sabbir0sojib.github.io"
-VER = "20260924i"   # bump to force browsers to load new CSS/JS
+VER = "20260924j"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -46,7 +46,7 @@ def page(fname, title, desc, body, extra_head="", extra_js=""):
 
   <footer class="site-foot">
     <div class="wrap site-foot__row">
-      <p>&copy; 2026 Md Sabbir Islam. Pabna University of Science and Technology, Bangladesh.</p>
+      <p data-site="footer">&copy; 2026 Md Sabbir Islam. Pabna University of Science and Technology, Bangladesh.</p>
       <p class="site-foot__links">
         <a class="icon-btn" href="mailto:mdsabbirislam820@gmail.com" aria-label="Email">{icon("envelope")}</a>
         <a class="icon-btn" href="{ORCID}" target="_blank" rel="me noopener" aria-label="ORCID">{icon("orcid")}</a>
@@ -88,8 +88,8 @@ write("index.html", page("index.html","Md Sabbir Islam | Remote Sensing and Geos
 
 write("research.html", page("research.html","Research | Md Sabbir Islam","Papers, manuscripts and field work by Md Sabbir Islam.", f"""    <div class="wrap">
       <header class="page-head">
-        <h1 class="page-head__title">Research</h1>
-        <p class="page-head__lede">Papers, manuscripts and field work, newest first.</p>
+        <h1 class="page-head__title" data-site="research_title">Research</h1>
+        <p class="page-head__lede" data-site="research_intro">Papers, manuscripts and field work, newest first.</p>
       </header>
 {chips("Filter research by type", [("all","All"),("journal","Journal manuscripts"),("conference","Conference papers"),("field","Field work")])}
       <ol class="stories" data-render="research" aria-busy="true"></ol>
@@ -99,8 +99,8 @@ write("research.html", page("research.html","Research | Md Sabbir Islam","Papers
 
 write("projects.html", page("projects.html","Projects | Md Sabbir Islam","Maps and analysis projects by Md Sabbir Islam across Bangladesh.", f"""    <div class="wrap">
       <header class="page-head">
-        <h1 class="page-head__title">Projects</h1>
-        <p class="page-head__lede">Maps and analysis projects, most built in Python. Click a map to view it full size.</p>
+        <h1 class="page-head__title" data-site="projects_title">Projects</h1>
+        <p class="page-head__lede" data-site="projects_intro">Maps and analysis projects, newest first. Click a map to view it full size.</p>
       </header>
 {chips("Filter projects by theme", [("all","All"),("hazard","Hazards and climate"),("water","Water"),("land","Land and terrain"),("city","Cities")])}
       <div class="project-grid" data-render="projects" aria-busy="true"></div>
@@ -116,8 +116,8 @@ write("projects.html", page("projects.html","Projects | Md Sabbir Islam","Maps a
 
 write("gallery.html", page("gallery.html","Gallery | Md Sabbir Islam","Photos of Md Sabbir Islam at conferences, fieldwork and the lab.", f"""    <div class="wrap">
       <header class="page-head">
-        <h1 class="page-head__title">Gallery</h1>
-        <p class="page-head__lede">Moments from conferences, fieldwork and the lab.</p>
+        <h1 class="page-head__title" data-site="gallery_title">Gallery</h1>
+        <p class="page-head__lede" data-site="gallery_intro">Moments from conferences, fieldwork and the lab.</p>
       </header>
       <div class="gallery gallery--photos" data-render="gallery" aria-busy="true"></div>
       <p class="list-empty" hidden>Photos are on the way.</p>
@@ -129,8 +129,8 @@ write("gallery.html", page("gallery.html","Gallery | Md Sabbir Islam","Photos of
 # ======================= FUN (game) =======================
 fun = f'''    <div class="wrap">
       <header class="page-head page-head--compact">
-        <h1 class="page-head__title">Pin the Place</h1>
-        <p class="page-head__lede">How well do you know Bangladesh? Five places, one blank map. Click where you think each place is, then see how close you got.</p>
+        <h1 class="page-head__title" data-site="fun_title">Pin the Place</h1>
+        <p class="page-head__lede" data-site="fun_intro">How well do you know Bangladesh? Five places, one blank map. Click where you think each place is, then see how close you got.</p>
       </header>
 
       <div class="game" data-game>

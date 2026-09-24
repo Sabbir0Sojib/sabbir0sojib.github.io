@@ -51,10 +51,19 @@
     var skills = (p.skills || []).map(function (x) { return "<div><dt>" + esc(x.group) + "</dt><dd>" + esc(x.items) + "</dd></div>"; }).join("");
     var awards = (p.awards || []).map(function (x) { return '<li><span class="mono">' + esc(x.year) + "</span>" + esc(x.text) + "</li>"; }).join("");
     var langs = (p.languages || []).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("");
-    var contact = (p.emails || []).map(function (e) {
-      return '<li class="contact-row"><a href="mailto:' + esc(e) + '">' + esc(e) + "</a>" + copyBtn(e, "email address") + "</li>";
-    }).join("") + (orcidUrl ? '<li class="contact-row"><a href="' + esc(orcidUrl) + '" target="_blank" rel="me noopener">orcid.org/' +
-      esc(p.orcid) + "</a>" + copyBtn(p.orcid, "ORCID iD") + "</li>" : "");
+    var emails = (p.emails || []).map(function (e) {
+      return typeof e === "string" ? { label: "Email", address: e } : e;
+    });
+    var card = function (ic, label, text, href, copyText, copyLabel, ext) {
+      return '<li class="ccard"><span class="ccard__icon">' + icon(ic) + '</span>' +
+        '<span class="ccard__body"><span class="ccard__label">' + esc(label) + '</span>' +
+        '<a class="ccard__value" href="' + esc(href) + '"' + (ext ? ' target="_blank" rel="me noopener"' : "") + '>' + esc(text) + "</a></span>" +
+        (copyText ? copyBtn(copyText, copyLabel) : "") + "</li>";
+    };
+    var contact = emails.map(function (e) { return card("envelope", e.label, e.address, "mailto:" + e.address, e.address, e.label); }).join("") +
+      (orcidUrl ? card("orcid", "ORCID", p.orcid, orcidUrl, p.orcid, "ORCID iD", true) : "") +
+      (p.linkedin ? card("linkedin", "LinkedIn", p.linkedin.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""), p.linkedin, "", "", true) : "") +
+      (p.github ? card("github", "GitHub", p.github.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""), p.github, "", "", true) : "");
 
     el.innerHTML =
       '<section class="intro" aria-labelledby="name"><div class="intro__text reveal">' +
@@ -71,12 +80,15 @@
       '<section class="block reveal two-col" aria-label="Awards and languages">' +
         '<div><h2 class="block__title">Awards</h2><ul class="plain-list">' + awards + "</ul></div>" +
         '<div><h2 class="block__title">Languages</h2><ul class="plain-list">' + langs + "</ul></div></section>" +
-      '<section id="contact" class="block reveal" aria-labelledby="contact-title"><h2 id="contact-title" class="block__title">Contact</h2><ul class="contact-rows">' + contact + "</ul></section>";
+      '<section id="contact" class="block reveal contact" aria-labelledby="contact-title"><h2 id="contact-title" class="block__title" data-site="contact_title">Contact</h2>' +
+      '<p class="contact__note" data-site="contact_note">Open to research collaboration, mapping work and questions about any project.</p>' +
+      '<ul class="ccards">' + contact + "</ul></section>";
   }
 
   var TYPE_LABEL = { journal: "Journal manuscript", conference: "Conference paper", field: "Field work", thesis: "Thesis", other: "Research" };
   function boldOwner(authors) { return esc(authors).split(esc(OWNER)).join("<b>" + esc(OWNER) + "</b>"); }
   function renderResearch(el, list) {
+    list = newestFirst(list);
     el.innerHTML = list.map(function (r) {
       var done = /presented|published|accepted/i.test(r.status || "");
       var status = r.status ? '<span class="status' + (done ? " status--done" : "") + '">' + esc(r.status) + "</span>" : "";
@@ -91,6 +103,7 @@
   }
 
   function renderProjects(el, list) {
+    list = newestFirst(list);
     var withImg = list.filter(function (p) { return p.image; });
     var noImg = list.filter(function (p) { return !p.image; });
     el.innerHTML = withImg.map(function (p, i) {
@@ -193,6 +206,14 @@
       "</div>";
   }
 
+  // Newest year first; items from the same year keep their CMS order.
+  function newestFirst(list) {
+    return list.map(function (x, i) { return { x: x, i: i }; }).sort(function (a, b) {
+      var ya = parseInt(a.x.year, 10) || 0, yb = parseInt(b.x.year, 10) || 0;
+      return yb - ya || a.i - b.i;
+    }).map(function (o) { return o.x; });
+  }
+
   var RENDER = {
     profile: ["profile", renderProfile, "the profile"],
     cover: ["profile", renderCover, "the profile"],
@@ -212,7 +233,15 @@
     }).catch(function () { fail(el, spec[2]); });
   });
 
-  Promise.all(jobs).then(init, init);
+  // Editable page titles, intros and footer (content/site.json)
+  var siteText = load("site").catch(function () { return {}; });
+  Promise.all(jobs).then(function () { return siteText; }, function () { return siteText; }).then(function (t) {
+    document.querySelectorAll("[data-site]").forEach(function (n) {
+      var v = t && t[n.getAttribute("data-site")];
+      if (v) n.textContent = v;
+    });
+    init();
+  });
 
   /* ================= Behaviour (after render) ================= */
   function init() {

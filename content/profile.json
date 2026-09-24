@@ -23,8 +23,14 @@
     }
   ],
   "emails": [
-    "mdsabbirislam820@gmail.com",
-    "sabbir.210908@s.pust.ac.bd"
+    {
+      "label": "Personal email",
+      "address": "mdsabbirislam820@gmail.com"
+    },
+    {
+      "label": "University email",
+      "address": "sabbir.210908@s.pust.ac.bd"
+    }
   ],
   "orcid": "0009-0001-9474-9287",
   "linkedin": "https://www.linkedin.com/in/sabbir-sojib/",

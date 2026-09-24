@@ -8,9 +8,28 @@ media:
   extensions: [jpg, jpeg, png, webp, gif, svg]
 
 content:
+  - name: site
+    label: Page titles and text
+    description: Titles and intro lines of each page, the contact note and the footer.
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - { name: research_title, label: Research page title, type: string }
+      - { name: research_intro, label: Research page intro, type: text }
+      - { name: projects_title, label: Projects page title, type: string }
+      - { name: projects_intro, label: Projects page intro, type: text }
+      - { name: gallery_title, label: Gallery page title, type: string }
+      - { name: gallery_intro, label: Gallery page intro, type: text }
+      - { name: fun_title, label: Fun page title, type: string }
+      - { name: fun_intro, label: Fun page intro, type: text }
+      - { name: contact_title, label: Contact section title, type: string }
+      - { name: contact_note, label: Contact section note, type: text }
+      - { name: footer, label: Footer text, type: string }
+
   - name: projects
     label: Projects
-    description: Every map project, in this order (drag to reorder). Projects without an image appear under "More projects".
+    description: Every map project. The site shows them newest year first (same-year projects keep this order). Projects without an image appear under "More projects".
     type: file
     path: content/projects.json
     format: json
@@ -94,7 +113,13 @@ content:
         fields:
           - { name: label, label: Label, type: string }
           - { name: value, label: Value, type: string }
-      - { name: emails, label: Emails, type: string, list: true }
+      - name: emails
+        label: Emails
+        type: object
+        list: true
+        fields:
+          - { name: label, label: "Label (for example: Personal email)", type: string }
+          - { name: address, label: Email address, type: string }
       - { name: orcid, label: "ORCID iD (just the number, for example 0009-0001-9474-9287)", type: string }
       - { name: linkedin, label: LinkedIn URL, type: string }
       - { name: github, label: GitHub URL, type: string }
