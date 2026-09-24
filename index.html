@@ -39,7 +39,6 @@
     <a class="toolbar__id" href="#about">
       <span class="toolbar__mark" aria-hidden="true"></span>
       <span class="toolbar__name">Md Sabbir Islam</span>
-      <span class="toolbar__title">Remote Sensing and Geospatial Deep Learning</span>
     </a>
     <nav class="toolbar__tools" aria-label="Contact and settings">
       <a class="tool" href="mailto:mdsabbirislam820@gmail.com" aria-label="Email">
@@ -84,7 +83,7 @@
         <div class="hero__intro">
           <picture>
             <source srcset="assets/img/sabbir-portrait.webp" type="image/webp">
-            <img class="hero__portrait" src="assets/img/sabbir-portrait.jpg" width="720" height="960"
+            <img class="hero__portrait" src="assets/img/sabbir-portrait.jpg" width="640" height="800"
                  alt="Md Sabbir Islam in a blue suit at the ICLESSD-2025 conference, Jagannath University, Dhaka">
           </picture>
           <h1 id="about-title" class="hero__name">Md Sabbir Islam</h1>
@@ -99,21 +98,70 @@
           </div>
         </div>
 
-        <figure class="mapframe mapframe--hero" id="fig-cyclone"
-                data-geo="0.0575,0.9542,87,20,0.11344,0.12278,0.0575,0.0445,0.765,0.9542">
-          <button class="mapframe__view" type="button" data-open="cyclone" aria-label="Open the cyclone tracks map full size">
-            <img src="assets/img/work/cyclone-tracks-bangladesh.webp" width="800" height="742"
-                 alt="Map of Bangladesh showing 12 historical cyclone tracks from 1970 to 2024 over a colored exposure corridor, highest over Barishal, Bhola and Patuakhali"
-                 fetchpriority="high">
-            <span class="probe" aria-hidden="true"><span class="probe__x"></span><span class="probe__y"></span></span>
-            <span class="mapframe__expand" aria-hidden="true"><svg class="i"><use href="assets/icons.svg#expand"/></svg></span>
-          </button>
-          <figcaption class="mapframe__props">
-            <span class="mapframe__title">Cyclone tracks and exposure corridor, 1970 to 2024</span>
-            <span class="mapframe__meta">12 storm tracks, severity-weighted corridor. Python: geopandas, scipy, matplotlib</span>
-            <output class="readout" aria-live="off">Hover the map</output>
-          </figcaption>
-        </figure>
+        <!-- Map slideshow. Add a map: copy one <figure class="slide"> and one thumbnail <li> below. -->
+        <div class="stage" data-slideshow aria-roledescription="carousel" aria-label="Selected maps">
+          <div class="stage__slides">
+            <figure class="mapframe slide is-active" id="fig-cyclone" aria-roledescription="slide" aria-label="1 of 3"
+                    data-geo="0.0575,0.9542,87,20,0.11344,0.12278,0.0575,0.0445,0.765,0.9542">
+              <button class="mapframe__view" type="button" data-open="cyclone" aria-label="Open the cyclone tracks map full size">
+                <img src="assets/img/work/cyclone-tracks-bangladesh.webp" width="800" height="742" fetchpriority="high"
+                     alt="Map of Bangladesh showing 12 historical cyclone tracks from 1970 to 2024 over a colored exposure corridor, highest over Barishal, Bhola and Patuakhali">
+                <span class="probe" aria-hidden="true"><span class="probe__x"></span><span class="probe__y"></span></span>
+                <span class="mapframe__expand" aria-hidden="true"><svg class="i"><use href="assets/icons.svg#expand"/></svg></span>
+              </button>
+              <figcaption class="mapframe__props">
+                <span class="mapframe__title">Cyclone tracks and exposure corridor, 1970 to 2024</span>
+                <span class="mapframe__meta">12 major storm tracks turned into a severity-weighted exposure corridor. Python: geopandas, scipy, matplotlib</span>
+                <output class="readout" aria-live="off">Hover the map</output>
+              </figcaption>
+            </figure>
+
+            <figure class="mapframe slide" id="fig-wind" aria-roledescription="slide" aria-label="2 of 3"
+                    data-geo="0.081875,0.8776,88,21,0.141875,0.1388,0.05375,0.0734,0.7769,0.9608">
+              <button class="mapframe__view" type="button" data-open="wind" aria-label="Open the wind map full size" tabindex="-1">
+                <img src="assets/img/work/wind-bangladesh-2023.webp" width="800" height="817"
+                     alt="Map of prevailing 10 metre wind speed and direction over Bangladesh in 2023, with streamlines and wind roses for Dhaka, Khulna and Chattogram">
+                <span class="probe" aria-hidden="true"><span class="probe__x"></span><span class="probe__y"></span></span>
+                <span class="mapframe__expand" aria-hidden="true"><svg class="i"><use href="assets/icons.svg#expand"/></svg></span>
+              </button>
+              <figcaption class="mapframe__props">
+                <span class="mapframe__title">Prevailing 10 m wind, 2023</span>
+                <span class="mapframe__meta">ERA5 reanalysis via Open-Meteo, Natural Earth boundaries</span>
+                <output class="readout" aria-live="off">Hover the map</output>
+              </figcaption>
+            </figure>
+
+            <figure class="mapframe slide" id="fig-korail" aria-roledescription="slide" aria-label="3 of 3">
+              <button class="mapframe__view" type="button" data-open="korail" aria-label="Open the Korail cycling accessibility map full size" tabindex="-1">
+                <img src="assets/img/work/korail-cycling-accessibility.webp" width="800" height="861"
+                     alt="Isochrone map of cycling time from Korail, Dhaka, in 10 minute bands from under 10 to 100 minutes">
+                <span class="mapframe__expand" aria-hidden="true"><svg class="i"><use href="assets/icons.svg#expand"/></svg></span>
+              </button>
+              <figcaption class="mapframe__props">
+                <span class="mapframe__title">Cycling accessibility from Korail, Dhaka</span>
+                <span class="mapframe__meta">2,000 sampled points routed with OpenRouteService, cubic spline interpolation</span>
+                <output class="readout" aria-live="off">Projected map, no graticule</output>
+              </figcaption>
+            </figure>
+            <span class="neat neat--tl" aria-hidden="true"></span><span class="neat neat--tr" aria-hidden="true"></span>
+            <span class="neat neat--bl" aria-hidden="true"></span><span class="neat neat--br" aria-hidden="true"></span>
+          </div>
+
+          <ol class="thumbs" aria-label="Choose a map">
+            <li><button class="thumb is-active" type="button" data-slide="0" aria-current="true">
+              <img src="assets/img/work/cyclone-tracks-bangladesh.webp" alt="" width="800" height="742">
+              <span class="thumb__text">Cyclone tracks</span><span class="thumb__bar" aria-hidden="true"></span>
+            </button></li>
+            <li><button class="thumb" type="button" data-slide="1">
+              <img src="assets/img/work/wind-bangladesh-2023.webp" alt="" width="800" height="817" loading="lazy">
+              <span class="thumb__text">Wind, 2023</span><span class="thumb__bar" aria-hidden="true"></span>
+            </button></li>
+            <li><button class="thumb" type="button" data-slide="2">
+              <img src="assets/img/work/korail-cycling-accessibility.webp" alt="" width="800" height="861" loading="lazy">
+              <span class="thumb__text">Korail cycling</span><span class="thumb__bar" aria-hidden="true"></span>
+            </button></li>
+          </ol>
+        </div>
       </section>
 
       <!-- ===================== RESEARCH ===================== -->
@@ -121,38 +169,32 @@
         <h2 id="research-title" class="section__title">Urban trees, from drone to satellite</h2>
         <p class="lede">My undergraduate thesis, <cite>Characterization of Urban Trees with Deep Learning Techniques in Pabna Municipality</cite>, maps every tree crown in a city by teaching a satellite model with drone imagery.</p>
 
-        <div class="research__grid">
-          <ol class="pipeline">
-            <li class="pipeline__step">
-              <h3 class="pipeline__verb">Capture</h3>
-              <p class="pipeline__res"><span class="mono">5 cm</span> UAV imagery</p>
-              <p>Drone flights over Pabna, processed in Agisoft Metashape and Pix4D.</p>
-            </li>
-            <li class="pipeline__step">
-              <h3 class="pipeline__verb">Delineate</h3>
-              <p class="pipeline__res">Best model <span class="mono">F1 = 0.944</span></p>
-              <p>Benchmarked U-Net, DeepLabV3+, Mask2Former and SegFormer for tree crown delineation. SegFormer performed best.</p>
-            </li>
-            <li class="pipeline__step">
-              <h3 class="pipeline__verb">Scale up</h3>
-              <p class="pipeline__res"><span class="mono">3 m</span> PlanetScope <span class="mono">F1 = 0.82</span></p>
-              <p>A Random Forest trained on the UAV crowns maps canopy across the whole city from PlanetScope SuperDove imagery.</p>
-            </li>
-            <li class="pipeline__step">
-              <h3 class="pipeline__verb">Estimate</h3>
-              <p class="pipeline__res">Biomass and carbon</p>
-              <p>Above-ground biomass and carbon stock estimated from UAV-derived crown structure.</p>
-            </li>
-          </ol>
-
-          <figure class="pixel" aria-labelledby="pixel-cap">
-            <div class="pixel__grid" role="img" aria-label="A 3 metre square divided into a 60 by 60 grid of 5 centimetre cells"></div>
-            <figcaption id="pixel-cap" class="pixel__cap">
-              <span class="mono">1 PlanetScope pixel (3 m) = 3,600 UAV pixels (5 cm)</span>
-              The model has to learn what a 60 by 60 block of drone detail looks like from one satellite value.
-            </figcaption>
-          </figure>
-        </div>
+        <ol class="flow">
+          <li class="flow__step">
+            <p class="flow__value">5 cm</p>
+            <p class="flow__unit mono">UAV pixel size</p>
+            <h3 class="flow__verb">Capture</h3>
+            <p class="flow__text">Drone flights over Pabna, processed in Agisoft Metashape and Pix4D.</p>
+          </li>
+          <li class="flow__step">
+            <p class="flow__value">0.944</p>
+            <p class="flow__unit mono">F1, SegFormer</p>
+            <h3 class="flow__verb">Delineate</h3>
+            <p class="flow__text">U-Net, DeepLabV3+, Mask2Former and SegFormer benchmarked for tree crown delineation. SegFormer performed best.</p>
+          </li>
+          <li class="flow__step">
+            <p class="flow__value">3 m</p>
+            <p class="flow__unit mono">PlanetScope, F1 0.82</p>
+            <h3 class="flow__verb">Scale up</h3>
+            <p class="flow__text">A Random Forest trained on the UAV crowns maps canopy across the whole city from PlanetScope SuperDove imagery.</p>
+          </li>
+          <li class="flow__step">
+            <p class="flow__value">AGB</p>
+            <p class="flow__unit mono">Biomass and carbon</p>
+            <h3 class="flow__verb">Estimate</h3>
+            <p class="flow__text">Above-ground biomass and carbon stock estimated from UAV-derived crown structure.</p>
+          </li>
+        </ol>
 
         <dl class="research__facts">
           <div><dt>Supervisor</dt><dd>D. Eng. Md Rahedul Islam, Professor, Pabna University of Science and Technology</dd></div>
@@ -207,50 +249,21 @@
       <!-- ===================== MAPS ===================== -->
       <section id="maps" class="section" aria-labelledby="maps-title">
         <h2 id="maps-title" class="section__title">Maps</h2>
-        <p class="lede">Finished maps of Bangladesh and beyond, most built in Python. Hover a map to read coordinates; click to open it full size, then click again to zoom.</p>
-
-        <!-- Featured maps. To replace an image, upload a sharper file with the same name to assets/img/work/. -->
-        <div class="plates">
-          <figure class="mapframe plate" id="fig-wind"
-                  data-geo="0.081875,0.8776,88,21,0.141875,0.1388,0.05375,0.0734,0.7769,0.9608">
-            <button class="mapframe__view" type="button" data-open="wind" aria-label="Open the wind map full size">
-              <img src="assets/img/work/wind-bangladesh-2023.webp" width="800" height="817" loading="lazy"
-                   alt="Map of prevailing 10 metre wind speed and direction over Bangladesh in 2023, with streamlines and wind roses for Dhaka, Khulna and Chattogram">
-              <span class="probe" aria-hidden="true"><span class="probe__x"></span><span class="probe__y"></span></span>
-              <span class="mapframe__expand" aria-hidden="true"><svg class="i"><use href="assets/icons.svg#expand"/></svg></span>
-            </button>
-            <figcaption class="mapframe__props">
-              <span class="mapframe__title">Prevailing 10 m wind, 2023</span>
-              <span class="mapframe__meta">ERA5 reanalysis via Open-Meteo, Natural Earth boundaries</span>
-              <output class="readout" aria-live="off">Hover the map</output>
-            </figcaption>
-          </figure>
-
-          <figure class="mapframe plate" id="fig-korail">
-            <button class="mapframe__view" type="button" data-open="korail" aria-label="Open the Korail cycling accessibility map full size">
-              <img src="assets/img/work/korail-cycling-accessibility.webp" width="800" height="861" loading="lazy"
-                   alt="Isochrone map of cycling time from Korail, Dhaka, in 10 minute bands from under 10 to 100 minutes">
-              <span class="mapframe__expand" aria-hidden="true"><svg class="i"><use href="assets/icons.svg#expand"/></svg></span>
-            </button>
-            <figcaption class="mapframe__props">
-              <span class="mapframe__title">Cycling accessibility from Korail, Dhaka</span>
-              <span class="mapframe__meta">2,000 sampled points routed with OpenRouteService, cubic spline interpolation</span>
-              <output class="readout" aria-live="off">Projected map, no graticule</output>
-            </figcaption>
-          </figure>
-        </div>
+        <p class="lede">Sixteen finished maps of Bangladesh and beyond, most built in Python, several with open code.</p>
 
         <!-- Map catalog. Add a new map by copying one <li> block. -->
         <div class="catalog">
           <div class="catalog__group">
             <h3 class="catalog__head">Hazards and climate</h3>
             <ul class="catalog__list">
-              <li class="entry">
+              <li class="entry entry--media">
+                <button class="entry__thumb" type="button" data-open="cyclone" aria-label="View map"><img src="assets/img/work/cyclone-tracks-bangladesh.webp" alt="" loading="lazy" width="120" height="120"></button>
                 <p class="entry__title">Cyclone tracks and exposure corridor, Bangladesh</p>
                 <p class="entry__meta">Track reconstruction, kernel exposure surface <span class="mono">2026</span></p>
                 <p class="entry__links"><button class="link" type="button" data-open="cyclone">View map</button><a class="link" href="https://github.com/Sabbir0Sojib/Bangladesh-Cyclone-Tracks-and-Exposure-Corridor" target="_blank" rel="noopener">Code<svg class="i" aria-hidden="true"><use href="assets/icons.svg#arrow"/></svg></a></p>
               </li>
-              <li class="entry">
+              <li class="entry entry--media">
+                <button class="entry__thumb" type="button" data-open="wind" aria-label="View map"><img src="assets/img/work/wind-bangladesh-2023.webp" alt="" loading="lazy" width="120" height="120"></button>
                 <p class="entry__title">Prevailing wind direction and speed, Bangladesh</p>
                 <p class="entry__meta">ERA5 via Open-Meteo, streamlines and wind roses <span class="mono">2026</span></p>
                 <p class="entry__links"><button class="link" type="button" data-open="wind">View map</button><a class="link" href="https://github.com/Sabbir0Sojib/Bangladesh-Prevailing-Wind-Direction-and-Speed" target="_blank" rel="noopener">Code<svg class="i" aria-hidden="true"><use href="assets/icons.svg#arrow"/></svg></a></p>
@@ -324,7 +337,8 @@
           <div class="catalog__group">
             <h3 class="catalog__head">Cities and tools</h3>
             <ul class="catalog__list">
-              <li class="entry">
+              <li class="entry entry--media">
+                <button class="entry__thumb" type="button" data-open="korail" aria-label="View map"><img src="assets/img/work/korail-cycling-accessibility.webp" alt="" loading="lazy" width="120" height="120"></button>
                 <p class="entry__title">Cycling accessibility from Korail, Dhaka</p>
                 <p class="entry__meta">OpenRouteService cycling profile, spline interpolation <span class="mono">2026</span></p>
                 <p class="entry__links"><button class="link" type="button" data-open="korail">View map</button></p>

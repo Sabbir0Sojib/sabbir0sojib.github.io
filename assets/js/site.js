@@ -145,14 +145,55 @@
     attachProbe(view, function () { return geo; }, fig.querySelector(".readout"));
   });
 
-  /* ---------- Hero render moment ---------- */
-  var hero = document.querySelector(".mapframe--hero");
-  if (hero) {
-    var heroImg = hero.querySelector("img");
-    var render = function () { requestAnimationFrame(function () { hero.classList.add("is-rendered"); }); };
-    if (heroImg.complete && heroImg.naturalWidth) render();
-    else { heroImg.addEventListener("load", render); heroImg.addEventListener("error", render); }
-    setTimeout(render, 2500); // never leave the map hidden
+  /* ---------- Map slideshow ---------- */
+  var viewerEl = document.querySelector(".viewer");
+  var stage = document.querySelector("[data-slideshow]");
+  if (stage) {
+    var slides = Array.prototype.slice.call(stage.querySelectorAll(".slide"));
+    var thumbs = Array.prototype.slice.call(stage.querySelectorAll(".thumb"));
+    var DURATION = 6500;
+    var idx = 0, elapsed = 0, last = null, hovering = false, focusInside = false;
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    var go = function (n) {
+      idx = (n + slides.length) % slides.length;
+      slides.forEach(function (sl, i) {
+        var on = i === idx;
+        sl.classList.toggle("is-active", on);
+        sl.setAttribute("aria-hidden", on ? "false" : "true");
+        var btn = sl.querySelector(".mapframe__view");
+        if (btn) btn.tabIndex = on ? 0 : -1;
+      });
+      thumbs.forEach(function (t, i) {
+        var on = i === idx;
+        t.classList.toggle("is-active", on);
+        if (on) t.setAttribute("aria-current", "true"); else t.removeAttribute("aria-current");
+        t.style.setProperty("--progress", "0");
+      });
+      elapsed = 0;
+    };
+    thumbs.forEach(function (t, i) { t.addEventListener("click", function () { go(i); }); });
+    stage.addEventListener("pointerenter", function () { hovering = true; });
+    stage.addEventListener("pointerleave", function () { hovering = false; });
+    stage.addEventListener("focusin", function () { focusInside = true; });
+    stage.addEventListener("focusout", function () { focusInside = false; });
+    go(0);
+
+    if (!reduceMotion && slides.length > 1) {
+      var tick = function (ts) {
+        if (last === null) last = ts;
+        var dt = Math.min(ts - last, 100);
+        last = ts;
+        var paused = hovering || focusInside || document.hidden || (viewerEl && viewerEl.open);
+        if (!paused) {
+          elapsed += dt;
+          thumbs[idx].style.setProperty("--progress", Math.min(1, elapsed / DURATION).toFixed(4));
+          if (elapsed >= DURATION) go(idx + 1);
+        }
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
   }
 
   /* ---------- Full-size viewer ---------- */

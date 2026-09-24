@@ -109,7 +109,7 @@ components:
 
 The site behaves like a desktop GIS workspace left open on a researcher's machine: a toolbar across the top, a Layers panel on the left, a canvas in the middle and a status bar along the bottom. Sections are layers, maps are figures you can probe, and publications sit in an attribute table. The chrome is quiet, cool and neutral so the maps carry all the colour.
 
-Density is moderate: generous canvas spacing between sections, compact software-like spacing inside panels. Motion is limited to one authored moment (the hero map resolving like tiles loading) and small state transitions.
+The first screen is a dark chapter: a map stage with a soft warm glow, yellow neatline corner marks and an auto-advancing slideshow of the owner's maps, framed by light content chapters below (an idea taken from the NVIDIA reference in `.claude/design-references`). Density is moderate: generous canvas spacing between sections, compact software-like spacing inside panels. Motion: the maps crossfade every 6.5 seconds with a progress bar on the active thumbnail, pausing on hover or focus and never autoplaying under reduced motion.
 
 **Key Characteristics:**
 - Cool neutral software chrome with hairline dividers and no decorative shadows.
@@ -123,7 +123,7 @@ Density is moderate: generous canvas spacing between sections, compact software-
 A restrained palette: neutrals from the software world plus one GIS selection yellow.
 
 ### Primary
-- **Selection Yellow** (selection-yellow): the colour a GIS highlights selected features with. Marks the active layer, the live coordinate readout, text selection and the focus halo. Nothing else.
+- **Selection Yellow** (selection-yellow): the colour a GIS highlights selected features with. Marks the active layer, the active slide (progress bar, thumbnail edge, neatline corners), the role line in the dark hero, the live coordinate readout, text selection and the focus halo.
 
 ### Neutral
 - **Ink** (ink): headings, body text, primary buttons, the timeline spine and the 3 m pixel frame.
@@ -137,7 +137,7 @@ A restrained palette: neutrals from the software world plus one GIS selection ye
 - **Night set** (night-chrome, night-panel, night-canvas, night-ink, night-muted, night-hairline): the dark theme, neutral charcoal rather than blue-black.
 
 ### Named Rules
-**The Selection Rule.** Yellow means "selected or live". If an element is not the active layer, a live readout, selected text or a focus halo, it is not yellow.
+**The Selection Rule.** Yellow means "selected, live or framing the stage". Content chips, dots and badges are never yellow.
 
 **The Paper Rule.** Maps never sit on a dark surface. In dark theme the map canvas stays map-paper.
 
@@ -200,7 +200,13 @@ One corner scale: 6px for buttons, panels and figures; 4px for small controls, t
 - **Layers panel:** rows with a legend symbol, name and optional feature count in brackets (for example `[16]`). Hover lifts the row to canvas; the active section (scroll spy) is filled selection yellow.
 - **Mobile:** the same rows as a horizontal strip; the active row scrolls into view.
 
-### Map frame (signature)
+### Map stage (signature)
+The hero slideshow: slides stacked in one grid cell and crossfaded, thumbnails with a 2px yellow progress bar, yellow neatline corner marks around the stage, and a dark stage whose custom properties are scoped to the hero so every child inherits the dark palette.
+
+### Research flow
+The thesis as four columns under a 2px ink rule, each led by a large real value (5 cm, 0.944, 3 m, AGB), a mono unit line, a verb and one sentence, joined by small chevrons on the dividing rules.
+
+### Map frame
 A figure with a paper canvas, the map, a crosshair probe that follows the pointer, and a properties strip (title, data and method, readout). Probe-able maps carry a `data-geo` attribute with graticule fractions, so the readout shows real longitude and latitude and mirrors it to the status bar. Clicking opens the viewer, where a second click zooms to at least 2x and the map can be panned.
 
 ### Attribute table
@@ -220,4 +226,5 @@ Publications as a GIS attribute table: chrome header row, hairline rows, yellow-
 - **Don't** add small uppercase labels above headings; headings stand alone.
 - **Don't** add shadows to cards or figures; only the viewer floats.
 - **Don't** fill chips, dots or badges with yellow.
-- **Don't** show a map twice on the page; each figure appears once.
+- **Don't** show a map as a large figure twice; the stage shows it once, the catalog only as a thumbnail.
+- **Don't** use empty diagrams or placeholder geometry; every visual shows real work or real values.
