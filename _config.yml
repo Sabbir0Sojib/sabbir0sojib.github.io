@@ -9,3 +9,5 @@ exclude:
   - .impeccable
   - .playwright
   - .playwright-cli
+  - CLAUDE.md
+  - docs
