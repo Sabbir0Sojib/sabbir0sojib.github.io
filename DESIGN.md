@@ -2,22 +2,26 @@
 name: Md Sabbir Islam, portfolio
 description: A clean, light, five-page research portfolio with one river-green accent.
 colors:
-  river-green: "#0E6B58"
-  river-green-deep: "#0A5747"
-  river-green-soft: "#E3EFEB"
-  ink: "#17191C"
-  ink-soft: "#3D4247"
-  muted: "#5C6268"
-  page: "#FCFCFB"
-  surface: "#F3F4F2"
-  line: "#E2E4E1"
-  line-strong: "#CDD1CD"
+  monsoon-green: "#14532D"
+  monsoon-green-deep: "#0E4222"
+  monsoon-green-soft: "#E1ECE3"
+  mustard: "#E9B824"
+  mustard-bright: "#F3C53A"
+  ink: "#16201A"
+  ink-soft: "#394540"
+  muted: "#5B6760"
+  page: "#F7F9F6"
+  surface: "#ECF1EC"
+  line: "#DDE4DD"
+  line-strong: "#C3CDC4"
+  on-green: "#F5F2E8"
+  on-green-soft: "rgba(245, 242, 232, 0.78)"
   scrim: "rgba(12, 14, 16, 0.72)"
   float-shadow: "rgba(10, 12, 14, 0.35)"
-  map-water: "#D9E6EC"
-  map-land: "#F6F6F3"
-  map-bangladesh: "#E6F0EC"
-  map-border: "#B9C0C4"
+  map-water: "#D6E4E4"
+  map-land: "#F4F6F2"
+  map-bangladesh: "#E1ECE3"
+  map-border: "#BFC8C0"
 typography:
   display:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
@@ -79,13 +83,13 @@ rounded:
   pill: "999px"
 components:
   button-primary:
-    backgroundColor: "{colors.river-green}"
-    textColor: "{colors.page}"
+    backgroundColor: "{colors.mustard}"
+    textColor: "{colors.ink}"
     rounded: "{rounded.pill}"
     height: "46px"
     padding: "0 20px"
   button-primary-hover:
-    backgroundColor: "{colors.river-green-deep}"
+    backgroundColor: "{colors.mustard-bright}"
   button-secondary:
     backgroundColor: "{colors.page}"
     textColor: "{colors.ink}"
@@ -94,7 +98,7 @@ components:
     padding: "0 20px"
   nav-current:
     backgroundColor: "{colors.ink}"
-    textColor: "{colors.page}"
+    textColor: "{colors.on-green}"
     rounded: "{rounded.pill}"
     padding: "8px 14px"
   filter-chip:
@@ -104,7 +108,7 @@ components:
     padding: "9px 18px"
   filter-chip-active:
     backgroundColor: "{colors.ink}"
-    textColor: "{colors.page}"
+    textColor: "{colors.on-green}"
   tag:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.ink-soft}"
@@ -128,17 +132,19 @@ Plain light pages, dark text, generous space and one river-green accent. Each pa
 
 ## Colors
 
+Monsoon: paddy green and mustard on warm white, chosen by the owner. Following Impeccable's colour guide, green owns whole regions (the profile panel and the footer); following the Binance reference, mustard is scarce and only marks primary actions, with ink text on it.
+
 ### Primary
-- **River Green** (river-green): primary buttons, links, the role line, thesis numbers, points, answer pins, the Bangladesh outline.
+- **Monsoon Green** (monsoon-green): profile panel, footer band, page titles, links, current menu item, active filter chip, game map edge.
+
+### Secondary
+- **Mustard** (mustard): primary buttons (Email me, Lock in guess), text selection, the role line and fact labels inside the green panel. Never body text on light ground, never a large fill.
 
 ### Neutral
-- **Ink / Soft Ink / Muted**: text hierarchy. Ink also marks the current page, active chip and the game's guess pin.
-- **Page / Surface**: the page and soft panels (thesis box, game panel, chips, tags, contact rows).
-- **Line / Strong Line**: dividers and outlines.
-- **Scrim / Float Shadow**: only for the gallery viewer.
+- **Ink / Soft Ink / Muted**, **Page / Surface**, **Line / Strong Line**: warm neutrals tinted toward the green.
 
 ### Named Rules
-**The One Green Rule.** Green marks what can be clicked or what matters most. Nothing else is coloured; the maps bring the colour.
+**The Scarce Mustard Rule.** Mustard marks the one thing to press. If a screen has two mustard buttons, one is wrong.
 
 ## Typography
 

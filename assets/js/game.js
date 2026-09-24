@@ -71,8 +71,8 @@
         interactive: false,
         style: function (f) {
           return f.properties.name === "Bangladesh"
-            ? { color: "#0E6B58", weight: 1.6, fillColor: "#E6F0EC", fillOpacity: 1 }
-            : { color: "#B9C0C4", weight: 0.8, fillColor: "#F6F6F3", fillOpacity: 1 };
+            ? { color: "#14532D", weight: 1.6, fillColor: "#E1ECE3", fillOpacity: 1 }
+            : { color: "#BFC8C0", weight: 0.8, fillColor: "#F4F6F2", fillOpacity: 1 };
         }
       }).addTo(map);
       el.loading.hidden = true;
@@ -120,7 +120,7 @@
       total += pts;
       history.push({ name: target.name, km: km, pts: pts, guess: guess, at: target.at });
 
-      L.polyline([guess, target.at], { color: "#17191C", weight: 2, dashArray: "6 6", interactive: false }).addTo(answerLayer);
+      L.polyline([guess, target.at], { color: "#16201A", weight: 2, dashArray: "6 6", interactive: false }).addTo(answerLayer);
       L.marker(target.at, { icon: pinIcon("gpin--answer"), interactive: false }).addTo(answerLayer);
       map.flyToBounds(L.latLngBounds([guess, target.at]).pad(0.6), { maxZoom: 9, duration: 0.9 });
 
@@ -150,7 +150,7 @@
       answerLayer.clearLayers();
       if (guessMarker) { map.removeLayer(guessMarker); guessMarker = null; }
       history.forEach(function (h) {
-        L.polyline([h.guess, h.at], { color: "#17191C", weight: 1.5, dashArray: "5 6", interactive: false }).addTo(answerLayer);
+        L.polyline([h.guess, h.at], { color: "#16201A", weight: 1.5, dashArray: "5 6", interactive: false }).addTo(answerLayer);
         L.marker(h.guess, { icon: pinIcon("gpin--guess"), interactive: false }).addTo(answerLayer);
         L.marker(h.at, { icon: pinIcon("gpin--answer"), interactive: false }).addTo(answerLayer)
           .bindTooltip(h.name, { permanent: true, direction: "right", offset: [10, 0], className: "gtip" });

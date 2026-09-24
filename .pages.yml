@@ -79,7 +79,10 @@ content:
     fields:
       - { name: name, label: Name, type: string }
       - { name: role, label: Role line, type: string }
-      - { name: bio, label: Short bio, type: text }
+      - name: bio
+        label: Short bio
+        description: 2 or 3 sentences in your own voice, shown in the green box at the top of your Profile page.
+        type: text
       - { name: photo, label: Photo, type: image }
       - { name: photo_alt, label: Photo description, type: string }
       - name: facts
