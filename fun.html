@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Map of my work | Md Sabbir Islam</title>
+  <meta name="description" content="An interactive map of every place Md Sabbir Islam has studied, mapped or presented.">
+  <meta name="author" content="Md Sabbir Islam">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Map of my work | Md Sabbir Islam">
+  <meta property="og:description" content="An interactive map of every place Md Sabbir Islam has studied, mapped or presented.">
+  <meta property="og:image" content="https://sabbir0sojib.github.io/assets/img/sabbir-portrait.jpg">
+  <meta name="theme-color" content="#FCFCFB">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/vendor/leaflet/leaflet.js" defer></script>
+  <script src="assets/js/fun.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-head">
+    <div class="wrap site-head__row">
+      <a class="brand" href="index.html">
+        <img class="brand__img" src="assets/img/sabbir-portrait.webp" alt="" width="36" height="36">
+        <span class="brand__name">Md Sabbir Islam</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+          <a href="index.html">Profile</a>
+          <a href="research.html">Research</a>
+          <a href="projects.html">Projects</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="fun.html" aria-current="page">Fun</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+      <header class="page-head">
+        <h1 class="page-head__title">Map of my work</h1>
+        <p class="page-head__lede">Every place I have studied, mapped or presented. Click a pin or a name in the list to fly there. Move over the map to see coordinates.</p>
+      </header>
+      <div class="atlas">
+        <div class="atlas__list" id="place-list" aria-label="Places"></div>
+        <div class="atlas__map">
+          <div id="work-map" role="application" aria-label="Interactive map of Bangladesh with work locations"></div>
+          <p class="coords" id="coords" aria-hidden="true">Move over the map</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap site-foot__row">
+      <p>&copy; 2026 Md Sabbir Islam. Pabna University of Science and Technology, Bangladesh.</p>
+      <p class="site-foot__links">
+        <a class="icon-btn" href="mailto:mdsabbirislam820@gmail.com" aria-label="Email"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#envelope"/></svg></a>
+        <a class="icon-btn" href="https://www.linkedin.com/in/sabbir-sojib/" target="_blank" rel="me noopener" aria-label="LinkedIn"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#linkedin"/></svg></a>
+        <a class="icon-btn" href="https://github.com/Sabbir0Sojib" target="_blank" rel="me noopener" aria-label="GitHub"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#github"/></svg></a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

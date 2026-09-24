@@ -1,230 +1,125 @@
 ---
 name: Md Sabbir Islam, portfolio
-description: A personal research portfolio presented as an open GIS session.
+description: A clean, light, five-page research portfolio with one river-green accent.
 colors:
-  selection-yellow: "#EDD35A"
-  selection-yellow-dark: "#E4C94F"
-  ink: "#15191D"
-  ink-soft: "#394047"
-  muted-grey: "#59616A"
-  chrome-grey: "#E9ECEE"
-  panel-grey: "#F2F4F5"
-  canvas: "#FAFBFB"
-  map-paper: "#FDFDFC"
-  hairline: "#D6DBDF"
-  hairline-strong: "#B7BEC5"
-  night-chrome: "#15181B"
-  night-panel: "#1A1E21"
-  night-canvas: "#1F2327"
-  night-ink: "#E7EAEC"
-  night-muted: "#9AA2A9"
-  night-hairline: "#2E3439"
+  river-green: "#0E6B58"
+  river-green-deep: "#0A5747"
+  river-green-soft: "#E3EFEB"
+  ink: "#17191C"
+  ink-soft: "#3D4247"
+  muted: "#5C6268"
+  page: "#FCFCFB"
+  surface: "#F3F4F2"
+  line: "#E2E4E1"
+  line-strong: "#CDD1CD"
 typography:
   display:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(2.5rem, 1.4rem + 3.6vw, 4.25rem)"
+    fontSize: "clamp(2.5rem, 1.6rem + 3.4vw, 4rem)"
     fontWeight: 700
     lineHeight: 1.02
-    letterSpacing: "-0.03em"
-    fontVariation: "'wdth' 118"
+    letterSpacing: "-0.035em"
   headline:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(1.75rem, 1.2rem + 1.9vw, 2.625rem)"
+    fontSize: "clamp(1.5rem, 1.2rem + 1vw, 1.875rem)"
     fontWeight: 650
-    lineHeight: 1.1
-    letterSpacing: "-0.02em"
-    fontVariation: "'wdth' 115"
-  title:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "1.125rem"
-    fontWeight: 650
-    lineHeight: 1.3
+    lineHeight: 1.2
   body:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "1rem"
+    fontSize: "1.0625rem"
     fontWeight: 400
-    lineHeight: 1.6
-  label:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "0.8125rem"
-    fontWeight: 650
-    lineHeight: 1.4
+    lineHeight: 1.65
   data:
     fontFamily: "JetBrains Mono, ui-monospace, monospace"
-    fontSize: "0.8125rem"
-    fontWeight: 500
-    fontFeature: "'tnum' 1"
+    fontSize: "0.85em"
+    fontWeight: 400
 rounded:
-  hairline: "2px"
-  small: "4px"
-  standard: "6px"
-  dialog: "8px"
-spacing:
-  xs: "8px"
-  sm: "12px"
-  md: "20px"
-  lg: "40px"
-  section: "clamp(64px, 9vw, 112px)"
+  small: "6px"
+  standard: "10px"
+  large: "16px"
+  pill: "999px"
 components:
   button-primary:
+    backgroundColor: "{colors.river-green}"
+    textColor: "{colors.page}"
+    rounded: "{rounded.pill}"
+    height: "46px"
+    padding: "0 20px"
+  nav-current:
     backgroundColor: "{colors.ink}"
-    textColor: "{colors.canvas}"
-    rounded: "{rounded.standard}"
-    padding: "0 18px"
-    height: "44px"
-  button-secondary:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.standard}"
-    padding: "0 18px"
-    height: "44px"
-  layer-item-active:
-    backgroundColor: "{colors.selection-yellow}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.small}"
-    padding: "7px 8px"
-  readout-live:
-    backgroundColor: "{colors.selection-yellow}"
-    textColor: "{colors.ink}"
-    typography: "{typography.data}"
-    rounded: "{rounded.small}"
-    padding: "4px 8px"
+    textColor: "{colors.page}"
+    rounded: "{rounded.pill}"
+    padding: "8px 14px"
   tag:
-    backgroundColor: "transparent"
+    backgroundColor: "{colors.surface}"
     textColor: "{colors.ink-soft}"
-    rounded: "{rounded.small}"
-    padding: "2px 8px"
-  tag-done:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.canvas}"
-    rounded: "{rounded.small}"
-    padding: "2px 8px"
+    rounded: "{rounded.pill}"
+    padding: "5px 12px"
 ---
 
 # Design System: Md Sabbir Islam, portfolio
 
 ## Overview
 
-**Creative North Star: "The Open GIS Session"**
+**Creative North Star: "The Clean Field Report"**
 
-The site behaves like a desktop GIS workspace left open on a researcher's machine: a toolbar across the top, a Layers panel on the left, a canvas in the middle and a status bar along the bottom. Sections are layers, maps are figures you can probe, and publications sit in an attribute table. The chrome is quiet, cool and neutral so the maps carry all the colour.
-
-The first screen is a dark chapter: a map stage with a soft warm glow, yellow neatline corner marks and an auto-advancing slideshow of the owner's maps, framed by light content chapters below (an idea taken from the NVIDIA reference in `.claude/design-references`). Density is moderate: generous canvas spacing between sections, compact software-like spacing inside panels. Motion: the maps crossfade every 6.5 seconds with a progress bar on the active thumbnail, pausing on hover or focus and never autoplaying under reduced motion.
+Plain white pages, dark text, generous space and one river-green accent. Each page does one job (Profile, Research, Projects, Gallery, Fun) and the work, especially the maps, supplies the colour. The owner chose this look after rejecting a GIS-workspace layout and a dark hero.
 
 **Key Characteristics:**
-- Cool neutral software chrome with hairline dividers and no decorative shadows.
-- Selection yellow as the only accent, used only for selection and live state.
-- Archivo across widths: expanded for display, normal width for interface text.
-- JetBrains Mono only for coordinates, resolutions, metrics and dates.
-- Maps always sit on light paper, in both themes.
+- Separate pages with a sticky top menu; the current page is a dark pill.
+- River green only for primary actions, links, key numbers and pins.
+- Archivo throughout, slightly expanded for headings; mono only for years and small data.
+- Soft grey panels, 1px lines, rounded 10 to 16px containers, pill buttons and tags.
 
 ## Colors
 
-A restrained palette: neutrals from the software world plus one GIS selection yellow.
-
 ### Primary
-- **Selection Yellow** (selection-yellow): the colour a GIS highlights selected features with. Marks the active layer, the active slide (progress bar, thumbnail edge, neatline corners), the role line in the dark hero, the live coordinate readout, text selection and the focus halo.
+- **River Green** (river-green): primary buttons, links, the role line, thesis numbers, map pins, Bangladesh outline on the map.
 
 ### Neutral
-- **Ink** (ink): headings, body text, primary buttons, the timeline spine and the 3 m pixel frame.
-- **Soft Ink** (ink-soft): secondary text in panels and table cells.
-- **Muted Grey** (muted-grey): labels, metadata, idle readouts; 4.5:1 or better on every light surface.
-- **Chrome Grey** (chrome-grey): toolbar, status bar, table header, viewer bar.
-- **Panel Grey** (panel-grey): Layers panel, map frame footers, skills box, contact rows.
-- **Canvas** (canvas): the main page ground.
-- **Map Paper** (map-paper): ground under every map figure; stays light in dark theme so maps read as printed figures.
-- **Hairline / Strong Hairline** (hairline, hairline-strong): 1px dividers, borders, button outlines.
-- **Night set** (night-chrome, night-panel, night-canvas, night-ink, night-muted, night-hairline): the dark theme, neutral charcoal rather than blue-black.
+- **Ink / Soft Ink / Muted** (ink, ink-soft, muted): text hierarchy.
+- **Page / Surface** (page, surface): the page and soft panels (thesis box, contact rows, tags).
+- **Line / Strong Line** (line, line-strong): dividers and outlines.
 
 ### Named Rules
-**The Selection Rule.** Yellow means "selected, live or framing the stage". Content chips, dots and badges are never yellow.
-
-**The Paper Rule.** Maps never sit on a dark surface. In dark theme the map canvas stays map-paper.
+**The One Green Rule.** Green marks what can be clicked or what matters most. Nothing else is coloured; the maps bring the colour.
 
 ## Typography
 
-**Display Font:** Archivo, variable width (with Helvetica Neue, Arial)
-**Body Font:** Archivo, normal width
-**Label/Mono Font:** JetBrains Mono (with ui-monospace)
+**Font:** Archivo (variable width), with JetBrains Mono for years and small data.
 
-**Character:** Archivo's width axis does the work that separate faces usually do: stretched wide for the name and section titles like map sheet titles, normal for reading. Mono appears only where a GIS would print numbers.
-
-### Hierarchy
-- **Display** (700, clamp 2.5 to 4.25rem, 1.02, width 118): the name in the hero and the contact heading.
-- **Headline** (650, clamp 1.75 to 2.625rem, 1.1, width 115): section titles.
-- **Title** (650, 1.125 to 1.25rem, 1.3): pipeline verbs, roles, catalog group heads.
-- **Body** (400, 1rem, 1.6): paragraphs, max 64ch.
-- **Label** (650, 0.8125rem): table headers, fact labels, panel headers. Sentence case, never tracked uppercase.
-- **Data** (JetBrains Mono, 0.75 to 0.8125rem, tabular numerals): coordinates, resolutions, F1 scores, years, feature counts.
-
-### Named Rules
-**The Printed Number Rule.** Mono is for numbers a GIS would print (coordinates, resolutions, metrics, dates, counts). Instructions and prose are never mono.
+- **Display:** the name and page titles.
+- **Headline:** section titles.
+- **Body:** paragraphs, max about 64 characters wide.
+- **Data:** years and small numbers only.
 
 ## Layout
 
-Desktop is a three-part workspace: a sticky 56px toolbar, a sticky 232px Layers panel, and a fixed 28px status bar; the canvas scrolls between them. Sections are capped near 1240px with side padding of clamp(20px, 3.2vw, 48px) and vertical spacing of clamp(64px, 9vw, 112px). The hero fills the first viewport as a 5:7 split (intro, map).
-
-At 900px and below the Layers panel becomes a horizontal, scrollable strip under the toolbar and the status bar is hidden (the figure's own readout remains). At 640px and below every grid collapses to one column and the publications table becomes stacked records.
+A centred 1120px column. Each page opens with a large title and one-line intro, then sections separated by 1px lines. Two columns collapse to one below 820px; the top menu becomes a second row on phones.
 
 ## Elevation & Depth
 
-Flat. Depth comes from tonal layering (chrome, panel, canvas, paper) and 1px hairlines. The only shadow is on the full-size map viewer, which genuinely floats over the page (`0 24px 64px rgba(10,14,18,0.28), 0 4px 12px rgba(10,14,18,0.12)`), and it carries no border.
-
-### Named Rules
-**The One Float Rule.** Only a floating dialog casts a shadow. Everything on the page is either a hairline or a tone.
+Flat. Project cards lift slightly on hover (translate 3px, soft shadow). The gallery lightbox is the only floating layer.
 
 ## Shapes
 
-One corner scale: 6px for buttons, panels and figures; 4px for small controls, tags and layer rows; 2px for legend symbols and the pixel frame; 8px only for the dialog. No pills. Layer legend symbols (point, polygon, table, raster, line, target) are drawn as small geometric CSS shapes, like a GIS legend.
+10px for panels, 16px for cards and the photo, pills for buttons, tags and the menu.
 
 ## Components
 
-### Buttons
-- **Shape:** gently squared (6px), 44px tall.
-- **Primary:** ink background, canvas text. Used once per intent ("Email me").
-- **Secondary:** transparent with a strong hairline border.
-- **Hover / Focus:** tone shift over 160ms; press scales to 0.98; focus is a 2px ink outline plus a soft yellow halo.
-
-### Chips and tags
-- **Metric chips** (pipeline): canvas background, strong hairline, mono text. Neutral, never yellow.
-- **Status tags** (publications): outlined for "Under review", filled ink for "Presented".
-
-### Cards / Containers
-- **Corner Style:** 6px.
-- **Background:** panel grey, with the map paper inside figures.
-- **Shadow Strategy:** none (see Elevation).
-- **Border:** 1px hairline.
-- **Internal Padding:** 12 to 22px.
-
-### Navigation
-- **Layers panel:** rows with a legend symbol, name and optional feature count in brackets (for example `[16]`). Hover lifts the row to canvas; the active section (scroll spy) is filled selection yellow.
-- **Mobile:** the same rows as a horizontal strip; the active row scrolls into view.
-
-### Map stage (signature)
-The hero slideshow: slides stacked in one grid cell and crossfaded, thumbnails with a 2px yellow progress bar, yellow neatline corner marks around the stage, and a dark stage whose custom properties are scoped to the hero so every child inherits the dark palette.
-
-### Research flow
-The thesis as four columns under a 2px ink rule, each led by a large real value (5 cm, 0.944, 3 m, AGB), a mono unit line, a verb and one sentence, joined by small chevrons on the dividing rules.
-
-### Map frame
-A figure with a paper canvas, the map, a crosshair probe that follows the pointer, and a properties strip (title, data and method, readout). Probe-able maps carry a `data-geo` attribute with graticule fractions, so the readout shows real longitude and latitude and mirrors it to the status bar. Clicking opens the viewer, where a second click zooms to at least 2x and the map can be panned.
-
-### Attribute table
-Publications as a GIS attribute table: chrome header row, hairline rows, yellow-tinted row on hover, the owner's name in bold in author lists.
+- **Buttons:** pill, 46px; primary is green, secondary is white with a line.
+- **Project card:** image on top (the owner's map or the GitHub preview, with a green fallback tile), title and year, one sentence, tool tags, "View code".
+- **Gallery:** masonry of maps on white; click opens a lightbox with previous, next, open original and click-to-zoom.
+- **Map of my work:** Leaflet map (CARTO light tiles, bundled country outlines), numbered green pins with popups, a side list that flies to each place, live coordinates.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep selection yellow for selection and live state only (The Selection Rule).
-- **Do** put every map on map paper, with alt text describing what the map shows.
-- **Do** use mono only for coordinates, resolutions, metrics, dates and counts.
-- **Do** keep one 6px corner scale and 1px hairlines.
-- **Do** update the Layers panel counts when adding publications or maps.
+- **Do** keep each page focused on one topic.
+- **Do** add new maps to the Gallery and, if they have a place, as a pin on the Fun map.
+- **Do** keep text free of em dash and en dash characters (owner rule).
 
 ### Don't:
-- **Don't** use em dash or en dash characters anywhere in visible text (owner rule).
-- **Don't** add small uppercase labels above headings; headings stand alone.
-- **Don't** add shadows to cards or figures; only the viewer floats.
-- **Don't** fill chips, dots or badges with yellow.
-- **Don't** show a map as a large figure twice; the stage shows it once, the catalog only as a thumbnail.
-- **Don't** use empty diagrams or placeholder geometry; every visual shows real work or real values.
+- **Don't** add a second accent colour.
+- **Don't** use dark full-width sections; the site is light throughout.
+- **Don't** add empty diagrams or decorative grids; every visual shows real work.

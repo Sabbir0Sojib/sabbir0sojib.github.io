@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery | Md Sabbir Islam</title>
+  <meta name="description" content="Maps by Md Sabbir Islam: cyclone tracks, wind, cycling accessibility and more across Bangladesh.">
+  <meta name="author" content="Md Sabbir Islam">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gallery | Md Sabbir Islam">
+  <meta property="og:description" content="Maps by Md Sabbir Islam: cyclone tracks, wind, cycling accessibility and more across Bangladesh.">
+  <meta property="og:image" content="https://sabbir0sojib.github.io/assets/img/sabbir-portrait.jpg">
+  <meta name="theme-color" content="#FCFCFB">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-head">
+    <div class="wrap site-head__row">
+      <a class="brand" href="index.html">
+        <img class="brand__img" src="assets/img/sabbir-portrait.webp" alt="" width="36" height="36">
+        <span class="brand__name">Md Sabbir Islam</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+          <a href="index.html">Profile</a>
+          <a href="research.html">Research</a>
+          <a href="projects.html">Projects</a>
+          <a href="gallery.html" aria-current="page">Gallery</a>
+          <a href="fun.html">Fun</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+      <header class="page-head">
+        <h1 class="page-head__title">Gallery</h1>
+        <p class="page-head__lede">Maps I have made. Click any map to open it full size, then click again to zoom in.</p>
+      </header>
+      <!-- Add a map: upload the image to assets/img/work/ and copy one <figure class="shot"> block. -->
+      <div class="gallery">
+        <figure class="shot reveal">
+          <button class="shot__btn" type="button" data-lightbox="cyclone" aria-label="Open Cyclone tracks and exposure corridor, 1970 to 2024 full size">
+            <img src="assets/img/work/cyclone-tracks-bangladesh.webp" width="800" height="742" alt="Map of Bangladesh showing 12 historical cyclone tracks from 1970 to 2024 over a colored exposure corridor" loading="lazy">
+          </button>
+          <figcaption><p class="shot__title">Cyclone tracks and exposure corridor, 1970 to 2024</p><p class="shot__meta">12 storm tracks, severity-weighted corridor. Python</p></figcaption>
+        </figure>
+        <figure class="shot reveal">
+          <button class="shot__btn" type="button" data-lightbox="wind" aria-label="Open Prevailing 10 m wind, Bangladesh, 2023 full size">
+            <img src="assets/img/work/wind-bangladesh-2023.webp" width="800" height="817" alt="Map of prevailing wind speed and direction over Bangladesh in 2023 with wind roses" loading="lazy">
+          </button>
+          <figcaption><p class="shot__title">Prevailing 10 m wind, Bangladesh, 2023</p><p class="shot__meta">ERA5 reanalysis via Open-Meteo, Natural Earth boundaries</p></figcaption>
+        </figure>
+        <figure class="shot reveal">
+          <button class="shot__btn" type="button" data-lightbox="korail" aria-label="Open Cycling accessibility from Korail, Dhaka full size">
+            <img src="assets/img/work/korail-cycling-accessibility.webp" width="800" height="861" alt="Isochrone map of cycling time from Korail, Dhaka, in 10 minute bands" loading="lazy">
+          </button>
+          <figcaption><p class="shot__title">Cycling accessibility from Korail, Dhaka</p><p class="shot__meta">2,000 sampled points, OpenRouteService, cubic spline interpolation</p></figcaption>
+        </figure>
+      </div>
+
+      <section class="block reveal" aria-labelledby="more-maps" style="margin-top: 32px;">
+        <h2 id="more-maps" class="block__title">More maps, images coming soon</h2>
+        <ul class="more">
+          <li><p class="more__title">Sea level rise simulation, Bangladesh</p><p class="more__meta">SRTM 30 m DEM, bathtub inundation model, Python</p></li>
+          <li><p class="more__title">Earthquake hazard from recent events, Bangladesh</p><p class="more__meta">USGS events, IDW interpolation in ArcMap</p></li>
+          <li><p class="more__title">Crop suitability, Bangladesh</p><p class="more__meta">Bangladesh Agricultural Research Council data, weighted overlay</p></li>
+          <li><p class="more__title">Elevation of the Chittagong Hill Tracts</p><p class="more__meta">ALOS World 3D, 30 m</p></li>
+          <li><p class="more__title">Groundwater depletion, Pabna District</p><p class="more__meta">Geospatial analysis in Python</p></li>
+          <li><p class="more__title">Land use and land cover, Dhaka District</p><p class="more__meta">Sentinel-2 classification</p></li>
+          <li><p class="more__title">Nepal flash flood, before and after</p><p class="more__meta">Betrawati-Gerkhu reach, Nuwakot District. Sentinel-2</p></li>
+          <li><p class="more__title">Stream order of the Padma River</p><p class="more__meta">DEM flow direction, flow accumulation and stream order in QGIS</p></li>
+          <li><p class="more__title">Surface water temperature, Pabna District</p><p class="more__meta">Satellite thermal analysis</p></li>
+          <li><p class="more__title">Landsat 8 harmonic modeling, Pabna District</p><p class="more__meta">Time series harmonic regression</p></li>
+          <li><p class="more__title">Flood delineation map</p><p class="more__meta">Flood extent mapping</p></li>
+          <li><p class="more__title">Landsat image of Bangladesh</p><p class="more__meta">Country-wide Landsat composite</p></li>
+          <li><p class="more__title">Daily temperature maps, Bangladesh</p><p class="more__meta">Open-Meteo and BMD data, automated in Python</p></li>
+        </ul>
+      </section>
+    </div>
+
+    <dialog class="lightbox" aria-labelledby="lb-title">
+      <div class="lightbox__bar">
+        <p id="lb-title" class="lightbox__title"></p>
+        <div class="lightbox__tools">
+          <a class="icon-btn" data-lb-original href="#" target="_blank" rel="noopener" aria-label="Open original image"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#arrow"/></svg></a>
+          <button class="icon-btn" type="button" data-lb-prev aria-label="Previous map"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#prev"/></svg></button>
+          <button class="icon-btn" type="button" data-lb-next aria-label="Next map"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#next"/></svg></button>
+          <button class="icon-btn" type="button" data-lb-close aria-label="Close"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#close"/></svg></button>
+        </div>
+      </div>
+      <div class="lightbox__view"><img class="lightbox__img" src="assets/img/work/cyclone-tracks-bangladesh.webp" alt=""></div>
+      <p class="lightbox__meta"></p>
+    </dialog>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap site-foot__row">
+      <p>&copy; 2026 Md Sabbir Islam. Pabna University of Science and Technology, Bangladesh.</p>
+      <p class="site-foot__links">
+        <a class="icon-btn" href="mailto:mdsabbirislam820@gmail.com" aria-label="Email"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#envelope"/></svg></a>
+        <a class="icon-btn" href="https://www.linkedin.com/in/sabbir-sojib/" target="_blank" rel="me noopener" aria-label="LinkedIn"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#linkedin"/></svg></a>
+        <a class="icon-btn" href="https://github.com/Sabbir0Sojib" target="_blank" rel="me noopener" aria-label="GitHub"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#github"/></svg></a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

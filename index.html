@@ -6,465 +6,158 @@
   <title>Md Sabbir Islam | Remote Sensing and Geospatial Deep Learning</title>
   <meta name="description" content="Md Sabbir Islam, undergraduate researcher in Geography and Environment at Pabna University of Science and Technology. Remote sensing, UAV and satellite deep learning, and maps of Bangladesh.">
   <meta name="author" content="Md Sabbir Islam">
-  <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#E9ECEE" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#16191C" media="(prefers-color-scheme: dark)">
-  <link rel="canonical" href="https://sabbir0sojib.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Md Sabbir Islam | Remote Sensing and Geospatial Deep Learning">
-  <meta property="og:description" content="Research, publications and maps: drone to satellite tree canopy mapping, cyclone exposure, wind and more across Bangladesh.">
-  <meta property="og:url" content="https://sabbir0sojib.github.io/">
-  <meta property="og:image" content="https://sabbir0sojib.github.io/assets/img/work/cyclone-tracks-bangladesh.webp">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:description" content="Md Sabbir Islam, undergraduate researcher in Geography and Environment at Pabna University of Science and Technology. Remote sensing, UAV and satellite deep learning, and maps of Bangladesh.">
+  <meta property="og:image" content="https://sabbir0sojib.github.io/assets/img/sabbir-portrait.jpg">
+  <meta name="theme-color" content="#FCFCFB">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/site.css">
-  <script>
-    // Apply the saved theme before first paint to avoid a flash.
-    document.documentElement.classList.add("js");
-    (function () {
-      try {
-        var t = localStorage.getItem("theme");
-        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
-      } catch (e) {}
-    })();
-  </script>
+  <script>document.documentElement.classList.add("js");</script>
   <script src="assets/js/site.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-
-  <!-- ===================== TOOLBAR ===================== -->
-  <header class="toolbar">
-    <a class="toolbar__id" href="#about">
-      <span class="toolbar__mark" aria-hidden="true"></span>
-      <span class="toolbar__name">Md Sabbir Islam</span>
-    </a>
-    <nav class="toolbar__tools" aria-label="Contact and settings">
-      <a class="tool" href="mailto:mdsabbirislam820@gmail.com" aria-label="Email">
-        <svg class="i" aria-hidden="true"><use href="assets/icons.svg#envelope"/></svg>
+  <header class="site-head">
+    <div class="wrap site-head__row">
+      <a class="brand" href="index.html">
+        <img class="brand__img" src="assets/img/sabbir-portrait.webp" alt="" width="36" height="36">
+        <span class="brand__name">Md Sabbir Islam</span>
       </a>
-      <a class="tool" href="https://www.linkedin.com/in/sabbir-sojib/" aria-label="LinkedIn" rel="me noopener" target="_blank">
-        <svg class="i" aria-hidden="true"><use href="assets/icons.svg#linkedin"/></svg>
-      </a>
-      <a class="tool" href="https://github.com/Sabbir0Sojib" aria-label="GitHub" rel="me noopener" target="_blank">
-        <svg class="i" aria-hidden="true"><use href="assets/icons.svg#github"/></svg>
-      </a>
-      <span class="toolbar__sep" aria-hidden="true"></span>
-      <button class="tool" type="button" data-theme-toggle aria-label="Switch to dark theme">
-        <svg class="i i--moon" aria-hidden="true"><use href="assets/icons.svg#moon"/></svg>
-        <svg class="i i--sun" aria-hidden="true"><use href="assets/icons.svg#sun"/></svg>
-      </button>
-    </nav>
+      <nav class="nav" aria-label="Main">
+          <a href="index.html" aria-current="page">Profile</a>
+          <a href="research.html">Research</a>
+          <a href="projects.html">Projects</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="fun.html">Fun</a>
+      </nav>
+    </div>
   </header>
 
-  <div class="workspace">
-
-    <!-- ===================== LAYERS PANEL ===================== -->
-    <nav class="layers" aria-label="Sections">
-      <p class="layers__head">
-        <svg class="i" aria-hidden="true"><use href="assets/icons.svg#layers"/></svg>
-        Layers
-      </p>
-      <ul class="layers__list">
-        <li><a class="layer" href="#about"><span class="sym sym--point" aria-hidden="true"></span>About</a></li>
-        <li><a class="layer" href="#research"><span class="sym sym--polygon" aria-hidden="true"></span>Research</a></li>
-        <li><a class="layer" href="#publications"><span class="sym sym--table" aria-hidden="true"></span>Publications<span class="layer__count">4</span></a></li>
-        <li><a class="layer" href="#maps"><span class="sym sym--raster" aria-hidden="true"></span>Maps<span class="layer__count">16</span></a></li>
-        <li><a class="layer" href="#experience"><span class="sym sym--line" aria-hidden="true"></span>Experience</a></li>
-        <li><a class="layer" href="#contact"><span class="sym sym--target" aria-hidden="true"></span>Contact</a></li>
-      </ul>
-    </nav>
-
-    <main id="main" class="canvas">
-
-      <!-- ===================== ABOUT (first screen) ===================== -->
-      <section id="about" class="hero" aria-labelledby="about-title">
-        <div class="hero__intro">
-          <picture>
-            <source srcset="assets/img/sabbir-portrait.webp" type="image/webp">
-            <img class="hero__portrait" src="assets/img/sabbir-portrait.jpg" width="640" height="800"
-                 alt="Md Sabbir Islam in a blue suit at the ICLESSD-2025 conference, Jagannath University, Dhaka">
-          </picture>
-          <h1 id="about-title" class="hero__name">Md Sabbir Islam</h1>
-          <p class="hero__role">Remote Sensing and Geospatial Deep Learning</p>
-          <p class="hero__bio">Geography researcher in Bangladesh. I map trees, cyclones and cities with drones, satellites and deep learning.</p>
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="#contact">
-              <svg class="i" aria-hidden="true"><use href="assets/icons.svg#envelope"/></svg>
-              Email me
-            </a>
-            <a class="btn" href="#maps">View maps</a>
+  <main id="main">
+    <div class="wrap">
+      <!-- ===== INTRO ===== -->
+      <section class="intro" aria-labelledby="name">
+        <picture>
+          <source srcset="assets/img/sabbir-portrait.webp" type="image/webp">
+          <img class="intro__photo" src="assets/img/sabbir-portrait.jpg" width="640" height="800"
+               alt="Md Sabbir Islam at the ICLESSD-2025 conference, Jagannath University, Dhaka">
+        </picture>
+        <div class="reveal">
+          <h1 id="name" class="intro__name">Md Sabbir Islam</h1>
+          <p class="intro__role">Remote Sensing and Geospatial Deep Learning</p>
+          <p class="intro__place">Department of Geography and Environment, Pabna University of Science and Technology, Bangladesh</p>
+          <p class="intro__bio">I am an undergraduate researcher who combines drone imagery, satellite data and deep learning to map the environment. My thesis links 5 cm UAV images with 3 m PlanetScope data to map every tree crown in Pabna city. Alongside it, I build maps of cyclones, wind, water and land across Bangladesh in Python.</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="#contact"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#envelope"/></svg>Email me</a>
+            <a class="btn" href="https://www.linkedin.com/in/sabbir-sojib/" target="_blank" rel="me noopener"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#linkedin"/></svg>LinkedIn</a>
+            <a class="btn" href="https://github.com/Sabbir0Sojib" target="_blank" rel="me noopener"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#github"/></svg>GitHub</a>
           </div>
-        </div>
-
-        <!-- Map slideshow. Add a map: copy one <figure class="slide"> and one thumbnail <li> below. -->
-        <div class="stage" data-slideshow aria-roledescription="carousel" aria-label="Selected maps">
-          <div class="stage__slides">
-            <figure class="mapframe slide is-active" id="fig-cyclone" aria-roledescription="slide" aria-label="1 of 3"
-                    data-geo="0.0575,0.9542,87,20,0.11344,0.12278,0.0575,0.0445,0.765,0.9542">
-              <button class="mapframe__view" type="button" data-open="cyclone" aria-label="Open the cyclone tracks map full size">
-                <img src="assets/img/work/cyclone-tracks-bangladesh.webp" width="800" height="742" fetchpriority="high"
-                     alt="Map of Bangladesh showing 12 historical cyclone tracks from 1970 to 2024 over a colored exposure corridor, highest over Barishal, Bhola and Patuakhali">
-                <span class="probe" aria-hidden="true"><span class="probe__x"></span><span class="probe__y"></span></span>
-                <span class="mapframe__expand" aria-hidden="true"><svg class="i"><use href="assets/icons.svg#expand"/></svg></span>
-              </button>
-              <figcaption class="mapframe__props">
-                <span class="mapframe__title">Cyclone tracks and exposure corridor, 1970 to 2024</span>
-                <span class="mapframe__meta">12 major storm tracks turned into a severity-weighted exposure corridor. Python: geopandas, scipy, matplotlib</span>
-                <output class="readout" aria-live="off">Hover the map</output>
-              </figcaption>
-            </figure>
-
-            <figure class="mapframe slide" id="fig-wind" aria-roledescription="slide" aria-label="2 of 3"
-                    data-geo="0.081875,0.8776,88,21,0.141875,0.1388,0.05375,0.0734,0.7769,0.9608">
-              <button class="mapframe__view" type="button" data-open="wind" aria-label="Open the wind map full size" tabindex="-1">
-                <img src="assets/img/work/wind-bangladesh-2023.webp" width="800" height="817"
-                     alt="Map of prevailing 10 metre wind speed and direction over Bangladesh in 2023, with streamlines and wind roses for Dhaka, Khulna and Chattogram">
-                <span class="probe" aria-hidden="true"><span class="probe__x"></span><span class="probe__y"></span></span>
-                <span class="mapframe__expand" aria-hidden="true"><svg class="i"><use href="assets/icons.svg#expand"/></svg></span>
-              </button>
-              <figcaption class="mapframe__props">
-                <span class="mapframe__title">Prevailing 10 m wind, 2023</span>
-                <span class="mapframe__meta">ERA5 reanalysis via Open-Meteo, Natural Earth boundaries</span>
-                <output class="readout" aria-live="off">Hover the map</output>
-              </figcaption>
-            </figure>
-
-            <figure class="mapframe slide" id="fig-korail" aria-roledescription="slide" aria-label="3 of 3">
-              <button class="mapframe__view" type="button" data-open="korail" aria-label="Open the Korail cycling accessibility map full size" tabindex="-1">
-                <img src="assets/img/work/korail-cycling-accessibility.webp" width="800" height="861"
-                     alt="Isochrone map of cycling time from Korail, Dhaka, in 10 minute bands from under 10 to 100 minutes">
-                <span class="mapframe__expand" aria-hidden="true"><svg class="i"><use href="assets/icons.svg#expand"/></svg></span>
-              </button>
-              <figcaption class="mapframe__props">
-                <span class="mapframe__title">Cycling accessibility from Korail, Dhaka</span>
-                <span class="mapframe__meta">2,000 sampled points routed with OpenRouteService, cubic spline interpolation</span>
-                <output class="readout" aria-live="off">Projected map, no graticule</output>
-              </figcaption>
-            </figure>
-            <span class="neat neat--tl" aria-hidden="true"></span><span class="neat neat--tr" aria-hidden="true"></span>
-            <span class="neat neat--bl" aria-hidden="true"></span><span class="neat neat--br" aria-hidden="true"></span>
-          </div>
-
-          <ol class="thumbs" aria-label="Choose a map">
-            <li><button class="thumb is-active" type="button" data-slide="0" aria-current="true">
-              <img src="assets/img/work/cyclone-tracks-bangladesh.webp" alt="" width="800" height="742">
-              <span class="thumb__text">Cyclone tracks</span><span class="thumb__bar" aria-hidden="true"></span>
-            </button></li>
-            <li><button class="thumb" type="button" data-slide="1">
-              <img src="assets/img/work/wind-bangladesh-2023.webp" alt="" width="800" height="817" loading="lazy">
-              <span class="thumb__text">Wind, 2023</span><span class="thumb__bar" aria-hidden="true"></span>
-            </button></li>
-            <li><button class="thumb" type="button" data-slide="2">
-              <img src="assets/img/work/korail-cycling-accessibility.webp" alt="" width="800" height="861" loading="lazy">
-              <span class="thumb__text">Korail cycling</span><span class="thumb__bar" aria-hidden="true"></span>
-            </button></li>
-          </ol>
         </div>
       </section>
 
-      <!-- ===================== RESEARCH ===================== -->
-      <section id="research" class="section research" aria-labelledby="research-title">
-        <h2 id="research-title" class="section__title">Urban trees, from drone to satellite</h2>
-        <p class="lede">My undergraduate thesis, <cite>Characterization of Urban Trees with Deep Learning Techniques in Pabna Municipality</cite>, maps every tree crown in a city by teaching a satellite model with drone imagery.</p>
+      <!-- ===== INTERESTS ===== -->
+      <section class="block reveal" aria-labelledby="interests">
+        <h2 id="interests" class="block__title">Research interests</h2>
+        <ul class="tags">
+          <li class="tag">Geospatial deep learning</li>
+          <li class="tag">Object detection</li>
+          <li class="tag">UAV and satellite data fusion</li>
+          <li class="tag">Tree crown delineation</li>
+          <li class="tag">Above-ground biomass</li>
+          <li class="tag">Land use and land cover change</li>
+          <li class="tag">Spatial statistics</li>
+          <li class="tag">Hazard and risk mapping</li>
+          <li class="tag">Environmental monitoring</li>
+        </ul>
+      </section>
 
-        <ol class="flow">
-          <li class="flow__step">
-            <p class="flow__value">5 cm</p>
-            <p class="flow__unit mono">UAV pixel size</p>
-            <h3 class="flow__verb">Capture</h3>
-            <p class="flow__text">Drone flights over Pabna, processed in Agisoft Metashape and Pix4D.</p>
+      <!-- ===== EDUCATION + EXPERIENCE ===== -->
+      <section class="block reveal" aria-labelledby="experience">
+        <h2 id="experience" class="block__title">Education and experience</h2>
+        <ol class="timeline">
+          <li class="timeline__item">
+            <p class="timeline__when">2025 to present</p>
+            <div>
+              <h3 class="timeline__role">Undergraduate Thesis Researcher</h3>
+              <p class="timeline__org">Geospatial Lab of Environment and Disaster, Pabna University of Science and Technology. Supervised by D. Eng. Md Rahedul Islam, Professor.</p>
+            </div>
           </li>
-          <li class="flow__step">
-            <p class="flow__value">0.944</p>
-            <p class="flow__unit mono">F1, SegFormer</p>
-            <h3 class="flow__verb">Delineate</h3>
-            <p class="flow__text">U-Net, DeepLabV3+, Mask2Former and SegFormer benchmarked for tree crown delineation. SegFormer performed best.</p>
+          <li class="timeline__item">
+            <p class="timeline__when">2025</p>
+            <div>
+              <h3 class="timeline__role">Field Data Collector, CH4Rice Project</h3>
+              <p class="timeline__org">In collaboration with the JAXA Earth Observation Research Center and the Institute of Industrial Science, University of Tokyo.</p>
+            </div>
           </li>
-          <li class="flow__step">
-            <p class="flow__value">3 m</p>
-            <p class="flow__unit mono">PlanetScope, F1 0.82</p>
-            <h3 class="flow__verb">Scale up</h3>
-            <p class="flow__text">A Random Forest trained on the UAV crowns maps canopy across the whole city from PlanetScope SuperDove imagery.</p>
-          </li>
-          <li class="flow__step">
-            <p class="flow__value">AGB</p>
-            <p class="flow__unit mono">Biomass and carbon</p>
-            <h3 class="flow__verb">Estimate</h3>
-            <p class="flow__text">Above-ground biomass and carbon stock estimated from UAV-derived crown structure.</p>
+          <li class="timeline__item">
+            <p class="timeline__when">Final result awaited</p>
+            <div>
+              <h3 class="timeline__role">B.Sc. (Honours) in Geography and Environment</h3>
+              <p class="timeline__org">Pabna University of Science and Technology. CGPA 3.56 / 4.00 across seven semesters; coursework completed.</p>
+            </div>
           </li>
         </ol>
+      </section>
 
-        <dl class="research__facts">
-          <div><dt>Supervisor</dt><dd>D. Eng. Md Rahedul Islam, Professor, Pabna University of Science and Technology</dd></div>
-          <div><dt>Lab</dt><dd>Geospatial Lab of Environment and Disaster, Department of Geography and Environment</dd></div>
-          <div><dt>Interests</dt><dd>Geospatial deep learning, object detection, UAV and satellite data fusion, tree crown delineation, above-ground biomass, land use and land cover change, spatial statistics, hazard and risk mapping, environmental monitoring</dd></div>
+      <!-- ===== SKILLS ===== -->
+      <section class="block reveal" aria-labelledby="skills">
+        <h2 id="skills" class="block__title">Skills</h2>
+        <dl class="skills">
+          <div><dt>Deep learning</dt><dd>PyTorch, SegFormer, U-Net, DeepLabV3+, Mask2Former, YOLO, Mask R-CNN</dd></div>
+          <div><dt>Remote sensing</dt><dd>Google Earth Engine, SNAP, Rasterio, GDAL, ArcGIS, QGIS</dd></div>
+          <div><dt>Satellite data</dt><dd>PlanetScope SuperDove, Sentinel-1, Sentinel-2, Landsat, MODIS</dd></div>
+          <div><dt>UAV</dt><dd>DJI platforms, Agisoft Metashape, Pix4D, point cloud processing</dd></div>
+          <div><dt>Spatial statistics</dt><dd>Moran's I, Getis-Ord Gi*, kernel density estimation, hotspot analysis</dd></div>
+          <div><dt>Programming</dt><dd>Python, R, JavaScript for Earth Engine, Git, LaTeX</dd></div>
         </dl>
       </section>
 
-      <!-- ===================== PUBLICATIONS ===================== -->
-      <section id="publications" class="section" aria-labelledby="pubs-title">
-        <h2 id="pubs-title" class="section__title">Publications</h2>
-        <div class="table-wrap">
-          <table class="attr">
-            <caption class="visually-hidden">Journal manuscripts and conference papers</caption>
-            <thead>
-              <tr><th scope="col">Year</th><th scope="col">Title and authors</th><th scope="col">Venue</th><th scope="col">Status</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="mono">2026</td>
-                <td><span class="attr__title">Characterization of Urban Trees with Deep Learning Techniques in Pabna Municipality</span>
-                    <span class="attr__authors"><b>Islam, M.S.</b>, and Islam, M.R.</span></td>
-                <td>Journal manuscript</td>
-                <td><span class="tag">Under review</span></td>
-              </tr>
-              <tr>
-                <td class="mono">2026</td>
-                <td><span class="attr__title">Spatio-temporal Patterns of Lightning Events and Associated Casualties in Bangladesh: Linkages with Land Use and Land Cover</span>
-                    <span class="attr__authors">Ali, M.Y., <b>Islam, M.S.</b>, and Islam, M.R.</span></td>
-                <td>Journal manuscript</td>
-                <td><span class="tag">Under review</span></td>
-              </tr>
-              <tr>
-                <td class="mono">2026</td>
-                <td><span class="attr__title">Impact of Armed Conflict on Ambient Air Quality: A Multi-Pollutant Spatiotemporal Analysis Across Iranian Provinces, 2022 to 2026</span>
-                    <span class="attr__authors"><b>Islam, M.S.</b>, Ali, M.Y., and Islam, M.R.</span></td>
-                <td>International Conference on Emerging Frontiers in Advanced Sciences and Technologies (EFAST 2026), Pabna, Bangladesh</td>
-                <td><span class="tag tag--done">Presented</span></td>
-              </tr>
-              <tr>
-                <td class="mono">2025</td>
-                <td><span class="attr__title">Urban Tree Cover Detection Using UAV, Remote Sensing and Deep Learning</span>
-                    <span class="attr__authors"><b>Islam, M.S.</b>, and Islam, M.R.</span></td>
-                <td>1st International Conference on Life and Earth Sciences for Sustainable Development (ICLESSD-2025), Jagannath University, Dhaka</td>
-                <td><span class="tag tag--done">Presented</span></td>
-              </tr>
-            </tbody>
-          </table>
+      <!-- ===== AWARDS + LANGUAGES ===== -->
+      <section class="block reveal two-col" aria-label="Awards and languages">
+        <div>
+          <h2 class="block__title">Awards</h2>
+          <ul class="plain-list">
+            <li><span class="mono">2023</span>Top 8 Team, FOREWARN Disaster Hackathon 1.0</li>
+            <li><span class="mono">2023</span>Runners-up, 6th Interdepartmental Language Debate, Pabna University of Science and Technology</li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="block__title">Languages</h2>
+          <ul class="plain-list">
+            <li>Bengali, native</li>
+            <li>English, professional working proficiency</li>
+          </ul>
         </div>
       </section>
 
-      <!-- ===================== MAPS ===================== -->
-      <section id="maps" class="section" aria-labelledby="maps-title">
-        <h2 id="maps-title" class="section__title">Maps</h2>
-        <p class="lede">Sixteen finished maps of Bangladesh and beyond, most built in Python, several with open code.</p>
-
-        <!-- Map catalog. Add a new map by copying one <li> block. -->
-        <div class="catalog">
-          <div class="catalog__group">
-            <h3 class="catalog__head">Hazards and climate</h3>
-            <ul class="catalog__list">
-              <li class="entry entry--media">
-                <button class="entry__thumb" type="button" data-open="cyclone" aria-label="View map"><img src="assets/img/work/cyclone-tracks-bangladesh.webp" alt="" loading="lazy" width="120" height="120"></button>
-                <p class="entry__title">Cyclone tracks and exposure corridor, Bangladesh</p>
-                <p class="entry__meta">Track reconstruction, kernel exposure surface <span class="mono">2026</span></p>
-                <p class="entry__links"><button class="link" type="button" data-open="cyclone">View map</button><a class="link" href="https://github.com/Sabbir0Sojib/Bangladesh-Cyclone-Tracks-and-Exposure-Corridor" target="_blank" rel="noopener">Code<svg class="i" aria-hidden="true"><use href="assets/icons.svg#arrow"/></svg></a></p>
-              </li>
-              <li class="entry entry--media">
-                <button class="entry__thumb" type="button" data-open="wind" aria-label="View map"><img src="assets/img/work/wind-bangladesh-2023.webp" alt="" loading="lazy" width="120" height="120"></button>
-                <p class="entry__title">Prevailing wind direction and speed, Bangladesh</p>
-                <p class="entry__meta">ERA5 via Open-Meteo, streamlines and wind roses <span class="mono">2026</span></p>
-                <p class="entry__links"><button class="link" type="button" data-open="wind">View map</button><a class="link" href="https://github.com/Sabbir0Sojib/Bangladesh-Prevailing-Wind-Direction-and-Speed" target="_blank" rel="noopener">Code<svg class="i" aria-hidden="true"><use href="assets/icons.svg#arrow"/></svg></a></p>
-              </li>
-              <li class="entry">
-                <p class="entry__title">Sea level rise simulation, Bangladesh</p>
-                <p class="entry__meta">SRTM 30 m DEM, bathtub inundation model in Python <span class="mono">2026</span></p>
-              </li>
-              <li class="entry">
-                <p class="entry__title">Earthquake hazard from recent events, Bangladesh</p>
-                <p class="entry__meta">USGS events, IDW interpolation in ArcMap <span class="mono">2025</span></p>
-              </li>
-              <li class="entry">
-                <p class="entry__title">Nepal flash flood, before and after</p>
-                <p class="entry__meta">Betrawati-Gerkhu reach, Nuwakot District. Sentinel-2 <span class="mono">2026</span></p>
-              </li>
-              <li class="entry">
-                <p class="entry__title">Flood delineation map</p>
-                <p class="entry__meta">Flood extent mapping <span class="mono">2025</span></p>
-              </li>
-            </ul>
-          </div>
-
-          <div class="catalog__group">
-            <h3 class="catalog__head">Water</h3>
-            <ul class="catalog__list">
-              <li class="entry">
-                <p class="entry__title">Groundwater depletion, Pabna District</p>
-                <p class="entry__meta">Geospatial analysis in Python <span class="mono">2025</span></p>
-                <p class="entry__links"><a class="link" href="https://github.com/Sabbir0Sojib/pabna-groundwater-analysis" target="_blank" rel="noopener">Code<svg class="i" aria-hidden="true"><use href="assets/icons.svg#arrow"/></svg></a></p>
-              </li>
-              <li class="entry">
-                <p class="entry__title">Surface water temperature, Pabna District</p>
-                <p class="entry__meta">Satellite thermal analysis of surface water dynamics <span class="mono">2025</span></p>
-                <p class="entry__links"><a class="link" href="https://github.com/Sabbir0Sojib/Pabna_Surface_Water_Analysis" target="_blank" rel="noopener">Code<svg class="i" aria-hidden="true"><use href="assets/icons.svg#arrow"/></svg></a></p>
-              </li>
-              <li class="entry">
-                <p class="entry__title">Stream order of the Padma River</p>
-                <p class="entry__meta">DEM flow direction, flow accumulation and stream order in QGIS <span class="mono">2025</span></p>
-              </li>
-            </ul>
-          </div>
-
-          <div class="catalog__group">
-            <h3 class="catalog__head">Land and terrain</h3>
-            <ul class="catalog__list">
-              <li class="entry">
-                <p class="entry__title">Elevation of the Chittagong Hill Tracts</p>
-                <p class="entry__meta">ALOS World 3D, 30 m <span class="mono">2026</span></p>
-              </li>
-              <li class="entry">
-                <p class="entry__title">Crop suitability, Bangladesh</p>
-                <p class="entry__meta">Bangladesh Agricultural Research Council data, weighted overlay <span class="mono">2026</span></p>
-              </li>
-              <li class="entry">
-                <p class="entry__title">Land use and land cover, Dhaka District</p>
-                <p class="entry__meta">Sentinel-2 classification <span class="mono">2026</span></p>
-              </li>
-              <li class="entry">
-                <p class="entry__title">Landsat 8 harmonic modeling, Pabna District</p>
-                <p class="entry__meta">Time series harmonic regression <span class="mono">2025</span></p>
-                <p class="entry__links"><a class="link" href="https://github.com/Sabbir0Sojib/Landsat8-Harmonic-Modeling-" target="_blank" rel="noopener">Code<svg class="i" aria-hidden="true"><use href="assets/icons.svg#arrow"/></svg></a></p>
-              </li>
-              <li class="entry">
-                <p class="entry__title">Landsat image of Bangladesh</p>
-                <p class="entry__meta">Country-wide Landsat composite <span class="mono">2025</span></p>
-              </li>
-            </ul>
-          </div>
-
-          <div class="catalog__group">
-            <h3 class="catalog__head">Cities and tools</h3>
-            <ul class="catalog__list">
-              <li class="entry entry--media">
-                <button class="entry__thumb" type="button" data-open="korail" aria-label="View map"><img src="assets/img/work/korail-cycling-accessibility.webp" alt="" loading="lazy" width="120" height="120"></button>
-                <p class="entry__title">Cycling accessibility from Korail, Dhaka</p>
-                <p class="entry__meta">OpenRouteService cycling profile, spline interpolation <span class="mono">2026</span></p>
-                <p class="entry__links"><button class="link" type="button" data-open="korail">View map</button></p>
-              </li>
-              <li class="entry">
-                <p class="entry__title">Bangladesh temperature map generator</p>
-                <p class="entry__meta">Upload a GeoJSON and a date, get a daily temperature map. Open-Meteo and BMD data <span class="mono">2025</span></p>
-                <p class="entry__links"><a class="link" href="https://github.com/Sabbir0Sojib/Bangladesh_Temperature_Map" target="_blank" rel="noopener">Code<svg class="i" aria-hidden="true"><use href="assets/icons.svg#arrow"/></svg></a></p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===================== EXPERIENCE ===================== -->
-      <section id="experience" class="section" aria-labelledby="exp-title">
-        <h2 id="exp-title" class="section__title">Experience</h2>
-
-        <div class="exp">
-          <ol class="timeline">
-            <li class="timeline__item">
-              <h3 class="timeline__role">Undergraduate Thesis Researcher <span class="timeline__when">2025 to present</span></h3>
-              <p class="timeline__org">Geospatial Lab of Environment and Disaster, Pabna University of Science and Technology</p>
-            </li>
-            <li class="timeline__item">
-              <h3 class="timeline__role">Field Data Collector, CH4Rice Project <span class="timeline__when">2025</span></h3>
-              <p class="timeline__org">In collaboration with the JAXA Earth Observation Research Center and the Institute of Industrial Science, University of Tokyo</p>
-            </li>
-            <li class="timeline__item">
-              <h3 class="timeline__role">B.Sc. (Honours) in Geography and Environment</h3>
-              <p class="timeline__org">Pabna University of Science and Technology. CGPA 3.56 / 4.00 across seven semesters; coursework completed, final result awaited.</p>
-            </li>
-          </ol>
-
-          <div class="skills">
-            <h3 class="skills__head">Tools and methods</h3>
-            <dl class="skills__list">
-              <div><dt>Deep learning</dt><dd>PyTorch, SegFormer, U-Net, DeepLabV3+, Mask2Former, YOLO, Mask R-CNN</dd></div>
-              <div><dt>Remote sensing</dt><dd>Google Earth Engine, SNAP, Rasterio, GDAL, ArcGIS, QGIS</dd></div>
-              <div><dt>Satellite data</dt><dd>PlanetScope SuperDove, Sentinel-1, Sentinel-2, Landsat, MODIS</dd></div>
-              <div><dt>UAV</dt><dd>DJI platforms, Agisoft Metashape, Pix4D, point cloud processing</dd></div>
-              <div><dt>Spatial statistics</dt><dd>Moran's I, Getis-Ord Gi*, kernel density estimation, hotspot analysis</dd></div>
-              <div><dt>Programming</dt><dd>Python, R, JavaScript for Earth Engine, Git, LaTeX</dd></div>
-            </dl>
-          </div>
-        </div>
-
-        <div class="honors">
-          <div>
-            <h3 class="honors__head">Awards</h3>
-            <ul class="honors__list">
-              <li><span class="mono">2023</span> Top 8 Team, FOREWARN Disaster Hackathon 1.0</li>
-              <li><span class="mono">2023</span> Runners-up, 6th Interdepartmental Language Debate, Pabna University of Science and Technology</li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="honors__head">Languages</h3>
-            <ul class="honors__list">
-              <li>Bengali, native</li>
-              <li>English, professional working proficiency</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===================== CONTACT ===================== -->
-      <section id="contact" class="section contact" aria-labelledby="contact-title">
-        <h2 id="contact-title" class="contact__title">Email me</h2>
-        <p class="lede">For research collaboration, map work or questions about any project.</p>
-        <ul class="contact__list">
-          <li class="contact__row">
-            <a class="contact__addr" href="mailto:mdsabbirislam820@gmail.com">mdsabbirislam820@gmail.com</a>
-            <button class="copy" type="button" data-copy="mdsabbirislam820@gmail.com" aria-label="Copy Gmail address">
-              <svg class="i i--copy" aria-hidden="true"><use href="assets/icons.svg#copy"/></svg>
-              <svg class="i i--check" aria-hidden="true"><use href="assets/icons.svg#check"/></svg>
-              <span class="copy__label">Copy</span>
-            </button>
+      <!-- ===== CONTACT ===== -->
+      <section id="contact" class="block reveal" aria-labelledby="contact-title">
+        <h2 id="contact-title" class="block__title">Contact</h2>
+        <ul class="contact-rows">
+          <li class="contact-row">
+            <a href="mailto:mdsabbirislam820@gmail.com">mdsabbirislam820@gmail.com</a>
+            <button class="copy" type="button" data-copy="mdsabbirislam820@gmail.com" aria-label="Copy Gmail address"><svg class="i i--copy" aria-hidden="true"><use href="assets/icons.svg#copy"/></svg><svg class="i i--check" aria-hidden="true"><use href="assets/icons.svg#check"/></svg><span class="copy__label">Copy</span></button>
           </li>
-          <li class="contact__row">
-            <a class="contact__addr" href="mailto:sabbir.210908@s.pust.ac.bd">sabbir.210908@s.pust.ac.bd</a>
-            <button class="copy" type="button" data-copy="sabbir.210908@s.pust.ac.bd" aria-label="Copy university email address">
-              <svg class="i i--copy" aria-hidden="true"><use href="assets/icons.svg#copy"/></svg>
-              <svg class="i i--check" aria-hidden="true"><use href="assets/icons.svg#check"/></svg>
-              <span class="copy__label">Copy</span>
-            </button>
+          <li class="contact-row">
+            <a href="mailto:sabbir.210908@s.pust.ac.bd">sabbir.210908@s.pust.ac.bd</a>
+            <button class="copy" type="button" data-copy="sabbir.210908@s.pust.ac.bd" aria-label="Copy university email address"><svg class="i i--copy" aria-hidden="true"><use href="assets/icons.svg#copy"/></svg><svg class="i i--check" aria-hidden="true"><use href="assets/icons.svg#check"/></svg><span class="copy__label">Copy</span></button>
           </li>
         </ul>
-        <p class="contact__social">
-          <a class="link" href="https://www.linkedin.com/in/sabbir-sojib/" target="_blank" rel="me noopener"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#linkedin"/></svg>LinkedIn</a>
-          <a class="link" href="https://github.com/Sabbir0Sojib" target="_blank" rel="me noopener"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#github"/></svg>GitHub</a>
-        </p>
-        <footer class="foot">
-          <p>&copy; 2026 Md Sabbir Islam. Department of Geography and Environment, Pabna University of Science and Technology, Bangladesh.</p>
-        </footer>
       </section>
-    </main>
-  </div>
-
-  <!-- ===================== STATUS BAR ===================== -->
-  <div class="statusbar" aria-hidden="true">
-    <span class="statusbar__cell"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#crosshair"/></svg><span data-status-coord>Lon, Lat</span></span>
-    <span class="statusbar__cell" data-status-layer>About</span>
-    <span class="statusbar__cell statusbar__crs">WGS 84</span>
-  </div>
-
-  <!-- ===================== MAP VIEWER ===================== -->
-  <dialog class="viewer" aria-labelledby="viewer-title">
-    <div class="viewer__bar">
-      <p id="viewer-title" class="viewer__title"></p>
-      <div class="viewer__tools">
-        <a class="tool" data-viewer-original href="#" target="_blank" rel="noopener" aria-label="Open original image"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#arrow"/></svg></a>
-        <button class="tool" type="button" data-viewer-prev aria-label="Previous map"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#prev"/></svg></button>
-        <button class="tool" type="button" data-viewer-next aria-label="Next map"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#next"/></svg></button>
-        <button class="tool" type="button" data-viewer-close aria-label="Close"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#close"/></svg></button>
-      </div>
     </div>
-    <figure class="viewer__body mapframe">
-      <div class="mapframe__view viewer__view">
-        <img class="viewer__img" src="assets/img/work/cyclone-tracks-bangladesh.webp" alt="" loading="lazy">
-        <span class="probe" aria-hidden="true"><span class="probe__x"></span><span class="probe__y"></span></span>
-      </div>
-      <figcaption class="viewer__props">
-        <p class="viewer__meta"></p>
-        <output class="readout" aria-live="off"></output>
-      </figcaption>
-    </figure>
-  </dialog>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap site-foot__row">
+      <p>&copy; 2026 Md Sabbir Islam. Pabna University of Science and Technology, Bangladesh.</p>
+      <p class="site-foot__links">
+        <a class="icon-btn" href="mailto:mdsabbirislam820@gmail.com" aria-label="Email"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#envelope"/></svg></a>
+        <a class="icon-btn" href="https://www.linkedin.com/in/sabbir-sojib/" target="_blank" rel="me noopener" aria-label="LinkedIn"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#linkedin"/></svg></a>
+        <a class="icon-btn" href="https://github.com/Sabbir0Sojib" target="_blank" rel="me noopener" aria-label="GitHub"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#github"/></svg></a>
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
