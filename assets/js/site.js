@@ -337,6 +337,7 @@
 
     initLightbox();
     initStory();
+    initWall();
   }
 
   function initStory() {
@@ -364,6 +365,38 @@
         if (t) t.click();
       });
     });
+  }
+
+  // Maps page: two columns that keep newest-first order (each map goes to the shorter column).
+  var wallItems = null;
+  function layoutWall() {
+    var wall = document.querySelector(".map-wall");
+    if (!wall) return;
+    if (!wallItems) wallItems = Array.prototype.slice.call(wall.querySelectorAll(".shot"));
+    var n = window.matchMedia("(max-width: 760px)").matches ? 1 : 2;
+    var cols = [], heights = [];
+    wall.innerHTML = "";
+    for (var i = 0; i < n; i++) {
+      var c = document.createElement("div"); c.className = "map-wall__col";
+      wall.appendChild(c); cols.push(c); heights.push(0);
+    }
+    wallItems.forEach(function (it) {
+      if (it.hidden) { cols[0].appendChild(it); return; }
+      var img = it.querySelector("img");
+      var ratio = img && img.naturalWidth ? img.naturalHeight / img.naturalWidth : 1;
+      var k = heights.indexOf(Math.min.apply(null, heights));
+      cols[k].appendChild(it);
+      heights[k] += Math.min(ratio, 1.8) + 0.35; // map height plus caption
+    });
+  }
+  function initWall() {
+    var wall = document.querySelector(".map-wall");
+    if (!wall) return;
+    layoutWall();
+    var t = null, again = function () { clearTimeout(t); t = setTimeout(layoutWall, 120); };
+    wall.querySelectorAll("img").forEach(function (im) { if (!im.complete) im.addEventListener("load", again); });
+    window.matchMedia("(max-width: 760px)").addEventListener("change", layoutWall);
+    document.querySelectorAll("[data-filter]").forEach(function (ch) { ch.addEventListener("click", function () { setTimeout(layoutWall, 0); }); });
   }
 
   function fallbackCopy(text) {

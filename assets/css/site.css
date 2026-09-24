@@ -457,6 +457,16 @@ cite { font-style: normal; }
 .project-grid figcaption .link { margin-top: auto; padding-top: 8px; }
 @media (max-width: 760px) { .project-grid { grid-template-columns: 1fr; } }
 
+/* ---------- Maps page: natural-shape map wall ---------- */
+.wrap--wide { max-width: 1360px; }
+.map-wall { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; align-items: start; }
+.map-wall__col { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
+.map-wall .shot { margin: 0; }
+.map-wall .shot[hidden] { display: none; }
+.map-wall .shot__btn { aspect-ratio: auto; padding: 8px; }
+.map-wall .shot__btn img { width: 100%; height: auto; max-height: 1100px; object-fit: contain; }
+@media (max-width: 760px) { .map-wall { grid-template-columns: 1fr; } }
+
 /* ---------- Code projects (GitHub) ---------- */
 .repo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
 .repo {

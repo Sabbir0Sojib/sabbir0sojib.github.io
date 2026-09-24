@@ -184,6 +184,7 @@ Flat. Project cards lift 3px with a soft shadow on hover. The gallery viewer is 
 - **Buttons:** pill, 46px; primary green, secondary white with a line; disabled at 45% opacity.
 - **Contact cards:** two-column grid of white cards (icon in a green-tint circle, small label, full value that wraps, icon-only copy button). One card per email, ORCID, LinkedIn and GitHub.
 - **Ordering:** projects and research render newest year first; items in the same year keep their CMS order.
+- **Maps page (map wall):** wider page (1360px). Two columns; each map keeps its natural shape at full card width (max 1100px tall) and is placed in the shorter column in date order, so reading order stays newest first. One column on phones.
 - **Gallery (photos):** the same borderless card for photos of conferences, fieldwork and the lab.
 - **Research publication list:** academic style. Groups (Journal manuscripts, Conference papers, Thesis, Field work) each with a heading, a count badge and a 2px ink rule; numbered entries in citation form: authors (owner bold), (year). **Title.** *Venue.* plus a status badge, and an optional muted note line. No cards, no filters.
 - **Research story row (older name):** year, type and status on one line, then title, authors (owner in bold), venue and an optional one-line note. Filter chips by type.
