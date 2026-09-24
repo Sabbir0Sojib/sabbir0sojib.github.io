@@ -16,7 +16,7 @@ Plain HTML, CSS and vanilla JavaScript. No framework, no npm build for the live 
 - Every piece of content must stay **editable in Pages CMS** (see below). Never hardcode new content in HTML or JS.
 - Projects, maps and research are shown **newest first by date**.
 - **Projects = work with a GitHub repo; Maps = single map images; Gallery = photos.** Keep them separate.
-- Research items are all **equal** (no highlighted thesis, no big numbers).
+- Research is an **academic publication list**: grouped by type, numbered, citation style, all items equal (no highlighted thesis, no big numbers, no cards).
 - Keep replies short and simple; he is not a developer.
 - He asked that the four design skills be used on design work (see "Design skills").
 

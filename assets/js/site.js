@@ -87,20 +87,33 @@
 
   var TYPE_LABEL = { journal: "Journal manuscript", conference: "Conference paper", field: "Field work", thesis: "Thesis", other: "Research" };
   function boldOwner(authors) { return esc(authors).split(esc(OWNER)).join("<b>" + esc(OWNER) + "</b>"); }
+  var GROUPS = [
+    ["journal", "Journal manuscripts"], ["conference", "Conference papers"],
+    ["thesis", "Thesis"], ["field", "Field work"], ["other", "Other"]
+  ];
   function renderResearch(el, list) {
     list = newestFirst(list);
-    el.innerHTML = list.map(function (r) {
-      var done = /presented|published|accepted/i.test(r.status || "");
-      var status = r.status ? '<span class="status' + (done ? " status--done" : "") + '">' + esc(r.status) + "</span>" : "";
-      var title = r.link ? '<a href="' + esc(r.link) + '" target="_blank" rel="noopener">' + esc(r.title) + "</a>" : esc(r.title);
-      return '<li class="story" data-cat="' + esc(r.type) + '">' +
-        '<div class="story__meta"><span class="story__year">' + esc(r.year) + '</span><span class="story__type">' + esc(TYPE_LABEL[r.type] || r.type) + "</span>" + status + "</div>" +
-        '<div class="story__main">' +
-          '<h2 class="story__title">' + title + "</h2>" +
-          (r.authors ? '<p class="story__byline">' + boldOwner(r.authors) + "</p>" : "") +
-          (r.venue ? '<p class="story__venue">' + esc(r.venue) + "</p>" : "") +
-          (r.note ? '<p class="story__note">' + esc(r.note) + "</p>" : "") +
-        "</div></li>";
+    el.innerHTML = GROUPS.map(function (g) {
+      var items = list.filter(function (r) { return (r.type || "other") === g[0]; });
+      if (!items.length) return "";
+      return '<section class="pubgroup" aria-labelledby="pg-' + g[0] + '">' +
+        '<h2 class="pubgroup__title" id="pg-' + g[0] + '">' + g[1] + ' <span class="pubgroup__count">' + items.length + "</span></h2>" +
+        '<ol class="publist">' + items.map(function (r, i) {
+          var done = /presented|published|accepted/i.test(r.status || "");
+          var status = r.status ? ' <span class="status' + (done ? " status--done" : "") + '">' + esc(r.status) + "</span>" : "";
+          var title = r.link ? '<a href="' + esc(r.link) + '" target="_blank" rel="noopener">' + esc(r.title) + "</a>" : esc(r.title);
+          return '<li class="pub">' +
+            '<span class="pub__n">' + (i + 1) + "</span>" +
+            '<div class="pub__body">' +
+              '<p class="pub__cite">' +
+                (r.authors ? '<span class="pub__authors">' + boldOwner(r.authors) + "</span> " : "") +
+                '<span class="pub__year">(' + esc(r.year) + ").</span> " +
+                '<span class="pub__title">' + title + ".</span> " +
+                (r.venue ? '<span class="pub__venue">' + esc(r.venue) + ".</span>" : "") + status +
+              "</p>" +
+              (r.note ? '<p class="pub__note">' + esc(r.note) + "</p>" : "") +
+            "</div></li>";
+        }).join("") + "</ol></section>";
     }).join("");
   }
 

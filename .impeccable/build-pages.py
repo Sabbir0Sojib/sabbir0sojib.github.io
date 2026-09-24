@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os
 OUT = "/home/user/sabbir0sojib.github.io"
-VER = "20260924u"   # bump to force browsers to load new CSS/JS
+VER = "20260924w"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -91,8 +91,7 @@ write("research.html", page("research.html","Research | Md Sabbir Islam","Papers
         <h1 class="page-head__title" data-site="research_title">Research</h1>
         <p class="page-head__lede" data-site="research_intro">Papers, manuscripts and field work, newest first.</p>
       </header>
-{chips("Filter research by type", [("all","All"),("journal","Journal manuscripts"),("conference","Conference papers"),("field","Field work")])}
-      <ol class="stories" data-render="research" aria-busy="true"></ol>
+      <div class="publications" data-render="research" aria-busy="true"></div>
       <p class="list-empty" hidden>Nothing here yet.</p>
 {NOSCRIPT}
     </div>"""))
