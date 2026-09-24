@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gallery | Md Sabbir Islam</title>
-  <meta name="description" content="Photos of Md Sabbir Islam at conferences, fieldwork and the lab.">
+  <title>Maps | Md Sabbir Islam</title>
+  <meta name="description" content="Maps by Md Sabbir Islam across Bangladesh: cyclones, floods, groundwater, heat, elevation and more.">
   <meta name="author" content="Md Sabbir Islam">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Gallery | Md Sabbir Islam">
-  <meta property="og:description" content="Photos of Md Sabbir Islam at conferences, fieldwork and the lab.">
+  <meta property="og:title" content="Maps | Md Sabbir Islam">
+  <meta property="og:description" content="Maps by Md Sabbir Islam across Bangladesh: cyclones, floods, groundwater, heat, elevation and more.">
   <meta property="og:image" content="https://sabbir0sojib.github.io/assets/img/sabbir-portrait.jpg">
   <meta name="theme-color" content="#F7F9F6">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -26,8 +26,8 @@
           <a href="index.html">Profile</a>
           <a href="research.html">Research</a>
           <a href="projects.html">Projects</a>
-          <a href="maps.html">Maps</a>
-          <a href="gallery.html" aria-current="page">Gallery</a>
+          <a href="maps.html" aria-current="page">Maps</a>
+          <a href="gallery.html">Gallery</a>
           <a href="fun.html">Fun</a>
       </nav>
     </div>
@@ -36,12 +36,23 @@
   <main id="main">
     <div class="wrap">
       <header class="page-head">
-        <h1 class="page-head__title" data-site="gallery_title">Gallery</h1>
-        <p class="page-head__lede" data-site="gallery_intro">Moments from conferences, fieldwork and the lab.</p>
+        <h1 class="page-head__title" data-site="maps_title">Maps</h1>
+        <p class="page-head__lede" data-site="maps_intro">Single maps, newest first. Click a map to view it full size.</p>
       </header>
-      <div class="gallery gallery--photos" data-render="gallery" aria-busy="true"></div>
-      <p class="list-empty" hidden>Photos are on the way.</p>
+      <div class="chips" role="toolbar" aria-label="Filter maps by theme">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-filter="hazard" aria-pressed="false">Hazards and climate</button>
+        <button class="chip" type="button" data-filter="water" aria-pressed="false">Water</button>
+        <button class="chip" type="button" data-filter="land" aria-pressed="false">Land and terrain</button>
+        <button class="chip" type="button" data-filter="city" aria-pressed="false">Cities</button>
+      </div>
+      <div class="project-grid" data-render="maps" aria-busy="true"></div>
+      <p class="list-empty" hidden>No maps in this theme yet.</p>
       <noscript><p class="list-empty">This page needs JavaScript to show its content.</p></noscript>
+      <section class="block" aria-labelledby="more-work" style="margin-top: 40px;" data-render-wrap="projects-more" hidden>
+        <h2 id="more-work" class="block__title">More maps, images coming soon</h2>
+        <ul class="more" data-render="projects-more"></ul>
+      </section>
     </div>
 
     <dialog class="lightbox" aria-labelledby="lb-title">

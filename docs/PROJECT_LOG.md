@@ -16,6 +16,7 @@ History of how this site was built, what was tried and why things are the way th
 10. **Current design.** White page, dark ink, forest green `#166534` accent, light footer. Contact as labelled cards. Projects in two large columns with "View full size", sorted newest first by date. Page titles, intros and footer editable in `content/site.json`.
 11. **Workflow note.** The owner commits to `main` via Pages CMS; merge `origin/main` before every push.
 12. **Game levels.** Pin the Place gained Easy (divisions), Medium (districts), Hard (upazilas) and Landmarks levels, on unlabeled satellite imagery (Esri, EOX fallback), with a new layout for desktop and mobile.
+13. **Projects vs Maps.** Split into Projects (GitHub repos, `content/projects.json`) and Maps (single maps, `content/maps.json`). Landmarks level got 37 famous tourist spots.
 
 ## Open items
 

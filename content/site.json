@@ -5,9 +5,11 @@
   "research_title": "Research",
   "research_intro": "Papers, manuscripts and field work, newest first.",
   "projects_title": "Projects",
-  "projects_intro": "Maps and analysis projects, newest first. Click a map to view it full size.",
+  "projects_intro": "Code projects with open repositories on GitHub, newest first.",
   "gallery_title": "Gallery",
   "gallery_intro": "Moments from conferences, fieldwork and the lab.",
   "fun_title": "Pin the Place",
-  "fun_intro": "How well do you know Bangladesh? Pick a level, then find five places on an unlabeled satellite map."
+  "fun_intro": "How well do you know Bangladesh? Pick a level, then find five places on an unlabeled satellite map.",
+  "maps_title": "Maps",
+  "maps_intro": "Single maps, newest first. Click a map to view it full size."
 }

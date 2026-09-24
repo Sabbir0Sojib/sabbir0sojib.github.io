@@ -1,8 +1,8 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os
 OUT = "/home/user/sabbir0sojib.github.io"
-VER = "20260924p"   # bump to force browsers to load new CSS/JS
-NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("gallery.html","Gallery"),("fun.html","Fun")]
+VER = "20260924r"   # bump to force browsers to load new CSS/JS
+NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
 def icon(n, cls="i"): return f'<svg class="{cls}" aria-hidden="true"><use href="assets/icons.svg?v={VER}#{n}"/></svg>'
@@ -97,17 +97,27 @@ write("research.html", page("research.html","Research | Md Sabbir Islam","Papers
 {NOSCRIPT}
     </div>"""))
 
-write("projects.html", page("projects.html","Projects | Md Sabbir Islam","Maps and analysis projects by Md Sabbir Islam across Bangladesh.", f"""    <div class="wrap">
+write("projects.html", page("projects.html","Projects | Md Sabbir Islam","Code projects by Md Sabbir Islam with open GitHub repositories.", f"""    <div class="wrap">
       <header class="page-head">
         <h1 class="page-head__title" data-site="projects_title">Projects</h1>
-        <p class="page-head__lede" data-site="projects_intro">Maps and analysis projects, newest first. Click a map to view it full size.</p>
+        <p class="page-head__lede" data-site="projects_intro">Code projects with open repositories on GitHub, newest first.</p>
       </header>
-{chips("Filter projects by theme", [("all","All"),("hazard","Hazards and climate"),("water","Water"),("land","Land and terrain"),("city","Cities")])}
-      <div class="project-grid" data-render="projects" aria-busy="true"></div>
-      <p class="list-empty" hidden>No projects in this theme yet.</p>
+      <div class="repo-grid" data-render="repos" aria-busy="true"></div>
+      <p class="list-empty" hidden>No projects yet.</p>
+{NOSCRIPT}
+    </div>"""))
+
+write("maps.html", page("maps.html","Maps | Md Sabbir Islam","Maps by Md Sabbir Islam across Bangladesh: cyclones, floods, groundwater, heat, elevation and more.", f"""    <div class="wrap">
+      <header class="page-head">
+        <h1 class="page-head__title" data-site="maps_title">Maps</h1>
+        <p class="page-head__lede" data-site="maps_intro">Single maps, newest first. Click a map to view it full size.</p>
+      </header>
+{chips("Filter maps by theme", [("all","All"),("hazard","Hazards and climate"),("water","Water"),("land","Land and terrain"),("city","Cities")])}
+      <div class="project-grid" data-render="maps" aria-busy="true"></div>
+      <p class="list-empty" hidden>No maps in this theme yet.</p>
 {NOSCRIPT}
       <section class="block" aria-labelledby="more-work" style="margin-top: 40px;" data-render-wrap="projects-more" hidden>
-        <h2 id="more-work" class="block__title">More projects</h2>
+        <h2 id="more-work" class="block__title">More maps, images coming soon</h2>
         <ul class="more" data-render="projects-more"></ul>
       </section>
     </div>

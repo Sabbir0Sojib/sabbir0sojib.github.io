@@ -102,6 +102,28 @@
     }).join("");
   }
 
+  function renderRepos(el, list) {
+    list = newestFirst(list);
+    el.innerHTML = list.map(function (p) {
+      var tools = String(p.tools || "").split(",").map(function (t) { return t.trim(); }).filter(Boolean)
+        .map(function (t) { return '<li class="tag">' + esc(t) + "</li>"; }).join("");
+      var repoName = String(p.repo || "").replace(/^https?:\/\/(www\.)?github\.com\//, "").replace(/\/$/, "");
+      var media = p.image
+        ? '<img src="' + esc(src(p.image)) + '" alt="' + esc(p.image_alt || p.title) + '" loading="lazy">'
+        : '<span class="repo__tile">' + icon("github") + '<span>' + esc(repoName) + "</span></span>";
+      return '<article class="repo">' +
+        '<a class="repo__media" href="' + esc(p.repo) + '" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">' + media + "</a>" +
+        '<div class="repo__body">' +
+          '<p class="shot__top"><span class="repo__title">' + esc(p.title) + '</span><span class="mono shot__year">' + esc(p.year) + "</span></p>" +
+          '<p class="repo__text">' + esc(p.description) + "</p>" +
+          (tools ? '<ul class="tags repo__tags">' + tools + "</ul>" : "") +
+          '<a class="btn repo__btn" href="' + esc(p.repo) + '" target="_blank" rel="noopener">' + icon("github") + "View on GitHub</a>" +
+        "</div></article>";
+    }).join("");
+    var empty = document.querySelector(".list-empty");
+    if (empty) empty.hidden = list.length > 0;
+  }
+
   function renderProjects(el, list) {
     list = newestFirst(list);
     var withImg = list.filter(function (p) { return p.image; });
@@ -220,6 +242,8 @@
     profile: ["profile", renderProfile, "the profile"],
     cover: ["profile", renderCover, "the profile"],
     story: ["projects", renderStory, "the map story"],
+    maps: ["maps", renderProjects, "maps"],
+    repos: ["projects", renderRepos, "projects"],
     finale: ["profile", renderFinale, "contact details"],
     research: ["research", renderResearch, "research"],
     projects: ["projects", renderProjects, "projects"],
@@ -247,6 +271,11 @@
 
   /* ================= Behaviour (after render) ================= */
   function init() {
+    // Keep the current page visible in the scrollable phone menu
+    var cur = document.querySelector('.nav [aria-current="page"]');
+    var nav = document.querySelector('.nav');
+    if (cur && nav && nav.scrollWidth > nav.clientWidth) nav.scrollLeft = cur.offsetLeft - (nav.clientWidth - cur.offsetWidth) / 2;
+
     // Gentle reveal on scroll
     var reveals = document.querySelectorAll(".reveal");
     if ("IntersectionObserver" in window) {

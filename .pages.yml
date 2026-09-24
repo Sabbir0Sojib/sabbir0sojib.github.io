@@ -19,6 +19,8 @@ content:
       - { name: research_intro, label: Research page intro, type: text }
       - { name: projects_title, label: Projects page title, type: string }
       - { name: projects_intro, label: Projects page intro, type: text }
+      - { name: maps_title, label: Maps page title, type: string }
+      - { name: maps_intro, label: Maps page intro, type: text }
       - { name: gallery_title, label: Gallery page title, type: string }
       - { name: gallery_intro, label: Gallery page intro, type: text }
       - { name: fun_title, label: Fun page title, type: string }
@@ -28,10 +30,27 @@ content:
       - { name: footer, label: Footer text, type: string }
 
   - name: projects
-    label: Projects
-    description: Every map project. The site shows them newest first, by date. Projects without an image appear under "More projects".
+    label: Projects (GitHub)
+    description: Code projects with a GitHub repository. Shown newest first by date.
     type: file
     path: content/projects.json
+    format: json
+    list: true
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: year, label: Year, type: string }
+      - { name: date, label: "Date (sets the order; newest shows first)", type: date }
+      - { name: description, label: Description, type: text }
+      - { name: tools, label: "Tools (comma separated, for example: Python, geopandas)", type: string }
+      - { name: repo, label: GitHub repository link, type: string, required: true }
+      - { name: image, label: Preview image (optional), type: image }
+      - { name: image_alt, label: Image description (for screen readers), type: string }
+
+  - name: maps
+    label: Maps
+    description: Single maps. Maps with an image appear in the grid; maps without an image appear under "More maps". Shown newest first by date.
+    type: file
+    path: content/maps.json
     format: json
     list: true
     fields:
@@ -48,11 +67,8 @@ content:
             - { value: land, label: Land and terrain }
             - { value: city, label: Cities }
       - { name: description, label: Description, type: text }
-      - { name: stat, label: "Big number (for example: 55 years, 9.8 °C)", type: string }
-      - { name: stat_label, label: Line under the big number, type: string }
       - { name: image, label: Map image, type: image }
       - { name: image_alt, label: Image description (for screen readers), type: string }
-      - { name: code, label: GitHub link (optional), type: string }
 
   - name: research
     label: Research

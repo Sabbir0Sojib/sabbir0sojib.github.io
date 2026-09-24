@@ -14,7 +14,8 @@ Plain HTML, CSS and vanilla JavaScript. No framework, no npm build for the live 
 - **Never use em dash or en dash characters** anywhere: site text, content, commit messages, chat replies. Use commas, periods or hyphens.
 - Wants a **clean, professional portfolio**: white page, dark text, one forest-green accent. He rejected: a GIS-workspace layout, a dark hero with slideshow, a green "Monsoon" panel theme, and a full-page scroll story. Do not reintroduce these.
 - Every piece of content must stay **editable in Pages CMS** (see below). Never hardcode new content in HTML or JS.
-- Projects and research are shown **newest first by date**.
+- Projects, maps and research are shown **newest first by date**.
+- **Projects = work with a GitHub repo; Maps = single map images; Gallery = photos.** Keep them separate.
 - Research items are all **equal** (no highlighted thesis, no big numbers).
 - Keep replies short and simple; he is not a developer.
 - He asked that the four design skills be used on design work (see "Design skills").
@@ -25,7 +26,8 @@ Plain HTML, CSS and vanilla JavaScript. No framework, no npm build for the live 
 |---|---|---|
 | Profile (home) | `index.html` | `content/profile.json` |
 | Research | `research.html` | `content/research.json` |
-| Projects (maps) | `projects.html` | `content/projects.json` |
+| Projects (GitHub repos) | `projects.html` | `content/projects.json` |
+| Maps (single maps) | `maps.html` | `content/maps.json` |
 | Gallery (photos) | `gallery.html` | `content/gallery.json` |
 | Fun: Pin the Place game | `fun.html` | `assets/data/bd-*.geojson` (levels) and `content/places.json` (Landmarks) |
 | All pages: titles, intros, footer, contact note | | `content/site.json` |
@@ -40,7 +42,8 @@ Plain HTML, CSS and vanilla JavaScript. No framework, no npm build for the live 
 
 ## Content model (`content/*.json`)
 
-- `projects.json`: `title, year, date, theme (hazard|water|land|city), description, stat, stat_label, image, image_alt, code`. Projects without `image` appear under "More projects".
+- `projects.json` (code projects): `title, year, date, description, tools (comma separated), repo, image, image_alt`. Cards link to GitHub; no image gives a green GitHub tile.
+- `maps.json` (single maps): `title, year, date, theme (hazard|water|land|city), description, image, image_alt`. Maps without `image` appear under "More maps".
 - `research.json`: `year, date, type (journal|conference|field|thesis|other), status, title, authors, venue, note, link`. The owner's name `Islam, M.S.` is bolded automatically. Status containing presented/published/accepted gets the green badge.
 - `profile.json`: `name, role, bio, photo, photo_alt, facts[{label,value}], emails[{label,address}], orcid, linkedin, github, interests[], experience[{when,title,detail}], skills[{group,items}], awards[{year,text}], languages[]`.
 - `gallery.json`: `image, title, caption, alt`.

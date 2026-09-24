@@ -1,0 +1,146 @@
+[
+  {
+    "title": "Elevation, southeastern Bangladesh",
+    "year": "2026",
+    "date": "2026-09-19",
+    "theme": "land",
+    "description": "Bandarban, Rangamati, Khagrachhari, Chittagong and Cox's Bazar. ALOS World 3D 30 m DEM.",
+    "image": "/assets/img/work/elevation-southeast-bangladesh.webp",
+    "image_alt": "Hillshaded elevation map of the Chittagong Hill Tracts and coastal southeast Bangladesh"
+  },
+  {
+    "title": "Crop suitability, Bangladesh",
+    "year": "2026",
+    "date": "2026-09-08",
+    "theme": "land",
+    "description": "Five suitability classes from BARC data, weighted overlay.",
+    "image": "/assets/img/work/crop-suitability-bangladesh.webp",
+    "image_alt": "Crop suitability map of Bangladesh in five classes"
+  },
+  {
+    "title": "Sea level rise simulation, Bangladesh",
+    "year": "2026",
+    "date": "2026-09-06",
+    "theme": "hazard",
+    "description": "SRTM 30 m DEM, bathtub inundation model, Python.",
+    "image": "",
+    "image_alt": ""
+  },
+  {
+    "title": "Prevailing 10 m wind, 2023",
+    "year": "2026",
+    "date": "2026-09-04",
+    "theme": "hazard",
+    "description": "ERA5 reanalysis via Open-Meteo, with wind roses for Dhaka, Khulna and Chattogram.",
+    "image": "/assets/img/work/wind-bangladesh-2023.webp",
+    "image_alt": "Map of prevailing wind speed and direction over Bangladesh in 2023"
+  },
+  {
+    "title": "Cyclone tracks and exposure corridor",
+    "year": "2026",
+    "date": "2026-09-03",
+    "theme": "hazard",
+    "description": "12 major storm tracks from 1970 to 2024 turned into a severity-weighted exposure corridor. geopandas, scipy, matplotlib",
+    "image": "/assets/img/work/cyclone-tracks-bangladesh.webp",
+    "image_alt": "Map of Bangladesh showing 12 historical cyclone tracks from 1970 to 2024 over a coloured exposure corridor"
+  },
+  {
+    "title": "Nepal flash flood, before and after",
+    "year": "2026",
+    "date": "2026-09-02",
+    "theme": "hazard",
+    "description": "Betrawati-Gerkhu reach, Nuwakot District. Sentinel-2.",
+    "image": "",
+    "image_alt": ""
+  },
+  {
+    "title": "Cycling accessibility from Korail, Dhaka",
+    "year": "2026",
+    "date": "2026-09-01",
+    "theme": "city",
+    "description": "2,000 sampled points routed with OpenRouteService, cubic spline interpolation.",
+    "image": "/assets/img/work/korail-cycling-accessibility.webp",
+    "image_alt": "Isochrone map of cycling time from Korail, Dhaka, in 10 minute bands"
+  },
+  {
+    "title": "Land use and land cover, Dhaka District",
+    "year": "2026",
+    "date": "2026-01-28",
+    "theme": "land",
+    "description": "Sentinel-2 classification.",
+    "image": "",
+    "image_alt": ""
+  },
+  {
+    "title": "Cold wave, 29 December 2025",
+    "year": "2025",
+    "date": "2025-12-29",
+    "theme": "hazard",
+    "description": "Daily minimum temperature from BMD data, made with my temperature map generator. Lowest: Nikli, 9.8 °C.",
+    "image": "/assets/img/work/cold-wave-bangladesh-2025.webp",
+    "image_alt": "Map of minimum temperature across Bangladesh on 29 December 2025, coldest around Nikli"
+  },
+  {
+    "title": "Surface water temperature, Pabna District",
+    "year": "2025",
+    "date": "2025-12-25",
+    "theme": "water",
+    "description": "Satellite thermal analysis of rivers and water bodies. Mean 25.39 °C, range 22.6 to 33.7 °C.",
+    "image": "/assets/img/work/surface-water-temperature-pabna.webp",
+    "image_alt": "Map of Pabna District with surface water temperature along the Padma and Jamuna rivers"
+  },
+  {
+    "title": "Flood delineation, Sylhet and Sunamganj, 2023",
+    "year": "2025",
+    "date": "2025-12-02",
+    "theme": "hazard",
+    "description": "Flooded area mapped from Copernicus Sentinel-1 radar imagery.",
+    "image": "/assets/img/work/flood-sylhet-sunamganj-2023.webp",
+    "image_alt": "Map of Sylhet and Sunamganj districts with flooded areas in cyan, mostly in the west"
+  },
+  {
+    "title": "Groundwater depth, Pabna District",
+    "year": "2025",
+    "date": "2025-12-02",
+    "theme": "water",
+    "description": "Depth to water interpolated from observation wells, 1.2 to 10.4 m.",
+    "image": "/assets/img/work/groundwater-depth-pabna.webp",
+    "image_alt": "Groundwater depth map of Pabna District, shallow in the east and deeper in the far west"
+  },
+  {
+    "title": "Landsat image of Bangladesh",
+    "year": "2025",
+    "date": "2025-07-24",
+    "theme": "land",
+    "description": "Country-wide Landsat composite.",
+    "image": "",
+    "image_alt": ""
+  },
+  {
+    "title": "Stream order of the Padma River basin",
+    "year": "2025",
+    "date": "2025-07-22",
+    "theme": "water",
+    "description": "Stream orders 1 to 4 derived from a DEM, with the watershed boundary. QGIS.",
+    "image": "/assets/img/work/padma-stream-order.webp",
+    "image_alt": "Stream order map of the Padma River basin"
+  },
+  {
+    "title": "Earthquake hazard from recent events, Bangladesh",
+    "year": "2025",
+    "date": "2025-03-30",
+    "theme": "hazard",
+    "description": "USGS events, IDW interpolation in ArcMap.",
+    "image": "",
+    "image_alt": ""
+  },
+  {
+    "title": "Landsat 8 harmonic modeling, Pabna District",
+    "year": "2025",
+    "date": "2025-03-15",
+    "theme": "land",
+    "description": "Time series harmonic regression.",
+    "image": "",
+    "image_alt": ""
+  }
+]

@@ -436,6 +436,27 @@ cite { font-style: normal; }
 .project-grid figcaption .link { margin-top: auto; padding-top: 8px; }
 @media (max-width: 760px) { .project-grid { grid-template-columns: 1fr; } }
 
+/* ---------- Code projects (GitHub) ---------- */
+.repo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.repo {
+  display: flex; flex-direction: column; background: #fff;
+  border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
+  transition: border-color 200ms var(--ease), transform 250ms var(--ease);
+}
+.repo:hover { border-color: var(--line-2); transform: translateY(-2px); }
+.repo__media { display: block; aspect-ratio: 16 / 9; background: var(--surface); border-bottom: 1px solid var(--line); overflow: hidden; }
+.repo__media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.repo__tile { display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; height: 100%; padding: 22px; background: var(--accent); color: #fff; }
+.repo__tile .i { width: 32px; height: 32px; margin-bottom: auto; }
+.repo__tile span { font-family: var(--mono); font-size: 0.9375rem; overflow-wrap: anywhere; }
+.repo__body { display: flex; flex-direction: column; gap: 10px; padding: 20px 22px 22px; flex: 1; }
+.repo__title { font-weight: 650; font-size: 1.1875rem; line-height: 1.3; }
+.repo__text { color: var(--ink-2); font-size: 0.9375rem; }
+.repo__tags { margin-top: 2px; }
+.repo__tags .tag { background: var(--surface); color: var(--ink-2); font-size: 0.8125rem; padding: 4px 10px; }
+.repo__btn { align-self: flex-start; margin-top: auto; }
+@media (max-width: 760px) { .repo-grid { grid-template-columns: 1fr; } }
+
 /* ---------- Footer ---------- */
 .site-foot { margin-top: clamp(56px, 8vw, 96px); background: var(--surface); border-top: 1px solid var(--line); color: var(--muted); }
 .site-foot .icon-btn { color: var(--ink-2); }
@@ -464,7 +485,7 @@ cite { font-style: normal; }
   :root { --header-h: 108px; }
   .site-head__row { flex-direction: column; align-items: stretch; justify-content: center; gap: 8px; }
   .nav { overflow-x: auto; scrollbar-width: none; margin: 0 calc(var(--pad) * -1); padding: 0 var(--pad); }
-  .nav { gap: 0; justify-content: space-between; }
+  .nav { gap: 2px; }
   .nav a { padding: 7px 11px; font-size: 0.9375rem; }
   .nav::-webkit-scrollbar { display: none; }
   .intro { grid-template-columns: 1fr; }

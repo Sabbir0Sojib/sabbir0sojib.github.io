@@ -12,7 +12,8 @@ All the words, maps and photos live in simple data files in the `content/` folde
 | `content/site.json` | Page titles and intros, contact note, footer text |
 | `content/profile.json` | Name, bio, photo, facts, interests, experience, skills, awards, languages, emails, ORCID, links |
 | `content/research.json` | Papers, manuscripts and field work (Research page) |
-| `content/projects.json` | Map projects. Projects with an image appear as cards on the Projects page. Projects without an image go under "More projects". |
+| `content/projects.json` | Code projects with a GitHub repo (Projects page) |
+| `content/maps.json` | Single maps (Maps page). Maps without an image go under "More maps". |
 | `content/gallery.json` | Photos (Gallery page) |
 | `content/places.json` | Places for the Pin the Place game (Fun page) |
 
@@ -20,7 +21,7 @@ All the words, maps and photos live in simple data files in the `content/` folde
 
 1. Go to **https://app.pagescms.org** and click **Sign in with GitHub**.
 2. The first time, it asks to install the Pages CMS GitHub app. Allow it for the repository `sabbir0sojib.github.io`.
-3. Open the repository. On the left you will see **Page titles and text**, **Projects**, **Research**, **Gallery (photos)**, **Profile** and **Fun game places**.
+3. Open the repository. On the left you will see **Page titles and text**, **Projects (GitHub)**, **Maps**, **Research**, **Gallery (photos)**, **Profile** and **Fun game places**.
 4. Click one, then:
    - **Add** a new item with the add button at the bottom of the list,
    - **Edit** any field,

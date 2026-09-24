@@ -1,21 +1,21 @@
 <!doctype html>
-<html lang="en" data-v="20260924p">
+<html lang="en" data-v="20260924r">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Projects | Md Sabbir Islam</title>
-  <meta name="description" content="Maps and analysis projects by Md Sabbir Islam across Bangladesh.">
+  <meta name="description" content="Code projects by Md Sabbir Islam with open GitHub repositories.">
   <meta name="author" content="Md Sabbir Islam">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Projects | Md Sabbir Islam">
-  <meta property="og:description" content="Maps and analysis projects by Md Sabbir Islam across Bangladesh.">
+  <meta property="og:description" content="Code projects by Md Sabbir Islam with open GitHub repositories.">
   <meta property="og:image" content="https://sabbir0sojib.github.io/assets/img/sabbir-portrait.jpg">
   <meta name="theme-color" content="#F7F9F6">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/site.css?v=20260924p">
+  <link rel="stylesheet" href="assets/css/site.css?v=20260924r">
   <script>document.documentElement.classList.add("js");</script>
-  <script src="assets/js/site.js?v=20260924p" defer></script>
+  <script src="assets/js/site.js?v=20260924r" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -26,6 +26,7 @@
           <a href="index.html">Profile</a>
           <a href="research.html">Research</a>
           <a href="projects.html" aria-current="page">Projects</a>
+          <a href="maps.html">Maps</a>
           <a href="gallery.html">Gallery</a>
           <a href="fun.html">Fun</a>
       </nav>
@@ -36,47 +37,22 @@
     <div class="wrap">
       <header class="page-head">
         <h1 class="page-head__title" data-site="projects_title">Projects</h1>
-        <p class="page-head__lede" data-site="projects_intro">Maps and analysis projects, newest first. Click a map to view it full size.</p>
+        <p class="page-head__lede" data-site="projects_intro">Code projects with open repositories on GitHub, newest first.</p>
       </header>
-      <div class="chips" role="toolbar" aria-label="Filter projects by theme">
-        <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
-        <button class="chip" type="button" data-filter="hazard" aria-pressed="false">Hazards and climate</button>
-        <button class="chip" type="button" data-filter="water" aria-pressed="false">Water</button>
-        <button class="chip" type="button" data-filter="land" aria-pressed="false">Land and terrain</button>
-        <button class="chip" type="button" data-filter="city" aria-pressed="false">Cities</button>
-      </div>
-      <div class="project-grid" data-render="projects" aria-busy="true"></div>
-      <p class="list-empty" hidden>No projects in this theme yet.</p>
+      <div class="repo-grid" data-render="repos" aria-busy="true"></div>
+      <p class="list-empty" hidden>No projects yet.</p>
       <noscript><p class="list-empty">This page needs JavaScript to show its content.</p></noscript>
-      <section class="block" aria-labelledby="more-work" style="margin-top: 40px;" data-render-wrap="projects-more" hidden>
-        <h2 id="more-work" class="block__title">More projects</h2>
-        <ul class="more" data-render="projects-more"></ul>
-      </section>
     </div>
-
-    <dialog class="lightbox" aria-labelledby="lb-title">
-      <div class="lightbox__bar">
-        <p id="lb-title" class="lightbox__title"></p>
-        <div class="lightbox__tools">
-          <a class="icon-btn" data-lb-original href="#" target="_blank" rel="noopener" aria-label="Open original image"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924p#arrow"/></svg></a>
-          <button class="icon-btn" type="button" data-lb-prev aria-label="Previous"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924p#prev"/></svg></button>
-          <button class="icon-btn" type="button" data-lb-next aria-label="Next"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924p#next"/></svg></button>
-          <button class="icon-btn" type="button" data-lb-close aria-label="Close"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924p#close"/></svg></button>
-        </div>
-      </div>
-      <div class="lightbox__view"><img class="lightbox__img" src="assets/img/work/cyclone-tracks-bangladesh.webp" alt=""></div>
-      <p class="lightbox__meta"></p>
-    </dialog>
   </main>
 
   <footer class="site-foot">
     <div class="wrap site-foot__row">
       <p data-site="footer">&copy; 2026 Md Sabbir Islam. Pabna University of Science and Technology, Bangladesh.</p>
       <p class="site-foot__links">
-        <a class="icon-btn" href="mailto:mdsabbirislam820@gmail.com" aria-label="Email"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924p#envelope"/></svg></a>
-        <a class="icon-btn" href="https://orcid.org/0009-0001-9474-9287" target="_blank" rel="me noopener" aria-label="ORCID"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924p#orcid"/></svg></a>
-        <a class="icon-btn" href="https://www.linkedin.com/in/sabbir-sojib/" target="_blank" rel="me noopener" aria-label="LinkedIn"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924p#linkedin"/></svg></a>
-        <a class="icon-btn" href="https://github.com/Sabbir0Sojib" target="_blank" rel="me noopener" aria-label="GitHub"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924p#github"/></svg></a>
+        <a class="icon-btn" href="mailto:mdsabbirislam820@gmail.com" aria-label="Email"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924r#envelope"/></svg></a>
+        <a class="icon-btn" href="https://orcid.org/0009-0001-9474-9287" target="_blank" rel="me noopener" aria-label="ORCID"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924r#orcid"/></svg></a>
+        <a class="icon-btn" href="https://www.linkedin.com/in/sabbir-sojib/" target="_blank" rel="me noopener" aria-label="LinkedIn"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924r#linkedin"/></svg></a>
+        <a class="icon-btn" href="https://github.com/Sabbir0Sojib" target="_blank" rel="me noopener" aria-label="GitHub"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924r#github"/></svg></a>
       </p>
     </div>
   </footer>
