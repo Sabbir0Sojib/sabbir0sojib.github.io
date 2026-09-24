@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-v="20260924m">
+<html lang="en" data-v="20260924p">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,11 +14,11 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
-  <link rel="stylesheet" href="assets/css/site.css?v=20260924m">
+  <link rel="stylesheet" href="assets/css/site.css?v=20260924p">
   <script>document.documentElement.classList.add("js");</script>
-  <script src="assets/js/site.js?v=20260924m" defer></script>
+  <script src="assets/js/site.js?v=20260924p" defer></script>
   <script src="assets/vendor/leaflet/leaflet.js" defer></script>
-  <script src="assets/js/game.js?v=20260924m" defer></script>
+  <script src="assets/js/game.js?v=20260924p" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -39,38 +39,51 @@
     <div class="wrap">
       <header class="page-head page-head--compact">
         <h1 class="page-head__title" data-site="fun_title">Pin the Place</h1>
-        <p class="page-head__lede" data-site="fun_intro">How well do you know Bangladesh? Five places, one satellite map with no labels. Click where you think each place is, then see how close you got.</p>
+        <p class="page-head__lede" data-site="fun_intro">How well do you know Bangladesh? Pick a level, then find five places on an unlabeled satellite map.</p>
       </header>
 
       <div class="game" data-game>
+        <div class="game__levels" role="radiogroup" aria-label="Level" data-levels></div>
+
         <aside class="game__panel" aria-live="polite">
           <div class="game__top">
-            <p class="game__round" data-round>Round 1 of 5</p>
-            <p class="game__score"><span data-score>0</span> points</p>
+            <ol class="game__dots" data-dots aria-hidden="true"></ol>
+            <p class="game__score"><span data-score>0</span> pts</p>
           </div>
+
           <div class="game__stage" data-stage="ask">
+            <p class="game__round" data-round>Round 1 of 5</p>
             <p class="game__ask">Where is <b data-place>...</b>?</p>
-            <p class="game__hint">Click the map to drop your pin. You can move it before you lock it in.</p>
+            <p class="game__hint" data-hint></p>
             <button class="btn btn--primary game__btn" type="button" data-lock disabled>Lock in guess</button>
+            <p class="game__tip">Tap the map to drop a pin. Tap again to move it.</p>
           </div>
+
           <div class="game__stage" data-stage="result" hidden>
-            <p class="game__distance"><span data-distance>0</span> km away</p>
+            <p class="game__verdict" data-verdict></p>
             <p class="game__points">+<span data-points>0</span> points</p>
             <p class="game__fact" data-fact></p>
             <button class="btn btn--primary game__btn" type="button" data-next>Next place</button>
           </div>
+
           <div class="game__stage" data-stage="end" hidden>
+            <p class="game__round" data-endlevel></p>
             <p class="game__final"><span data-final>0</span><span class="game__of"> / 5000</span></p>
             <p class="game__rating" data-rating></p>
             <p class="game__best" data-best></p>
             <ol class="game__recap" data-recap></ol>
-            <button class="btn btn--primary game__btn" type="button" data-again>Play again</button>
+            <div class="btn-row">
+              <button class="btn btn--primary" type="button" data-again>Play again</button>
+            </div>
           </div>
-          <p class="game__keys">Keyboard: arrow keys move the map, Enter drops a pin at the centre.</p>
         </aside>
+
         <div class="game__map">
           <div id="game-map" tabindex="0" aria-label="Unlabeled satellite map of Bangladesh. Click to place your guess."></div>
           <p class="game__loading" data-loading>Loading map...</p>
+          <div class="game__float" data-float hidden>
+            <button class="btn btn--primary" type="button" data-lock-float disabled>Lock in guess</button>
+          </div>
         </div>
       </div>
     </div>
@@ -80,10 +93,10 @@
     <div class="wrap site-foot__row">
       <p data-site="footer">&copy; 2026 Md Sabbir Islam. Pabna University of Science and Technology, Bangladesh.</p>
       <p class="site-foot__links">
-        <a class="icon-btn" href="mailto:mdsabbirislam820@gmail.com" aria-label="Email"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924m#envelope"/></svg></a>
-        <a class="icon-btn" href="https://orcid.org/0009-0001-9474-9287" target="_blank" rel="me noopener" aria-label="ORCID"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924m#orcid"/></svg></a>
-        <a class="icon-btn" href="https://www.linkedin.com/in/sabbir-sojib/" target="_blank" rel="me noopener" aria-label="LinkedIn"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924m#linkedin"/></svg></a>
-        <a class="icon-btn" href="https://github.com/Sabbir0Sojib" target="_blank" rel="me noopener" aria-label="GitHub"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924m#github"/></svg></a>
+        <a class="icon-btn" href="mailto:mdsabbirislam820@gmail.com" aria-label="Email"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924p#envelope"/></svg></a>
+        <a class="icon-btn" href="https://orcid.org/0009-0001-9474-9287" target="_blank" rel="me noopener" aria-label="ORCID"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924p#orcid"/></svg></a>
+        <a class="icon-btn" href="https://www.linkedin.com/in/sabbir-sojib/" target="_blank" rel="me noopener" aria-label="LinkedIn"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924p#linkedin"/></svg></a>
+        <a class="icon-btn" href="https://github.com/Sabbir0Sojib" target="_blank" rel="me noopener" aria-label="GitHub"><svg class="i" aria-hidden="true"><use href="assets/icons.svg?v=20260924p#github"/></svg></a>
       </p>
     </div>
   </footer>

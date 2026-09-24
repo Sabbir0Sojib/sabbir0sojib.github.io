@@ -27,12 +27,12 @@ Plain HTML, CSS and vanilla JavaScript. No framework, no npm build for the live 
 | Research | `research.html` | `content/research.json` |
 | Projects (maps) | `projects.html` | `content/projects.json` |
 | Gallery (photos) | `gallery.html` | `content/gallery.json` |
-| Fun: Pin the Place game | `fun.html` | `content/places.json` |
+| Fun: Pin the Place game | `fun.html` | `assets/data/bd-*.geojson` (levels) and `content/places.json` (Landmarks) |
 | All pages: titles, intros, footer, contact note | | `content/site.json` |
 
 - HTML pages are thin shells with `data-render="..."` containers and `data-site="key"` text hooks.
 - `assets/js/site.js` fetches `content/*.json`, renders every page, then wires filters, lightbox (click to zoom), copy buttons and reveals. `newestFirst()` sorts by `date` (YYYY-MM-DD), falling back to end of `year`.
-- `assets/js/game.js` is the geography game: Leaflet map, unlabeled satellite imagery from Esri World Imagery (no API key; automatic fallback to EOX Sentinel-2 cloudless) with bundled Natural Earth outlines (`assets/data/region.geojson`) drawn on top. CARTO tiles were removed because they started requiring a key. Distance by haversine, points = `round(1000 * exp(-km / 75))`.
+- `assets/js/game.js` is the geography game with levels Easy (8 divisions), Medium (64 districts), Hard (544 upazilas) from geoBoundaries gbOpen BGD ADM1 to ADM3 (source BBS and OCHA, CC BY 3.0 IGO; old spellings fixed, e.g. Chittagong to Chattogram, Rajshani to Rajshahi), and Landmarks from `content/places.json`. A guess inside the right polygon scores 1000; otherwise `round(1000 * exp(-km / scale))` with km to the nearest border vertex and scale 80 / 45 / 25 / 60. Best score is stored per level. It uses Leaflet map, unlabeled satellite imagery from Esri World Imagery (no API key; automatic fallback to EOX Sentinel-2 cloudless) with bundled Natural Earth outlines (`assets/data/region.geojson`) drawn on top. CARTO tiles were removed because they started requiring a key. Distance by haversine, points = `round(1000 * exp(-km / 75))`.
 - `assets/css/site.css`: tokens at the top of `:root` (`--accent` is the green). Ten font sizes, radii 6 / 10 / 16 / pill.
 - `assets/icons.svg`: Phosphor icons (MIT) plus the ORCID logo (Simple Icons, CC0).
 - `assets/vendor/leaflet/`: Leaflet 1.9.4, self-hosted. Fonts self-hosted in `assets/fonts/` (Archivo, JetBrains Mono).

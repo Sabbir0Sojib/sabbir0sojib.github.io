@@ -21,6 +21,8 @@ colors:
   map-water: "#D6E4E4"
   map-night: "#0B1F2A"
   map-highlight: "#FACC15"
+  pin-shadow: "rgba(0, 0, 0, 0.45)"
+  float-button-shadow: "rgba(0, 0, 0, 0.6)"
   map-land: "#F4F6F2"
   map-bangladesh: "#EAF4EE"
   map-border: "#BFC8C0"
@@ -180,7 +182,7 @@ Flat. Project cards lift 3px with a soft shadow on hover. The gallery viewer is 
 - **Gallery (photos):** the same borderless card for photos of conferences, fieldwork and the lab.
 - **Research story row:** year, type and status on one line, then title, authors (owner in bold), venue and an optional one-line note. Filter chips by type.
 - **Project map card (Projects page):** full-bleed map with 16px corners and no border box, title and meta underneath; filter chips above; masonry columns keep each map's natural shape; click opens the viewer with previous, next, open original and click-to-zoom.
-- **Pin the Place:** five random places from a list of 21; click to drop a pin, lock in, see the distance line, points (1000 at 0 km, falling off exponentially with a 75 km scale) and a fact; the end screen shows total, rating, best score on the device and a map recap of every guess. The map shows unlabeled satellite imagery (Esri World Imagery, fallback EOX Sentinel-2 cloudless, no API key) with a yellow Bangladesh outline, white neighbour borders, yellow answer pins and white distance lines.
+- **Pin the Place:** level tabs (Easy divisions, Medium districts, Hard upazilas, Landmarks), progress dots coloured by score, the correct area highlighted in yellow after each guess; on phones the level tabs, question and map stack and a floating Lock in button sits on the map. Five random places per game; click to drop a pin, lock in, see the distance line, points (1000 at 0 km, falling off exponentially with a 75 km scale) and a fact; the end screen shows total, rating, best score on the device and a map recap of every guess. The map shows unlabeled satellite imagery (Esri World Imagery, fallback EOX Sentinel-2 cloudless, no API key) with a yellow Bangladesh outline, white neighbour borders, yellow answer pins and white distance lines.
 
 ## Do's and Don'ts
 

@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os
 OUT = "/home/user/sabbir0sojib.github.io"
-VER = "20260924m"   # bump to force browsers to load new CSS/JS
+VER = "20260924p"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -127,44 +127,57 @@ write("gallery.html", page("gallery.html","Gallery | Md Sabbir Islam","Photos of
 {LIGHTBOX}"""))
 
 # ======================= FUN (game) =======================
-fun = f'''    <div class="wrap">
+fun = f"""    <div class="wrap">
       <header class="page-head page-head--compact">
         <h1 class="page-head__title" data-site="fun_title">Pin the Place</h1>
-        <p class="page-head__lede" data-site="fun_intro">How well do you know Bangladesh? Five places, one satellite map with no labels. Click where you think each place is, then see how close you got.</p>
+        <p class="page-head__lede" data-site="fun_intro">How well do you know Bangladesh? Pick a level, then find five places on an unlabeled satellite map.</p>
       </header>
 
       <div class="game" data-game>
+        <div class="game__levels" role="radiogroup" aria-label="Level" data-levels></div>
+
         <aside class="game__panel" aria-live="polite">
           <div class="game__top">
-            <p class="game__round" data-round>Round 1 of 5</p>
-            <p class="game__score"><span data-score>0</span> points</p>
+            <ol class="game__dots" data-dots aria-hidden="true"></ol>
+            <p class="game__score"><span data-score>0</span> pts</p>
           </div>
+
           <div class="game__stage" data-stage="ask">
+            <p class="game__round" data-round>Round 1 of 5</p>
             <p class="game__ask">Where is <b data-place>...</b>?</p>
-            <p class="game__hint">Click the map to drop your pin. You can move it before you lock it in.</p>
+            <p class="game__hint" data-hint></p>
             <button class="btn btn--primary game__btn" type="button" data-lock disabled>Lock in guess</button>
+            <p class="game__tip">Tap the map to drop a pin. Tap again to move it.</p>
           </div>
+
           <div class="game__stage" data-stage="result" hidden>
-            <p class="game__distance"><span data-distance>0</span> km away</p>
+            <p class="game__verdict" data-verdict></p>
             <p class="game__points">+<span data-points>0</span> points</p>
             <p class="game__fact" data-fact></p>
             <button class="btn btn--primary game__btn" type="button" data-next>Next place</button>
           </div>
+
           <div class="game__stage" data-stage="end" hidden>
+            <p class="game__round" data-endlevel></p>
             <p class="game__final"><span data-final>0</span><span class="game__of"> / 5000</span></p>
             <p class="game__rating" data-rating></p>
             <p class="game__best" data-best></p>
             <ol class="game__recap" data-recap></ol>
-            <button class="btn btn--primary game__btn" type="button" data-again>Play again</button>
+            <div class="btn-row">
+              <button class="btn btn--primary" type="button" data-again>Play again</button>
+            </div>
           </div>
-          <p class="game__keys">Keyboard: arrow keys move the map, Enter drops a pin at the centre.</p>
         </aside>
+
         <div class="game__map">
           <div id="game-map" tabindex="0" aria-label="Unlabeled satellite map of Bangladesh. Click to place your guess."></div>
           <p class="game__loading" data-loading>Loading map...</p>
+          <div class="game__float" data-float hidden>
+            <button class="btn btn--primary" type="button" data-lock-float disabled>Lock in guess</button>
+          </div>
         </div>
       </div>
-    </div>'''
+    </div>"""
 write("fun.html", page("fun.html","Pin the Place | Md Sabbir Islam","A geography game: how well do you know Bangladesh? Pin five places on a blank map.", fun,
     extra_head=f'  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">\n',
     extra_js=f'  <script src="assets/vendor/leaflet/leaflet.js" defer></script>\n  <script src="assets/js/game.js?v={VER}" defer></script>\n'))
