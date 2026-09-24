@@ -122,8 +122,82 @@
     if (empty) empty.hidden = list.length > 0;
   }
 
+
+  /* ---------- Home: cover, map story, finale ---------- */
+  var THEME_LABEL = { hazard: "Hazards and climate", water: "Water", land: "Land and terrain", city: "Cities" };
+
+  function renderCover(el, p) {
+    var orcidUrl = p.orcid ? "https://orcid.org/" + p.orcid : "";
+    el.innerHTML =
+      '<div class="cover__inner">' +
+        '<div class="cover__text">' +
+          '<h1 class="cover__name">' + esc(p.name) + "</h1>" +
+          '<p class="cover__role">' + esc(p.role) + "</p>" +
+          '<p class="cover__bio">' + esc(p.bio) + "</p>" +
+          '<div class="btn-row">' +
+            '<a class="btn btn--primary" href="#contact">' + icon("envelope") + "Email me</a>" +
+            '<a class="btn btn--line" href="about.html">About me</a>' +
+            (orcidUrl ? '<a class="icon-btn icon-btn--light" href="' + esc(orcidUrl) + '" target="_blank" rel="me noopener" aria-label="ORCID">' + icon("orcid") + "</a>" : "") +
+            (p.linkedin ? '<a class="icon-btn icon-btn--light" href="' + esc(p.linkedin) + '" target="_blank" rel="me noopener" aria-label="LinkedIn">' + icon("linkedin") + "</a>" : "") +
+            (p.github ? '<a class="icon-btn icon-btn--light" href="' + esc(p.github) + '" target="_blank" rel="me noopener" aria-label="GitHub">' + icon("github") + "</a>" : "") +
+          "</div>" +
+        "</div>" +
+        (p.photo ? '<img class="cover__photo" src="' + esc(src(p.photo)) + '" width="640" height="800" alt="' + esc(p.photo_alt) + '">' : "") +
+      "</div>";
+  }
+
+  function renderStory(el, list) {
+    var maps = list.filter(function (x) { return x.image; });
+    var n = maps.length;
+    el.innerHTML = maps.map(function (m, i) {
+      var code = m.code ? '<a class="link" href="' + esc(m.code) + '" target="_blank" rel="noopener">View code' + icon("arrow") + "</a>" : "";
+      return '<article class="step' + (i === 0 ? " is-active" : "") + '" data-step="' + i + '">' +
+        '<p class="step__count">Chapter ' + (i + 1) + " of " + n + (THEME_LABEL[m.theme] ? " · " + esc(THEME_LABEL[m.theme]) : "") + "</p>" +
+        (m.stat ? '<p class="step__stat">' + esc(m.stat) + "</p>" : "") +
+        (m.stat_label ? '<p class="step__statlabel">' + esc(m.stat_label) + "</p>" : "") +
+        '<h2 class="step__title">' + esc(m.title) + "</h2>" +
+        '<p class="step__text">' + esc(m.description) + "</p>" +
+        '<button class="step__img" type="button" data-open-step="' + i + '" aria-label="Open ' + esc(m.title) + ' full size">' +
+          '<img src="' + esc(src(m.image)) + '" alt="' + esc(m.image_alt || m.title) + '" loading="lazy"></button>' +
+        '<p class="step__links"><button class="link" type="button" data-open-step="' + i + '">Open full size' + icon("expand") + "</button>" + code + "</p>" +
+      "</article>";
+    }).join("");
+    var stage = document.querySelector("[data-stage]");
+    if (stage) {
+      stage.innerHTML = maps.map(function (m, i) {
+        return '<figure class="stage__item' + (i === 0 ? " is-active" : "") + '" data-i="' + i + '">' +
+          '<button class="stage__btn" type="button" data-lightbox="s' + i + '" aria-label="Open ' + esc(m.title) + ' full size" tabindex="' + (i === 0 ? 0 : -1) + '">' +
+          '<img src="' + esc(src(m.image)) + '" alt="' + esc(m.image_alt || m.title) + '"' + (i > 1 ? ' loading="lazy"' : "") + "></button>" +
+          '<figcaption class="visually-hidden"><span class="shot__title">' + esc(m.title) + '</span><span class="shot__meta">' + esc(m.description) + "</span></figcaption></figure>";
+      }).join("");
+    }
+    var more = list.filter(function (x) { return !x.image; });
+    if (more.length) {
+      el.insertAdjacentHTML("beforeend",
+        '<section class="step step--more" aria-labelledby="more-work"><h2 id="more-work" class="step__title">More projects</h2><ul class="more">' +
+        more.map(function (x) {
+          var code = x.code ? ' <a class="link" href="' + esc(x.code) + '" target="_blank" rel="noopener">Code' + icon("arrow") + "</a>" : "";
+          return '<li><p class="more__title">' + esc(x.title) + '</p><p class="more__meta">' + esc(x.description) + code + "</p></li>";
+        }).join("") + "</ul></section>");
+    }
+  }
+
+  function renderFinale(el, p) {
+    el.innerHTML = '<div class="finale__inner" id="contact">' +
+      '<h2 class="finale__title">Email me</h2>' +
+      '<p class="finale__lede">For research, collaboration or a map you would like to see.</p>' +
+      '<ul class="finale__mails">' + (p.emails || []).map(function (e) {
+        return '<li><a href="mailto:' + esc(e) + '">' + esc(e) + "</a>" + copyBtn(e, "email address") + "</li>";
+      }).join("") + "</ul>" +
+      '<nav class="finale__nav" aria-label="More"><a href="about.html">About me</a><a href="research.html">Research</a><a href="gallery.html">Gallery</a><a href="fun.html">Play Pin the Place</a></nav>' +
+      "</div>";
+  }
+
   var RENDER = {
     profile: ["profile", renderProfile, "the profile"],
+    cover: ["profile", renderCover, "the profile"],
+    story: ["projects", renderStory, "the map story"],
+    finale: ["profile", renderFinale, "contact details"],
     research: ["research", renderResearch, "research"],
     projects: ["projects", renderProjects, "projects"],
     gallery: ["gallery", renderGallery, "photos"]
@@ -187,6 +261,34 @@
     });
 
     initLightbox();
+    initStory();
+  }
+
+  function initStory() {
+    var steps = Array.prototype.slice.call(document.querySelectorAll(".step[data-step]"));
+    var items = Array.prototype.slice.call(document.querySelectorAll(".stage__item"));
+    if (!steps.length || !items.length) return;
+    var activate = function (i) {
+      steps.forEach(function (st, j) { st.classList.toggle("is-active", j === i); });
+      items.forEach(function (it, j) {
+        var on = j === i;
+        it.classList.toggle("is-active", on);
+        var b = it.querySelector("button"); if (b) b.tabIndex = on ? 0 : -1;
+      });
+    };
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) activate(Number(e.target.getAttribute("data-step"))); });
+      }, { rootMargin: "-45% 0px -45% 0px" });
+      steps.forEach(function (st) { io.observe(st); });
+    }
+    // "Open full size" in a chapter opens the matching map in the lightbox
+    document.querySelectorAll("[data-open-step]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var t = document.querySelector('.stage__item[data-i="' + b.getAttribute("data-open-step") + '"] .stage__btn');
+        if (t) t.click();
+      });
+    });
   }
 
   function fallbackCopy(text) {

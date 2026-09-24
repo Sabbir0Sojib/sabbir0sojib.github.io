@@ -23,6 +23,27 @@ colors:
   map-bangladesh: "#E1ECE3"
   map-border: "#BFC8C0"
 typography:
+  poster:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(3rem, 1.6rem + 5.4vw, 6rem)"
+    fontWeight: 700
+    lineHeight: 0.95
+    letterSpacing: "-0.04em"
+  story-stat:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(3rem, 2rem + 3.6vw, 5.25rem)"
+    fontWeight: 700
+    lineHeight: 0.95
+    letterSpacing: "-0.045em"
+  story-lede:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(1.125rem, 1rem + 0.5vw, 1.375rem)"
+    fontWeight: 400
+    lineHeight: 1.55
+  finale-mail:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(1.25rem, 0.9rem + 1.6vw, 2.25rem)"
+    fontWeight: 650
   display:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(2.5rem, 1.6rem + 3.4vw, 4rem)"
@@ -158,6 +179,9 @@ Monsoon: paddy green and mustard on warm white, chosen by the owner. Following I
 - **Title / Body / Small / Caption:** card titles, paragraphs, metadata, fine print.
 
 ## Layout
+
+**Home is a scroll story** (owner's choice, after the Apple reference: full-bleed bands where the colour change is the divider). Green cover band with name, role, bio and actions; then chapters, one per map project with an image: text on the left (chapter count, big number, label, title, description, links) and a sticky map stage on the right that crossfades to the active chapter's map (IntersectionObserver, no scroll listeners); a mustard reading-progress line under the header (CSS scroll-driven animation where supported); a green "Email me" finale band. On phones the chapters stack with each map under its text. Projects without images are listed under "More projects". Other pages: About (full profile), Research, Gallery, Fun.
+
 
 A centred 1120px column. Each page opens with a title and a one-line intro, then sections separated by 1px lines. Two columns collapse to one below 820px; the top menu becomes a second row on phones. The game is a 340px panel beside the map on desktop and stacks above the map on phones.
 

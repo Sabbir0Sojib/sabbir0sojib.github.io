@@ -1,8 +1,8 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os
 OUT = "/home/user/sabbir0sojib.github.io"
-VER = "20260924g"   # bump to force browsers to load new CSS/JS
-NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("gallery.html","Gallery"),("fun.html","Fun")]
+VER = "20260924h"   # bump to force browsers to load new CSS/JS
+NAV = [("index.html","Story"),("about.html","About"),("research.html","Research"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
 def icon(n, cls="i"): return f'<svg class="{cls}" aria-hidden="true"><use href="assets/icons.svg?v={VER}#{n}"/></svg>'
@@ -81,7 +81,20 @@ LIGHTBOX = f'''    <dialog class="lightbox" aria-labelledby="lb-title">
 # ======================= PAGE SHELLS (content comes from content/*.json) =======================
 NOSCRIPT = '      <noscript><p class="list-empty">This page needs JavaScript to show its content.</p></noscript>'
 write("index.html", page("index.html","Md Sabbir Islam | Remote Sensing and Geospatial Deep Learning",
-  "Md Sabbir Islam, Geography and Environment researcher at Pabna University of Science and Technology. UAV and satellite deep learning, and maps of Bangladesh.",
+  "Md Sabbir Islam maps Bangladesh with drones, satellites and deep learning. A scroll story through his maps of cyclones, floods, heat, water and land.",
+  f"""    <section class="cover" data-render="cover" aria-busy="true">
+{NOSCRIPT}
+    </section>
+    <section class="chapters" id="story" aria-label="Map stories">
+      <div class="chapters__steps" data-render="story" aria-busy="true"></div>
+      <div class="chapters__stage" aria-hidden="false"><div class="stage" data-stage></div></div>
+    </section>
+    <section class="finale" data-render="finale" aria-busy="true"></section>
+
+{LIGHTBOX}"""))
+
+write("about.html", page("about.html","About | Md Sabbir Islam",
+  "About Md Sabbir Islam: education, experience, skills, awards and contact.",
   f"""    <div class="wrap" data-render="profile" aria-busy="true">
 {NOSCRIPT}
     </div>"""))
@@ -97,22 +110,11 @@ write("research.html", page("research.html","Research | Md Sabbir Islam","Papers
 {NOSCRIPT}
     </div>"""))
 
-write("projects.html", page("projects.html","Projects | Md Sabbir Islam","Maps and analysis projects by Md Sabbir Islam: cyclones, floods, groundwater, heat, elevation and more across Bangladesh.", f"""    <div class="wrap">
-      <header class="page-head">
-        <h1 class="page-head__title">Projects</h1>
-        <p class="page-head__lede">Maps and analysis projects, most built in Python. Click a map to open it full size, then click again to zoom.</p>
-      </header>
-{chips("Filter projects by theme", [("all","All"),("hazard","Hazards and climate"),("water","Water"),("land","Land and terrain"),("city","Cities")])}
-      <div class="gallery" data-render="projects" aria-busy="true"></div>
-      <p class="list-empty" hidden>No projects in this theme yet.</p>
-{NOSCRIPT}
-      <section class="block" aria-labelledby="more-work" style="margin-top: 32px;" data-render-wrap="projects-more" hidden>
-        <h2 id="more-work" class="block__title">More projects</h2>
-        <ul class="more" data-render="projects-more"></ul>
-      </section>
-    </div>
-
-{LIGHTBOX}"""))
+open(os.path.join(OUT,"projects.html"),"w").write("""<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Projects | Md Sabbir Islam</title>
+<meta http-equiv="refresh" content="0; url=index.html#story"><link rel="canonical" href="https://sabbir0sojib.github.io/#story"></head>
+<body><p>Projects now live in the <a href="index.html#story">map story</a>.</p></body></html>
+""")
 
 write("gallery.html", page("gallery.html","Gallery | Md Sabbir Islam","Photos of Md Sabbir Islam at conferences, fieldwork and the lab.", f"""    <div class="wrap">
       <header class="page-head">
