@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
-import os, datetime, json, html as _html
+import os, re, glob, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20260925j"   # bump to force browsers to load new CSS/JS
+VER = "20260926a"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -9,6 +9,23 @@ SITE = "https://sabbir0sojib.github.io/"
 def content(name):
     with open(os.path.join(OUT, "content", name + ".json"), encoding="utf-8") as f:
         return json.load(f)
+
+def slug(t):
+    """Page name for a map, the same rule as mapSlug() in assets/js/site.js."""
+    return re.sub(r"[^a-z0-9]+", "-", str(t).lower().replace("&", " and ")).strip("-")
+
+def newest_first(items):
+    key = lambda x: str(x.get("date") or (str(x.get("year") or "0000")[:4] + "-12-31"))
+    return [x for _, x in sorted(enumerate(items), key=lambda p: (key(p[1]), -p[0]), reverse=True)]
+
+def ld(data):
+    return '  <script type="application/ld+json">' + json.dumps(data, ensure_ascii=False).replace("</", "<\\/") + "</script>\n"
+
+def clip(text, n=158):
+    text = " ".join(str(text).split())
+    return text if len(text) <= n else text[:n].rsplit(" ", 1)[0].rstrip(",;:") + "..."
+
+AUTHOR = {"@type": "Person", "name": "Md Sabbir Islam", "url": "https://sabbir0sojib.github.io/"}
 
 def person_jsonld():
     """Structured data for search engines, built from content/profile.json on every build."""
@@ -36,9 +53,11 @@ def icon(n, cls="i"): return f'<svg class="{cls}" aria-hidden="true"><use href="
 ARROW = icon("arrow")
 NEXT = icon("arrow-right")
 
-def page(fname, title, desc, body, extra_head="", extra_js=""):
+def page(fname, title, desc, body, extra_head="", extra_js="", og=None):
     url = SITE if fname in ("index.html", "404.html") else SITE + fname
-    nav = "\n".join(f'          <a href="{h}"{CUR if h==fname else ""}>{t}</a>' for h,t in NAV)
+    here = "maps.html" if fname.startswith("maps/") else fname
+    nav = "\n".join(f'          <a href="{h}"{CUR if h==here else ""}>{t}</a>' for h,t in NAV)
+    og_img, og_w, og_h, og_alt = og or (SHARE, 1200, 630, "Md Sabbir Islam, Remote Sensing and Geospatial Deep Learning")
     foot_nav = "\n".join(f'          <li><a href="{h}">{t}</a></li>' for h,t in NAV)
     return f'''<!doctype html>
 <html lang="en" data-v="{VER}">
@@ -54,12 +73,12 @@ def page(fname, title, desc, body, extra_head="", extra_js=""):
   <meta property="og:url" content="{url}">
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{desc}">
-  <meta property="og:image" content="{SHARE}">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Md Sabbir Islam, Remote Sensing and Geospatial Deep Learning">
+  <meta property="og:image" content="{og_img}">
+  <meta property="og:image:width" content="{og_w}">
+  <meta property="og:image:height" content="{og_h}">
+  <meta property="og:image:alt" content="{og_alt}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="{SHARE}">
+  <meta name="twitter:image" content="{og_img}">
   <meta name="theme-color" content="#0F3B24">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -158,6 +177,42 @@ LIGHTBOX = f'''    <dialog class="lightbox" aria-labelledby="lb-title">
 
 # ======================= PAGE SHELLS (content comes from content/*.json) =======================
 NOSCRIPT = '      <noscript><p class="list-empty">This page needs JavaScript to show its content.</p></noscript>'
+def image_dims(path):
+    try:
+        from PIL import Image
+        with Image.open(os.path.join(OUT, str(path).lstrip("/"))) as im: return im.size
+    except Exception:
+        return (1600, 1200)
+
+def maps_jsonld():
+    maps = [m for m in newest_first(content("maps")) if m.get("image")]
+    return ld({"@context": "https://schema.org", "@type": "CollectionPage", "name": "Maps of Bangladesh by Md Sabbir Islam",
+               "url": SITE + "maps.html", "author": AUTHOR,
+               "mainEntity": {"@type": "ItemList", "itemListElement": [
+                   {"@type": "ListItem", "position": i + 1, "url": SITE + "maps/" + slug(m["title"]) + ".html", "name": m["title"]}
+                   for i, m in enumerate(maps)]}})
+
+def gallery_jsonld():
+    items = []
+    for g in content("gallery"):
+        if not g.get("image"): continue
+        w, h = image_dims(g["image"])
+        items.append({"@type": "ImageObject", "contentUrl": SITE + g["image"].lstrip("/"), "name": g.get("title", ""),
+                      "caption": g.get("caption", ""), "width": w, "height": h})
+    return ld({"@context": "https://schema.org", "@type": "ImageGallery", "name": "Gallery of Md Sabbir Islam",
+               "url": SITE + "gallery.html", "about": AUTHOR, "associatedMedia": items})
+
+def projects_jsonld():
+    items = []
+    for i, p in enumerate(newest_first(content("projects"))):
+        tools = [t.strip() for t in str(p.get("tools", "")).split(",") if t.strip()]
+        langs = [t for t in tools if t in ("Python", "R", "JavaScript")]
+        items.append({"@type": "ListItem", "position": i + 1, "item": {
+            "@type": "SoftwareSourceCode", "name": p.get("title"), "description": p.get("description", ""),
+            "codeRepository": p.get("repo"), "author": AUTHOR, "dateCreated": p.get("date") or p.get("year"),
+            "keywords": ", ".join(tools), **({"programmingLanguage": langs} if langs else {})}})
+    return ld({"@context": "https://schema.org", "@type": "ItemList", "name": "Projects by Md Sabbir Islam", "itemListElement": items})
+
 write("index.html", page("index.html","Md Sabbir Islam | Remote Sensing and Geospatial Deep Learning",
   "Md Sabbir Islam (Sabbir Islam Sojib), remote sensing and geospatial deep learning researcher at Pabna University of Science and Technology, Bangladesh.",
   f"""    <section class="band band--hero" aria-labelledby="name">
@@ -228,7 +283,7 @@ write("projects.html", page("projects.html","GIS and remote sensing projects on 
       <div class="proj-list" data-render="repos" aria-busy="true"></div>
       <p class="list-empty" hidden>No projects yet.</p>
 {NOSCRIPT}
-    </div>"""))
+    </div>""", extra_head=projects_jsonld()))
 
 write("maps.html", page("maps.html","Maps of Bangladesh | Md Sabbir Islam","Maps of Bangladesh by Md Sabbir Islam: cyclone tracks, floods, sea level rise, tree cover loss, elevation, wind, groundwater and land use.", f"""    <div class="band">
       <div class="wrap wrap--wide">
@@ -249,9 +304,9 @@ write("maps.html", page("maps.html","Maps of Bangladesh | Md Sabbir Islam","Maps
       </section>
     </div>
 
-{LIGHTBOX}"""))
+{LIGHTBOX}""", extra_head=maps_jsonld()))
 
-write("gallery.html", page("gallery.html","Gallery | Md Sabbir Islam","Photos of Md Sabbir Islam at conferences, fieldwork and the lab.", f"""    <div class="band">
+write("gallery.html", page("gallery.html","Gallery | Md Sabbir Islam","Photos of Md Sabbir Islam presenting research at EFAST 2026, ETSD 2026 and ICLESSD-2025, UAV fieldwork, PUST YouthMappers and a disaster hackathon.", f"""    <div class="band">
       <div class="wrap">
         <header class="page-head">
           <h1 class="page-head__title" data-site="gallery_title">Gallery</h1>
@@ -265,7 +320,7 @@ write("gallery.html", page("gallery.html","Gallery | Md Sabbir Islam","Photos of
 {NOSCRIPT}
     </div>
 
-{LIGHTBOX}"""))
+{LIGHTBOX}""", extra_head=gallery_jsonld()))
 
 # ======================= FUN (game) =======================
 fun = f"""    <div class="band">
@@ -431,6 +486,71 @@ def image_sizes():
 os.makedirs(os.path.join(OUT, "assets", "data"), exist_ok=True)
 write("assets/data/image-sizes.json", json.dumps(image_sizes(), indent=0) + "\n")
 
+# ======================= One page per map (maps/<slug>.html), for search engines and sharing =======================
+def map_pages():
+    maps = [m for m in newest_first(content("maps")) if m.get("image")]
+    os.makedirs(os.path.join(OUT, "maps"), exist_ok=True)
+    made = set()
+    for m in maps:
+        name = slug(m["title"]); made.add(name + ".html")
+        img = "/" + m["image"].lstrip("/"); w, h = image_dims(img)
+        tags = [t for t in (m.get("tags") or []) if t]
+        desc = clip(f'{m["title"]}. A map by Md Sabbir Islam, Bangladesh. {m.get("description") or ""}')
+        others = [o for o in maps if o is not m][:4]
+        cards = "".join(
+            f'<article class="pcard"><div class="mat pcard__media" aria-hidden="true"><img src="/{o["image"].lstrip("/")}" alt="" loading="lazy"></div>'
+            f'<div class="pcard__top"><h3 class="pcard__title"><a href="/maps/{slug(o["title"])}.html">{_html.escape(o["title"])}</a></h3>'
+            f'<span class="mono shot__year">{_html.escape(str(o.get("year", "")))}</span></div>'
+            f'<p class="pcard__text">{_html.escape(clip(o.get("description", ""), 110))}</p></article>' for o in others)
+        data = {"@context": "https://schema.org", "@type": "Map", "name": m["title"], "description": m.get("description", ""),
+                "url": SITE + "maps/" + name + ".html", "author": AUTHOR, "creator": AUTHOR,
+                "dateCreated": m.get("date") or str(m.get("year", "")), "keywords": ", ".join(tags),
+                "image": {"@type": "ImageObject", "contentUrl": SITE + img.lstrip("/"), "width": w, "height": h,
+                          "caption": m.get("image_alt") or m["title"], "creator": AUTHOR, "creditText": "Md Sabbir Islam",
+                          "copyrightNotice": "Md Sabbir Islam"}}
+        crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE},
+            {"@type": "ListItem", "position": 2, "name": "Maps", "item": SITE + "maps.html"},
+            {"@type": "ListItem", "position": 3, "name": m["title"], "item": SITE + "maps/" + name + ".html"}]}
+        spans = " ".join('<span class="tag">' + _html.escape(t) + "</span>" for t in tags)
+        tag_line = '<p class="tags tags--quiet mapdetail__tags">' + spans + "</p>" if tags else ""
+        body = f"""    <div class="band">
+      <div class="wrap">
+        <header class="page-head page-head--compact">
+          <h1 class="page-head__title">{_html.escape(m["title"])}</h1>
+          <p class="page-head__lede">{_html.escape(m.get("description", ""))}</p>
+        </header>
+      </div>
+    </div>
+    <div class="wrap">
+      <figure class="shot mapdetail">
+        <button class="mat shot__btn" type="button" data-lightbox="m0" aria-label="Open {_html.escape(m["title"])} full size">
+          <img src="{img}" width="{w}" height="{h}" alt="{_html.escape(m.get("image_alt") or m["title"])}">
+          <span class="shot__zoom" aria-hidden="true">{icon("expand")}View full size</span>
+        </button>
+        <figcaption>
+          <p class="shot__top"><span class="shot__title">{_html.escape(m["title"])}</span><span class="mono shot__year">{_html.escape(str(m.get("year", "")))}</span></p>
+          <p class="shot__meta">Map by Md Sabbir Islam. {_html.escape(m.get("description", ""))}</p>
+          {tag_line}
+        </figcaption>
+      </figure>
+      <p class="btn-row mapdetail__actions"><a class="pill" href="{img}" target="_blank" rel="noopener">Open the full image{ARROW}</a><a class="btn" href="maps.html">See all maps</a></p>
+
+      <section class="home-sec" aria-labelledby="more-maps">
+        <div class="sec-head"><h2 class="sec-title" id="more-maps">More maps</h2><a class="more-link" href="maps.html">See all maps{NEXT}</a></div>
+        <div class="pgrid">{cards}</div>
+      </section>
+    </div>
+
+{LIGHTBOX}"""
+        html = page("maps/" + name + ".html", f"{m['title']} | Map by Md Sabbir Islam", _html.escape(desc, quote=True), body,
+                    extra_head=ld(data) + ld(crumbs), og=(SITE + img.lstrip("/"), w, h, _html.escape(m.get("image_alt") or m["title"], quote=True)))
+        write("maps/" + name + ".html", absolutize(html))
+    for old in glob.glob(os.path.join(OUT, "maps", "*.html")):
+        if os.path.basename(old) not in made: os.remove(old)
+    return maps
+MAP_PAGES = map_pages()
+
 # ======================= Sitemap and robots.txt for search engines =======================
 today = datetime.date.today().isoformat()
 def images_for(h):
@@ -443,6 +563,7 @@ def images_for(h):
         if img: out.append(f"    <image:image><image:loc>{_html.escape(SITE + img)}</image:loc></image:image>")
     return ("\n" + "\n".join(out) + "\n  ") if out else ""
 urls = "\n".join(f"  <url><loc>{SITE if h == 'index.html' else SITE + h}</loc><lastmod>{today}</lastmod>{images_for(h)}</url>" for h, _ in NAV)
+urls += "".join(f"\n  <url><loc>{SITE}maps/{slug(m['title'])}.html</loc><lastmod>{today}</lastmod>\n    <image:image><image:loc>{_html.escape(SITE + m['image'].lstrip('/'))}</image:loc></image:image>\n  </url>" for m in MAP_PAGES)
 write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n{urls}\n</urlset>\n')
 write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n")
 print("pages written")

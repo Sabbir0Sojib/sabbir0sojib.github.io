@@ -255,6 +255,7 @@ Flat. The only shadows: the facts card over the hero edge, the print shadow unde
 - **Interests, awards, languages (Home):** three columns side by side under one rule.
 - **Projects page:** one row per repository: preview on a mat (or the repository path with a GitHub mark when there is no image), serif title, year, description, tool tags and the repository link.
 - **Maps page (map wall):** two columns, each map whole on its mat at full column width, placed in the shorter column in date order so reading order stays newest first. Filter chips are built from the tags in use.
+- **Map page (`maps/<name>.html`):** one per map, generated. Page band with the map title and description; the map whole on its mat (at most 82% of the screen height, click opens the viewer); caption with year, description and quiet tags; yellow Open the full image pill and a See all maps button; then More maps as 2 by 2 cards (title links to that map's page). Map titles on Home and Maps link here.
 - **Research page:** academic list grouped by type with a count badge and a 2px ink rule; numbered entries in citation form (owner bold). No cards, no filters.
 - **Contact band (Home):** green band; big serif title with the note directly under it, then translucent cards (yellow icon circle, label, value, copy button).
 - **Footer:** dark green; serif name and tagline, all pages, all profiles (yellow column headings), then the copyright line and Back to top.

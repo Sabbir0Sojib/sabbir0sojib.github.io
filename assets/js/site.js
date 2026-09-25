@@ -34,6 +34,9 @@
   }
   // Images saved by Pages CMS start with "/", which works on the live site; keep relative paths working too.
   function src(path) { return path ? String(path) : ""; }
+  // Each map has its own page, maps/<name>.html, made by the page generator with the same naming rule.
+  function mapSlug(t) { return String(t || "").toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""); }
+  function mapLink(m) { return '<a class="shot__link" href="' + ROOT + "maps/" + mapSlug(m.title) + '.html">' + esc(m.title) + "</a>"; }
   var cache = {};
   function load(name) {
     if (!cache[name]) {
@@ -142,7 +145,7 @@
         '<button class="mat shot__btn" type="button" data-lightbox="h' + i + '" aria-label="Open ' + esc(m.title) + ' full size">' +
         '<img src="' + esc(src(m.image)) + '"' + dims(m.image) + ' alt="' + esc(m.image_alt || m.title) + '" loading="lazy">' +
         '<span class="shot__zoom" aria-hidden="true">' + icon("expand") + "View full size</span></button>" +
-        '<figcaption><p class="shot__top"><span class="shot__title">' + esc(m.title) + '</span><span class="mono shot__year">' + esc(m.year) + "</span></p>" +
+        '<figcaption><p class="shot__top"><span class="shot__title">' + mapLink(m) + '</span><span class="mono shot__year">' + esc(m.year) + "</span></p>" +
         '<p class="shot__meta visually-hidden">' + esc(m.description) + "</p></figcaption></figure>";
     }).join("");
     var count = document.querySelector('[data-count="maps"]');
@@ -267,7 +270,7 @@
         '<button class="mat shot__btn" type="button" data-lightbox="p' + i + '" aria-label="Open ' + esc(p.title) + ' full size">' +
         '<img src="' + esc(src(p.image)) + '"' + dims(p.image) + ' alt="' + esc(p.image_alt || p.title) + '" loading="lazy">' +
         '<span class="shot__zoom" aria-hidden="true">' + icon("expand") + "View full size</span></button>" +
-        '<figcaption><p class="shot__top"><span class="shot__title">' + esc(p.title) + '</span><span class="mono shot__year">' + esc(p.year) + "</span></p>" +
+        '<figcaption><p class="shot__top"><span class="shot__title">' + mapLink(p) + '</span><span class="mono shot__year">' + esc(p.year) + "</span></p>" +
         '<p class="shot__meta">' + esc(p.description) + "</p>" + code + "</figcaption></figure>";
     }).join("");
     renderChips(withImg);
