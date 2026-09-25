@@ -6,7 +6,8 @@
 
   var VER = document.documentElement.getAttribute("data-v") || "1";
   // Site root, taken from this script's own address, so the 404 page works at any depth.
-  var ROOT = document.currentScript && document.currentScript.src ? new URL("../../", document.currentScript.src).href : "";
+  // A path, not a full address, so pre-rendered pages hold the same links locally and on the live site.
+  var ROOT = document.currentScript && document.currentScript.src ? new URL("../../", document.currentScript.src).pathname : "";
 
   // Phone menu button
   var head = document.querySelector(".site-head");

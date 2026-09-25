@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20260925i"   # bump to force browsers to load new CSS/JS
+VER = "20260925j"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -159,7 +159,7 @@ LIGHTBOX = f'''    <dialog class="lightbox" aria-labelledby="lb-title">
 # ======================= PAGE SHELLS (content comes from content/*.json) =======================
 NOSCRIPT = '      <noscript><p class="list-empty">This page needs JavaScript to show its content.</p></noscript>'
 write("index.html", page("index.html","Md Sabbir Islam | Remote Sensing and Geospatial Deep Learning",
-  "Md Sabbir Islam (Sabbir Islam Sojib), remote sensing and geospatial deep learning researcher at Pabna University of Science and Technology, Bangladesh. Maps, research papers and code.",
+  "Md Sabbir Islam (Sabbir Islam Sojib), remote sensing and geospatial deep learning researcher at Pabna University of Science and Technology, Bangladesh.",
   f"""    <section class="band band--hero" aria-labelledby="name">
       <div class="wrap" data-render="hero" aria-busy="true">
 {NOSCRIPT}
@@ -202,7 +202,7 @@ write("index.html", page("index.html","Md Sabbir Islam | Remote Sensing and Geos
 
 {LIGHTBOX}""", extra_head=person_jsonld()))
 
-write("research.html", page("research.html","Research and publications | Md Sabbir Islam","Research by Md Sabbir Islam: urban tree mapping with UAV imagery and deep learning in Pabna, lightning casualties and land cover in Bangladesh, air quality and armed conflict in Iran, and CH4Rice field work.", f"""    <div class="band">
+write("research.html", page("research.html","Research and publications | Md Sabbir Islam","Research by Md Sabbir Islam: urban tree mapping with UAV imagery and deep learning, lightning and land cover in Bangladesh, and air quality in Iran.", f"""    <div class="band">
       <div class="wrap">
         <header class="page-head">
           <h1 class="page-head__title" data-site="research_title">Research</h1>
@@ -216,7 +216,7 @@ write("research.html", page("research.html","Research and publications | Md Sabb
 {NOSCRIPT}
     </div>"""))
 
-write("projects.html", page("projects.html","GIS and remote sensing projects on GitHub | Md Sabbir Islam","Open source GIS and remote sensing code by Md Sabbir Islam: Google Earth Engine, Python and deep learning projects on cyclones, wind, temperature, groundwater and urban forests in Bangladesh.", f"""    <div class="band">
+write("projects.html", page("projects.html","GIS and remote sensing projects on GitHub | Md Sabbir Islam","Open source GIS and remote sensing code by Md Sabbir Islam: Earth Engine, Python and deep learning projects on cyclones, heat, water and trees.", f"""    <div class="band">
       <div class="wrap">
         <header class="page-head">
           <h1 class="page-head__title" data-site="projects_title">Projects</h1>
@@ -230,7 +230,7 @@ write("projects.html", page("projects.html","GIS and remote sensing projects on 
 {NOSCRIPT}
     </div>"""))
 
-write("maps.html", page("maps.html","Maps of Bangladesh | Md Sabbir Islam","Maps of Bangladesh by Md Sabbir Islam: cyclone tracks, floods, sea level rise, tree cover loss, elevation, wind, cold waves, groundwater, land use and crop suitability.", f"""    <div class="band">
+write("maps.html", page("maps.html","Maps of Bangladesh | Md Sabbir Islam","Maps of Bangladesh by Md Sabbir Islam: cyclone tracks, floods, sea level rise, tree cover loss, elevation, wind, groundwater and land use.", f"""    <div class="band">
       <div class="wrap wrap--wide">
         <header class="page-head">
           <h1 class="page-head__title" data-site="maps_title">Maps</h1>
@@ -393,7 +393,7 @@ fun = f"""    <div class="band">
         <p class="howto__credit">Boundaries: geoBoundaries (BBS and OCHA, CC BY 3.0 IGO) and Natural Earth (public domain). Imagery: Esri World Imagery, with Sentinel-2 cloudless by EOX as a fallback.</p>
       </section>
     </div>"""
-write("fun.html", page("fun.html","Geography games: Pin the Place and Satellite Detective | Md Sabbir Islam","Free geography games on real satellite maps. Find Bangladesh divisions, districts, upazilas and landmarks, or 167 countries and world wonders, and name famous places seen from space.", fun,
+write("fun.html", page("fun.html","Geography games: Pin the Place, Satellite Detective | Md Sabbir Islam","Free geography games on real satellite maps: find Bangladesh districts, 167 countries and world wonders, or name famous places seen from space.", fun,
     extra_head=f'  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">\n',
     extra_js=f'  <script src="assets/vendor/leaflet/leaflet.js" defer></script>\n  <script src="assets/js/game.js?v={VER}" defer></script>\n  <script src="assets/js/detective.js?v={VER}" defer></script>\n'))
 
