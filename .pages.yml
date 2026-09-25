@@ -104,16 +104,25 @@ content:
 
   - name: gallery
     label: Gallery (photos)
-    description: Photos from conferences, fieldwork and the lab.
+    description: Photos from conferences, fieldwork and the lab. Put the newest event first; photos are grouped by Event.
     type: file
     path: content/gallery.json
     format: json
     list: true
     fields:
       - { name: image, label: Photo, type: image, required: true }
-      - { name: title, label: Title, type: string }
-      - { name: caption, label: Caption, type: text }
+      - { name: event, label: "Event (photos with the same event are shown together, e.g. EFAST 2026, Pabna)", type: string }
+      - { name: title, label: Title (shown in the full-size viewer), type: string }
+      - { name: caption, label: Caption (shown in the full-size viewer), type: text }
       - { name: alt, label: Photo description (for screen readers), type: string }
+      - name: focus
+        label: Keep in view when the photo is cropped
+        type: select
+        options:
+          values:
+            - { value: center, label: Middle }
+            - { value: top, label: Top (faces near the top) }
+            - { value: bottom, label: Bottom }
 
   - name: profile
     label: Profile

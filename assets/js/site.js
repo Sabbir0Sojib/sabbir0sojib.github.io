@@ -290,11 +290,27 @@
     el.innerHTML = all.map(function (p) { return '<li class="tag">' + esc(p.name) + "</li>"; }).join("");
   }
 
+  // Gallery: photos grouped by their Event (in the order they are listed), each group a tidy grid.
+  // Titles and captions stay out of sight; they show in the full-size viewer.
   function renderGallery(el, list) {
-    el.innerHTML = list.map(function (g, i) {
-      return '<figure class="shot"><button class="shot__btn" type="button" data-lightbox="g' + i + '" aria-label="Open photo full size">' +
-        '<img src="' + esc(src(g.image)) + '"' + dims(g.image) + ' alt="' + esc(g.alt || g.title) + '" loading="lazy"></button>' +
-        '<figcaption><p class="shot__title">' + esc(g.title) + '</p><p class="shot__meta">' + esc(g.caption) + "</p></figcaption></figure>";
+    var groups = [], byName = {};
+    list.filter(function (g) { return g && g.image; }).forEach(function (g) {
+      var name = String(g.event || "").trim() || "More photos";
+      if (!byName[name]) { byName[name] = { name: name, items: [] }; groups.push(byName[name]); }
+      byName[name].items.push(g);
+    });
+    var n = 0;
+    el.innerHTML = groups.map(function (grp) {
+      var count = Math.min(grp.items.length, 6);
+      return '<section class="album"><h2 class="album__title">' + esc(grp.name) + "</h2>" +
+        '<div class="album__grid" data-n="' + count + '">' + grp.items.map(function (g) {
+          var i = n++;
+          var pos = { top: "50% 15%", bottom: "50% 85%" }[g.focus] || "";
+          return '<figure class="shot album__item"><button class="shot__btn" type="button" data-lightbox="g' + i + '" aria-label="Open photo: ' + esc(g.title || grp.name) + '">' +
+            '<img src="' + esc(src(g.image)) + '"' + dims(g.image) + ' alt="' + esc(g.alt || g.title) + '" loading="lazy"' + (pos ? ' style="object-position:' + pos + '"' : "") + ">" +
+            '<span class="shot__zoom" aria-hidden="true">' + icon("expand") + "View</span></button>" +
+            '<figcaption hidden><span class="shot__title">' + esc(g.title || grp.name) + '</span> <span class="shot__meta">' + esc(g.caption) + "</span></figcaption></figure>";
+        }).join("") + "</div></section>";
     }).join("");
     var empty = document.querySelector(".list-empty");
     if (empty) empty.hidden = list.length > 0;
