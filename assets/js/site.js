@@ -320,7 +320,8 @@
     repos: ["projects", renderRepos, "projects"],
     maps: ["maps", renderProjects, "maps"],
     gallery: ["gallery", renderGallery, "photos"],
-    places: ["places", renderPlaces, "the landmarks"]
+    places: ["places", renderPlaces, "the landmarks"],
+    "world-places": ["world-places", renderPlaces, "the landmarks"]
   };
 
   // Image sizes (written by the build) let the browser reserve space, so the page does not jump.
@@ -396,6 +397,39 @@
 
     initLightbox();
     initWall();
+    initGameTabs();
+  }
+
+  // Fun page: switch between the games (keeps the choice in the address, for example fun.html#detective)
+  function initGameTabs() {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll("[data-gametab]"));
+    if (!tabs.length) return;
+    var select = function (id, focus) {
+      tabs.forEach(function (t) {
+        var on = t.getAttribute("data-gametab") === id;
+        t.classList.toggle("is-on", on);
+        t.setAttribute("aria-selected", on ? "true" : "false");
+        t.tabIndex = on ? 0 : -1;
+        if (on && focus) t.focus();
+      });
+      document.querySelectorAll("[data-gamebox]").forEach(function (b) { b.hidden = b.getAttribute("data-gamebox") !== id; });
+      var det = document.querySelector("[data-detective]"), pin = document.querySelector("[data-game]");
+      if (id === "detective" && det && det.__start) det.__start();
+      if (id === "pin" && pin && pin.__refit) pin.__refit();
+    };
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () {
+        var id = t.getAttribute("data-gametab");
+        select(id);
+        try { history.replaceState(null, "", "#" + id); } catch (e) {}
+      });
+      t.addEventListener("keydown", function (e) {
+        if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+        var n = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+        select(n.getAttribute("data-gametab"), true);
+      });
+    });
+    if (location.hash === "#detective") select("detective");
   }
 
   // Maps page: two columns that keep newest-first order (each map goes to the shorter column).

@@ -8,8 +8,8 @@
   "projects_intro": "Code projects with open repositories on GitHub, newest first.",
   "gallery_title": "Gallery",
   "gallery_intro": "Moments from conferences, fieldwork and the lab.",
-  "fun_title": "Pin the Place",
-  "fun_intro": "How well do you know Bangladesh? Pick a level, then find five places on an unlabeled satellite map.",
+  "fun_title": "Geography games",
+  "fun_intro": "Pin places on a blank satellite map, or name a place seen from space. Play with Bangladesh or the whole world.",
   "maps_title": "Maps",
   "maps_intro": "Maps from my research and projects, newest first. Click any map to see it full size.",
   "home_maps_title": "Latest maps",
@@ -19,6 +19,6 @@
   "notfound_title": "This page is off the map.",
   "notfound_text": "The page you are looking for does not exist or has moved.",
   "fun_howto_title": "How to play",
-  "fun_howto": "Pick a level, then find five places on an unlabeled satellite map of Bangladesh. Tap the map to drop a pin, then lock in your guess. A pin inside the right area, or right on the landmark, scores 1000 points; the further away it lands, the fewer points you get.",
-  "fun_places_title": "Landmarks in the game"
+  "fun_howto": "Pick a game and a region, Bangladesh or the whole world. In Pin the Place, tap the map to drop a pin and lock in your guess: a pin inside the right area, or right on the landmark, scores 1000 points, and the further away it lands, the fewer points you get. In Satellite Detective, name the place you see from above; zooming out helps, but lowers the points.",
+  "fun_places_title": "Landmarks in the games"
 }

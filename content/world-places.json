@@ -1,0 +1,268 @@
+[
+  {
+    "name": "Great Pyramid of Giza",
+    "lat": 29.9792,
+    "lng": 31.1342,
+    "zoom": 16,
+    "fact": "The oldest of the Seven Wonders of the Ancient World, built about 4,500 years ago in Egypt."
+  },
+  {
+    "name": "Eiffel Tower",
+    "lat": 48.8584,
+    "lng": 2.2945,
+    "zoom": 17,
+    "fact": "Built in Paris for the 1889 World's Fair; about 330 m tall."
+  },
+  {
+    "name": "Taj Mahal",
+    "lat": 27.1751,
+    "lng": 78.0421,
+    "zoom": 17,
+    "fact": "A white marble mausoleum in Agra, India, built in the 17th century."
+  },
+  {
+    "name": "Machu Picchu",
+    "lat": -13.1631,
+    "lng": -72.545,
+    "zoom": 16,
+    "fact": "A 15th century Inca citadel high in the Andes of Peru."
+  },
+  {
+    "name": "Great Wall of China, Badaling",
+    "lat": 40.3597,
+    "lng": 116.02,
+    "zoom": 16,
+    "fact": "The Badaling section near Beijing, the most visited part of the wall."
+  },
+  {
+    "name": "Statue of Liberty",
+    "lat": 40.6892,
+    "lng": -74.0445,
+    "zoom": 17,
+    "fact": "A gift from France to the United States, on Liberty Island in New York Harbor."
+  },
+  {
+    "name": "Sydney Opera House",
+    "lat": -33.8568,
+    "lng": 151.2153,
+    "zoom": 17,
+    "fact": "Its shell-shaped roofs make it one of the best known buildings of the 20th century."
+  },
+  {
+    "name": "Mount Everest",
+    "lat": 27.9881,
+    "lng": 86.925,
+    "zoom": 13,
+    "fact": "The highest mountain on Earth, 8,849 m, on the border of Nepal and China."
+  },
+  {
+    "name": "Grand Canyon",
+    "lat": 36.107,
+    "lng": -112.113,
+    "zoom": 12,
+    "fact": "Carved by the Colorado River over millions of years; up to 1.8 km deep."
+  },
+  {
+    "name": "Petra",
+    "lat": 30.3285,
+    "lng": 35.4444,
+    "zoom": 16,
+    "fact": "An ancient city carved into rose-coloured rock in southern Jordan."
+  },
+  {
+    "name": "Angkor Wat",
+    "lat": 13.4125,
+    "lng": 103.867,
+    "zoom": 15,
+    "fact": "The largest religious monument in the world, in Cambodia."
+  },
+  {
+    "name": "Christ the Redeemer",
+    "lat": -22.9519,
+    "lng": -43.2105,
+    "zoom": 17,
+    "fact": "A 30 m statue on Corcovado mountain above Rio de Janeiro, Brazil."
+  },
+  {
+    "name": "Colosseum",
+    "lat": 41.8902,
+    "lng": 12.4922,
+    "zoom": 17,
+    "fact": "The largest amphitheatre ever built, in the centre of Rome."
+  },
+  {
+    "name": "Burj Khalifa",
+    "lat": 25.1972,
+    "lng": 55.2744,
+    "zoom": 17,
+    "fact": "The tallest building in the world, 828 m, in Dubai."
+  },
+  {
+    "name": "Palm Jumeirah",
+    "lat": 25.1124,
+    "lng": 55.139,
+    "zoom": 13,
+    "fact": "An artificial island in Dubai shaped like a palm tree, easy to spot from space."
+  },
+  {
+    "name": "Eye of the Sahara",
+    "lat": 21.124,
+    "lng": -11.402,
+    "zoom": 10,
+    "fact": "The Richat Structure: a 40 km wide rock formation in Mauritania, a landmark for astronauts."
+  },
+  {
+    "name": "Niagara Falls",
+    "lat": 43.0799,
+    "lng": -79.0747,
+    "zoom": 15,
+    "fact": "Three waterfalls on the border of Canada and the United States."
+  },
+  {
+    "name": "Victoria Falls",
+    "lat": -17.9243,
+    "lng": 25.8572,
+    "zoom": 15,
+    "fact": "One of the largest waterfalls in the world, on the Zambezi River between Zambia and Zimbabwe."
+  },
+  {
+    "name": "Iguazu Falls",
+    "lat": -25.6953,
+    "lng": -54.4367,
+    "zoom": 14,
+    "fact": "Hundreds of waterfalls on the border of Argentina and Brazil."
+  },
+  {
+    "name": "Mount Fuji",
+    "lat": 35.3606,
+    "lng": 138.7274,
+    "zoom": 12,
+    "fact": "Japan's highest mountain, 3,776 m, an almost perfect volcanic cone."
+  },
+  {
+    "name": "Uluru",
+    "lat": -25.3444,
+    "lng": 131.0369,
+    "zoom": 13,
+    "fact": "A giant sandstone monolith in the desert of central Australia."
+  },
+  {
+    "name": "Stonehenge",
+    "lat": 51.1789,
+    "lng": -1.8262,
+    "zoom": 17,
+    "fact": "A prehistoric stone circle in England, about 5,000 years old."
+  },
+  {
+    "name": "Chichen Itza",
+    "lat": 20.6843,
+    "lng": -88.5678,
+    "zoom": 16,
+    "fact": "A great Maya city in Mexico, crowned by the El Castillo pyramid."
+  },
+  {
+    "name": "Kaaba, Mecca",
+    "lat": 21.4225,
+    "lng": 39.8262,
+    "zoom": 16,
+    "fact": "The most sacred site in Islam, at the centre of the Masjid al-Haram."
+  },
+  {
+    "name": "Golden Gate Bridge",
+    "lat": 37.8199,
+    "lng": -122.4783,
+    "zoom": 15,
+    "fact": "A suspension bridge across the entrance to San Francisco Bay, opened in 1937."
+  },
+  {
+    "name": "Venice",
+    "lat": 45.4371,
+    "lng": 12.3326,
+    "zoom": 14,
+    "fact": "A city built on more than 100 small islands in a lagoon in northern Italy."
+  },
+  {
+    "name": "Suez Canal",
+    "lat": 30.82,
+    "lng": 32.315,
+    "zoom": 12,
+    "fact": "A 193 km canal linking the Mediterranean Sea and the Red Sea, opened in 1869."
+  },
+  {
+    "name": "Panama Canal, Miraflores Locks",
+    "lat": 8.9967,
+    "lng": -79.5917,
+    "zoom": 15,
+    "fact": "Locks lift ships up and down as they cross Panama between the Atlantic and the Pacific."
+  },
+  {
+    "name": "Dead Sea",
+    "lat": 31.5,
+    "lng": 35.48,
+    "zoom": 10,
+    "fact": "The lowest place on land, about 430 m below sea level."
+  },
+  {
+    "name": "Central Park, New York",
+    "lat": 40.7829,
+    "lng": -73.9654,
+    "zoom": 14,
+    "fact": "A long rectangle of green in the middle of Manhattan."
+  },
+  {
+    "name": "Mount Kilimanjaro",
+    "lat": -3.0674,
+    "lng": 37.3556,
+    "zoom": 12,
+    "fact": "Africa's highest mountain, 5,895 m, a dormant volcano in Tanzania."
+  },
+  {
+    "name": "Marina Bay Sands, Singapore",
+    "lat": 1.2834,
+    "lng": 103.8607,
+    "zoom": 16,
+    "fact": "Three towers joined by a sky park on top, beside Marina Bay."
+  },
+  {
+    "name": "Borobudur",
+    "lat": -7.6079,
+    "lng": 110.2038,
+    "zoom": 17,
+    "fact": "The world's largest Buddhist temple, in central Java, Indonesia."
+  },
+  {
+    "name": "Meeting of Waters, Manaus",
+    "lat": -3.134,
+    "lng": -59.902,
+    "zoom": 12,
+    "fact": "The dark Rio Negro meets the sandy Solimoes and they flow side by side for kilometres in the Amazon."
+  },
+  {
+    "name": "Ha Long Bay",
+    "lat": 20.9101,
+    "lng": 107.1839,
+    "zoom": 11,
+    "fact": "Thousands of limestone islands rising from the sea in northern Vietnam."
+  },
+  {
+    "name": "Bagan",
+    "lat": 21.1717,
+    "lng": 94.8585,
+    "zoom": 14,
+    "fact": "More than 2,000 Buddhist temples and pagodas on the plains of Myanmar."
+  },
+  {
+    "name": "Hagia Sophia",
+    "lat": 41.0086,
+    "lng": 28.9802,
+    "zoom": 17,
+    "fact": "A great domed building from the 6th century in Istanbul, Turkey."
+  },
+  {
+    "name": "Forbidden City",
+    "lat": 39.9163,
+    "lng": 116.3972,
+    "zoom": 15,
+    "fact": "The palace of Chinese emperors for almost 500 years, in the heart of Beijing."
+  }
+]

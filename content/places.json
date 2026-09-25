@@ -3,222 +3,259 @@
     "name": "Sundarbans",
     "lat": 21.95,
     "lng": 89.3,
-    "fact": "The largest mangrove forest in the world and home of the Royal Bengal tiger. A UNESCO World Heritage Site."
+    "fact": "The largest mangrove forest in the world and home of the Royal Bengal tiger. A UNESCO World Heritage Site.",
+    "zoom": 11
   },
   {
     "name": "Kuakata Sea Beach",
     "lat": 21.8167,
     "lng": 90.1206,
-    "fact": "Known as the daughter of the sea, one of the few beaches where you can watch both sunrise and sunset."
+    "fact": "Known as the daughter of the sea, one of the few beaches where you can watch both sunrise and sunset.",
+    "zoom": 14
   },
   {
     "name": "Cox's Bazar Sea Beach",
     "lat": 21.4395,
     "lng": 91.976,
-    "fact": "One of the longest natural sea beaches in the world, about 120 km of unbroken sand."
+    "fact": "One of the longest natural sea beaches in the world, about 120 km of unbroken sand.",
+    "zoom": 13
   },
   {
     "name": "Saint Martin's Island",
     "lat": 20.6237,
     "lng": 92.3234,
-    "fact": "The only coral island of Bangladesh, in the Bay of Bengal."
+    "fact": "The only coral island of Bangladesh, in the Bay of Bengal.",
+    "zoom": 14
   },
   {
     "name": "Inani Beach",
     "lat": 21.23,
     "lng": 92.047,
-    "fact": "A rocky coral beach south of Cox's Bazar."
+    "fact": "A rocky coral beach south of Cox's Bazar.",
+    "zoom": 15
   },
   {
     "name": "Himchari",
     "lat": 21.355,
     "lng": 92.028,
-    "fact": "Hills and a small waterfall right beside the Cox's Bazar coast."
+    "fact": "Hills and a small waterfall right beside the Cox's Bazar coast.",
+    "zoom": 14
   },
   {
     "name": "Nijhum Dwip",
     "lat": 22.05,
     "lng": 91.01,
-    "fact": "A remote island in Noakhali, famous for its spotted deer."
+    "fact": "A remote island in Noakhali, famous for its spotted deer.",
+    "zoom": 12
   },
   {
     "name": "Patenga Beach",
     "lat": 22.235,
     "lng": 91.7903,
-    "fact": "Chattogram's sea beach at the mouth of the Karnaphuli River."
+    "fact": "Chattogram's sea beach at the mouth of the Karnaphuli River.",
+    "zoom": 14
   },
   {
     "name": "Foy's Lake",
     "lat": 22.3706,
     "lng": 91.7958,
-    "fact": "A man-made lake among the hills of Chattogram, built in 1924."
+    "fact": "A man-made lake among the hills of Chattogram, built in 1924.",
+    "zoom": 15
   },
   {
     "name": "Ratargul Swamp Forest",
     "lat": 25.0107,
     "lng": 91.957,
-    "fact": "The only freshwater swamp forest in Bangladesh; you explore it by boat."
+    "fact": "The only freshwater swamp forest in Bangladesh; you explore it by boat.",
+    "zoom": 14
   },
   {
     "name": "Jaflong",
     "lat": 25.1636,
     "lng": 92.0176,
-    "fact": "Stone-filled river beside the Khasi hills on the India border."
+    "fact": "Stone-filled river beside the Khasi hills on the India border.",
+    "zoom": 14
   },
   {
     "name": "Bichanakandi",
     "lat": 25.178,
     "lng": 91.8889,
-    "fact": "Clear water flowing over stones where three hills meet."
+    "fact": "Clear water flowing over stones where three hills meet.",
+    "zoom": 15
   },
   {
     "name": "Lalakhal",
     "lat": 25.1188,
     "lng": 92.1585,
-    "fact": "A river with striking blue-green water near Jaintiapur."
+    "fact": "A river with striking blue-green water near Jaintiapur.",
+    "zoom": 14
   },
   {
     "name": "Tanguar Haor",
     "lat": 25.1415,
     "lng": 91.0797,
-    "fact": "A huge wetland in Sunamganj and a Ramsar site full of migratory birds."
+    "fact": "A huge wetland in Sunamganj and a Ramsar site full of migratory birds.",
+    "zoom": 12
   },
   {
     "name": "Hakaluki Haor",
     "lat": 24.65,
     "lng": 92.05,
-    "fact": "One of the largest haor wetlands in Asia."
+    "fact": "One of the largest haor wetlands in Asia.",
+    "zoom": 12
   },
   {
     "name": "Sreemangal Tea Gardens",
     "lat": 24.3065,
     "lng": 91.7296,
-    "fact": "The tea capital of Bangladesh, surrounded by green tea estates."
+    "fact": "The tea capital of Bangladesh, surrounded by green tea estates.",
+    "zoom": 14
   },
   {
     "name": "Lawachara National Park",
     "lat": 24.32,
     "lng": 91.787,
-    "fact": "A rainforest known for hoolock gibbons."
+    "fact": "A rainforest known for hoolock gibbons.",
+    "zoom": 14
   },
   {
     "name": "Madhabkunda Waterfall",
     "lat": 24.6378,
     "lng": 92.2197,
-    "fact": "One of the highest waterfalls in Bangladesh, in Moulvibazar."
+    "fact": "One of the highest waterfalls in Bangladesh, in Moulvibazar.",
+    "zoom": 15
   },
   {
     "name": "Sajek Valley",
     "lat": 23.382,
     "lng": 92.2938,
-    "fact": "A hill valley in Rangamati, famous for its sea of clouds."
+    "fact": "A hill valley in Rangamati, famous for its sea of clouds.",
+    "zoom": 14
   },
   {
     "name": "Rangamati Hanging Bridge",
     "lat": 22.6437,
     "lng": 92.1946,
-    "fact": "The famous bridge over Kaptai Lake."
+    "fact": "The famous bridge over Kaptai Lake.",
+    "zoom": 16
   },
   {
     "name": "Kaptai Lake",
     "lat": 22.5,
     "lng": 92.25,
-    "fact": "The largest man-made lake in Bangladesh, created by the Kaptai Dam."
+    "fact": "The largest man-made lake in Bangladesh, created by the Kaptai Dam.",
+    "zoom": 11
   },
   {
     "name": "Nilgiri",
     "lat": 21.93,
     "lng": 92.35,
-    "fact": "A hilltop resort in Bandarban, often above the clouds."
+    "fact": "A hilltop resort in Bandarban, often above the clouds.",
+    "zoom": 15
   },
   {
     "name": "Boga Lake",
     "lat": 21.9803,
     "lng": 92.4686,
-    "fact": "A natural lake about 1,200 feet up in the Bandarban hills."
+    "fact": "A natural lake about 1,200 feet up in the Bandarban hills.",
+    "zoom": 16
   },
   {
     "name": "Keokradong",
     "lat": 21.95,
     "lng": 92.5167,
-    "fact": "One of the highest peaks of Bangladesh, a popular trek in Bandarban."
+    "fact": "One of the highest peaks of Bangladesh, a popular trek in Bandarban.",
+    "zoom": 14
   },
   {
     "name": "Nafakhum Waterfall",
     "lat": 21.712,
     "lng": 92.465,
-    "fact": "A wide waterfall on the Sangu River, deep in the Bandarban hills."
+    "fact": "A wide waterfall on the Sangu River, deep in the Bandarban hills.",
+    "zoom": 15
   },
   {
     "name": "Somapura Mahavihara, Paharpur",
     "lat": 25.0311,
     "lng": 88.9767,
-    "fact": "A great Buddhist monastery from the 8th century. A UNESCO World Heritage Site."
+    "fact": "A great Buddhist monastery from the 8th century. A UNESCO World Heritage Site.",
+    "zoom": 17
   },
   {
     "name": "Mahasthangarh",
     "lat": 24.9617,
     "lng": 89.3444,
-    "fact": "One of the oldest urban sites in Bangladesh, near Bogura."
+    "fact": "One of the oldest urban sites in Bangladesh, near Bogura.",
+    "zoom": 16
   },
   {
     "name": "Kantajew Temple",
     "lat": 25.7906,
     "lng": 88.6717,
-    "fact": "An 18th century temple in Dinajpur covered in terracotta art."
+    "fact": "An 18th century temple in Dinajpur covered in terracotta art.",
+    "zoom": 17
   },
   {
     "name": "Sixty Dome Mosque",
     "lat": 22.6743,
     "lng": 89.7419,
-    "fact": "The historic mosque city of Bagerhat. A UNESCO World Heritage Site."
+    "fact": "The historic mosque city of Bagerhat. A UNESCO World Heritage Site.",
+    "zoom": 17
   },
   {
     "name": "Lalbagh Fort",
     "lat": 23.719,
     "lng": 90.3882,
-    "fact": "An unfinished 17th century Mughal fort in Old Dhaka."
+    "fact": "An unfinished 17th century Mughal fort in Old Dhaka.",
+    "zoom": 17
   },
   {
     "name": "Ahsan Manzil",
     "lat": 23.7086,
     "lng": 90.406,
-    "fact": "The Pink Palace of the Dhaka Nawabs, on the Buriganga River."
+    "fact": "The Pink Palace of the Dhaka Nawabs, on the Buriganga River.",
+    "zoom": 17
   },
   {
     "name": "Panam City, Sonargaon",
     "lat": 23.649,
     "lng": 90.598,
-    "fact": "A street of old merchant houses in the ancient capital of Sonargaon."
+    "fact": "A street of old merchant houses in the ancient capital of Sonargaon.",
+    "zoom": 16
   },
   {
     "name": "National Martyrs' Memorial",
     "lat": 23.911,
     "lng": 90.2544,
-    "fact": "The national monument in Savar honouring the heroes of 1971."
+    "fact": "The national monument in Savar honouring the heroes of 1971.",
+    "zoom": 16
   },
   {
     "name": "Padma Bridge",
     "lat": 23.446,
     "lng": 90.26,
-    "fact": "The longest bridge in Bangladesh, opened in 2022."
+    "fact": "The longest bridge in Bangladesh, opened in 2022.",
+    "zoom": 14
   },
   {
     "name": "Shalban Vihara, Mainamati",
     "lat": 23.427,
     "lng": 91.134,
-    "fact": "Ruins of a Buddhist monastery near Cumilla."
+    "fact": "Ruins of a Buddhist monastery near Cumilla.",
+    "zoom": 17
   },
   {
     "name": "Tentulia",
     "lat": 26.5219,
     "lng": 88.4083,
-    "fact": "The northern tip of Bangladesh, where you can see Kanchenjunga on clear days."
+    "fact": "The northern tip of Bangladesh, where you can see Kanchenjunga on clear days.",
+    "zoom": 13
   },
   {
     "name": "Chalan Beel",
     "lat": 24.37,
     "lng": 89.27,
-    "fact": "One of the largest wetlands of Bangladesh, near my home district."
+    "fact": "One of the largest wetlands of Bangladesh, near my home district.",
+    "zoom": 12
   }
 ]

@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20260925h"   # bump to force browsers to load new CSS/JS
+VER = "20260925i"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -271,13 +271,22 @@ write("gallery.html", page("gallery.html","Gallery | Md Sabbir Islam","Photos of
 fun = f"""    <div class="band">
       <div class="wrap">
         <header class="page-head page-head--compact">
-          <h1 class="page-head__title" data-site="fun_title">Pin the Place</h1>
-          <p class="page-head__lede" data-site="fun_intro">How well do you know Bangladesh? Pick a level, then find five places on an unlabeled satellite map.</p>
+          <h1 class="page-head__title" data-site="fun_title">Geography games</h1>
+          <p class="page-head__lede" data-site="fun_intro">Pin places on a blank satellite map, or name a place seen from space. Play with Bangladesh or the whole world.</p>
         </header>
       </div>
     </div>
     <div class="wrap">
+      <div class="gametabs" role="tablist" aria-label="Games">
+        <button class="gametab is-on" type="button" role="tab" id="tab-pin" aria-selected="true" aria-controls="game-pin" data-gametab="pin">
+          <span class="gametab__icon">{icon("crosshair")}</span><span class="gametab__text"><b>Pin the Place</b><small>Find places on a blank satellite map</small></span>
+        </button>
+        <button class="gametab" type="button" role="tab" id="tab-detective" aria-selected="false" aria-controls="game-detective" data-gametab="detective" tabindex="-1">
+          <span class="gametab__icon">{icon("layers")}</span><span class="gametab__text"><b>Satellite Detective</b><small>Name a place seen from space</small></span>
+        </button>
+      </div>
 
+      <section id="game-pin" role="tabpanel" aria-labelledby="tab-pin" data-gamebox="pin">
       <div class="game" data-game>
         <div class="game__levels" role="radiogroup" aria-label="Level" data-levels></div>
 
@@ -322,26 +331,72 @@ fun = f"""    <div class="band">
           </div>
         </div>
       </div>
+      </section>
+
+      <section id="game-detective" role="tabpanel" aria-labelledby="tab-detective" data-gamebox="detective" hidden>
+        <div class="game game--detective" data-detective>
+          <div class="game__levels"><div class="regions" role="radiogroup" aria-label="Region" data-dregions></div></div>
+
+          <aside class="game__panel" aria-live="polite">
+            <div class="game__top">
+              <ol class="game__dots" data-ddots aria-hidden="true"></ol>
+              <p class="game__score"><span data-dscore>0</span> pts</p>
+            </div>
+
+            <div class="game__stage" data-dstage="ask">
+              <p class="game__round" data-dround>Round 1 of 5</p>
+              <p class="game__ask">Which place is this?</p>
+              <p class="game__hint" data-dseen></p>
+              <div class="choices" data-dchoices></div>
+              <p class="game__tip" data-dtip>This answer is worth <b data-dworth>1,000</b> points. Zooming out shows more, for fewer points.</p>
+              <button class="btn game__zoom" type="button" data-dzoom>{icon("expand")}Zoom out</button>
+              <p class="game__verdict" data-dverdict></p>
+              <p class="game__fact" data-dfact></p>
+              <button class="btn btn--primary game__btn" type="button" data-dnext hidden>Next place</button>
+            </div>
+
+            <div class="game__stage" data-dstage="end" hidden>
+              <p class="game__round" data-dendlevel></p>
+              <p class="game__final"><span data-dfinal>0</span><span class="game__of"> / 5000</span></p>
+              <p class="game__rating" data-drating></p>
+              <p class="game__best" data-dbest></p>
+              <ol class="game__recap" data-drecap></ol>
+              <div class="btn-row">
+                <button class="btn btn--primary" type="button" data-dagain>Play again</button>
+              </div>
+            </div>
+          </aside>
+
+          <div class="game__map">
+            <div id="detective-map" role="img" aria-label="Satellite view of the place to name"></div>
+            <p class="game__loading" data-dloading>Loading...</p>
+          </div>
+        </div>
+      </section>
 
       <section class="howto" aria-labelledby="howto-title">
         <div class="howto__intro">
           <h2 class="sec-title" id="howto-title" data-site="fun_howto_title">How to play</h2>
-          <p data-site="fun_howto">Pick a level, then find five places on an unlabeled satellite map of Bangladesh. Tap the map to drop a pin, then lock in your guess. A pin inside the right area, or right on the landmark, scores 1000 points; the further away it lands, the fewer points you get.</p>
+          <p data-site="fun_howto">Pick a game and a region, Bangladesh or the whole world. In Pin the Place, tap the map to drop a pin and lock in your guess: a pin inside the right area, or right on the landmark, scores 1000 points, and the further away it lands, the fewer points you get. In Satellite Detective, name the place you see from above; zooming out helps, but lowers the points.</p>
         </div>
         <dl class="howto__levels">
-          <div><dt>Easy</dt><dd>The 8 divisions of Bangladesh.</dd></div>
-          <div><dt>Medium</dt><dd>The 64 districts.</dd></div>
-          <div><dt>Hard</dt><dd>The 544 upazilas.</dd></div>
-          <div><dt>Landmarks</dt><dd>Famous places across the country.</dd></div>
+          <div><dt>Bangladesh</dt><dd>8 divisions, 64 districts, 544 upazilas and famous landmarks.</dd></div>
+          <div><dt>World</dt><dd>167 countries and famous places, from the Pyramids to Machu Picchu.</dd></div>
+          <div><dt>Pin the Place</dt><dd>Drop a pin on the unlabeled satellite map. Five places per game.</dd></div>
+          <div><dt>Satellite Detective</dt><dd>Four choices per view. 1000, 600 or 300 points depending on zoom.</dd></div>
         </dl>
-        <h3 class="howto__sub" data-site="fun_places_title">Landmarks in the game</h3>
-        <ul class="tags tags--quiet" data-render="places" aria-busy="true"></ul>
-        <p class="howto__credit">Boundaries: geoBoundaries (BBS and OCHA, CC BY 3.0 IGO). Imagery: Esri World Imagery, with Sentinel-2 cloudless by EOX as a fallback.</p>
+        <h3 class="howto__sub" data-site="fun_places_title">Landmarks in the games</h3>
+        <div class="howto__lists">
+          <div><p class="howto__list-title">Bangladesh</p><ul class="tags tags--quiet" data-render="places" aria-busy="true"></ul></div>
+          <div><p class="howto__list-title">World</p><ul class="tags tags--quiet" data-render="world-places" aria-busy="true"></ul></div>
+        </div>
+        <p class="howto__credit">Boundaries: geoBoundaries (BBS and OCHA, CC BY 3.0 IGO) and Natural Earth (public domain). Imagery: Esri World Imagery, with Sentinel-2 cloudless by EOX as a fallback.</p>
       </section>
     </div>"""
-write("fun.html", page("fun.html","Pin the Place: Bangladesh geography game | Md Sabbir Islam","A free Bangladesh geography game on a satellite map. Find the divisions, districts, upazilas and famous places such as the Sundarbans, Cox's Bazar and Kuakata.", fun,
+write("fun.html", page("fun.html","Geography games: Pin the Place and Satellite Detective | Md Sabbir Islam","Free geography games on real satellite maps. Find Bangladesh divisions, districts, upazilas and landmarks, or 167 countries and world wonders, and name famous places seen from space.", fun,
     extra_head=f'  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">\n',
-    extra_js=f'  <script src="assets/vendor/leaflet/leaflet.js" defer></script>\n  <script src="assets/js/game.js?v={VER}" defer></script>\n'))
+    extra_js=f'  <script src="assets/vendor/leaflet/leaflet.js" defer></script>\n  <script src="assets/js/game.js?v={VER}" defer></script>\n  <script src="assets/js/detective.js?v={VER}" defer></script>\n'))
+
 # ======================= 404 (GitHub Pages serves it for any missing address) =======================
 nf = page("404.html", "Page not found | Md Sabbir Islam", "This page does not exist. Go to the home page of Md Sabbir Islam.", f"""    <section class="band band--hero band--404" aria-labelledby="nf-title">
       <div class="wrap">

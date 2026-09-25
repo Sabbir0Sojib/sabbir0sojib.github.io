@@ -183,8 +183,8 @@ content:
       - { name: languages, label: Languages, type: string, list: true }
 
   - name: places
-    label: Fun game landmarks
-    description: Places for the Landmarks level of Pin the Place (the Easy, Medium and Hard levels use official divisions, districts and upazilas). Latitude and longitude in decimal degrees.
+    label: "Fun games: Bangladesh landmarks"
+    description: Places for the Bangladesh Landmarks level of Pin the Place and for Satellite Detective. Latitude and longitude in decimal degrees (right-click a place in Google Maps to copy them).
     type: file
     path: content/places.json
     format: json
@@ -193,4 +193,19 @@ content:
       - { name: name, label: Place name, type: string, required: true }
       - { name: lat, label: Latitude, type: number }
       - { name: lng, label: Longitude, type: number }
+      - { name: zoom, label: "Satellite Detective zoom (10 = wide area, 17 = one building)", type: number }
+      - { name: fact, label: Short fact, type: text }
+
+  - name: world_places
+    label: "Fun games: world landmarks"
+    description: Famous places around the world for the World Wonders level of Pin the Place and for Satellite Detective. Latitude and longitude in decimal degrees.
+    type: file
+    path: content/world-places.json
+    format: json
+    list: true
+    fields:
+      - { name: name, label: Place name, type: string, required: true }
+      - { name: lat, label: Latitude, type: number }
+      - { name: lng, label: Longitude, type: number }
+      - { name: zoom, label: "Satellite Detective zoom (10 = wide area, 17 = one building)", type: number }
       - { name: fact, label: Short fact, type: text }

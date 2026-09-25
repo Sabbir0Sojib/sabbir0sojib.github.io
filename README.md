@@ -9,6 +9,7 @@ All the words, maps and photos live in simple data files in the `content/` folde
 
 | File | What it holds |
 |---|---|
+| `content/world-places.json` | Famous places around the world for the games (name, coordinates, zoom, fact) |
 | `content/site.json` | Page titles and intros, home section titles, contact note, footer text |
 | `content/profile.json` | Name, role, bio, photo and photo caption, facts, interests, experience, skills, awards, languages, emails, ORCID, links |
 | `content/research.json` | Papers, manuscripts and field work (Research page) |

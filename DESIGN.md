@@ -260,7 +260,8 @@ Flat. The only shadows: the facts card over the hero edge, the print shadow unde
 - **Footer:** dark green; serif name and tagline, all pages, all profiles (yellow column headings), then the copyright line and Back to top.
 - **404 page:** a tall green band with the terrain, a yellow mono "404", serif title "This page is off the map.", one line of text and two buttons (Go to the home page, See my maps).
 - **Link preview card (1200x630):** green with terrain, name in display serif, role in yellow, university line, the site address after a short yellow bar, photo on the right.
-- **Pin the Place:** unchanged; see CLAUDE.md for levels and scoring.
+- **Fun page:** two game tabs as white cards (icon circle turns yellow on the active one, forest outline). Each game sits in the same frame: a surface bar with the Bangladesh / World switch (white segmented control, forest fill when on) and level tabs, a 360px panel and the satellite map. Satellite Detective answers are full-width buttons (2 columns on phones, map above the panel); the right one turns forest green, a wrong pick is struck through. How to play lists both landmark sets as quiet tags.
+- **Pin the Place / Satellite Detective:** see CLAUDE.md for levels and scoring.
 
 ## Do's and Don'ts
 
