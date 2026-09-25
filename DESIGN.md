@@ -41,6 +41,9 @@ colors:
   map-night: "#0B1F2A"
   map-highlight: "#FACC15"
   pin-shadow: "rgba(0, 0, 0, 0.45)"
+  viewer-bg: "#08160F"
+  viewer-text-soft: "#C4D3C9"
+  viewer-scrim: "rgba(0, 0, 0, 0.9)"
 typography:
   display:
     fontFamily: "Newsreader, Georgia, Times New Roman, serif"
