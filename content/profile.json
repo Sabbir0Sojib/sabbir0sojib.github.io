@@ -17,9 +17,10 @@
       "icon": "lab"
     },
     {
-      "label": "Focus",
-      "value": "UAV and satellite deep learning, hazard mapping",
-      "icon": "focus"
+      "label": "Research focus",
+      "value": "Urban tree canopy mapping from UAV and PlanetScope imagery with deep learning",
+      "icon": "focus",
+      "note": "UAV 5 cm to PlanetScope 3 m"
     },
     {
       "label": "Based in",

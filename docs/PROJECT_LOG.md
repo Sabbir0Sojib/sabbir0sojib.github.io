@@ -28,12 +28,17 @@ History of how this site was built, what was tried and why things are the way th
 22. **Google Search Console.** Verified with the HTML file method (`googled3049a719b2eb582.html` in the repo root). Sitemap to submit: `sitemap.xml`.
 23. **Search indexing of content.** Owner wants maps, research and the game found on Google, not only his name. Content is now pre-rendered into the HTML (`.github/scripts/prerender.mjs`, re-run by the Site upkeep workflow after every CMS save); keyword titles and descriptions per page; image sitemap for all maps and photos; Person structured data (with the nickname Sabbir Islam Sojib); Fun page gained a How to play section and the list of landmarks. The shrink workflow became `site-upkeep.yml`.
 24. **Facts card.** Owner found it average. Each fact now has a yellow Phosphor icon, the value in serif, and an optional note (coordinates for Pabna); icon and note are editable in Pages CMS.
+25. **Full audit with all four skills.** Focus fact rewritten ("Research focus: Urban tree canopy mapping from UAV and PlanetScope imagery with deep learning", note "UAV 5 cm to PlanetScope 3 m"). Maps intro reworded (was "Single maps"), "More maps, images coming soon" became "More maps", Tree Cover Loss year fixed to 2026. Image sizes are now reserved (`assets/data/image-sizes.json`, built by `build-pages.py`) so pages do not jump (layout shift 0.000). Tap targets at least 24 px on phones; reduced motion removes movement but keeps colour feedback. Accessibility: 0 contrast failures, correct headings, all images described. Impeccable browser scans: 0 findings.
 
 ## Open items
+
+- Thesis entry in research.json is typed "journal" with status "Under review" but its venue says "Undergraduate thesis"; ask the owner which is right.
+- Experience "when" for the degree reads "(2026) Final result awaited"; suggest "2026" with "final result awaited" in the details.
+- Bio opens with "I love GIS and remote sensing"; a more formal version was suggested to the owner.
+- Gallery has one photo; suggest adding more or hiding it from the menu until there are three or more.
 
 - More photos for the Gallery (EFAST 2026, CH4Rice fieldwork, drone flights).
 - Images for: sea level rise, earthquake hazard, LULC Dhaka, Nepal flood before/after, Landsat mosaic, Landsat harmonic model.
 - Thesis figures for the Research page, if the owner wants them.
 - The crop suitability image title has a typo ("Banlgladesh") in the owner's original file.
-- The Tree Cover Loss map has year "2001-2015" in maps.json while its title says 2001-2025.
 - Check the wind project "stat" value (added when the site had a story layout; currently not displayed).

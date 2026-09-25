@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20260925g"   # bump to force browsers to load new CSS/JS
+VER = "20260925h"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -234,7 +234,7 @@ write("maps.html", page("maps.html","Maps of Bangladesh | Md Sabbir Islam","Maps
       <div class="wrap wrap--wide">
         <header class="page-head">
           <h1 class="page-head__title" data-site="maps_title">Maps</h1>
-          <p class="page-head__lede" data-site="maps_intro">Single maps, newest first. Click a map to view it full size.</p>
+          <p class="page-head__lede" data-site="maps_intro">Maps from my research and projects, newest first. Click any map to see it full size.</p>
         </header>
       </div>
     </div>
@@ -244,7 +244,7 @@ write("maps.html", page("maps.html","Maps of Bangladesh | Md Sabbir Islam","Maps
       <p class="list-empty" hidden>No maps with this tag yet.</p>
 {NOSCRIPT}
       <section class="block block--more" aria-labelledby="more-work" data-render-wrap="projects-more" hidden>
-        <h2 id="more-work" class="block__title">More maps, images coming soon</h2>
+        <h2 id="more-work" class="block__title">More maps</h2>
         <ul class="more" data-render="projects-more"></ul>
       </section>
     </div>
@@ -358,6 +358,23 @@ nf = page("404.html", "Page not found | Md Sabbir Islam", "This page does not ex
     </section>""")
 nf = nf.replace('<meta name="description"', '<meta name="robots" content="noindex">\n  <meta name="description"', 1)
 write("404.html", absolutize(nf))
+
+# ======================= Image sizes, so pages reserve space before images load =======================
+def image_sizes():
+    from PIL import Image
+    sizes = {}
+    root = os.path.join(OUT, "assets", "img")
+    for dirpath, _, files in os.walk(root):
+        for f in files:
+            if f.lower().rsplit(".", 1)[-1] in ("webp", "jpg", "jpeg", "png"):
+                full = os.path.join(dirpath, f)
+                try:
+                    with Image.open(full) as im: sizes[os.path.relpath(full, OUT).replace(os.sep, "/")] = list(im.size)
+                except Exception:
+                    pass
+    return dict(sorted(sizes.items()))
+os.makedirs(os.path.join(OUT, "assets", "data"), exist_ok=True)
+write("assets/data/image-sizes.json", json.dumps(image_sizes(), indent=0) + "\n")
 
 # ======================= Sitemap and robots.txt for search engines =======================
 today = datetime.date.today().isoformat()

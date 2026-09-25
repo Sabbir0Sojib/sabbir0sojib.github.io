@@ -139,7 +139,7 @@
     el.innerHTML = maps.map(function (m, i) {
       return '<figure class="shot">' +
         '<button class="mat shot__btn" type="button" data-lightbox="h' + i + '" aria-label="Open ' + esc(m.title) + ' full size">' +
-        '<img src="' + esc(src(m.image)) + '" alt="' + esc(m.image_alt || m.title) + '"' + (i ? ' loading="lazy"' : "") + ">" +
+        '<img src="' + esc(src(m.image)) + '"' + dims(m.image) + ' alt="' + esc(m.image_alt || m.title) + '" loading="lazy">' +
         '<span class="shot__zoom" aria-hidden="true">' + icon("expand") + "View full size</span></button>" +
         '<figcaption><p class="shot__top"><span class="shot__title">' + esc(m.title) + '</span><span class="mono shot__year">' + esc(m.year) + "</span></p>" +
         '<p class="shot__meta visually-hidden">' + esc(m.description) + "</p></figcaption></figure>";
@@ -166,7 +166,7 @@
       var tools = String(p.tools || "").split(",").map(function (t) { return t.trim(); }).filter(Boolean).join(", ");
       var repoName = cleanUrl(p.repo).replace(/^github\.com\//, "");
       var media = p.image
-        ? '<img src="' + esc(src(p.image)) + '" alt="" loading="lazy">'
+        ? '<img src="' + esc(src(p.image)) + '"' + dims(p.image) + ' alt="" loading="lazy">'
         : '<span class="proj__tile">' + icon("github") + "<span>" + esc(repoName) + "</span></span>";
       return '<article class="pcard"><div class="mat pcard__media" aria-hidden="true">' + media + "</div>" +
         '<div class="pcard__top"><h3 class="pcard__title"><a href="' + esc(p.repo) + '" target="_blank" rel="noopener">' + esc(p.title) + "</a></h3>" +
@@ -215,7 +215,7 @@
         .map(function (t) { return '<li class="tag">' + esc(t) + "</li>"; }).join("");
       var repoName = cleanUrl(p.repo).replace(/^github\.com\//, "");
       var media = p.image
-        ? '<img src="' + esc(src(p.image)) + '" alt="' + esc(p.image_alt || p.title) + '" loading="lazy">'
+        ? '<img src="' + esc(src(p.image)) + '"' + dims(p.image) + ' alt="' + esc(p.image_alt || p.title) + '" loading="lazy">'
         : '<span class="proj__tile">' + icon("github") + "<span>" + esc(repoName) + "</span></span>";
       return '<article class="proj">' +
         '<a class="mat proj__media" href="' + esc(p.repo) + '" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">' + media + "</a>" +
@@ -264,7 +264,7 @@
       var code = p.code ? '<a class="link" href="' + esc(p.code) + '" target="_blank" rel="noopener">View code' + icon("arrow") + "</a>" : "";
       return '<figure class="shot" data-cat="' + esc(tagsOf(p).map(tagKey).join("|")) + '">' +
         '<button class="mat shot__btn" type="button" data-lightbox="p' + i + '" aria-label="Open ' + esc(p.title) + ' full size">' +
-        '<img src="' + esc(src(p.image)) + '" alt="' + esc(p.image_alt || p.title) + '" loading="lazy">' +
+        '<img src="' + esc(src(p.image)) + '"' + dims(p.image) + ' alt="' + esc(p.image_alt || p.title) + '" loading="lazy">' +
         '<span class="shot__zoom" aria-hidden="true">' + icon("expand") + "View full size</span></button>" +
         '<figcaption><p class="shot__top"><span class="shot__title">' + esc(p.title) + '</span><span class="mono shot__year">' + esc(p.year) + "</span></p>" +
         '<p class="shot__meta">' + esc(p.description) + "</p>" + code + "</figcaption></figure>";
@@ -289,7 +289,7 @@
   function renderGallery(el, list) {
     el.innerHTML = list.map(function (g, i) {
       return '<figure class="shot"><button class="shot__btn" type="button" data-lightbox="g' + i + '" aria-label="Open photo full size">' +
-        '<img src="' + esc(src(g.image)) + '" alt="' + esc(g.alt || g.title) + '" loading="lazy"></button>' +
+        '<img src="' + esc(src(g.image)) + '"' + dims(g.image) + ' alt="' + esc(g.alt || g.title) + '" loading="lazy"></button>' +
         '<figcaption><p class="shot__title">' + esc(g.title) + '</p><p class="shot__meta">' + esc(g.caption) + "</p></figcaption></figure>";
     }).join("");
     var empty = document.querySelector(".list-empty");
@@ -323,13 +323,22 @@
     places: ["places", renderPlaces, "the landmarks"]
   };
 
+  // Image sizes (written by the build) let the browser reserve space, so the page does not jump.
+  var SIZES = {};
+  function dims(path) {
+    var d = SIZES[String(path || "").replace(/^\//, "")];
+    return d ? ' width="' + d[0] + '" height="' + d[1] + '"' : "";
+  }
+  var sizesReady = fetch(ROOT + "assets/data/image-sizes.json?v=" + VER).then(function (r) { return r.ok ? r.json() : {}; })
+    .catch(function () { return {}; }).then(function (s) { SIZES = s || {}; });
+
   // Sections may already hold a pre-rendered copy (.github/scripts/prerender.mjs). Render into a
   // scratch element and only swap it in when the content differs, so nothing flickers or replays.
   var jobs = Array.prototype.slice.call(document.querySelectorAll("[data-render]")).map(function (el) {
     var spec = RENDER[el.getAttribute("data-render")];
     if (!spec) return Promise.resolve();
     var pre = !el.hasAttribute("aria-busy") && el.children.length > 0;
-    return load(spec[0]).then(function (data) {
+    return sizesReady.then(function () { return load(spec[0]); }).then(function (data) {
       var tmp = document.createElement(el.tagName);
       spec[1](tmp, data);
       if (!pre || tmp.innerHTML !== el.innerHTML) el.innerHTML = tmp.innerHTML;
