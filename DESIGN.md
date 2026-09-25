@@ -44,10 +44,10 @@ colors:
 typography:
   display:
     fontFamily: "Newsreader, Georgia, Times New Roman, serif"
-    fontSize: "clamp(2.75rem, 1.6rem + 4.4vw, 5.25rem)"
+    fontSize: "clamp(3rem, 1.9rem + 4.6vw, 6rem)"
     fontWeight: 500
-    lineHeight: 1.02
-    letterSpacing: "-0.028em"
+    lineHeight: 1
+    letterSpacing: "-0.03em"
   page-title:
     fontFamily: "Newsreader, Georgia, Times New Roman, serif"
     fontSize: "clamp(2.5rem, 1.7rem + 3.2vw, 4rem)"
@@ -218,7 +218,7 @@ References used: Overlake School (green bands, yellow action pill, utility bar, 
 
 ## Typography
 
-- **Display:** the home headline statement.
+- **Display:** your name in the home hero (one line on every screen).
 - **Page title / compact page title:** each page's heading.
 - **Section title:** home sections, research groups, "More maps".
 - **Headline:** project titles on the Projects page, the game question.
@@ -246,15 +246,17 @@ Flat. The only shadows: the facts card over the hero edge, the print shadow unde
 - **Utility bar:** thin dark-green strip above the header with ORCID, LinkedIn, GitHub and Email (hidden on phones).
 - **Header:** green, sticky; white serif name left, white page links with a yellow underline on hover and on the current page, and a yellow Email me pill. Up to 820px: a yellow Menu pill that opens a full-width green dropdown.
 - **Page band:** green band with the terrain on the right (fading out on the left), white serif page title and a green-tinted intro line.
-- **Hero (Home):** on the green band: a serif greeting, the big serif headline, the role line in yellow, the bio, a yellow See my maps pill and a white-outline Email me button; photo on the right with an optional caption. On load the terrain settles in and the text rises in sequence; this is the site's only entrance animation.
+- **Hero (Home):** on the green band, at most four text elements (Taste rule): the name in display serif, the role line in yellow, the bio, and two buttons with different intents (yellow See my maps, white-outline Read my research); photo on the right with an optional caption. On load the terrain settles in and the text rises in sequence; this is the site's only entrance animation.
 - **Facts card:** white card overlapping the hero's lower edge, four facts with thin dividers (2 columns on tablets, 1 on phones).
 - **Latest maps (Home):** the three newest maps: one lead map on the left, two on the right, each on a mat; click opens the viewer.
 - **Recent research (Home):** the three newest items as short citations: year, type and status, serif title, italic venue. All equal.
-- **Code projects (Home):** the four newest repositories as rows: title (whole row clickable), year, one-line description, tools in mono.
+- **Code projects (Home):** 2 by 2 cards: preview on a mat (or the repository path), serif title, year, one-line description, tools in mono; the whole card links to GitHub.
+- **Skills (Home):** one white panel with the skill groups in three columns.
+- **Interests, awards, languages (Home):** three columns side by side under one rule.
 - **Projects page:** one row per repository: preview on a mat (or the repository path with a GitHub mark when there is no image), serif title, year, description, tool tags and the repository link.
 - **Maps page (map wall):** two columns, each map whole on its mat at full column width, placed in the shorter column in date order so reading order stays newest first. Filter chips are built from the tags in use.
 - **Research page:** academic list grouped by type with a count badge and a 2px ink rule; numbered entries in citation form (owner bold). No cards, no filters.
-- **Contact band (Home):** green band with a big serif title, the note, and translucent cards (yellow icon circle, label, value, copy button).
+- **Contact band (Home):** green band; big serif title with the note directly under it, then translucent cards (yellow icon circle, label, value, copy button).
 - **Footer:** dark green; serif name and tagline, all pages, all profiles (yellow column headings), then the copyright line and Back to top.
 - **Pin the Place:** unchanged; see CLAUDE.md for levels and scoring.
 
@@ -265,9 +267,11 @@ Flat. The only shadows: the facts card over the hero edge, the print shadow unde
 - **Do** keep every research item equal; no single item gets a bigger box or big numbers.
 - **Do** keep text free of em dash and en dash characters (owner rule).
 - **Do** stay on this type ramp and the four radii.
+- **Do** keep one label per intent (See my maps / See all maps, Read my research / Read all research, Email me).
 
 ### Don't:
 - **Don't** use yellow for anything but actions and small highlights, and never put white text on it.
 - **Don't** add dark sections other than the header, the page band, the home contact band and the footer.
 - **Don't** put eyebrow labels above headings or number the sections.
+- **Don't** put a long statement headline in the hero; the name is the headline.
 - **Don't** add decorative patterns or empty diagrams; the terrain is real elevation data, and every other visual shows real work.

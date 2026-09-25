@@ -10,7 +10,7 @@ All the words, maps and photos live in simple data files in the `content/` folde
 | File | What it holds |
 |---|---|
 | `content/site.json` | Page titles and intros, home section titles, contact note, footer text |
-| `content/profile.json` | Name, greeting and big headline, bio, photo and photo caption, facts, interests, experience, skills, awards, languages, emails, ORCID, links |
+| `content/profile.json` | Name, role, bio, photo and photo caption, facts, interests, experience, skills, awards, languages, emails, ORCID, links |
 | `content/research.json` | Papers, manuscripts and field work (Research page) |
 | `content/projects.json` | Code projects with a GitHub repo (Projects page) |
 | `content/maps.json` | Single maps (Maps page). Maps without an image go under "More maps". |

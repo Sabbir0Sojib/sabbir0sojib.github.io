@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os
 OUT = "/home/user/sabbir0sojib.github.io"
-VER = "20260925c"   # bump to force browsers to load new CSS/JS
+VER = "20260925d"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -85,6 +85,7 @@ def page(fname, title, desc, body, extra_head="", extra_js=""):
     </div>
     <div class="wrap site-foot__base">
       <p data-site="footer">&copy; 2026 Md Sabbir Islam. Pabna University of Science and Technology, Bangladesh.</p>
+      <p>Green band background: terrain of the Chittagong Hill Tracts from SRTM elevation data.</p>
       <a href="#main">Back to top</a>
     </div>
   </footer>
@@ -101,7 +102,7 @@ LIGHTBOX = f'''    <dialog class="lightbox" aria-labelledby="lb-title">
       <div class="lightbox__bar">
         <p id="lb-title" class="lightbox__title"></p>
         <div class="lightbox__tools">
-          <a class="icon-btn" data-lb-original href="#" target="_blank" rel="noopener" aria-label="Open original image">{icon("arrow")}</a>
+          <a class="icon-btn" data-lb-original target="_blank" rel="noopener" aria-label="Open original image">{icon("arrow")}</a>
           <button class="icon-btn" type="button" data-lb-prev aria-label="Previous">{icon("prev")}</button>
           <button class="icon-btn" type="button" data-lb-next aria-label="Next">{icon("next")}</button>
           <button class="icon-btn" type="button" data-lb-close aria-label="Close">{icon("close")}</button>
@@ -127,7 +128,7 @@ write("index.html", page("index.html","Md Sabbir Islam | Remote Sensing and Geos
       <section class="home-sec" aria-labelledby="h-maps">
         <div class="sec-head">
           <h2 class="sec-title" id="h-maps" data-site="home_maps_title">Latest maps</h2>
-          <a class="more-link" href="maps.html"><span data-count="maps">All maps</span>{NEXT}</a>
+          <a class="more-link" href="maps.html"><span data-count="maps">See all maps</span>{NEXT}</a>
         </div>
         <div class="bento" data-render="home-maps" aria-busy="true"></div>
       </section>
@@ -135,17 +136,17 @@ write("index.html", page("index.html","Md Sabbir Islam | Remote Sensing and Geos
       <section class="split" aria-labelledby="h-research">
         <div class="split__head">
           <h2 class="sec-title" id="h-research" data-site="home_research_title">Recent research</h2>
-          <a class="more-link" href="research.html">All research{NEXT}</a>
+          <a class="more-link" href="research.html">Read all research{NEXT}</a>
         </div>
         <ol class="cites" data-render="home-research" aria-busy="true"></ol>
       </section>
 
-      <section class="split" aria-labelledby="h-projects">
-        <div class="split__head">
+      <section class="home-sec" aria-labelledby="h-projects">
+        <div class="sec-head">
           <h2 class="sec-title" id="h-projects" data-site="home_projects_title">Code projects</h2>
-          <a class="more-link" href="projects.html">All projects{NEXT}</a>
+          <a class="more-link" href="projects.html">See all projects{NEXT}</a>
         </div>
-        <ul class="plist" data-render="home-projects" aria-busy="true"></ul>
+        <div class="pgrid" data-render="home-projects" aria-busy="true"></div>
       </section>
 
       <div data-render="about" aria-busy="true"></div>

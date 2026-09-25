@@ -59,17 +59,15 @@
       '<div class="split__body">' + body + "</div></section>";
   }
 
-  // Home: greeting, headline, role, bio and photo on the green band
+  // Home: name, role, bio and photo on the green band
   function renderHero(el, p) {
-    var greeting = p.greeting || ("Hi, I'm " + p.name + ".");
     el.innerHTML =
       '<div class="hero"><div class="hero__text">' +
-        '<h1 id="name" class="hero__title"><span class="hero__hello">' + esc(greeting) + "</span>" +
-          '<span class="hero__statement">' + esc(p.headline || p.name) + "</span></h1>" +
+        '<h1 id="name" class="hero__name">' + esc(p.name) + "</h1>" +
         '<p class="hero__role">' + esc(p.role) + "</p>" +
         '<p class="hero__bio">' + esc(p.bio) + "</p>" +
         '<div class="hero__actions"><a class="pill" href="maps.html">See my maps' + icon("arrow-right") + "</a>" +
-          '<a class="btn btn--ghost" href="#contact">' + icon("envelope") + "Email me</a></div>" +
+          '<a class="btn btn--ghost" href="research.html">Read my research</a></div>' +
       "</div>" +
       (p.photo ? '<figure class="hero__photo"><img src="' + esc(src(p.photo)) + '" width="640" height="800" alt="' + esc(p.photo_alt) + '">' +
         (p.photo_caption ? '<figcaption class="hero__caption">' + esc(p.photo_caption) + "</figcaption>" : "") + "</figure>" : "") +
@@ -111,15 +109,16 @@
     var interests = list(p.interests, function (t) { return '<li class="tag">' + esc(t) + "</li>"; });
     var awards = list(p.awards, function (x) { return '<li><span class="mono">' + esc(x.year) + "</span>" + esc(x.text) + "</li>"; });
     var langs = list(p.languages, function (x) { return "<li>" + esc(x) + "</li>"; });
+    var col = function (id, title, body) { return '<section aria-labelledby="' + id + '"><h2 class="trio__title" id="' + id + '">' + title + "</h2>" + body + "</section>"; };
     el.innerHTML =
       (exp ? split("experience", "Education and experience", '<ol class="timeline">' + exp + "</ol>") : "") +
-      (skills ? split("skills", "Skills", '<dl class="skills">' + skills + "</dl>") : "") +
-      (interests ? split("interests", "Research interests", '<ul class="tags">' + interests + "</ul>") : "") +
-      (awards || langs ? split("awards", "Awards and languages",
-        '<div class="two-col">' +
-          (awards ? '<div><h3 class="sub-title">Awards</h3><ul class="plain-list">' + awards + "</ul></div>" : "") +
-          (langs ? '<div><h3 class="sub-title">Languages</h3><ul class="plain-list">' + langs + "</ul></div>" : "") +
-        "</div>") : "");
+      (skills ? '<section class="home-sec" aria-labelledby="skills"><div class="sec-head"><h2 class="sec-title" id="skills">Skills</h2></div>' +
+        '<dl class="skill-panel">' + skills + "</dl></section>" : "") +
+      (interests || awards || langs ? '<div class="trio">' +
+        (interests ? col("interests", "Research interests", '<ul class="tags">' + interests + "</ul>") : "") +
+        (awards ? col("awards", "Awards", '<ul class="plain-list">' + awards + "</ul>") : "") +
+        (langs ? col("languages", "Languages", '<ul class="plain-list">' + langs + "</ul>") : "") +
+      "</div>" : "");
   }
 
   // Home: the three newest maps
@@ -134,7 +133,7 @@
         '<p class="shot__meta visually-hidden">' + esc(m.description) + "</p></figcaption></figure>";
     }).join("");
     var count = document.querySelector('[data-count="maps"]');
-    if (count && all.length) count.textContent = "All " + all.length + " maps";
+    if (count && all.length) count.textContent = "See all " + all.length + " maps";
   }
 
   // Home: the three newest research items, all equal
@@ -149,15 +148,19 @@
     }).join("");
   }
 
-  // Home: the four newest code projects
+  // Home: the four newest code projects as cards with a preview
   function renderHomeProjects(el, all) {
     el.innerHTML = newestFirst(all).slice(0, 4).map(function (p) {
-      var tools = String(p.tools || "").split(",").map(function (t) { return t.trim(); }).filter(Boolean).join(" · ");
-      return '<li><div class="plist__row">' +
-        '<a class="plist__title" href="' + esc(p.repo) + '" target="_blank" rel="noopener">' + esc(p.title) + "</a>" +
-        '<span class="plist__year mono">' + esc(p.year) + "</span>" +
-        '<p class="plist__text">' + esc(p.description) + "</p>" +
-        (tools ? '<p class="plist__tools">' + esc(tools) + "</p>" : "") + "</div></li>";
+      var tools = String(p.tools || "").split(",").map(function (t) { return t.trim(); }).filter(Boolean).join(", ");
+      var repoName = cleanUrl(p.repo).replace(/^github\.com\//, "");
+      var media = p.image
+        ? '<img src="' + esc(src(p.image)) + '" alt="" loading="lazy">'
+        : '<span class="proj__tile">' + icon("github") + "<span>" + esc(repoName) + "</span></span>";
+      return '<article class="pcard"><div class="mat pcard__media" aria-hidden="true">' + media + "</div>" +
+        '<div class="pcard__top"><h3 class="pcard__title"><a href="' + esc(p.repo) + '" target="_blank" rel="noopener">' + esc(p.title) + "</a></h3>" +
+        '<span class="mono shot__year">' + esc(p.year) + "</span></div>" +
+        '<p class="pcard__text">' + esc(p.description) + "</p>" +
+        (tools ? '<p class="pcard__tools">' + esc(tools) + "</p>" : "") + "</article>";
     }).join("");
   }
 

@@ -117,12 +117,10 @@ content:
     format: json
     fields:
       - { name: name, label: Name, type: string }
-      - { name: greeting, label: "Greeting above the headline (for example: Hi, I'm Md Sabbir Islam.)", type: string }
-      - { name: headline, label: Big headline on the Profile page, type: string }
       - { name: role, label: Role line, type: string }
       - name: bio
         label: Short bio
-        description: 2 or 3 sentences in your own voice, shown under your name at the top of the Profile page.
+        description: 2 or 3 sentences in your own voice, shown under your name at the top of the Profile page. Short reads best (about 20 to 35 words).
         type: text
       - { name: photo, label: Photo, type: image }
       - { name: photo_alt, label: Photo description (for screen readers), type: string }
