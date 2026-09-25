@@ -39,9 +39,7 @@
     "tags": [
       "Hazards and climate"
     ],
-    "description": "SRTM 30 m DEM, bathtub inundation model, Python.",
-    "image": "",
-    "image_alt": ""
+    "description": "SRTM 30 m DEM, bathtub inundation model, Python."
   },
   {
     "title": "Prevailing 10 m wind, 2023",
@@ -72,9 +70,7 @@
     "tags": [
       "Hazards and climate"
     ],
-    "description": "Betrawati-Gerkhu reach, Nuwakot District. Sentinel-2.",
-    "image": "",
-    "image_alt": ""
+    "description": "Betrawati-Gerkhu reach, Nuwakot District. Sentinel-2."
   },
   {
     "title": "Cycling accessibility from Korail, Dhaka",
@@ -94,9 +90,7 @@
     "tags": [
       "Land and terrain"
     ],
-    "description": "Sentinel-2 classification.",
-    "image": "",
-    "image_alt": ""
+    "description": "Sentinel-2 classification."
   },
   {
     "title": "Cold wave, 29 December 2025",
@@ -149,9 +143,7 @@
     "tags": [
       "Land and terrain"
     ],
-    "description": "Country-wide Landsat composite.",
-    "image": "",
-    "image_alt": ""
+    "description": "Country-wide Landsat composite."
   },
   {
     "title": "Stream order of the Padma River basin",
@@ -171,9 +163,7 @@
     "tags": [
       "Hazards and climate"
     ],
-    "description": "USGS events, IDW interpolation in ArcMap.",
-    "image": "",
-    "image_alt": ""
+    "description": "USGS events, IDW interpolation in ArcMap."
   },
   {
     "title": "Landsat 8 harmonic modeling, Pabna District",
@@ -182,8 +172,16 @@
     "tags": [
       "Land and terrain"
     ],
-    "description": "Time series harmonic regression.",
-    "image": "",
-    "image_alt": ""
+    "description": "Time series harmonic regression."
+  },
+  {
+    "title": "Tree Cover Loss in Southeastern Bangladesh (2001-2025)",
+    "year": "2001-2015",
+    "date": "2026-09-25",
+    "tags": [
+      "Land and terrain"
+    ],
+    "description": "Data Source: University of Maryland, Hansen Global Forest Change v1.13\nMethod: Annual loss year classification (30 m, canopy ≥30% forest baseline)",
+    "image": "/assets/img/work/SE_Bangladesh_Tree_Cover_Loss_2001_2025(2).webp"
   }
 ]
