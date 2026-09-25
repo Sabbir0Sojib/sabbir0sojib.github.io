@@ -153,19 +153,46 @@
     if (empty) empty.hidden = list.length > 0;
   }
 
+  // Map tags are typed freely in Pages CMS; filter buttons are built from the tags in use.
+  function tagsOf(p) {
+    var t = Array.isArray(p.tags) ? p.tags : (p.tags ? String(p.tags).split(",") : []);
+    if (!t.length && p.theme) t = [THEME_LABEL[p.theme] || p.theme];
+    return t.map(function (x) { return String(x).trim(); }).filter(Boolean);
+  }
+  function tagKey(t) { return t.toLowerCase().replace(/\s+/g, " "); }
+  function renderChips(list) {
+    var box = document.querySelector("[data-chips]");
+    if (!box) return;
+    var seen = {};
+    list.forEach(function (p) {
+      tagsOf(p).forEach(function (t) {
+        var k = tagKey(t);
+        if (!seen[k]) seen[k] = { key: k, label: t, n: 0 };
+        seen[k].n++;
+      });
+    });
+    var tags = Object.keys(seen).map(function (k) { return seen[k]; })
+      .sort(function (a, b) { return b.n - a.n || a.label.localeCompare(b.label); });
+    if (tags.length < 2) return;
+    box.innerHTML = '<button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>' +
+      tags.map(function (t) { return '<button class="chip" type="button" data-filter="' + esc(t.key) + '" aria-pressed="false">' + esc(t.label) + "</button>"; }).join("");
+    box.hidden = false;
+  }
+
   function renderProjects(el, list) {
     list = newestFirst(list);
     var withImg = list.filter(function (p) { return p.image; });
     var noImg = list.filter(function (p) { return !p.image; });
     el.innerHTML = withImg.map(function (p, i) {
       var code = p.code ? '<a class="link" href="' + esc(p.code) + '" target="_blank" rel="noopener">View code' + icon("arrow") + "</a>" : "";
-      return '<figure class="shot" data-cat="' + esc(p.theme) + '">' +
+      return '<figure class="shot" data-cat="' + esc(tagsOf(p).map(tagKey).join("|")) + '">' +
         '<button class="shot__btn" type="button" data-lightbox="p' + i + '" aria-label="Open ' + esc(p.title) + ' full size">' +
         '<img src="' + esc(src(p.image)) + '" alt="' + esc(p.image_alt || p.title) + '" loading="lazy">' +
         '<span class="shot__zoom" aria-hidden="true">' + icon("expand") + "View full size</span></button>" +
         '<figcaption><p class="shot__top"><span class="shot__title">' + esc(p.title) + '</span><span class="mono shot__year">' + esc(p.year) + "</span></p>" +
         '<p class="shot__meta">' + esc(p.description) + "</p>" + code + "</figcaption></figure>";
     }).join("");
+    renderChips(withImg);
     var more = document.querySelector('[data-render="projects-more"]');
     var wrap = document.querySelector('[data-render-wrap="projects-more"]');
     if (more && noImg.length) {
@@ -326,7 +353,7 @@
       });
     });
 
-    // Filter chips (Research and Projects)
+    // Filter chips (Maps page, built by renderChips)
     var chips = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
     var items = Array.prototype.slice.call(document.querySelectorAll("[data-cat]"));
     var empty = document.querySelector(".list-empty");
@@ -336,7 +363,7 @@
         chips.forEach(function (c) { c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
         var shown = 0;
         items.forEach(function (it) {
-          var on = f === "all" || it.getAttribute("data-cat") === f;
+          var on = f === "all" || it.getAttribute("data-cat").split("|").indexOf(f) > -1;
           it.hidden = !on;
           if (on) shown++;
         });

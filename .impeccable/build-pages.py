@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os
 OUT = "/home/user/sabbir0sojib.github.io"
-VER = "20260924z"   # bump to force browsers to load new CSS/JS
+VER = "20260925a"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -114,9 +114,9 @@ write("maps.html", page("maps.html","Maps | Md Sabbir Islam","Maps by Md Sabbir 
         <h1 class="page-head__title" data-site="maps_title">Maps</h1>
         <p class="page-head__lede" data-site="maps_intro">Single maps, newest first. Click a map to view it full size.</p>
       </header>
-{chips("Filter maps by theme", [("all","All"),("hazard","Hazards and climate"),("water","Water"),("land","Land and terrain"),("city","Cities")])}
+      <div class="chips" role="toolbar" aria-label="Filter maps by tag" data-chips hidden></div>
       <div class="project-grid map-wall" data-render="maps" aria-busy="true"></div>
-      <p class="list-empty" hidden>No maps in this theme yet.</p>
+      <p class="list-empty" hidden>No maps with this tag yet.</p>
 {NOSCRIPT}
       <section class="block" aria-labelledby="more-work" style="margin-top: 40px;" data-render-wrap="projects-more" hidden>
         <h2 id="more-work" class="block__title">More maps, images coming soon</h2>

@@ -57,15 +57,11 @@ content:
       - { name: title, label: Title, type: string, required: true }
       - { name: year, label: Year, type: string }
       - { name: date, label: "Date (sets the order; newest shows first)", type: date }
-      - name: theme
-        label: Theme (filter button)
-        type: select
-        options:
-          values:
-            - { value: hazard, label: Hazards and climate }
-            - { value: water, label: Water }
-            - { value: land, label: Land and terrain }
-            - { value: city, label: Cities }
+      - name: tags
+        label: Tags (filter buttons)
+        description: "Type a tag, for example Water. Add, rename or delete tags freely; the filter buttons on the Maps page update to match. Use the exact same spelling on maps that share a tag."
+        type: string
+        list: true
       - { name: description, label: Description, type: text }
       - { name: image, label: Map image, type: image }
       - { name: image_alt, label: Image description (for screen readers), type: string }
