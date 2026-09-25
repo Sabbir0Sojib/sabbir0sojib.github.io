@@ -27,6 +27,7 @@ History of how this site was built, what was tried and why things are the way th
 21. **Sharing and search.** Link preview card (green, name, role, university, photo, URL) for LinkedIn, Facebook, WhatsApp and X; canonical URLs; sitemap.xml and robots.txt; a green 404 page ("This page is off the map.") that works at any address depth. No custom domain (owner has none); everything stays on sabbir0sojib.github.io.
 22. **Google Search Console.** Verified with the HTML file method (`googled3049a719b2eb582.html` in the repo root). Sitemap to submit: `sitemap.xml`.
 23. **Search indexing of content.** Owner wants maps, research and the game found on Google, not only his name. Content is now pre-rendered into the HTML (`.github/scripts/prerender.mjs`, re-run by the Site upkeep workflow after every CMS save); keyword titles and descriptions per page; image sitemap for all maps and photos; Person structured data (with the nickname Sabbir Islam Sojib); Fun page gained a How to play section and the list of landmarks. The shrink workflow became `site-upkeep.yml`.
+24. **Facts card.** Owner found it average. Each fact now has a yellow Phosphor icon, the value in serif, and an optional note (coordinates for Pabna); icon and note are editable in Pages CMS.
 
 ## Open items
 

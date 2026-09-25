@@ -8,19 +8,24 @@
   "facts": [
     {
       "label": "Studying",
-      "value": "B.Sc. (Honours) Geography and Environment, Pabna University of Science and Technology"
+      "value": "B.Sc. (Honours) Geography and Environment, Pabna University of Science and Technology",
+      "icon": "study"
     },
     {
       "label": "Lab",
-      "value": "Geospatial Lab of Environment and Disaster"
+      "value": "Geospatial Lab of Environment and Disaster",
+      "icon": "lab"
     },
     {
       "label": "Focus",
-      "value": "UAV and satellite deep learning, hazard mapping"
+      "value": "UAV and satellite deep learning, hazard mapping",
+      "icon": "focus"
     },
     {
       "label": "Based in",
-      "value": "Pabna, Bangladesh"
+      "value": "Pabna, Bangladesh",
+      "icon": "place",
+      "note": "24.0° N, 89.2° E"
     }
   ],
   "emails": [

@@ -52,7 +52,7 @@ Plain HTML, CSS and vanilla JavaScript. No framework, no npm build for the live 
 - `projects.json` (code projects): `title, year, date, description, tools (comma separated), repo, image, image_alt`. Cards link to GitHub; no image gives a green GitHub tile.
 - `maps.json` (single maps): `title, year, date, tags (list of free-text labels), description, image, image_alt`. Filter buttons are built from the tags in use (most used first; matching ignores case), so the owner adds, renames or deletes tags in Pages CMS. Old `theme` keys still work as a fallback. Maps without `image` appear under "More maps".
 - `research.json`: `year, date, type (journal|conference|field|thesis|other), status, title, authors, venue, note, link`. The owner's name `Islam, M.S.` is bolded automatically. Status containing presented/published/accepted gets the green badge.
-- `profile.json`: `name, role, bio, photo, photo_alt, photo_caption, facts[{label,value}], emails[{label,address}], orcid, linkedin, github, interests[], experience[{when,title,detail}], skills[{group,items}], awards[{year,text}], languages[]`.
+- `profile.json`: `name, role, bio, photo, photo_alt, photo_caption, facts[{label,value,note,icon (study|lab|focus|place)}], emails[{label,address}], orcid, linkedin, github, interests[], experience[{when,title,detail}], skills[{group,items}], awards[{year,text}], languages[]`.
 - `gallery.json`: `image, title, caption, alt`.
 - `places.json`: `name, lat, lng, fact`.
 - `site.json`: page titles and intros, home section titles (`home_maps_title`, `home_research_title`, `home_projects_title`), `contact_title`, `contact_note`, `footer_tagline`, `footer`.

@@ -77,8 +77,18 @@
   }
 
   // Home: the four facts, in a card over the hero's lower edge
+  var FACT_ICON = { study: "graduation-cap", lab: "flask", focus: "target", place: "map-pin" };
+  function factIcon(f) {
+    if (FACT_ICON[f.icon]) return FACT_ICON[f.icon];
+    var l = String(f.label || "").toLowerCase();
+    return /stud|degree|educat/.test(l) ? FACT_ICON.study : /lab|group|institut/.test(l) ? FACT_ICON.lab :
+      /based|locat|city|live/.test(l) ? FACT_ICON.place : FACT_ICON.focus;
+  }
   function renderGlance(el, p) {
-    var facts = list(p.facts, function (f) { return "<div><dt>" + esc(f.label) + "</dt><dd>" + esc(f.value) + "</dd></div>"; });
+    var facts = list(p.facts, function (f) {
+      return '<div class="fact"><dt><span class="fact__icon">' + icon(factIcon(f)) + '</span><span class="fact__label">' + esc(f.label) + "</span></dt>" +
+        '<dd class="fact__value">' + esc(f.value) + "</dd>" + (f.note ? '<dd class="fact__note mono">' + esc(f.note) + "</dd>" : "") + "</div>";
+    });
     if (facts) el.innerHTML = facts; else el.hidden = true;
   }
 
