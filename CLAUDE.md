@@ -51,6 +51,8 @@ Plain HTML, CSS and vanilla JavaScript. No framework, no npm build for the live 
 - `places.json`: `name, lat, lng, fact`.
 - `site.json`: page titles and intros, `contact_title`, `contact_note`, `footer`.
 
+**Uploads can be any size.** `.github/workflows/shrink-images.yml` runs on every push to `main` that touches `assets/img/`: new JPG/PNG become WebP (max 2400 px, quality 82, original deleted, paths in `content/*.json` and `*.html` rewritten), big WebP files are re-encoded. It commits the result and requests a Pages build. `assets/img/sabbir-portrait.jpg` is kept (social preview). Script: `.github/scripts/shrink-images.py`.
+
 Image paths in JSON start with `/assets/img/...` (Pages CMS writes them this way).
 
 ## Pages CMS (owner's editor)

@@ -1,0 +1,67 @@
+# Shrinks images after they are uploaded (for example through Pages CMS),
+# then commits the smaller files and republishes the site.
+name: Shrink uploaded images
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "assets/img/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: shrink-images
+  cancel-in-progress: false
+
+jobs:
+  shrink:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install --quiet pillow
+
+      - name: Shrink new or changed images
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if [ -n "$BEFORE" ] && git cat-file -e "$BEFORE" 2>/dev/null; then
+            git diff --name-only --diff-filter=AM "$BEFORE" HEAD -- assets/img > files.txt
+          else
+            find assets/img -type f > files.txt
+          fi
+          cat files.txt
+          xargs -d '\n' -r python .github/scripts/shrink-images.py < files.txt
+          rm files.txt
+
+      - name: Commit smaller images
+        id: commit
+        run: |
+          git add -A assets/img content *.html
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Shrink uploaded images"
+          git pull --no-rebase --no-edit origin main
+          git push origin HEAD:main
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # Pushes made by this workflow do not start a Pages build on their own.
+      - name: Republish the site
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages will pick it up on the next change"

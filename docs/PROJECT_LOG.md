@@ -20,6 +20,7 @@ History of how this site was built, what was tried and why things are the way th
 14. **Readable research and final audit.** Research items became two-column cards (year, type and status on the left; paper on the right). Full-site check with all four skills: Taste pre-flight clean, Impeccable detector clean except the known padding false positive, Playwright sweep of 6 pages at 1440 and 390 px with no errors, broken images, broken links, overflow or wrapped buttons; Awesome Design rules (single accent, small radius scale, flat cards) hold. Header made solid on phones.
 15. **Phone menu.** On phones the six nav links overflowed and cut off Fun. The header now shows a Menu button with a dropdown under 820 px; checked at 360, 390 and 1440 px.
 16. **Editable map tags.** The fixed Theme dropdown became free-text Tags (several per map allowed). Maps page filter buttons are generated from the tags in use.
+17. **Auto image shrinking.** Owner wants to upload full-resolution images. A GitHub Action now converts uploads to WebP (max 2400 px) and updates the content paths.
 
 ## Open items
 
