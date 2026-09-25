@@ -54,6 +54,18 @@
     "alt": "A young man crouching in a field with a DJI drone controller, surrounded by curious village children and adults"
   },
   {
+    "image": "/assets/img/photos/uav-mapping-flight-controller.webp",
+    "title": "Mapping flight in progress",
+    "caption": "An automated mapping flight on the controller: the drone flies a grid route at 90 m altitude, here at photo 553 of 654, near Cumilla.",
+    "alt": "A drone remote controller screen showing a grid flight route over satellite imagery with altitude, speed and photo count"
+  },
+  {
+    "image": "/assets/img/photos/uav-field-kit.webp",
+    "title": "Field kit",
+    "caption": "Two DJI drones with their controllers and a DSLR camera, ready for UAV fieldwork.",
+    "alt": "Two DJI drones, a black folding drone and a white quadcopter, with two remote controllers and a DSLR camera on a stone floor"
+  },
+  {
     "image": "/assets/img/photos/pust-youthmappers.webp",
     "title": "PUST YouthMappers",
     "caption": "With PUST YouthMappers, the official YouthMappers chapter at Pabna University of Science and Technology: empowering youth through mapping for a better tomorrow.",
