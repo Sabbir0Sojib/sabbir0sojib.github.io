@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os
 OUT = "/home/user/sabbir0sojib.github.io"
-VER = "20260925b"   # bump to force browsers to load new CSS/JS
+VER = "20260925c"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -24,7 +24,7 @@ def page(fname, title, desc, body, extra_head="", extra_js=""):
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{desc}">
   <meta property="og:image" content="https://sabbir0sojib.github.io/assets/img/sabbir-portrait.jpg">
-  <meta name="theme-color" content="#FFFFFF">
+  <meta name="theme-color" content="#0F3B24">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -34,15 +34,26 @@ def page(fname, title, desc, body, extra_head="", extra_js=""):
 {extra_js}</head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+  <div class="utility">
+    <div class="wrap utility__row">
+      <a href="{ORCID}" target="_blank" rel="me noopener">{icon("orcid")}ORCID</a>
+      <a href="https://www.linkedin.com/in/sabbir-sojib/" target="_blank" rel="me noopener">{icon("linkedin")}LinkedIn</a>
+      <a href="https://github.com/Sabbir0Sojib" target="_blank" rel="me noopener">{icon("github")}GitHub</a>
+      <a href="mailto:mdsabbirislam820@gmail.com">{icon("envelope")}Email</a>
+    </div>
+  </div>
   <header class="site-head">
     <div class="wrap site-head__row">
       <a class="brand" href="index.html">Md Sabbir Islam</a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
-        {icon("menu","i i--menu")}{icon("close","i i--close")}<span class="nav-toggle__label">Menu</span>
-      </button>
-      <nav class="nav" id="site-nav" aria-label="Main">
+      <div class="site-head__end">
+        <nav class="nav" id="site-nav" aria-label="Main">
 {nav}
-      </nav>
+        </nav>
+        <a class="pill head-cta" href="index.html#contact">{icon("envelope")}Email me</a>
+        <button class="pill nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <span class="nav-toggle__label">Menu</span>{icon("menu","i i--menu")}{icon("close","i i--close")}
+        </button>
+      </div>
     </div>
   </header>
 
@@ -104,10 +115,14 @@ LIGHTBOX = f'''    <dialog class="lightbox" aria-labelledby="lb-title">
 NOSCRIPT = '      <noscript><p class="list-empty">This page needs JavaScript to show its content.</p></noscript>'
 write("index.html", page("index.html","Md Sabbir Islam | Remote Sensing and Geospatial Deep Learning",
   "Md Sabbir Islam, Geography and Environment researcher at Pabna University of Science and Technology. UAV and satellite deep learning, and maps of Bangladesh.",
-  f"""    <div class="wrap">
-      <div data-render="hero" aria-busy="true">
+  f"""    <section class="band band--hero" aria-labelledby="name">
+      <div class="wrap" data-render="hero" aria-busy="true">
 {NOSCRIPT}
       </div>
+    </section>
+
+    <div class="wrap">
+      <dl class="glance" data-render="glance" aria-label="At a glance"></dl>
 
       <section class="home-sec" aria-labelledby="h-maps">
         <div class="sec-head">
@@ -136,33 +151,49 @@ write("index.html", page("index.html","Md Sabbir Islam | Remote Sensing and Geos
       <div data-render="about" aria-busy="true"></div>
     </div>
 
+    <section class="band band--contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap" data-render="contact" aria-busy="true"></div>
+    </section>
+
 {LIGHTBOX}"""))
 
-write("research.html", page("research.html","Research | Md Sabbir Islam","Papers, manuscripts and field work by Md Sabbir Islam.", f"""    <div class="wrap">
-      <header class="page-head">
-        <h1 class="page-head__title" data-site="research_title">Research</h1>
-        <p class="page-head__lede" data-site="research_intro">Papers, manuscripts and field work, newest first.</p>
-      </header>
+write("research.html", page("research.html","Research | Md Sabbir Islam","Papers, manuscripts and field work by Md Sabbir Islam.", f"""    <div class="band">
+      <div class="wrap">
+        <header class="page-head">
+          <h1 class="page-head__title" data-site="research_title">Research</h1>
+          <p class="page-head__lede" data-site="research_intro">Papers, manuscripts and field work, newest first.</p>
+        </header>
+      </div>
+    </div>
+    <div class="wrap">
       <div class="publications" data-render="research" aria-busy="true"></div>
       <p class="list-empty" hidden>Nothing here yet.</p>
 {NOSCRIPT}
     </div>"""))
 
-write("projects.html", page("projects.html","Projects | Md Sabbir Islam","Code projects by Md Sabbir Islam with open GitHub repositories.", f"""    <div class="wrap">
-      <header class="page-head">
-        <h1 class="page-head__title" data-site="projects_title">Projects</h1>
-        <p class="page-head__lede" data-site="projects_intro">Code projects with open repositories on GitHub, newest first.</p>
-      </header>
+write("projects.html", page("projects.html","Projects | Md Sabbir Islam","Code projects by Md Sabbir Islam with open GitHub repositories.", f"""    <div class="band">
+      <div class="wrap">
+        <header class="page-head">
+          <h1 class="page-head__title" data-site="projects_title">Projects</h1>
+          <p class="page-head__lede" data-site="projects_intro">Code projects with open repositories on GitHub, newest first.</p>
+        </header>
+      </div>
+    </div>
+    <div class="wrap">
       <div class="proj-list" data-render="repos" aria-busy="true"></div>
       <p class="list-empty" hidden>No projects yet.</p>
 {NOSCRIPT}
     </div>"""))
 
-write("maps.html", page("maps.html","Maps | Md Sabbir Islam","Maps by Md Sabbir Islam across Bangladesh: cyclones, floods, groundwater, heat, elevation and more.", f"""    <div class="wrap wrap--wide">
-      <header class="page-head">
-        <h1 class="page-head__title" data-site="maps_title">Maps</h1>
-        <p class="page-head__lede" data-site="maps_intro">Single maps, newest first. Click a map to view it full size.</p>
-      </header>
+write("maps.html", page("maps.html","Maps | Md Sabbir Islam","Maps by Md Sabbir Islam across Bangladesh: cyclones, floods, groundwater, heat, elevation and more.", f"""    <div class="band">
+      <div class="wrap wrap--wide">
+        <header class="page-head">
+          <h1 class="page-head__title" data-site="maps_title">Maps</h1>
+          <p class="page-head__lede" data-site="maps_intro">Single maps, newest first. Click a map to view it full size.</p>
+        </header>
+      </div>
+    </div>
+    <div class="wrap wrap--wide">
       <div class="chips" role="toolbar" aria-label="Filter maps by tag" data-chips hidden></div>
       <div class="project-grid map-wall" data-render="maps" aria-busy="true"></div>
       <p class="list-empty" hidden>No maps with this tag yet.</p>
@@ -175,11 +206,15 @@ write("maps.html", page("maps.html","Maps | Md Sabbir Islam","Maps by Md Sabbir 
 
 {LIGHTBOX}"""))
 
-write("gallery.html", page("gallery.html","Gallery | Md Sabbir Islam","Photos of Md Sabbir Islam at conferences, fieldwork and the lab.", f"""    <div class="wrap">
-      <header class="page-head">
-        <h1 class="page-head__title" data-site="gallery_title">Gallery</h1>
-        <p class="page-head__lede" data-site="gallery_intro">Moments from conferences, fieldwork and the lab.</p>
-      </header>
+write("gallery.html", page("gallery.html","Gallery | Md Sabbir Islam","Photos of Md Sabbir Islam at conferences, fieldwork and the lab.", f"""    <div class="band">
+      <div class="wrap">
+        <header class="page-head">
+          <h1 class="page-head__title" data-site="gallery_title">Gallery</h1>
+          <p class="page-head__lede" data-site="gallery_intro">Moments from conferences, fieldwork and the lab.</p>
+        </header>
+      </div>
+    </div>
+    <div class="wrap">
       <div class="gallery gallery--photos" data-render="gallery" aria-busy="true"></div>
       <p class="list-empty" hidden>Photos are on the way.</p>
 {NOSCRIPT}
@@ -188,11 +223,15 @@ write("gallery.html", page("gallery.html","Gallery | Md Sabbir Islam","Photos of
 {LIGHTBOX}"""))
 
 # ======================= FUN (game) =======================
-fun = f"""    <div class="wrap">
-      <header class="page-head page-head--compact">
-        <h1 class="page-head__title" data-site="fun_title">Pin the Place</h1>
-        <p class="page-head__lede" data-site="fun_intro">How well do you know Bangladesh? Pick a level, then find five places on an unlabeled satellite map.</p>
-      </header>
+fun = f"""    <div class="band">
+      <div class="wrap">
+        <header class="page-head page-head--compact">
+          <h1 class="page-head__title" data-site="fun_title">Pin the Place</h1>
+          <p class="page-head__lede" data-site="fun_intro">How well do you know Bangladesh? Pick a level, then find five places on an unlabeled satellite map.</p>
+        </header>
+      </div>
+    </div>
+    <div class="wrap">
 
       <div class="game" data-game>
         <div class="game__levels" role="radiogroup" aria-label="Level" data-levels></div>

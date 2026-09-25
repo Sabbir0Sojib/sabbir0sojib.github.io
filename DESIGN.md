@@ -1,28 +1,42 @@
 ---
 name: Md Sabbir Islam, portfolio
-description: A clean, light, six-page research portfolio. Serif headings, one forest-green accent, maps shown as prints on a light mat.
+description: A six-page research portfolio after the Overlake School site. Deep forest-green header, hero and footer over real terrain contours, warm paper pages, serif headings, one yellow action colour.
 colors:
+  forest: "#0F3B24"
+  forest-deep: "#0B2E1B"
   forest-green: "#166534"
   forest-green-deep: "#14532D"
-  green-tint: "#E8F3EC"
+  green-tint: "#E4EDE1"
+  sun: "#F5B82E"
+  sun-hover: "#F8C75A"
   mustard: "#E9B824"
-  ink: "#121A16"
-  ink-soft: "#3A4540"
-  muted: "#5B6660"
-  page: "#FFFFFF"
-  surface: "#F3F6F4"
-  surface-hover: "#E8EEEA"
-  line: "#E2E7E4"
-  line-strong: "#CBD3CE"
-  on-green: "#FFFFFF"
-  print-shadow-near: "rgba(18, 26, 22, 0.08)"
-  print-shadow-far: "rgba(18, 26, 22, 0.38)"
-  print-shadow-lift: "rgba(18, 26, 22, 0.45)"
-  soft-shadow: "rgba(18, 26, 22, 0.4)"
-  tooltip-shadow: "rgba(18, 26, 22, 0.18)"
-  badge: "rgba(18, 26, 22, 0.84)"
-  scrim: "rgba(18, 26, 22, 0.72)"
-  float-shadow: "rgba(18, 26, 22, 0.35)"
+  ink: "#14201A"
+  ink-soft: "#3B463F"
+  muted: "#5B635D"
+  paper: "#FBF9F4"
+  card: "#FFFFFF"
+  surface: "#F2EFE6"
+  surface-hover: "#E9E5DA"
+  line: "#E5E0D4"
+  line-strong: "#D2CCBE"
+  on-forest: "#FFFFFF"
+  on-forest-soft: "#BFE0C8"
+  forest-line: "rgba(255, 255, 255, 0.14)"
+  forest-card: "rgba(255, 255, 255, 0.05)"
+  forest-card-hover: "rgba(255, 255, 255, 0.08)"
+  forest-card-line-hover: "rgba(255, 255, 255, 0.32)"
+  ghost-line: "rgba(255, 255, 255, 0.45)"
+  ghost-fill: "rgba(255, 255, 255, 0.06)"
+  copy-line: "rgba(255, 255, 255, 0.35)"
+  print-shadow-near: "rgba(20, 32, 26, 0.08)"
+  print-shadow-far: "rgba(20, 32, 26, 0.38)"
+  print-shadow-lift: "rgba(20, 32, 26, 0.45)"
+  card-shadow-near: "rgba(20, 32, 26, 0.06)"
+  soft-shadow: "rgba(20, 32, 26, 0.4)"
+  tooltip-shadow: "rgba(20, 32, 26, 0.18)"
+  badge: "rgba(20, 32, 26, 0.84)"
+  scrim: "rgba(20, 32, 26, 0.72)"
+  float-shadow: "rgba(20, 32, 26, 0.35)"
   loading-veil: "rgba(255, 255, 255, 0.94)"
   map-night: "#0B1F2A"
   map-highlight: "#FACC15"
@@ -30,10 +44,10 @@ colors:
 typography:
   display:
     fontFamily: "Newsreader, Georgia, Times New Roman, serif"
-    fontSize: "clamp(3rem, 2rem + 4vw, 5rem)"
+    fontSize: "clamp(2.75rem, 1.6rem + 4.4vw, 5.25rem)"
     fontWeight: 500
-    lineHeight: 0.98
-    letterSpacing: "-0.03em"
+    lineHeight: 1.02
+    letterSpacing: "-0.028em"
   page-title:
     fontFamily: "Newsreader, Georgia, Times New Roman, serif"
     fontSize: "clamp(2.5rem, 1.7rem + 3.2vw, 4rem)"
@@ -140,10 +154,19 @@ components:
     height: "46px"
     padding: "0 20px"
   nav-current:
-    backgroundColor: "{colors.green-tint}"
-    textColor: "{colors.forest-green}"
+    textColor: "{colors.on-forest}"
+    underline: "2px {colors.sun}"
+    padding: "10px 12px"
+  action-pill:
+    backgroundColor: "{colors.sun}"
+    textColor: "{colors.ink}"
     rounded: "{rounded.pill}"
-    padding: "8px 14px"
+    height: "44px to 48px"
+    padding: "0 20px"
+  band:
+    backgroundColor: "{colors.forest}"
+    textColor: "{colors.on-forest}"
+    background: "assets/img/terrain.svg, masked to fade out on the left"
   filter-chip:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.ink}"
@@ -167,33 +190,35 @@ components:
 
 ## Overview
 
-**Creative North Star: "The Field Journal"**
+**Creative North Star: "Field Journal in the Hills"**
 
-A researcher's portfolio that reads like a well set journal: white pages, serif headings, calm sans text, and the maps presented as prints on a light mat. One forest-green accent marks what can be clicked. The owner chose a clean, professional light look after rejecting a GIS-workspace layout, a dark hero slideshow, a green "Monsoon" panel theme and a full-page scroll story; do not bring any of those back.
+After the Overlake School website (owner's reference, overlake.org): a deep forest-green header and hero that read as one band, a big white serif statement, a single bright yellow action colour, and warm paper pages below. Where Overlake draws a treeline, this site draws real terrain: contour lines and soft elevation bands of the Chittagong Hill Tracts from SRTM (`assets/img/terrain.svg`, built by `.impeccable/terrain.py`). The owner earlier rejected a GIS-workspace layout, a dark slideshow hero, a "Monsoon" panel theme and a full-page scroll story; this green band is his own later choice.
 
-References used: Apple (the work sits on a quiet pedestal, generous air, a dense and complete footer), Wired (equal research rows), Pinterest (filter chips), Binance (scarce accent).
+References used: Overlake School (green bands, yellow action pill, utility bar, serif statement), Apple (work on a quiet pedestal, full footer), Wired (equal research rows), Pinterest (filter chips).
 
 **Key Characteristics:**
-- Serif (Newsreader) for the name, page titles, section titles, project titles, the bio and citations. Archivo for everything else. JetBrains Mono only for years, repository paths and tool lists.
-- Home is a real front page: hero, facts strip, latest maps, recent research, code projects, then the CV sections and contact.
-- Side-heading sections: the section title sits in a left column (sticky on desktop), the content on the right.
-- Maps are never cropped: they sit whole on a light mat with a soft print shadow.
-- Green-tinted neutrals (ink #121A16, not a stock grey).
+- Rhythm on every page: dark utility bar, green header, green band (page title, or the home hero), warm paper content, dark green footer. Home adds a green contact band before the footer.
+- Serif (Newsreader) for the brand, statements, titles, the bio line, citations. Archivo for everything else. JetBrains Mono only for years, repository paths and tool lists.
+- Yellow (sun) only for actions and small highlights on green: the Email me and See my maps pills, the Menu button, the current-page underline, contact icons, footer headings.
+- Maps are never cropped: they sit whole on a mat with a soft print shadow.
+- Warm paper page (#FBF9F4) is deliberate (Overlake reference), not a default cream.
 
 ## Colors
 
 ### Primary
-- **Forest Green** (forest-green): primary buttons, links, the role line, "All maps" style links, tags, active filter chip, current menu item text (on green-tint), status badges that mean done.
+- **Forest** (forest, forest-deep): header, bands, utility bar and footer.
+- **Sun** (sun): the action colour. Always dark ink text on it.
+- **Forest Green** (forest-green): links and green text accents on paper (role line on paper, fact labels, "All maps" links, tags).
 
 ### Neutral
-- **Ink / Soft Ink / Muted**, **Page / Surface / Surface hover**, **Line / Strong Line**: one family of neutrals tinted toward the green.
+- **Ink / Soft Ink / Muted** on **Paper / Card / Surface**, with **Line / Strong Line**: one warm family. On green, secondary text uses the green-tinted **on-forest-soft**, never grey.
 
 ### Named Rules
-**The One Green Rule.** Green marks what can be clicked or what matters most. The maps bring every other colour. Mustard only appears in the game's progress dots.
+**Green holds, yellow acts.** Green is the ground and the brand; yellow marks what to press. The maps bring every other colour. Mustard only appears in the game's progress dots.
 
 ## Typography
 
-- **Display:** the name on the home page.
+- **Display:** the home headline statement.
 - **Page title / compact page title:** each page's heading.
 - **Section title:** home sections, research groups, "More maps".
 - **Headline:** project titles on the Projects page, the game question.
@@ -205,11 +230,11 @@ Tracking stays between -0.01em and -0.03em on serif headings; body text never tr
 
 ## Layout
 
-A centred 1180px column (Maps page 1360px). Page heads close with a 1px rule. On Home, sections are separated by 1px rules with 44 to 80px of space; side-heading sections use a 15rem title column. Everything collapses to one column below 960px (side headings) and 820px (hero, grids); the hero photo becomes a 112px square above the name on phones.
+A centred 1200px column (Maps page 1360px). Page titles sit in a green band with generous padding; content follows on paper. On Home the facts card overlaps the hero's lower edge; sections are separated by 1px rules with 44 to 80px of space; side-heading sections use a 15rem title column. Side headings collapse below 960px, the hero, grids and the utility bar below 820px (the header then shows a yellow Menu pill that opens a green dropdown).
 
 ## Elevation & Depth
 
-Flat. The only shadows: the print shadow under a map on its mat (it lifts 3px on hover), the phone menu dropdown, the viewer (scrim plus float shadow) and game pins.
+Flat. The only shadows: the facts card over the hero edge, the print shadow under a map on its mat (it lifts 3px on hover), the viewer (scrim plus float shadow) and game pins.
 
 ## Shapes
 
@@ -218,17 +243,19 @@ Flat. The only shadows: the print shadow under a map on its mat (it lifts 3px on
 ## Components
 
 - **Content:** every page is rendered from `content/*.json`, edited through Pages CMS (`.pages.yml`). Components below are templates in `assets/js/site.js`.
-- **Header:** serif name left, page links right. Up to 820px the links collapse into a white pill Menu button that opens a full-width dropdown.
-- **Hero (Home):** serif name, green role line, serif bio, a green "Email me" button and plain ORCID, LinkedIn and GitHub links; photo on the right with an optional caption. The hero text and photo arrive once on load (staggered rise, photo unveiled from the bottom); this is the site's only entrance animation.
-- **Facts strip:** four facts from the profile in a ruled row with thin dividers (2 columns on tablets, 1 on phones).
+- **Utility bar:** thin dark-green strip above the header with ORCID, LinkedIn, GitHub and Email (hidden on phones).
+- **Header:** green, sticky; white serif name left, white page links with a yellow underline on hover and on the current page, and a yellow Email me pill. Up to 820px: a yellow Menu pill that opens a full-width green dropdown.
+- **Page band:** green band with the terrain on the right (fading out on the left), white serif page title and a green-tinted intro line.
+- **Hero (Home):** on the green band: a serif greeting, the big serif headline, the role line in yellow, the bio, a yellow See my maps pill and a white-outline Email me button; photo on the right with an optional caption. On load the terrain settles in and the text rises in sequence; this is the site's only entrance animation.
+- **Facts card:** white card overlapping the hero's lower edge, four facts with thin dividers (2 columns on tablets, 1 on phones).
 - **Latest maps (Home):** the three newest maps: one lead map on the left, two on the right, each on a mat; click opens the viewer.
 - **Recent research (Home):** the three newest items as short citations: year, type and status, serif title, italic venue. All equal.
 - **Code projects (Home):** the four newest repositories as rows: title (whole row clickable), year, one-line description, tools in mono.
 - **Projects page:** one row per repository: preview on a mat (or the repository path with a GitHub mark when there is no image), serif title, year, description, tool tags and the repository link.
 - **Maps page (map wall):** two columns, each map whole on its mat at full column width, placed in the shorter column in date order so reading order stays newest first. Filter chips are built from the tags in use.
 - **Research page:** academic list grouped by type with a count badge and a 2px ink rule; numbered entries in citation form (owner bold). No cards, no filters.
-- **Contact cards:** two-column grid of white cards (icon in a green-tint circle, label, value, icon-only copy button).
-- **Footer:** serif name and a one-line tagline, all pages, all profiles, then the copyright line and "Back to top".
+- **Contact band (Home):** green band with a big serif title, the note, and translucent cards (yellow icon circle, label, value, copy button).
+- **Footer:** dark green; serif name and tagline, all pages, all profiles (yellow column headings), then the copyright line and Back to top.
 - **Pin the Place:** unchanged; see CLAUDE.md for levels and scoring.
 
 ## Do's and Don'ts
@@ -240,7 +267,7 @@ Flat. The only shadows: the print shadow under a map on its mat (it lifts 3px on
 - **Do** stay on this type ramp and the four radii.
 
 ### Don't:
-- **Don't** add a second accent colour.
-- **Don't** use dark full-width sections; the site is light throughout.
+- **Don't** use yellow for anything but actions and small highlights, and never put white text on it.
+- **Don't** add dark sections other than the header, the page band, the home contact band and the footer.
 - **Don't** put eyebrow labels above headings or number the sections.
-- **Don't** add decorative patterns or empty diagrams; every visual shows real work.
+- **Don't** add decorative patterns or empty diagrams; the terrain is real elevation data, and every other visual shows real work.

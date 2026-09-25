@@ -22,6 +22,7 @@ History of how this site was built, what was tried and why things are the way th
 16. **Editable map tags.** The fixed Theme dropdown became free-text Tags (several per map allowed). Maps page filter buttons are generated from the tags in use.
 17. **Auto image shrinking.** Owner wants to upload full-resolution images. A GitHub Action now converts uploads to WebP (max 2400 px) and updates the content paths.
 18. **Structure and polish upgrade.** Owner: the site was good but looked average. Kept the white page and green accent, and changed the rest: Newsreader serif for headings, the bio and citations; green-tinted neutrals; Home became a front page (facts strip, latest 3 maps, recent research, code projects, then CV sections in side-heading layout); maps shown whole on a light mat with a print shadow; Projects page as rows; full footer with all pages and profiles; one entrance animation on the hero only.
+19. **Overlake-style green bands.** Owner pointed to overlake.org as the look he wants. Header, a band on every page, the home hero and footer became deep forest green; content moved to warm paper; yellow became the one action colour (Email me, See my maps, Menu). Where Overlake draws trees, the bands show real terrain: SRTM contours of the Chittagong Hill Tracts (`.impeccable/terrain.py`). Home gained a big headline (editable), a facts card over the hero edge and a green contact band. overlake.org itself is blocked by this cloud environment's network policy, so the design was read from his screenshot.
 
 ## Open items
 

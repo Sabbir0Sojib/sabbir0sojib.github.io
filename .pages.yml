@@ -117,6 +117,8 @@ content:
     format: json
     fields:
       - { name: name, label: Name, type: string }
+      - { name: greeting, label: "Greeting above the headline (for example: Hi, I'm Md Sabbir Islam.)", type: string }
+      - { name: headline, label: Big headline on the Profile page, type: string }
       - { name: role, label: Role line, type: string }
       - name: bio
         label: Short bio

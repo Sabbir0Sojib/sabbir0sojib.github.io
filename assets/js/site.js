@@ -59,30 +59,50 @@
       '<div class="split__body">' + body + "</div></section>";
   }
 
-  // Home: name, bio, photo and the four facts
+  // Home: greeting, headline, role, bio and photo on the green band
   function renderHero(el, p) {
-    var orcidUrl = p.orcid ? "https://orcid.org/" + p.orcid : "";
-    var links = (orcidUrl ? '<a href="' + esc(orcidUrl) + '" target="_blank" rel="me noopener">' + icon("orcid") + "ORCID</a>" : "") +
-      (p.linkedin ? '<a href="' + esc(p.linkedin) + '" target="_blank" rel="me noopener">' + icon("linkedin") + "LinkedIn</a>" : "") +
-      (p.github ? '<a href="' + esc(p.github) + '" target="_blank" rel="me noopener">' + icon("github") + "GitHub</a>" : "");
-    var facts = list(p.facts, function (f) { return "<div><dt>" + esc(f.label) + "</dt><dd>" + esc(f.value) + "</dd></div>"; });
+    var greeting = p.greeting || ("Hi, I'm " + p.name + ".");
     el.innerHTML =
-      '<section class="hero" aria-labelledby="name"><div class="hero__text">' +
-        '<h1 id="name" class="hero__name">' + esc(p.name) + "</h1>" +
+      '<div class="hero"><div class="hero__text">' +
+        '<h1 id="name" class="hero__title"><span class="hero__hello">' + esc(greeting) + "</span>" +
+          '<span class="hero__statement">' + esc(p.headline || p.name) + "</span></h1>" +
         '<p class="hero__role">' + esc(p.role) + "</p>" +
         '<p class="hero__bio">' + esc(p.bio) + "</p>" +
-        '<div class="hero__actions"><a class="btn btn--primary" href="#contact">' + icon("envelope") + "Email me</a>" +
-          (links ? '<p class="hero__links">' + links + "</p>" : "") + "</div>" +
+        '<div class="hero__actions"><a class="pill" href="maps.html">See my maps' + icon("arrow-right") + "</a>" +
+          '<a class="btn btn--ghost" href="#contact">' + icon("envelope") + "Email me</a></div>" +
       "</div>" +
       (p.photo ? '<figure class="hero__photo"><img src="' + esc(src(p.photo)) + '" width="640" height="800" alt="' + esc(p.photo_alt) + '">' +
         (p.photo_caption ? '<figcaption class="hero__caption">' + esc(p.photo_caption) + "</figcaption>" : "") + "</figure>" : "") +
-      "</section>" +
-      (facts ? '<dl class="glance">' + facts + "</dl>" : "");
+      "</div>";
+  }
+
+  // Home: the four facts, in a card over the hero's lower edge
+  function renderGlance(el, p) {
+    var facts = list(p.facts, function (f) { return "<div><dt>" + esc(f.label) + "</dt><dd>" + esc(f.value) + "</dd></div>"; });
+    if (facts) el.innerHTML = facts; else el.hidden = true;
+  }
+
+  // Home: contact band
+  function renderContact(el, p) {
+    var orcidUrl = p.orcid ? "https://orcid.org/" + p.orcid : "";
+    var emails = (p.emails || []).map(function (e) { return typeof e === "string" ? { label: "Email", address: e } : e; });
+    var card = function (ic, label, text, href, copyText, copyLabel, ext) {
+      return '<li class="ccard"><span class="ccard__icon">' + icon(ic) + '</span>' +
+        '<span class="ccard__body"><span class="ccard__label">' + esc(label) + '</span>' +
+        '<a class="ccard__value" href="' + esc(href) + '"' + (ext ? ' target="_blank" rel="me noopener"' : "") + '>' + esc(text) + "</a></span>" +
+        (copyText ? copyBtn(copyText, copyLabel) : "") + "</li>";
+    };
+    var cards = emails.map(function (e) { return card("envelope", e.label, e.address, "mailto:" + e.address, e.address, e.label); }).join("") +
+      (orcidUrl ? card("orcid", "ORCID", p.orcid, orcidUrl, p.orcid, "ORCID iD", true) : "") +
+      (p.linkedin ? card("linkedin", "LinkedIn", cleanUrl(p.linkedin), p.linkedin, "", "", true) : "") +
+      (p.github ? card("github", "GitHub", cleanUrl(p.github), p.github, "", "", true) : "");
+    el.innerHTML = '<div class="contact"><div><h2 id="contact-title" class="contact__title" data-site="contact_title">Contact</h2>' +
+      '<p class="contact__note" data-site="contact_note">Open to research collaboration, mapping work and questions about any project.</p></div>' +
+      '<ul class="ccards">' + cards + "</ul></div>";
   }
 
   // Home: experience, skills, interests, awards, languages and contact
   function renderAbout(el, p) {
-    var orcidUrl = p.orcid ? "https://orcid.org/" + p.orcid : "";
     var exp = list(p.experience, function (x) {
       return '<li class="timeline__item"><p class="timeline__when">' + esc(x.when) + '</p><div><h3 class="timeline__role">' +
         esc(x.title) + '</h3><p class="timeline__org">' + esc(x.detail) + "</p></div></li>";
@@ -91,18 +111,6 @@
     var interests = list(p.interests, function (t) { return '<li class="tag">' + esc(t) + "</li>"; });
     var awards = list(p.awards, function (x) { return '<li><span class="mono">' + esc(x.year) + "</span>" + esc(x.text) + "</li>"; });
     var langs = list(p.languages, function (x) { return "<li>" + esc(x) + "</li>"; });
-    var emails = (p.emails || []).map(function (e) { return typeof e === "string" ? { label: "Email", address: e } : e; });
-    var card = function (ic, label, text, href, copyText, copyLabel, ext) {
-      return '<li class="ccard"><span class="ccard__icon">' + icon(ic) + '</span>' +
-        '<span class="ccard__body"><span class="ccard__label">' + esc(label) + '</span>' +
-        '<a class="ccard__value" href="' + esc(href) + '"' + (ext ? ' target="_blank" rel="me noopener"' : "") + '>' + esc(text) + "</a></span>" +
-        (copyText ? copyBtn(copyText, copyLabel) : "") + "</li>";
-    };
-    var contact = emails.map(function (e) { return card("envelope", e.label, e.address, "mailto:" + e.address, e.address, e.label); }).join("") +
-      (orcidUrl ? card("orcid", "ORCID", p.orcid, orcidUrl, p.orcid, "ORCID iD", true) : "") +
-      (p.linkedin ? card("linkedin", "LinkedIn", cleanUrl(p.linkedin), p.linkedin, "", "", true) : "") +
-      (p.github ? card("github", "GitHub", cleanUrl(p.github), p.github, "", "", true) : "");
-
     el.innerHTML =
       (exp ? split("experience", "Education and experience", '<ol class="timeline">' + exp + "</ol>") : "") +
       (skills ? split("skills", "Skills", '<dl class="skills">' + skills + "</dl>") : "") +
@@ -111,10 +119,7 @@
         '<div class="two-col">' +
           (awards ? '<div><h3 class="sub-title">Awards</h3><ul class="plain-list">' + awards + "</ul></div>" : "") +
           (langs ? '<div><h3 class="sub-title">Languages</h3><ul class="plain-list">' + langs + "</ul></div>" : "") +
-        "</div>") : "") +
-      '<section id="contact" class="split contact" aria-labelledby="contact-title"><div class="split__head"><h2 id="contact-title" class="sec-title" data-site="contact_title">Contact</h2></div>' +
-        '<div class="split__body"><p class="contact__note" data-site="contact_note">Open to research collaboration, mapping work and questions about any project.</p>' +
-        '<ul class="ccards">' + contact + "</ul></div></section>";
+        "</div>") : "");
   }
 
   // Home: the three newest maps
@@ -285,6 +290,8 @@
 
   var RENDER = {
     hero: ["profile", renderHero, "the profile"],
+    glance: ["profile", renderGlance, "the profile"],
+    contact: ["profile", renderContact, "contact details"],
     about: ["profile", renderAbout, "the profile"],
     "home-maps": ["maps", renderHomeMaps, "maps"],
     "home-research": ["research", renderHomeResearch, "research"],
