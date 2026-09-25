@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os, re, glob, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20260926d"   # bump to force browsers to load new CSS/JS
+VER = "20260926e"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -140,8 +140,7 @@ def page(fname, title, desc, body, extra_head="", extra_js="", og=None):
     </div>
     <div class="wrap site-foot__base">
       <p data-site="footer">&copy; 2026 Md Sabbir Islam. Pabna University of Science and Technology, Bangladesh.</p>
-      <p>Green band background: terrain of the Chittagong Hill Tracts from SRTM elevation data.</p>
-      <a href="#main">Back to top</a>
+      <a class="site-foot__top" href="#main">Back to top{icon("arrow-right", "i i--up")}</a>
     </div>
   </footer>
 </body>
