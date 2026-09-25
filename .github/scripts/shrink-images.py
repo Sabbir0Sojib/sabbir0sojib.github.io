@@ -13,7 +13,7 @@ from PIL import Image, ImageOps
 
 MAX = 2400
 QUALITY = 82
-KEEP = {"assets/img/sabbir-portrait.jpg"}  # social preview image, must stay JPG
+KEEP = {"assets/img/sabbir-portrait.jpg", "assets/img/share-card.jpg"}  # link preview images must stay JPG
 
 renamed = {}
 for arg in sys.argv[1:]:

@@ -30,6 +30,8 @@ content:
       - { name: fun_intro, label: Fun page intro, type: text }
       - { name: contact_title, label: Contact section title, type: string }
       - { name: contact_note, label: Contact section note, type: text }
+      - { name: notfound_title, label: "Page not found (404): title", type: string }
+      - { name: notfound_text, label: "Page not found (404): text", type: text }
       - { name: footer_tagline, label: Footer line under your name, type: text }
       - { name: footer, label: Footer copyright line, type: string }
 

@@ -5,6 +5,8 @@
   "use strict";
 
   var VER = document.documentElement.getAttribute("data-v") || "1";
+  // Site root, taken from this script's own address, so the 404 page works at any depth.
+  var ROOT = document.currentScript && document.currentScript.src ? new URL("../../", document.currentScript.src).href : "";
 
   // Phone menu button
   var head = document.querySelector(".site-head");
@@ -27,14 +29,14 @@
       .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
   }
   function icon(name, cls) {
-    return '<svg class="' + (cls || "i") + '" aria-hidden="true"><use href="assets/icons.svg?v=' + VER + "#" + name + '"/></svg>';
+    return '<svg class="' + (cls || "i") + '" aria-hidden="true"><use href="' + ROOT + 'assets/icons.svg?v=' + VER + "#" + name + '"/></svg>';
   }
   // Images saved by Pages CMS start with "/", which works on the live site; keep relative paths working too.
   function src(path) { return path ? String(path) : ""; }
   var cache = {};
   function load(name) {
     if (!cache[name]) {
-      cache[name] = fetch("content/" + name + ".json?v=" + VER, { cache: "no-cache" }).then(function (r) {
+      cache[name] = fetch(ROOT + "content/" + name + ".json?v=" + VER, { cache: "no-cache" }).then(function (r) {
         if (!r.ok) throw new Error(name + ".json " + r.status);
         return r.json();
       });

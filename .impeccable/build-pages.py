@@ -1,15 +1,18 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
-import os
+import os, datetime
 OUT = "/home/user/sabbir0sojib.github.io"
-VER = "20260925d"   # bump to force browsers to load new CSS/JS
+VER = "20260925e"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
+SITE = "https://sabbir0sojib.github.io/"
+SHARE = SITE + "assets/img/share-card.jpg"   # 1200x630 link preview, built from .impeccable/share-card.html
 def icon(n, cls="i"): return f'<svg class="{cls}" aria-hidden="true"><use href="assets/icons.svg?v={VER}#{n}"/></svg>'
 ARROW = icon("arrow")
 NEXT = icon("arrow-right")
 
 def page(fname, title, desc, body, extra_head="", extra_js=""):
+    url = SITE if fname in ("index.html", "404.html") else SITE + fname
     nav = "\n".join(f'          <a href="{h}"{CUR if h==fname else ""}>{t}</a>' for h,t in NAV)
     foot_nav = "\n".join(f'          <li><a href="{h}">{t}</a></li>' for h,t in NAV)
     return f'''<!doctype html>
@@ -20,10 +23,18 @@ def page(fname, title, desc, body, extra_head="", extra_js=""):
   <title>{title}</title>
   <meta name="description" content="{desc}">
   <meta name="author" content="Md Sabbir Islam">
+  <link rel="canonical" href="{url}">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Md Sabbir Islam">
+  <meta property="og:url" content="{url}">
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{desc}">
-  <meta property="og:image" content="https://sabbir0sojib.github.io/assets/img/sabbir-portrait.jpg">
+  <meta property="og:image" content="{SHARE}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Md Sabbir Islam, Remote Sensing and Geospatial Deep Learning">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{SHARE}">
   <meta name="theme-color" content="#0F3B24">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -93,6 +104,14 @@ def page(fname, title, desc, body, extra_head="", extra_js=""):
 </html>
 '''
 def write(f, s): open(os.path.join(OUT, f), "w").write(s)
+
+def absolutize(html):
+    """404.html is served at any missing address (for example /a/b/c), so every link must start at the site root."""
+    html = html.replace('href="assets/', 'href="/assets/').replace('src="assets/', 'src="/assets/')
+    html = html.replace('href="index.html#', 'href="/#').replace('href="index.html"', 'href="/"')
+    for h, _ in NAV:
+        html = html.replace(f'href="{h}"', f'href="/{h}"')
+    return html
 
 def chips(label, items):
     b = "\n".join(f'        <button class="chip" type="button" data-filter="{k}" aria-pressed="{"true" if i==0 else "false"}">{t}</button>' for i,(k,t) in enumerate(items))
@@ -282,4 +301,26 @@ fun = f"""    <div class="band">
 write("fun.html", page("fun.html","Pin the Place | Md Sabbir Islam","A geography game: how well do you know Bangladesh? Pin five places on a blank map.", fun,
     extra_head=f'  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">\n',
     extra_js=f'  <script src="assets/vendor/leaflet/leaflet.js" defer></script>\n  <script src="assets/js/game.js?v={VER}" defer></script>\n'))
+# ======================= 404 (GitHub Pages serves it for any missing address) =======================
+nf = page("404.html", "Page not found | Md Sabbir Islam", "This page does not exist. Go to the home page of Md Sabbir Islam.", f"""    <section class="band band--hero band--404" aria-labelledby="nf-title">
+      <div class="wrap">
+        <div class="notfound">
+          <p class="notfound__code mono">404</p>
+          <h1 class="notfound__title" id="nf-title" data-site="notfound_title">This page is off the map.</h1>
+          <p class="notfound__text" data-site="notfound_text">The page you are looking for does not exist or has moved.</p>
+          <div class="hero__actions">
+            <a class="pill" href="index.html">Go to the home page{NEXT}</a>
+            <a class="btn btn--ghost" href="maps.html">See my maps</a>
+          </div>
+        </div>
+      </div>
+    </section>""")
+nf = nf.replace('<meta name="description"', '<meta name="robots" content="noindex">\n  <meta name="description"', 1)
+write("404.html", absolutize(nf))
+
+# ======================= Sitemap and robots.txt for search engines =======================
+today = datetime.date.today().isoformat()
+urls = "\n".join(f"  <url><loc>{SITE if h == 'index.html' else SITE + h}</loc><lastmod>{today}</lastmod></url>" for h, _ in NAV)
+write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n')
+write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n")
 print("pages written")

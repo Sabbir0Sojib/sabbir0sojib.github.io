@@ -748,3 +748,11 @@ main > :last-child:not(.band) { margin-bottom: clamp(56px, 8vw, 104px); }
   .pub__cite { font-size: 1.0625rem; }
 }
 .block--more { margin-top: 56px; }
+
+/* ---------- 404: page not found ---------- */
+.band--404 { min-height: 64vh; display: flex; align-items: center; }
+.band--404 > .wrap { width: 100%; }
+.notfound { padding: clamp(56px, 8vw, 104px) 0; max-width: 40rem; }
+.notfound__code { color: var(--sun); font-size: 1.0625rem; font-weight: 600; margin-bottom: 14px; }
+.notfound__title { font-family: var(--serif); font-weight: 500; font-size: clamp(2.5rem, 1.7rem + 3.2vw, 4rem); line-height: 1.02; letter-spacing: -0.025em; color: #fff; margin-bottom: 16px; text-wrap: balance; }
+.notfound__text { color: var(--on-forest-2); font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem); max-width: 44ch; }

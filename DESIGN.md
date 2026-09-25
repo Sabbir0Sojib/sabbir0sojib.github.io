@@ -258,6 +258,8 @@ Flat. The only shadows: the facts card over the hero edge, the print shadow unde
 - **Research page:** academic list grouped by type with a count badge and a 2px ink rule; numbered entries in citation form (owner bold). No cards, no filters.
 - **Contact band (Home):** green band; big serif title with the note directly under it, then translucent cards (yellow icon circle, label, value, copy button).
 - **Footer:** dark green; serif name and tagline, all pages, all profiles (yellow column headings), then the copyright line and Back to top.
+- **404 page:** a tall green band with the terrain, a yellow mono "404", serif title "This page is off the map.", one line of text and two buttons (Go to the home page, See my maps).
+- **Link preview card (1200x630):** green with terrain, name in display serif, role in yellow, university line, the site address after a short yellow bar, photo on the right.
 - **Pin the Place:** unchanged; see CLAUDE.md for levels and scoring.
 
 ## Do's and Don'ts

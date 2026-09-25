@@ -1,0 +1,50 @@
+<!doctype html>
+<!-- Link preview card (1200 x 630) shown when the site is shared on LinkedIn, Facebook, WhatsApp or X.
+     Rebuild: serve the repo (python3 -m http.server 4000), open /.impeccable/share-card.html at 1200 x 630,
+     screenshot it, and save as assets/img/share-card.jpg (see CLAUDE.md). -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Share card</title>
+<style>
+  @font-face { font-family: "Archivo"; src: url("../assets/fonts/archivo-latin.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; }
+  @font-face { font-family: "Newsreader"; src: url("../assets/fonts/newsreader-latin.woff2") format("woff2"); font-weight: 400 700; }
+  html, body { margin: 0; }
+  .card {
+    position: relative; overflow: hidden; isolation: isolate;
+    width: 1200px; height: 630px; box-sizing: border-box;
+    background: #0F3B24; color: #fff; font-family: "Archivo", Arial, sans-serif;
+  }
+  .card::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: url("../assets/img/terrain.svg") right center / cover no-repeat;
+    -webkit-mask-image: linear-gradient(90deg, transparent 5%, #000 60%);
+    mask-image: linear-gradient(90deg, transparent 5%, #000 60%);
+  }
+  .strip { position: absolute; left: 0; right: 0; top: 0; height: 14px; background: #0B2E1B; }
+  .text { position: absolute; left: 76px; top: 160px; width: 720px; }
+  .name { font-family: "Newsreader", Georgia, serif; font-weight: 500; font-size: 96px; line-height: 1; letter-spacing: -0.03em; margin: 0; }
+  .role { font-weight: 650; font-size: 28px; color: #F5B82E; margin: 26px 0 0; white-space: nowrap; }
+  .org { font-size: 25px; color: #BFE0C8; margin: 14px 0 0; line-height: 1.4; max-width: 620px; }
+  .url { position: absolute; left: 76px; bottom: 62px; display: flex; align-items: center; gap: 14px; font-weight: 600; font-size: 25px; color: #fff; }
+  .url::before { content: ""; width: 34px; height: 4px; border-radius: 999px; background: #F5B82E; }
+  .photo {
+    position: absolute; right: 76px; top: 50%; transform: translateY(-50%);
+    width: 300px; height: 360px; object-fit: cover; object-position: 55% 16%;
+    border-radius: 20px; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="strip"></div>
+    <div class="text">
+      <p class="name">Md Sabbir Islam</p>
+      <p class="role">Remote Sensing and Geospatial Deep Learning</p>
+      <p class="org">Geography and Environment, Pabna University of Science and Technology, Bangladesh</p>
+    </div>
+    <p class="url">sabbir0sojib.github.io</p>
+    <img class="photo" src="../assets/img/sabbir-portrait.jpg" alt="">
+  </div>
+</body>
+</html>

@@ -15,5 +15,7 @@
   "home_maps_title": "Latest maps",
   "home_research_title": "Recent research",
   "home_projects_title": "Code projects",
-  "footer_tagline": "Maps, research and code on remote sensing and geospatial deep learning in Bangladesh."
+  "footer_tagline": "Maps, research and code on remote sensing and geospatial deep learning in Bangladesh.",
+  "notfound_title": "This page is off the map.",
+  "notfound_text": "The page you are looking for does not exist or has moved."
 }
