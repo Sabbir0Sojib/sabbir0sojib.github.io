@@ -33,10 +33,11 @@ History of how this site was built, what was tried and why things are the way th
 27. **World games.** Owner wanted a new game and the whole world, not only Bangladesh. Pin the Place gained a Bangladesh / World switch with Countries (167, Natural Earth) and Wonders (38 famous places, editable). New game Satellite Detective: name a place from a satellite view, 4 choices, zoom out for help at a points cost, Bangladesh or World. Fun page retitled Geography games, with game tabs.
 28. **Final whole-site check.** Content data (217 checks), links, titles and descriptions (all under 160 characters), sitemap, robots, structured data, accessibility (0 contrast failures, headings, alt text), layout shift (0.000, Fun 0.022 on phones), Impeccable browser scans (0 findings on 7 pages at 1280 and 390 px), both games played. Fixed: pre-rendered icon links held the local test address (site.js now uses a root path), four descriptions were too long, the region switch radius was off the scale.
 29. **EFAST 2026 photos.** Four photos added to the Gallery (presenting, paper session, main hall, audience); the owner presented a paper and served as a volunteer. The copies came through chat at 480 to 800 px; sharper originals can replace them in Pages CMS.
+30. **More gallery photos.** ETSD 2026 poster certificate (also added to Research as a conference poster), ICLESSD-2025 certificate, UAV fieldwork, PUST YouthMappers, a World Environment Day event and two FOREWARN Disaster Hackathon 1.0 photos. Gallery now has 12 photos.
 
 ## Open items
 
-- Gallery: more photos welcome (CH4Rice fieldwork, drone flights); EFAST photos could be replaced with full-size originals.
+- Gallery: EFAST and ICLESSD certificate photos came through chat at 480 to 800 px; full-size originals would be sharper.
 
 - More photos for the Gallery (EFAST 2026, CH4Rice fieldwork, drone flights).
 - Images for: sea level rise, earthquake hazard, LULC Dhaka, Nepal flood before/after, Landsat mosaic, Landsat harmonic model.
