@@ -1,7 +1,7 @@
 {
   "name": "Md Sabbir Islam",
   "role": "Remote Sensing and Geospatial Deep Learning",
-  "bio": "I love GIS and remote sensing. Drones, satellites and deep learning are my tools; Bangladesh is my map. I turn data about trees, floods and cyclones into maps people can read.",
+  "bio": "Remote sensing researcher at Pabna University of Science and Technology. I combine drone and satellite imagery with deep learning to map trees, floods and cyclones across Bangladesh.",
   "photo": "/assets/img/sabbir-portrait.jpg",
   "photo_alt": "Md Sabbir Islam at the ICLESSD-2025 conference, Jagannath University, Dhaka",
   "photo_caption": "At ICLESSD-2025, Jagannath University, Dhaka",
@@ -64,9 +64,9 @@
       "detail": "In collaboration with the JAXA Earth Observation Research Center and the Institute of Industrial Science, University of Tokyo."
     },
     {
-      "when": "(2026) Final result awaited",
+      "when": "2026",
       "title": "B.Sc. (Honours) in Geography and Environment",
-      "detail": "Pabna University of Science and Technology. CGPA 3.56 / 4.00 across seven semesters; coursework completed."
+      "detail": "Pabna University of Science and Technology. CGPA 3.56 / 4.00 across seven semesters; coursework completed, final result awaited."
     }
   ],
   "skills": [
