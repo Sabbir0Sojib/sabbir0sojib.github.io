@@ -1,11 +1,12 @@
 """Shrink images uploaded through Pages CMS so the website stays fast.
 
-Usage: python shrink-images.py <image paths...>
+Usage: python shrink-images.py [image paths...]
 JPG and PNG become WebP (the original is removed and every reference in
 content/*.json and *.html is updated). Big WebP files are re-encoded in place.
 Images are fitted inside MAX x MAX pixels, which is still sharp for "View full size".
 """
 import pathlib
+import re
 import sys
 
 from PIL import Image, ImageOps
@@ -41,14 +42,20 @@ for arg in sys.argv[1:]:
         renamed[rel] = out.as_posix()
     print(f"{rel}: {before // 1024} KB -> {out.as_posix()} {out.stat().st_size // 1024} KB")
 
-# Point content and pages at the new file names.
-if renamed:
-    files = list(pathlib.Path("content").glob("*.json")) + list(pathlib.Path(".").glob("*.html"))
-    for f in files:
-        text = f.read_text(encoding="utf-8")
-        new = text
-        for old, rep in renamed.items():
-            new = new.replace(old, rep)
-        if new != text:
-            f.write_text(new, encoding="utf-8")
-            print(f"updated {f}")
+# Point content and pages at the new file names. This also repairs entries saved
+# later that still name the original upload (Pages CMS saves the image first and
+# the entry afterwards), by switching any missing JPG/PNG to its WebP twin.
+files = list(pathlib.Path("content").glob("*.json")) + list(pathlib.Path(".").glob("*.html"))
+ref = re.compile(r"assets/img/[^\"'\s]+?\.(?:jpe?g|png)", re.IGNORECASE)
+for f in files:
+    text = f.read_text(encoding="utf-8")
+    new = text
+    for old, rep in renamed.items():
+        new = new.replace(old, rep)
+    for m in set(ref.findall(new)):
+        twin = pathlib.Path(m).with_suffix(".webp")
+        if not pathlib.Path(m).exists() and twin.exists():
+            new = new.replace(m, twin.as_posix())
+    if new != text:
+        f.write_text(new, encoding="utf-8")
+        print(f"updated {f}")

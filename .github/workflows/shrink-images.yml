@@ -7,6 +7,7 @@ on:
     branches: [main]
     paths:
       - "assets/img/**"
+      - "content/**"
   workflow_dispatch:
 
 permissions:
@@ -41,7 +42,7 @@ jobs:
             find assets/img -type f > files.txt
           fi
           cat files.txt
-          xargs -d '\n' -r python .github/scripts/shrink-images.py < files.txt
+          xargs -d '\n' python .github/scripts/shrink-images.py < files.txt
           rm files.txt
 
       - name: Commit smaller images
