@@ -33,6 +33,16 @@
     "date": "2026-08-04"
   },
   {
+    "year": "2026",
+    "date": "2026-05-15",
+    "type": "conference",
+    "status": "Poster presented",
+    "title": "Urban Tree Cover Detection Using UAV, Remote Sensing and Deep Learning",
+    "authors": "Islam, M.S., and Islam, M.R.",
+    "venue": "2nd International Conference on Engineering and Technology for Sustainable Development (ETSD 2026), Jashore University of Science and Technology, Jashore, Bangladesh",
+    "note": ""
+  },
+  {
     "year": "2025",
     "type": "conference",
     "status": "Presented",
