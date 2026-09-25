@@ -18,9 +18,8 @@
     },
     {
       "label": "Research focus",
-      "value": "Urban tree canopy mapping from UAV and PlanetScope imagery with deep learning",
-      "icon": "focus",
-      "note": "UAV 5 cm to PlanetScope 3 m"
+      "value": "Urban planning, Vegetation, Land use change, Hazard and risk, Environmental monitoring",
+      "icon": "focus"
     },
     {
       "label": "Based in",
