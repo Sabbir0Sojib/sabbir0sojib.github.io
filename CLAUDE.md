@@ -24,7 +24,7 @@ Plain HTML, CSS and vanilla JavaScript. No framework, no npm build for the live 
 
 | Page | File | Rendered from |
 |---|---|---|
-| Profile (home) | `index.html` | `content/profile.json` |
+| Profile (home) | `index.html` | `content/profile.json`, plus the newest 3 maps, 3 research items and 4 projects |
 | Research | `research.html` | `content/research.json` |
 | Projects (GitHub repos) | `projects.html` | `content/projects.json` |
 | Maps (single maps) | `maps.html` | `content/maps.json` |
@@ -35,10 +35,11 @@ Plain HTML, CSS and vanilla JavaScript. No framework, no npm build for the live 
 - HTML pages are thin shells with `data-render="..."` containers and `data-site="key"` text hooks.
 - `assets/js/site.js` fetches `content/*.json`, renders every page, then wires filters, lightbox (click to zoom), copy buttons and reveals. `newestFirst()` sorts by `date` (YYYY-MM-DD), falling back to end of `year`.
 - `assets/js/game.js` is the geography game with levels Easy (8 divisions), Medium (64 districts), Hard (544 upazilas) from geoBoundaries gbOpen BGD ADM1 to ADM3 (source BBS and OCHA, CC BY 3.0 IGO; old spellings fixed, e.g. Chittagong to Chattogram, Rajshani to Rajshahi), and Landmarks from `content/places.json`. A guess inside the right polygon scores 1000; otherwise `round(1000 * exp(-km / scale))` with km to the nearest border vertex and scale 80 / 45 / 25 / 60. Best score is stored per level. It uses Leaflet map, unlabeled satellite imagery from Esri World Imagery (no API key; automatic fallback to EOX Sentinel-2 cloudless) with bundled Natural Earth outlines (`assets/data/region.geojson`) drawn on top. CARTO tiles were removed because they started requiring a key. Distance by haversine, points = `round(1000 * exp(-km / 75))`.
-- `assets/css/site.css`: tokens at the top of `:root` (`--accent` is the green). Ten font sizes, radii 6 / 10 / 16 / pill.
+- `assets/css/site.css`: tokens at the top of `:root` (`--accent` is the green, neutrals are green-tinted). Serif Newsreader for headings, the bio and citations; Archivo for the rest. Radii 6 / 10 / 16 / pill. Maps always sit whole on a light mat (`.mat`), never cropped. The type ramp and colours are listed in `DESIGN.md`.
+- Home layout: hero (name, role, bio, photo with optional caption), a facts strip, Latest maps (1 large + 2), then side-heading sections (`.split`: title left, content right): Recent research, Code projects, Education and experience, Skills, Research interests, Awards and languages, Contact.
 - Header: on screens up to 820 px the nav collapses into a **Menu** button with a dropdown (`.nav-toggle`, `.site-head.is-open`, handled at the top of `site.js`; closes on Escape or outside click). Six links do not fit in one phone row.
 - `assets/icons.svg`: Phosphor icons (MIT) plus the ORCID logo (Simple Icons, CC0).
-- `assets/vendor/leaflet/`: Leaflet 1.9.4, self-hosted. Fonts self-hosted in `assets/fonts/` (Archivo, JetBrains Mono).
+- `assets/vendor/leaflet/`: Leaflet 1.9.4, self-hosted. Fonts self-hosted in `assets/fonts/` (Archivo, Newsreader regular and italic, JetBrains Mono; all SIL OFL).
 - Images: maps in `assets/img/work/`, photos in `assets/img/photos/`, portrait `assets/img/sabbir-portrait.*`. WebP, max 1600 px wide.
 
 ## Content model (`content/*.json`)
@@ -46,10 +47,10 @@ Plain HTML, CSS and vanilla JavaScript. No framework, no npm build for the live 
 - `projects.json` (code projects): `title, year, date, description, tools (comma separated), repo, image, image_alt`. Cards link to GitHub; no image gives a green GitHub tile.
 - `maps.json` (single maps): `title, year, date, tags (list of free-text labels), description, image, image_alt`. Filter buttons are built from the tags in use (most used first; matching ignores case), so the owner adds, renames or deletes tags in Pages CMS. Old `theme` keys still work as a fallback. Maps without `image` appear under "More maps".
 - `research.json`: `year, date, type (journal|conference|field|thesis|other), status, title, authors, venue, note, link`. The owner's name `Islam, M.S.` is bolded automatically. Status containing presented/published/accepted gets the green badge.
-- `profile.json`: `name, role, bio, photo, photo_alt, facts[{label,value}], emails[{label,address}], orcid, linkedin, github, interests[], experience[{when,title,detail}], skills[{group,items}], awards[{year,text}], languages[]`.
+- `profile.json`: `name, role, bio, photo, photo_alt, photo_caption, facts[{label,value}], emails[{label,address}], orcid, linkedin, github, interests[], experience[{when,title,detail}], skills[{group,items}], awards[{year,text}], languages[]`.
 - `gallery.json`: `image, title, caption, alt`.
 - `places.json`: `name, lat, lng, fact`.
-- `site.json`: page titles and intros, `contact_title`, `contact_note`, `footer`.
+- `site.json`: page titles and intros, home section titles (`home_maps_title`, `home_research_title`, `home_projects_title`), `contact_title`, `contact_note`, `footer_tagline`, `footer`.
 
 **Uploads can be any size.** `.github/workflows/shrink-images.yml` runs on every push to `main` that touches `assets/img/`: new JPG/PNG become WebP (max 2400 px, quality 82, original deleted, paths in `content/*.json` and `*.html` rewritten), big WebP files are re-encoded. It commits the result and requests a Pages build. `assets/img/sabbir-portrait.jpg` is kept (social preview). Script: `.github/scripts/shrink-images.py`.
 
@@ -89,11 +90,11 @@ Image paths in JSON start with `/assets/img/...` (Pages CMS writes them this way
 Use all four on design work:
 1. **Taste** (`design-taste-frontend`, `minimalist-ui`, `redesign-existing-projects`): design read, redesign audit, pre-flight checklist (zero em dashes, one accent, no wrapped buttons, no scroll listeners, contrast).
 2. **Impeccable** (`impeccable`): reference guides in `.claude/skills/impeccable/reference/`, and the detector:
-   `sh .claude/skills/impeccable/scripts/impeccable detect --json index.html research.html projects.html gallery.html fun.html assets/css/site.css`
-   Keep it at zero findings except the known `cramped-padding` false positive on `.block` (real padding is 56px). Keep `DESIGN.md` in sync, since the detector checks colours, sizes and radii against it.
+   `sh .claude/skills/impeccable/scripts/impeccable detect --json index.html research.html projects.html maps.html gallery.html fun.html assets/css/site.css`
+   Keep it at zero findings except the known `cramped-padding` false positives on `.block`, `.home-sec` and `.split` (real top padding is 44 to 80px). Keep `DESIGN.md` in sync, since the detector checks colours, sizes and radii against it.
    Image provenance: `sh .claude/skills/impeccable/scripts/impeccable embed-prompt <img> --prompt "Origin: ..."`, check with `--scan assets/img`.
 3. **Playwright CLI** (`playwright-cli`, skill in `.claude/skills/playwright-cli`): screenshots and click tests at 1440 and 390 px widths. In cloud sessions the config `.playwright/cli.config.json` points at `/opt/pw-browsers/chromium`; on a local machine delete or edit that file.
-4. **Awesome Design** (`.claude/design-references/<brand>/DESIGN.md`, 74 brands): consult for patterns. Used so far: Pinterest (map cards, filter chips), Wired (equal research rows), Apple (calm, single accent), Binance (scarce accent).
+4. **Awesome Design** (`.claude/design-references/<brand>/DESIGN.md`, 74 brands): consult for patterns. Used so far: Apple (work on a quiet pedestal, full footer), Pinterest (filter chips), Wired (equal research rows), Binance (scarce accent).
 
 Reinstall skills in a new project:
 ```bash

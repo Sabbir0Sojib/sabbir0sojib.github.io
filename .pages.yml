@@ -15,6 +15,9 @@ content:
     path: content/site.json
     format: json
     fields:
+      - { name: home_maps_title, label: "Home: maps section title", type: string }
+      - { name: home_research_title, label: "Home: research section title", type: string }
+      - { name: home_projects_title, label: "Home: projects section title", type: string }
       - { name: research_title, label: Research page title, type: string }
       - { name: research_intro, label: Research page intro, type: text }
       - { name: projects_title, label: Projects page title, type: string }
@@ -27,7 +30,8 @@ content:
       - { name: fun_intro, label: Fun page intro, type: text }
       - { name: contact_title, label: Contact section title, type: string }
       - { name: contact_note, label: Contact section note, type: text }
-      - { name: footer, label: Footer text, type: string }
+      - { name: footer_tagline, label: Footer line under your name, type: text }
+      - { name: footer, label: Footer copyright line, type: string }
 
   - name: projects
     label: Projects (GitHub)
@@ -116,10 +120,11 @@ content:
       - { name: role, label: Role line, type: string }
       - name: bio
         label: Short bio
-        description: 2 or 3 sentences in your own voice, shown in the green box at the top of your Profile page.
+        description: 2 or 3 sentences in your own voice, shown under your name at the top of the Profile page.
         type: text
       - { name: photo, label: Photo, type: image }
-      - { name: photo_alt, label: Photo description, type: string }
+      - { name: photo_alt, label: Photo description (for screen readers), type: string }
+      - { name: photo_caption, label: "Photo caption (optional, small text under the photo)", type: string }
       - name: facts
         label: Facts
         type: object

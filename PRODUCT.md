@@ -33,12 +33,12 @@ Visitors arrive from a CV header, LinkedIn, GitHub, an email signature or a conf
 
 ## Capabilities and Constraints
 
-- Separate pages (owner's choice): Profile (index.html), Research, Projects, Gallery, Fun (Pin the Place, a Bangladesh geography game).
+- Separate pages (owner's choice): Profile (index.html, also the front page showing the latest maps, research and projects), Research, Projects (GitHub repositories), Maps, Gallery, Fun (Pin the Place, a Bangladesh geography game).
 - Look (owner's choice): clean light, one accent colour. The owner rejected the earlier GIS-workspace and dark-hero versions.
 - Contact: sabbir.210908@s.pust.ac.bd and mdsabbirislam820@gmail.com, LinkedIn (linkedin.com/in/sabbir-sojib), GitHub (github.com/Sabbir0Sojib).
 - No phone number, no referee details, no CV download on the site.
 - ORCID: https://orcid.org/0009-0001-9474-9287. No Google Scholar yet.
-- Projects holds all maps; Gallery holds photos of the owner and his work. Research lists every item equally (owner asked not to highlight the thesis).
+- Projects holds code with a GitHub repository; Maps holds single maps; Gallery holds photos of the owner. Research lists every item equally (owner asked not to highlight the thesis).
 - Map images are replaceable: the owner will upload higher quality versions later under the same filenames in `assets/img/work/`.
 - The owner edits content himself through Pages CMS (app.pagescms.org) or the GitHub website; all content lives in `content/*.json`.
 

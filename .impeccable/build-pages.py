@@ -1,15 +1,17 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os
 OUT = "/home/user/sabbir0sojib.github.io"
-VER = "20260925a"   # bump to force browsers to load new CSS/JS
+VER = "20260925b"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
 def icon(n, cls="i"): return f'<svg class="{cls}" aria-hidden="true"><use href="assets/icons.svg?v={VER}#{n}"/></svg>'
 ARROW = icon("arrow")
+NEXT = icon("arrow-right")
 
 def page(fname, title, desc, body, extra_head="", extra_js=""):
     nav = "\n".join(f'          <a href="{h}"{CUR if h==fname else ""}>{t}</a>' for h,t in NAV)
+    foot_nav = "\n".join(f'          <li><a href="{h}">{t}</a></li>' for h,t in NAV)
     return f'''<!doctype html>
 <html lang="en" data-v="{VER}">
 <head>
@@ -22,9 +24,10 @@ def page(fname, title, desc, body, extra_head="", extra_js=""):
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{desc}">
   <meta property="og:image" content="https://sabbir0sojib.github.io/assets/img/sabbir-portrait.jpg">
-  <meta name="theme-color" content="#F7F9F6">
+  <meta name="theme-color" content="#FFFFFF">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
 {extra_head}  <link rel="stylesheet" href="assets/css/site.css?v={VER}">
   <script>document.documentElement.classList.add("js");</script>
   <script src="assets/js/site.js?v={VER}" defer></script>
@@ -48,14 +51,30 @@ def page(fname, title, desc, body, extra_head="", extra_js=""):
   </main>
 
   <footer class="site-foot">
-    <div class="wrap site-foot__row">
+    <div class="wrap site-foot__grid">
+      <div class="site-foot__id">
+        <p class="site-foot__name">Md Sabbir Islam</p>
+        <p class="site-foot__tag" data-site="footer_tagline">Maps, research and code on remote sensing and geospatial deep learning in Bangladesh.</p>
+      </div>
+      <nav aria-label="Footer">
+        <p class="site-foot__h">Pages</p>
+        <ul class="site-foot__list site-foot__list--2">
+{foot_nav}
+        </ul>
+      </nav>
+      <div>
+        <p class="site-foot__h">Elsewhere</p>
+        <ul class="site-foot__list">
+          <li><a href="mailto:mdsabbirislam820@gmail.com">{icon("envelope")}Email</a></li>
+          <li><a href="{ORCID}" target="_blank" rel="me noopener">{icon("orcid")}ORCID</a></li>
+          <li><a href="https://www.linkedin.com/in/sabbir-sojib/" target="_blank" rel="me noopener">{icon("linkedin")}LinkedIn</a></li>
+          <li><a href="https://github.com/Sabbir0Sojib" target="_blank" rel="me noopener">{icon("github")}GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap site-foot__base">
       <p data-site="footer">&copy; 2026 Md Sabbir Islam. Pabna University of Science and Technology, Bangladesh.</p>
-      <p class="site-foot__links">
-        <a class="icon-btn" href="mailto:mdsabbirislam820@gmail.com" aria-label="Email">{icon("envelope")}</a>
-        <a class="icon-btn" href="{ORCID}" target="_blank" rel="me noopener" aria-label="ORCID">{icon("orcid")}</a>
-        <a class="icon-btn" href="https://www.linkedin.com/in/sabbir-sojib/" target="_blank" rel="me noopener" aria-label="LinkedIn">{icon("linkedin")}</a>
-        <a class="icon-btn" href="https://github.com/Sabbir0Sojib" target="_blank" rel="me noopener" aria-label="GitHub">{icon("github")}</a>
-      </p>
+      <a href="#main">Back to top</a>
     </div>
   </footer>
 </body>
@@ -85,9 +104,39 @@ LIGHTBOX = f'''    <dialog class="lightbox" aria-labelledby="lb-title">
 NOSCRIPT = '      <noscript><p class="list-empty">This page needs JavaScript to show its content.</p></noscript>'
 write("index.html", page("index.html","Md Sabbir Islam | Remote Sensing and Geospatial Deep Learning",
   "Md Sabbir Islam, Geography and Environment researcher at Pabna University of Science and Technology. UAV and satellite deep learning, and maps of Bangladesh.",
-  f"""    <div class="wrap" data-render="profile" aria-busy="true">
+  f"""    <div class="wrap">
+      <div data-render="hero" aria-busy="true">
 {NOSCRIPT}
-    </div>"""))
+      </div>
+
+      <section class="home-sec" aria-labelledby="h-maps">
+        <div class="sec-head">
+          <h2 class="sec-title" id="h-maps" data-site="home_maps_title">Latest maps</h2>
+          <a class="more-link" href="maps.html"><span data-count="maps">All maps</span>{NEXT}</a>
+        </div>
+        <div class="bento" data-render="home-maps" aria-busy="true"></div>
+      </section>
+
+      <section class="split" aria-labelledby="h-research">
+        <div class="split__head">
+          <h2 class="sec-title" id="h-research" data-site="home_research_title">Recent research</h2>
+          <a class="more-link" href="research.html">All research{NEXT}</a>
+        </div>
+        <ol class="cites" data-render="home-research" aria-busy="true"></ol>
+      </section>
+
+      <section class="split" aria-labelledby="h-projects">
+        <div class="split__head">
+          <h2 class="sec-title" id="h-projects" data-site="home_projects_title">Code projects</h2>
+          <a class="more-link" href="projects.html">All projects{NEXT}</a>
+        </div>
+        <ul class="plist" data-render="home-projects" aria-busy="true"></ul>
+      </section>
+
+      <div data-render="about" aria-busy="true"></div>
+    </div>
+
+{LIGHTBOX}"""))
 
 write("research.html", page("research.html","Research | Md Sabbir Islam","Papers, manuscripts and field work by Md Sabbir Islam.", f"""    <div class="wrap">
       <header class="page-head">
@@ -104,7 +153,7 @@ write("projects.html", page("projects.html","Projects | Md Sabbir Islam","Code p
         <h1 class="page-head__title" data-site="projects_title">Projects</h1>
         <p class="page-head__lede" data-site="projects_intro">Code projects with open repositories on GitHub, newest first.</p>
       </header>
-      <div class="repo-grid" data-render="repos" aria-busy="true"></div>
+      <div class="proj-list" data-render="repos" aria-busy="true"></div>
       <p class="list-empty" hidden>No projects yet.</p>
 {NOSCRIPT}
     </div>"""))
@@ -118,7 +167,7 @@ write("maps.html", page("maps.html","Maps | Md Sabbir Islam","Maps by Md Sabbir 
       <div class="project-grid map-wall" data-render="maps" aria-busy="true"></div>
       <p class="list-empty" hidden>No maps with this tag yet.</p>
 {NOSCRIPT}
-      <section class="block" aria-labelledby="more-work" style="margin-top: 40px;" data-render-wrap="projects-more" hidden>
+      <section class="block block--more" aria-labelledby="more-work" data-render-wrap="projects-more" hidden>
         <h2 id="more-work" class="block__title">More maps, images coming soon</h2>
         <ul class="more" data-render="projects-more"></ul>
       </section>

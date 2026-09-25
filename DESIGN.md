@@ -1,61 +1,95 @@
 ---
 name: Md Sabbir Islam, portfolio
-description: A clean, light, five-page research portfolio with one river-green accent.
+description: A clean, light, six-page research portfolio. Serif headings, one forest-green accent, maps shown as prints on a light mat.
 colors:
   forest-green: "#166534"
   forest-green-deep: "#14532D"
-  green-tint: "#EAF4EE"
+  green-tint: "#E8F3EC"
   mustard: "#E9B824"
-  mustard-bright: "#F3C53A"
-  ink: "#111827"
-  ink-soft: "#374151"
-  muted: "#5F6672"
+  ink: "#121A16"
+  ink-soft: "#3A4540"
+  muted: "#5B6660"
   page: "#FFFFFF"
-  surface: "#F4F6F5"
-  line: "#E5E7EB"
-  line-strong: "#D1D5DB"
+  surface: "#F3F6F4"
+  surface-hover: "#E8EEEA"
+  line: "#E2E7E4"
+  line-strong: "#CBD3CE"
   on-green: "#FFFFFF"
-  on-green-soft: "rgba(255, 255, 255, 0.8)"
-  scrim: "rgba(12, 14, 16, 0.72)"
-  float-shadow: "rgba(10, 12, 14, 0.35)"
-  map-water: "#D6E4E4"
+  print-shadow-near: "rgba(18, 26, 22, 0.08)"
+  print-shadow-far: "rgba(18, 26, 22, 0.38)"
+  print-shadow-lift: "rgba(18, 26, 22, 0.45)"
+  soft-shadow: "rgba(18, 26, 22, 0.4)"
+  tooltip-shadow: "rgba(18, 26, 22, 0.18)"
+  badge: "rgba(18, 26, 22, 0.84)"
+  scrim: "rgba(18, 26, 22, 0.72)"
+  float-shadow: "rgba(18, 26, 22, 0.35)"
+  loading-veil: "rgba(255, 255, 255, 0.94)"
   map-night: "#0B1F2A"
   map-highlight: "#FACC15"
   pin-shadow: "rgba(0, 0, 0, 0.45)"
-  float-button-shadow: "rgba(0, 0, 0, 0.6)"
-  map-land: "#F4F6F2"
-  map-bangladesh: "#EAF4EE"
-  map-border: "#BFC8C0"
 typography:
-  research-title:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(1.1875rem, 1rem + 0.5vw, 1.375rem)"
-    fontWeight: 650
-    lineHeight: 1.35
   display:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(2.5rem, 1.6rem + 3.4vw, 4rem)"
-    fontWeight: 700
-    lineHeight: 1.02
-    letterSpacing: "-0.035em"
+    fontFamily: "Newsreader, Georgia, Times New Roman, serif"
+    fontSize: "clamp(3rem, 2rem + 4vw, 5rem)"
+    fontWeight: 500
+    lineHeight: 0.98
+    letterSpacing: "-0.03em"
   page-title:
+    fontFamily: "Newsreader, Georgia, Times New Roman, serif"
+    fontSize: "clamp(2.5rem, 1.7rem + 3.2vw, 4rem)"
+    fontWeight: 500
+    lineHeight: 1.02
+    letterSpacing: "-0.025em"
+  page-title-compact:
+    fontFamily: "Newsreader, Georgia, Times New Roman, serif"
+    fontSize: "clamp(2.25rem, 1.6rem + 2vw, 3rem)"
+    fontWeight: 500
+    lineHeight: 1.02
+    letterSpacing: "-0.025em"
+  game-final:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(2.25rem, 1.5rem + 3vw, 3.5rem)"
     fontWeight: 700
-    lineHeight: 1.05
-    letterSpacing: "-0.03em"
-  stat:
+    lineHeight: 1
+    letterSpacing: "-0.035em"
+  game-distance:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(2rem, 1.4rem + 1.6vw, 2.75rem)"
     fontWeight: 700
     lineHeight: 1
     letterSpacing: "-0.03em"
+  section-title:
+    fontFamily: "Newsreader, Georgia, Times New Roman, serif"
+    fontSize: "clamp(1.75rem, 1.4rem + 1.2vw, 2.25rem)"
+    fontWeight: 500
+    lineHeight: 1.1
+    letterSpacing: "-0.015em"
   headline:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(1.5rem, 1.2rem + 1vw, 1.875rem)"
-    fontWeight: 650
+    fontFamily: "Newsreader, Georgia, Times New Roman, serif"
+    fontSize: "clamp(1.5rem, 1.25rem + 0.8vw, 1.875rem)"
+    fontWeight: 500
+    lineHeight: 1.15
+    letterSpacing: "-0.01em"
+  standfirst:
+    fontFamily: "Newsreader, Georgia, Times New Roman, serif"
+    fontSize: "clamp(1.1875rem, 1.05rem + 0.5vw, 1.375rem)"
+    fontWeight: 400
+    lineHeight: 1.5
+  brand:
+    fontFamily: "Newsreader, Georgia, Times New Roman, serif"
+    fontSize: "1.375rem"
+    fontWeight: 600
     lineHeight: 1.2
-    letterSpacing: "-0.02em"
+  citation:
+    fontFamily: "Newsreader, Georgia, Times New Roman, serif"
+    fontSize: "1.1875rem"
+    fontWeight: 400
+    lineHeight: 1.6
+  signature:
+    fontFamily: "Newsreader, Georgia, Times New Roman, serif"
+    fontSize: "1.75rem"
+    fontWeight: 500
+    lineHeight: 1.1
   lede:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem)"
@@ -65,7 +99,7 @@ typography:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
     fontSize: "1.1875rem"
     fontWeight: 650
-    lineHeight: 1.3
+    lineHeight: 1.35
   body:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
     fontSize: "1.0625rem"
@@ -75,11 +109,11 @@ typography:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
     fontSize: "0.9375rem"
     fontWeight: 400
-    lineHeight: 1.5
+    lineHeight: 1.55
   caption:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
     fontSize: "0.8125rem"
-    fontWeight: 400
+    fontWeight: 600
     lineHeight: 1.5
   data:
     fontFamily: "JetBrains Mono, ui-monospace, monospace"
@@ -106,8 +140,8 @@ components:
     height: "46px"
     padding: "0 20px"
   nav-current:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.on-green}"
+    backgroundColor: "{colors.green-tint}"
+    textColor: "{colors.forest-green}"
     rounded: "{rounded.pill}"
     padding: "8px 14px"
   filter-chip:
@@ -116,11 +150,15 @@ components:
     rounded: "{rounded.pill}"
     padding: "9px 18px"
   filter-chip-active:
-    backgroundColor: "{colors.ink}"
+    backgroundColor: "{colors.forest-green}"
     textColor: "{colors.on-green}"
-  tag:
+  map-mat:
     backgroundColor: "{colors.surface}"
-    textColor: "{colors.ink-soft}"
+    rounded: "{rounded.large}"
+    padding: "14px to 24px"
+  tag:
+    backgroundColor: "{colors.green-tint}"
+    textColor: "{colors.forest-green}"
     rounded: "{rounded.pill}"
     padding: "5px 12px"
 ---
@@ -129,80 +167,80 @@ components:
 
 ## Overview
 
-**Creative North Star: "The Clean Field Report"**
+**Creative North Star: "The Field Journal"**
 
-Plain light pages, dark text, generous space and one river-green accent. Each page does one job (Profile, Research, Projects, Gallery, Fun) and the maps supply the colour. The owner chose this look after rejecting a GIS-workspace layout and a dark hero. The Projects map grid follows the Pinterest reference in `.claude/design-references/pinterest` (the image is the card, filter chips flip to ink when active, the only shadow is under the floating viewer). The Research page follows the Wired reference: every item is an equal story row with a type line, title, byline and venue, split by 1px lines, with no highlighted numbers.
+A researcher's portfolio that reads like a well set journal: white pages, serif headings, calm sans text, and the maps presented as prints on a light mat. One forest-green accent marks what can be clicked. The owner chose a clean, professional light look after rejecting a GIS-workspace layout, a dark hero slideshow, a green "Monsoon" panel theme and a full-page scroll story; do not bring any of those back.
+
+References used: Apple (the work sits on a quiet pedestal, generous air, a dense and complete footer), Wired (equal research rows), Pinterest (filter chips), Binance (scarce accent).
 
 **Key Characteristics:**
-- Separate pages with a sticky top menu showing the name as plain text; the current page is an ink pill.
-- River green only for primary actions, links, the role line, points and the game's answer pins.
-- Archivo throughout; JetBrains Mono only for years and small data.
-- A tight scale: ten font sizes, four radii (6, 10, 16, pill).
+- Serif (Newsreader) for the name, page titles, section titles, project titles, the bio and citations. Archivo for everything else. JetBrains Mono only for years, repository paths and tool lists.
+- Home is a real front page: hero, facts strip, latest maps, recent research, code projects, then the CV sections and contact.
+- Side-heading sections: the section title sits in a left column (sticky on desktop), the content on the right.
+- Maps are never cropped: they sit whole on a light mat with a soft print shadow.
+- Green-tinted neutrals (ink #121A16, not a stock grey).
 
 ## Colors
 
-Professional light theme chosen by the owner after rejecting the story layout: white page, dark ink text, one forest-green accent.
-
 ### Primary
-- **Forest Green** (forest-green): primary buttons, links, role line, fact labels, active filter chip, current menu item text (on green-tint), tags, game map edge.
+- **Forest Green** (forest-green): primary buttons, links, the role line, "All maps" style links, tags, active filter chip, current menu item text (on green-tint), status badges that mean done.
 
 ### Neutral
-- **Ink / Soft Ink / Muted**, **Page / Surface**, **Line / Strong Line**: cool neutral greys.
+- **Ink / Soft Ink / Muted**, **Page / Surface / Surface hover**, **Line / Strong Line**: one family of neutrals tinted toward the green.
 
 ### Named Rules
-**The One Green Rule.** Green marks what can be clicked or what matters most. The maps bring every other colour.
+**The One Green Rule.** Green marks what can be clicked or what matters most. The maps bring every other colour. Mustard only appears in the game's progress dots.
 
 ## Typography
 
-**Font:** Archivo (variable width), with JetBrains Mono for years and small data.
+- **Display:** the name on the home page.
+- **Page title / compact page title:** each page's heading.
+- **Section title:** home sections, research groups, "More maps".
+- **Headline:** project titles on the Projects page, the game question.
+- **Standfirst:** the bio under the name.
+- **Citation:** research entries (venue in true italic).
+- **Lede / Title / Body / Small / Caption:** page intros, card titles, paragraphs, metadata, labels.
 
-- **Display:** the name on the Profile page.
-- **Page title:** each page's heading.
-- **Stat:** thesis values, game distance and final score.
-- **Headline:** section titles and the game question.
-- **Lede:** page introductions and email addresses.
-- **Title / Body / Small / Caption:** card titles, paragraphs, metadata, fine print.
+Tracking stays between -0.01em and -0.03em on serif headings; body text never tracks.
 
 ## Layout
 
-
-
-A centred 1120px column. Each page opens with a title and a one-line intro, then sections separated by 1px lines. Two columns collapse to one below 820px; the top menu becomes a second row on phones. The game is a 340px panel beside the map on desktop and stacks above the map on phones.
+A centred 1180px column (Maps page 1360px). Page heads close with a 1px rule. On Home, sections are separated by 1px rules with 44 to 80px of space; side-heading sections use a 15rem title column. Everything collapses to one column below 960px (side headings) and 820px (hero, grids); the hero photo becomes a 112px square above the name on phones.
 
 ## Elevation & Depth
 
-Flat. Project cards lift 3px with a soft shadow on hover. The gallery viewer is the only floating layer (scrim plus float shadow). Game pins carry a small drop shadow so they read on the map.
+Flat. The only shadows: the print shadow under a map on its mat (it lifts 3px on hover), the phone menu dropdown, the viewer (scrim plus float shadow) and game pins.
 
 ## Shapes
 
-6px for small controls, 10px for panels and rows, 16px for cards, gallery images, the photo and the game frame; pills for buttons, chips, tags and the menu.
+6px for small controls, 10px for rows and inner panels, 16px for mats, photos, contact cards and the game frame; pills for buttons, chips, tags and the menu.
 
 ## Components
 
 - **Content:** every page is rendered from `content/*.json`, edited through Pages CMS (`.pages.yml`). Components below are templates in `assets/js/site.js`.
-
-- **Header:** name left, page links right. Up to 820px the links collapse into a white pill Menu button (list icon, turns into a close icon) that opens a full-width white dropdown with large tap rows; the current page keeps the green-tint highlight.
-- **Buttons:** pill, 46px; primary green, secondary white with a line; disabled at 45% opacity.
-- **Contact cards:** two-column grid of white cards (icon in a green-tint circle, small label, full value that wraps, icon-only copy button). One card per email, ORCID, LinkedIn and GitHub.
-- **Ordering:** projects and research render newest year first; items in the same year keep their CMS order.
-- **Maps page (map wall):** wider page (1360px). Two columns; each map keeps its natural shape at full card width (max 1100px tall) and is placed in the shorter column in date order, so reading order stays newest first. One column on phones.
-- **Gallery (photos):** the same borderless card for photos of conferences, fieldwork and the lab.
-- **Research publication list:** academic style. Groups (Journal manuscripts, Conference papers, Thesis, Field work) each with a heading, a count badge and a 2px ink rule; numbered entries in citation form: authors (owner bold), (year). **Title.** *Venue.* plus a status badge, and an optional muted note line. No cards, no filters.
-- **Research story row (older name):** year, type and status on one line, then title, authors (owner in bold), venue and an optional one-line note. Filter chips by type.
-- **Project map card (Projects page):** full-bleed map with 16px corners and no border box, title and meta underneath; filter chips above; masonry columns keep each map's natural shape; click opens the viewer with previous, next, open original and click-to-zoom.
-- **Pin the Place:** level tabs (Easy divisions, Medium districts, Hard upazilas, Landmarks), progress dots coloured by score, the correct area highlighted in yellow after each guess; on phones the level tabs, question and map stack and a floating Lock in button sits on the map. Five random places per game; click to drop a pin, lock in, see the distance line, points (1000 at 0 km, falling off exponentially with a 75 km scale) and a fact; the end screen shows total, rating, best score on the device and a map recap of every guess. The map shows unlabeled satellite imagery (Esri World Imagery, fallback EOX Sentinel-2 cloudless, no API key) with a yellow Bangladesh outline, white neighbour borders, yellow answer pins and white distance lines.
+- **Header:** serif name left, page links right. Up to 820px the links collapse into a white pill Menu button that opens a full-width dropdown.
+- **Hero (Home):** serif name, green role line, serif bio, a green "Email me" button and plain ORCID, LinkedIn and GitHub links; photo on the right with an optional caption. The hero text and photo arrive once on load (staggered rise, photo unveiled from the bottom); this is the site's only entrance animation.
+- **Facts strip:** four facts from the profile in a ruled row with thin dividers (2 columns on tablets, 1 on phones).
+- **Latest maps (Home):** the three newest maps: one lead map on the left, two on the right, each on a mat; click opens the viewer.
+- **Recent research (Home):** the three newest items as short citations: year, type and status, serif title, italic venue. All equal.
+- **Code projects (Home):** the four newest repositories as rows: title (whole row clickable), year, one-line description, tools in mono.
+- **Projects page:** one row per repository: preview on a mat (or the repository path with a GitHub mark when there is no image), serif title, year, description, tool tags and the repository link.
+- **Maps page (map wall):** two columns, each map whole on its mat at full column width, placed in the shorter column in date order so reading order stays newest first. Filter chips are built from the tags in use.
+- **Research page:** academic list grouped by type with a count badge and a 2px ink rule; numbered entries in citation form (owner bold). No cards, no filters.
+- **Contact cards:** two-column grid of white cards (icon in a green-tint circle, label, value, icon-only copy button).
+- **Footer:** serif name and a one-line tagline, all pages, all profiles, then the copyright line and "Back to top".
+- **Pin the Place:** unchanged; see CLAUDE.md for levels and scoring.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep each page focused on one topic.
-- **Do** put maps in Projects (with `data-cat` hazard, water, land or city) and photos in Gallery.
+- **Do** let the maps lead; show them whole, never cropped.
 - **Do** keep every research item equal; no single item gets a bigger box or big numbers.
 - **Do** keep text free of em dash and en dash characters (owner rule).
-- **Do** stay on the ten-size, four-radius scale.
+- **Do** stay on this type ramp and the four radii.
 
 ### Don't:
 - **Don't** add a second accent colour.
 - **Don't** use dark full-width sections; the site is light throughout.
-- **Don't** put borders or boxes around gallery images; the map is the card.
-- **Don't** add empty diagrams or decorative grids; every visual shows real work.
+- **Don't** put eyebrow labels above headings or number the sections.
+- **Don't** add decorative patterns or empty diagrams; every visual shows real work.

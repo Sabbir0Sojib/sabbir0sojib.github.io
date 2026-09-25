@@ -21,6 +21,7 @@ History of how this site was built, what was tried and why things are the way th
 15. **Phone menu.** On phones the six nav links overflowed and cut off Fun. The header now shows a Menu button with a dropdown under 820 px; checked at 360, 390 and 1440 px.
 16. **Editable map tags.** The fixed Theme dropdown became free-text Tags (several per map allowed). Maps page filter buttons are generated from the tags in use.
 17. **Auto image shrinking.** Owner wants to upload full-resolution images. A GitHub Action now converts uploads to WebP (max 2400 px) and updates the content paths.
+18. **Structure and polish upgrade.** Owner: the site was good but looked average. Kept the white page and green accent, and changed the rest: Newsreader serif for headings, the bio and citations; green-tinted neutrals; Home became a front page (facts strip, latest 3 maps, recent research, code projects, then CV sections in side-heading layout); maps shown whole on a light mat with a print shadow; Projects page as rows; full footer with all pages and profiles; one entrance animation on the hero only.
 
 ## Open items
 
@@ -28,4 +29,5 @@ History of how this site was built, what was tried and why things are the way th
 - Images for: sea level rise, earthquake hazard, LULC Dhaka, Nepal flood before/after, Landsat mosaic, Landsat harmonic model.
 - Thesis figures for the Research page, if the owner wants them.
 - The crop suitability image title has a typo ("Banlgladesh") in the owner's original file.
+- The Tree Cover Loss map has year "2001-2015" in maps.json while its title says 2001-2025.
 - Check the wind project "stat" value (added when the site had a story layout; currently not displayed).
