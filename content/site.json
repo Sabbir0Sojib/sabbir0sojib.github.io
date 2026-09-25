@@ -17,5 +17,8 @@
   "home_projects_title": "Code projects",
   "footer_tagline": "Maps, research and code on remote sensing and geospatial deep learning in Bangladesh.",
   "notfound_title": "This page is off the map.",
-  "notfound_text": "The page you are looking for does not exist or has moved."
+  "notfound_text": "The page you are looking for does not exist or has moved.",
+  "fun_howto_title": "How to play",
+  "fun_howto": "Pick a level, then find five places on an unlabeled satellite map of Bangladesh. Tap the map to drop a pin, then lock in your guess. A pin inside the right area, or right on the landmark, scores 1000 points; the further away it lands, the fewer points you get.",
+  "fun_places_title": "Landmarks in the game"
 }

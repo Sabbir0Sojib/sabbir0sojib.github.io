@@ -28,6 +28,9 @@ content:
       - { name: gallery_intro, label: Gallery page intro, type: text }
       - { name: fun_title, label: Fun page title, type: string }
       - { name: fun_intro, label: Fun page intro, type: text }
+      - { name: fun_howto_title, label: "Fun page: How to play title", type: string }
+      - { name: fun_howto, label: "Fun page: How to play text", type: text }
+      - { name: fun_places_title, label: "Fun page: landmarks list title", type: string }
       - { name: contact_title, label: Contact section title, type: string }
       - { name: contact_note, label: Contact section note, type: text }
       - { name: notfound_title, label: "Page not found (404): title", type: string }

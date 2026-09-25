@@ -749,6 +749,21 @@ main > :last-child:not(.band) { margin-bottom: clamp(56px, 8vw, 104px); }
 }
 .block--more { margin-top: 56px; }
 
+/* ---------- Fun: how to play ---------- */
+.howto { padding: clamp(44px, 6vw, 72px) 0 0; }
+.howto__intro { max-width: 62ch; margin-bottom: 28px; }
+.howto__intro .sec-title { margin-bottom: 14px; }
+.howto__intro p { color: var(--ink-2); }
+.howto__levels {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 36px;
+}
+.howto__levels > div { padding: 18px 20px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); }
+.howto__levels dt { font-weight: 650; color: var(--accent); margin-bottom: 4px; }
+.howto__levels dd { color: var(--ink-2); font-size: 0.9375rem; }
+.howto__sub { font-weight: 650; font-size: 1.0625rem; margin-bottom: 14px; }
+.howto__credit { margin-top: 28px; color: var(--muted); font-size: 0.8125rem; }
+@media (max-width: 820px) { .howto__levels { grid-template-columns: 1fr 1fr; } }
+
 /* ---------- 404: page not found ---------- */
 .band--404 { min-height: 64vh; display: flex; align-items: center; }
 .band--404 > .wrap { width: 100%; }

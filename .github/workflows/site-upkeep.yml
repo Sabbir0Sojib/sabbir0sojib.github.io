@@ -1,13 +1,20 @@
-# Shrinks images after they are uploaded (for example through Pages CMS),
-# then commits the smaller files and republishes the site.
-name: Shrink uploaded images
+# Runs after every change to the site's content, images, styles or scripts on main
+# (for example a save in Pages CMS). It:
+#   1. shrinks newly uploaded images (JPG/PNG to WebP, max 2400 px) and fixes their links,
+#   2. rebuilds the page shells, sitemap.xml and robots.txt (.impeccable/build-pages.py),
+#   3. pre-renders the content into the HTML so search engines see it (.github/scripts/prerender.mjs),
+# then commits the result and republishes the site.
+name: Site upkeep
 
 on:
   push:
     branches: [main]
     paths:
-      - "assets/img/**"
       - "content/**"
+      - "assets/**"
+      - ".impeccable/build-pages.py"
+      - ".github/scripts/**"
+      - ".github/workflows/site-upkeep.yml"
   workflow_dispatch:
 
 permissions:
@@ -15,11 +22,11 @@ permissions:
   pages: write
 
 concurrency:
-  group: shrink-images
+  group: site-upkeep
   cancel-in-progress: false
 
 jobs:
-  shrink:
+  upkeep:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,7 +37,14 @@ jobs:
         with:
           python-version: "3.12"
 
-      - run: pip install --quiet pillow
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install tools
+        run: |
+          pip install --quiet pillow
+          npm install --silent --no-save --prefix .github/scripts playwright-core@1.56.1
 
       - name: Shrink new or changed images
         env:
@@ -45,17 +59,26 @@ jobs:
           xargs -d '\n' python .github/scripts/shrink-images.py < files.txt
           rm files.txt
 
-      - name: Commit smaller images
+      - name: Rebuild pages, sitemap and robots.txt
+        run: python .impeccable/build-pages.py
+
+      - name: Pre-render content into the pages
+        run: |
+          python -m http.server 4000 --bind 127.0.0.1 >/dev/null 2>&1 &
+          sleep 1
+          node .github/scripts/prerender.mjs
+
+      - name: Commit the result
         id: commit
         run: |
-          git add -A assets/img content *.html
+          git add -A assets/img content *.html sitemap.xml robots.txt
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Shrink uploaded images"
+          git commit -m "Site upkeep: images, pages and pre-rendered content"
           git pull --no-rebase --no-edit origin main
           git push origin HEAD:main
           echo "changed=true" >> "$GITHUB_OUTPUT"

@@ -1,11 +1,36 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
-import os, datetime
-OUT = "/home/user/sabbir0sojib.github.io"
-VER = "20260925e"   # bump to force browsers to load new CSS/JS
+import os, datetime, json, html as _html
+OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
+VER = "20260925f"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
 SITE = "https://sabbir0sojib.github.io/"
+def content(name):
+    with open(os.path.join(OUT, "content", name + ".json"), encoding="utf-8") as f:
+        return json.load(f)
+
+def person_jsonld():
+    """Structured data for search engines, built from content/profile.json on every build."""
+    p = content("profile")
+    orcid = "https://orcid.org/" + p["orcid"] if p.get("orcid") else None
+    data = {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": p.get("name"),
+        "alternateName": ["Sabbir Islam Sojib", "Sabbir0Sojib"],
+        "url": SITE,
+        "image": SITE + p.get("photo", "").lstrip("/"),
+        "jobTitle": p.get("role"),
+        "affiliation": {"@type": "CollegeOrUniversity", "name": "Pabna University of Science and Technology"},
+        "address": {"@type": "PostalAddress", "addressLocality": "Pabna", "addressCountry": "BD"},
+        "knowsAbout": p.get("interests", []),
+        "sameAs": [u for u in (orcid, p.get("linkedin"), p.get("github")) if u],
+    }
+    site = {"@context": "https://schema.org", "@type": "WebSite", "name": p.get("name"), "url": SITE}
+    dump = lambda d: json.dumps(d, ensure_ascii=False).replace("</", "<\\/")
+    return f'  <script type="application/ld+json">{dump(data)}</script>\n  <script type="application/ld+json">{dump(site)}</script>\n'
+
 SHARE = SITE + "assets/img/share-card.jpg"   # 1200x630 link preview, built from .impeccable/share-card.html
 def icon(n, cls="i"): return f'<svg class="{cls}" aria-hidden="true"><use href="assets/icons.svg?v={VER}#{n}"/></svg>'
 ARROW = icon("arrow")
@@ -134,7 +159,7 @@ LIGHTBOX = f'''    <dialog class="lightbox" aria-labelledby="lb-title">
 # ======================= PAGE SHELLS (content comes from content/*.json) =======================
 NOSCRIPT = '      <noscript><p class="list-empty">This page needs JavaScript to show its content.</p></noscript>'
 write("index.html", page("index.html","Md Sabbir Islam | Remote Sensing and Geospatial Deep Learning",
-  "Md Sabbir Islam, Geography and Environment researcher at Pabna University of Science and Technology. UAV and satellite deep learning, and maps of Bangladesh.",
+  "Md Sabbir Islam (Sabbir Islam Sojib), remote sensing and geospatial deep learning researcher at Pabna University of Science and Technology, Bangladesh. Maps, research papers and code.",
   f"""    <section class="band band--hero" aria-labelledby="name">
       <div class="wrap" data-render="hero" aria-busy="true">
 {NOSCRIPT}
@@ -175,9 +200,9 @@ write("index.html", page("index.html","Md Sabbir Islam | Remote Sensing and Geos
       <div class="wrap" data-render="contact" aria-busy="true"></div>
     </section>
 
-{LIGHTBOX}"""))
+{LIGHTBOX}""", extra_head=person_jsonld()))
 
-write("research.html", page("research.html","Research | Md Sabbir Islam","Papers, manuscripts and field work by Md Sabbir Islam.", f"""    <div class="band">
+write("research.html", page("research.html","Research and publications | Md Sabbir Islam","Research by Md Sabbir Islam: urban tree mapping with UAV imagery and deep learning in Pabna, lightning casualties and land cover in Bangladesh, air quality and armed conflict in Iran, and CH4Rice field work.", f"""    <div class="band">
       <div class="wrap">
         <header class="page-head">
           <h1 class="page-head__title" data-site="research_title">Research</h1>
@@ -191,7 +216,7 @@ write("research.html", page("research.html","Research | Md Sabbir Islam","Papers
 {NOSCRIPT}
     </div>"""))
 
-write("projects.html", page("projects.html","Projects | Md Sabbir Islam","Code projects by Md Sabbir Islam with open GitHub repositories.", f"""    <div class="band">
+write("projects.html", page("projects.html","GIS and remote sensing projects on GitHub | Md Sabbir Islam","Open source GIS and remote sensing code by Md Sabbir Islam: Google Earth Engine, Python and deep learning projects on cyclones, wind, temperature, groundwater and urban forests in Bangladesh.", f"""    <div class="band">
       <div class="wrap">
         <header class="page-head">
           <h1 class="page-head__title" data-site="projects_title">Projects</h1>
@@ -205,7 +230,7 @@ write("projects.html", page("projects.html","Projects | Md Sabbir Islam","Code p
 {NOSCRIPT}
     </div>"""))
 
-write("maps.html", page("maps.html","Maps | Md Sabbir Islam","Maps by Md Sabbir Islam across Bangladesh: cyclones, floods, groundwater, heat, elevation and more.", f"""    <div class="band">
+write("maps.html", page("maps.html","Maps of Bangladesh | Md Sabbir Islam","Maps of Bangladesh by Md Sabbir Islam: cyclone tracks, floods, sea level rise, tree cover loss, elevation, wind, cold waves, groundwater, land use and crop suitability.", f"""    <div class="band">
       <div class="wrap wrap--wide">
         <header class="page-head">
           <h1 class="page-head__title" data-site="maps_title">Maps</h1>
@@ -297,8 +322,24 @@ fun = f"""    <div class="band">
           </div>
         </div>
       </div>
+
+      <section class="howto" aria-labelledby="howto-title">
+        <div class="howto__intro">
+          <h2 class="sec-title" id="howto-title" data-site="fun_howto_title">How to play</h2>
+          <p data-site="fun_howto">Pick a level, then find five places on an unlabeled satellite map of Bangladesh. Tap the map to drop a pin, then lock in your guess. A pin inside the right area, or right on the landmark, scores 1000 points; the further away it lands, the fewer points you get.</p>
+        </div>
+        <dl class="howto__levels">
+          <div><dt>Easy</dt><dd>The 8 divisions of Bangladesh.</dd></div>
+          <div><dt>Medium</dt><dd>The 64 districts.</dd></div>
+          <div><dt>Hard</dt><dd>The 544 upazilas.</dd></div>
+          <div><dt>Landmarks</dt><dd>Famous places across the country.</dd></div>
+        </dl>
+        <h3 class="howto__sub" data-site="fun_places_title">Landmarks in the game</h3>
+        <ul class="tags tags--quiet" data-render="places" aria-busy="true"></ul>
+        <p class="howto__credit">Boundaries: geoBoundaries (BBS and OCHA, CC BY 3.0 IGO). Imagery: Esri World Imagery, with Sentinel-2 cloudless by EOX as a fallback.</p>
+      </section>
     </div>"""
-write("fun.html", page("fun.html","Pin the Place | Md Sabbir Islam","A geography game: how well do you know Bangladesh? Pin five places on a blank map.", fun,
+write("fun.html", page("fun.html","Pin the Place: Bangladesh geography game | Md Sabbir Islam","A free Bangladesh geography game on a satellite map. Find the divisions, districts, upazilas and famous places such as the Sundarbans, Cox's Bazar and Kuakata.", fun,
     extra_head=f'  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">\n',
     extra_js=f'  <script src="assets/vendor/leaflet/leaflet.js" defer></script>\n  <script src="assets/js/game.js?v={VER}" defer></script>\n'))
 # ======================= 404 (GitHub Pages serves it for any missing address) =======================
@@ -320,7 +361,16 @@ write("404.html", absolutize(nf))
 
 # ======================= Sitemap and robots.txt for search engines =======================
 today = datetime.date.today().isoformat()
-urls = "\n".join(f"  <url><loc>{SITE if h == 'index.html' else SITE + h}</loc><lastmod>{today}</lastmod></url>" for h, _ in NAV)
-write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n')
+def images_for(h):
+    """Map and project images listed per page, so they can show up in Google Images."""
+    items = {"maps.html": content("maps"), "projects.html": content("projects"), "index.html": content("maps")[:0]}.get(h, [])
+    if h == "gallery.html": items = content("gallery")
+    out = []
+    for it in items:
+        img = str(it.get("image") or "").lstrip("/")
+        if img: out.append(f"    <image:image><image:loc>{_html.escape(SITE + img)}</image:loc></image:image>")
+    return ("\n" + "\n".join(out) + "\n  ") if out else ""
+urls = "\n".join(f"  <url><loc>{SITE if h == 'index.html' else SITE + h}</loc><lastmod>{today}</lastmod>{images_for(h)}</url>" for h, _ in NAV)
+write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n{urls}\n</urlset>\n')
 write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n")
 print("pages written")

@@ -271,6 +271,11 @@
     }
   }
 
+  // Fun page: names of the places in the Landmarks level
+  function renderPlaces(el, all) {
+    el.innerHTML = all.map(function (p) { return '<li class="tag">' + esc(p.name) + "</li>"; }).join("");
+  }
+
   function renderGallery(el, list) {
     el.innerHTML = list.map(function (g, i) {
       return '<figure class="shot"><button class="shot__btn" type="button" data-lightbox="g' + i + '" aria-label="Open photo full size">' +
@@ -304,16 +309,23 @@
     research: ["research", renderResearch, "research"],
     repos: ["projects", renderRepos, "projects"],
     maps: ["maps", renderProjects, "maps"],
-    gallery: ["gallery", renderGallery, "photos"]
+    gallery: ["gallery", renderGallery, "photos"],
+    places: ["places", renderPlaces, "the landmarks"]
   };
 
+  // Sections may already hold a pre-rendered copy (.github/scripts/prerender.mjs). Render into a
+  // scratch element and only swap it in when the content differs, so nothing flickers or replays.
   var jobs = Array.prototype.slice.call(document.querySelectorAll("[data-render]")).map(function (el) {
     var spec = RENDER[el.getAttribute("data-render")];
     if (!spec) return Promise.resolve();
+    var pre = !el.hasAttribute("aria-busy") && el.children.length > 0;
     return load(spec[0]).then(function (data) {
-      spec[1](el, data);
+      var tmp = document.createElement(el.tagName);
+      spec[1](tmp, data);
+      if (!pre || tmp.innerHTML !== el.innerHTML) el.innerHTML = tmp.innerHTML;
+      if (tmp.hidden) el.hidden = true;
       el.removeAttribute("aria-busy");
-    }).catch(function () { fail(el, spec[2]); });
+    }).catch(function () { if (!pre) fail(el, spec[2]); });
   });
 
   // Editable page titles, intros and footer (content/site.json)
@@ -324,6 +336,7 @@
       if (v) n.textContent = v;
     });
     init();
+    document.documentElement.setAttribute("data-rendered", "");
   });
 
   /* ================= Behaviour (after render) ================= */

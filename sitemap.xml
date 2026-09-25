@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url><loc>https://sabbir0sojib.github.io/</loc><lastmod>2026-09-25</lastmod></url>
   <url><loc>https://sabbir0sojib.github.io/research.html</loc><lastmod>2026-09-25</lastmod></url>
-  <url><loc>https://sabbir0sojib.github.io/projects.html</loc><lastmod>2026-09-25</lastmod></url>
-  <url><loc>https://sabbir0sojib.github.io/maps.html</loc><lastmod>2026-09-25</lastmod></url>
-  <url><loc>https://sabbir0sojib.github.io/gallery.html</loc><lastmod>2026-09-25</lastmod></url>
+  <url><loc>https://sabbir0sojib.github.io/projects.html</loc><lastmod>2026-09-25</lastmod>
+    <image:image><image:loc>https://sabbir0sojib.github.io/assets/img/work/zero-hour-index-jamuna-padma.webp</image:loc></image:image>
+    <image:image><image:loc>https://sabbir0sojib.github.io/assets/img/work/wind-bangladesh-2023.webp</image:loc></image:image>
+    <image:image><image:loc>https://sabbir0sojib.github.io/assets/img/work/cyclone-tracks-bangladesh.webp</image:loc></image:image>
+    <image:image><image:loc>https://sabbir0sojib.github.io/assets/img/work/cold-wave-bangladesh-2025.webp</image:loc></image:image>
+    <image:image><image:loc>https://sabbir0sojib.github.io/assets/img/work/surface-water-temperature-pabna.webp</image:loc></image:image>
+    <image:image><image:loc>https://sabbir0sojib.github.io/assets/img/work/groundwater-depth-pabna.webp</image:loc></image:image>
+  </url>
+  <url><loc>https://sabbir0sojib.github.io/maps.html</loc><lastmod>2026-09-25</lastmod>
+    <image:image><image:loc>https://sabbir0sojib.github.io/assets/img/work/elevation-southeast-bangladesh.webp</image:loc></image:image>
+    <image:image><image:loc>https://sabbir0sojib.github.io/assets/img/work/zero-hour-index-jamuna-padma.webp</image:loc></image:image>
+    <image:image><image:loc>https://sabbir0sojib.github.io/assets/img/work/crop-suitability-bangladesh.webp</image:loc></image:image>
+    <image:image><image:loc>https://sabbir0sojib.github.io/assets/img/work/wind-bangladesh-2023.webp</image:loc></image:image>
+    <image:image><image:loc>https://sabbir0sojib.github.io/assets/img/work/cyclone-tracks-bangladesh.webp</image:loc></image:image>
+    <image:image><image:loc>https://sabbir0sojib.github.io/assets/img/work/korail-cycling-accessibility.webp</image:loc></image:image>
+    <image:image><image:loc>https://sabbir0sojib.github.io/assets/img/work/cold-wave-bangladesh-2025.webp</image:loc></image:image>
+    <image:image><image:loc>https://sabbir0sojib.github.io/assets/img/work/surface-water-temperature-pabna.webp</image:loc></image:image>
+    <image:image><image:loc>https://sabbir0sojib.github.io/assets/img/work/flood-sylhet-sunamganj-2023.webp</image:loc></image:image>
+    <image:image><image:loc>https://sabbir0sojib.github.io/assets/img/work/groundwater-depth-pabna.webp</image:loc></image:image>
+    <image:image><image:loc>https://sabbir0sojib.github.io/assets/img/work/padma-stream-order.webp</image:loc></image:image>
+    <image:image><image:loc>https://sabbir0sojib.github.io/assets/img/work/SE_Bangladesh_Tree_Cover_Loss_2001_2025(2).webp</image:loc></image:image>
+  </url>
+  <url><loc>https://sabbir0sojib.github.io/gallery.html</loc><lastmod>2026-09-25</lastmod>
+    <image:image><image:loc>https://sabbir0sojib.github.io/assets/img/photos/iclessd-2025-jagannath-university.webp</image:loc></image:image>
+  </url>
   <url><loc>https://sabbir0sojib.github.io/fun.html</loc><lastmod>2026-09-25</lastmod></url>
 </urlset>
