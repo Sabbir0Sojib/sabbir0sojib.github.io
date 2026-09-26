@@ -81,6 +81,18 @@
       esri.addTo(map);
       map.setView([23.7, 90.4], 7);
       root.__map = map; // used by automated tests
+      // Keep the view centred on the place when the map box changes size (window resized or moved to another screen).
+      if (window.ResizeObserver) {
+        var t = null;
+        new ResizeObserver(function () {
+          clearTimeout(t);
+          t = setTimeout(function () {
+            map.invalidateSize();
+            var q = queue[round - (answered ? 1 : 0)];
+            if (q) map.setView(q.at, answered ? Math.max(3, q.zoom - 4) : Math.max(3, q.zoom - 2 * step), { animate: false });
+          }, 120);
+        }).observe(document.getElementById("detective-map"));
+      }
     }
 
     var region = "bd", queue = [], pool = [], round = 0, total = 0, step = 0, answered = false, history = [];

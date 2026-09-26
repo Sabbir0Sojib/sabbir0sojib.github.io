@@ -339,6 +339,17 @@
     el.again.addEventListener("click", function () { newGame(); });
 
     root.__refit = function () { map.invalidateSize(); if (phase === "ask") map.fitBounds(view(), { padding: [6, 6] }); };
+    // Refit whenever the map box changes size (window resized, moved to another screen, phone rotated).
+    if (window.ResizeObserver) {
+      var fitTimer = null, lastSize = "";
+      new ResizeObserver(function (entries) {
+        var r = entries[0].contentRect, size = Math.round(r.width) + "x" + Math.round(r.height);
+        if (!r.width || !r.height || size === lastSize) return;
+        lastSize = size;
+        clearTimeout(fitTimer);
+        fitTimer = setTimeout(root.__refit, 120);
+      }).observe(document.getElementById("game-map"));
+    }
     root.__newGame = function (id) { newGame(LEVELS.filter(function (x) { return x.id === id; })[0]); }; // for tests
     newGame(LEVELS[0]);
   }

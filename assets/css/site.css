@@ -613,7 +613,8 @@ cite { font-style: normal; }
   grid-template-rows: auto minmax(0, 1fr);
   grid-template-areas: "levels levels" "panel map";
   border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: #fff;
-  height: max(560px, min(760px, calc(100dvh - var(--header-h) - 170px)));
+  /* Fits the screen under the sticky header on any monitor (720p laptops included), between 420 and 760px */
+  height: clamp(420px, calc(100dvh - var(--header-h) - 32px), 760px);
 }
 .game__levels {
   grid-area: levels;
@@ -686,6 +687,23 @@ cite { font-style: normal; }
   @keyframes drop { from { transform: translateY(-14px) scale(0.6); opacity: 0; } }
 }
 
+/* Short screens (720p monitors, laptops with display scaling): a more compact panel */
+@media (min-width: 901px) and (max-height: 760px) {
+  .game__levels { padding: 6px; }
+  .lvl { padding: 6px 12px; }
+  .region { min-height: 40px; }
+  .game__panel { padding: 16px 20px; gap: 12px; }
+  .game__stage { gap: 8px; }
+  .game__ask { font-size: 1.5rem; }
+  .choice { min-height: 44px; padding: 8px 12px; }
+}
+@media (min-width: 901px) and (max-height: 620px) {
+  .lvl__sub { display: none; }
+  .game__tip { display: none; }
+}
+@media (min-width: 901px) and (max-height: 700px) {
+  .game--detective .choices { grid-template-columns: 1fr 1fr; }
+}
 @media (max-width: 900px) {
   .game {
     grid-template-columns: 1fr; grid-template-rows: auto auto auto;
