@@ -183,5 +183,15 @@
     ],
     "description": "Data Source: University of Maryland, Hansen Global Forest Change v1.13\nMethod: Annual loss year classification (30 m, canopy ≥30% forest baseline)",
     "image": "/assets/img/work/SE_Bangladesh_Tree_Cover_Loss_2001_2025(2).webp"
+  },
+  {
+    "title": "The void in SUNDARBAN",
+    "year": "2026",
+    "date": "2026-09-27",
+    "tags": [
+      "Land and terrain"
+    ],
+    "description": "Data Source: ESA Copernicus Sentinel-2 (Level-2A) from Microsoft Planetary Computer.",
+    "image": "/assets/img/1790403139103.jpg"
   }
 ]
