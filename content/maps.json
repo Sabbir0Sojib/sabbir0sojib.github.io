@@ -185,14 +185,15 @@
     "image": "/assets/img/work/SE_Bangladesh_Tree_Cover_Loss_2001_2025(2).webp"
   },
   {
-    "title": "The void in SUNDARBAN",
+    "title": "The void in the Sundarbans",
     "year": "2026",
     "date": "2026-09-27",
     "tags": [
       "Land and terrain"
     ],
-    "description": "Data Source: ESA Copernicus Sentinel-2 (Level-2A) from Microsoft Planetary Computer.",
-    "image": "/assets/img/work/1790403139103.webp"
+    "description": "True-colour satellite view of the Sundarbans mangrove forest, where tidal channels carry sediment into the Bay of Bengal. Data: ESA Copernicus Sentinel-2 (Level-2A) from Microsoft Planetary Computer.",
+    "image": "/assets/img/work/sundarbans-sentinel-2-true-colour.webp",
+    "image_alt": "Sentinel-2 true-colour image of the Sundarbans mangrove forest and its tidal channels meeting the Bay of Bengal"
   },
   {
     "title": "Maritime Traffic Density in the Bay of Bengal (2015-2021)",
@@ -202,6 +203,7 @@
       "Water"
     ],
     "description": "Data Source: World Bank & IMF, Global Shipping Traffic Density (AIS)\nMethod: Log-scaled density classification\nTools: Python (rasterio, geopandas, matplotlib)",
-    "image": "/assets/img/work/bob_shipping_pro_v6.webp"
+    "image": "/assets/img/work/bay-of-bengal-maritime-traffic-density.webp",
+    "image_alt": "Map of ship traffic density in the Bay of Bengal from AIS data, 2015 to 2021, showing routes to Chattogram, Mongla and Payra ports"
   }
 ]

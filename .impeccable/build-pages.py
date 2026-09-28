@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os, re, glob, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20260926f"   # bump to force browsers to load new CSS/JS
+VER = "20260928a"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -212,6 +212,22 @@ def projects_jsonld():
             "keywords": ", ".join(tools), **({"programmingLanguage": langs} if langs else {})}})
     return ld({"@context": "https://schema.org", "@type": "ItemList", "name": "Projects by Md Sabbir Islam", "itemListElement": items})
 
+def research_jsonld():
+    kinds = {"journal": "ScholarlyArticle", "conference": "ScholarlyArticle", "poster": "ScholarlyArticle", "thesis": "Thesis"}
+    items = []
+    for i, r in enumerate(newest_first(content("research"))):
+        art = {"@type": kinds.get(str(r.get("type", "")).lower(), "CreativeWork"), "name": r.get("title"),
+               "headline": r.get("title"), "author": AUTHOR, "datePublished": r.get("date") or str(r.get("year", "")),
+               "creativeWorkStatus": r.get("status", ""), "about": r.get("note", ""),
+               "isPartOf": {"@type": "CreativeWork", "name": r.get("venue", "")}}
+        if r.get("link"): art["url"] = r["link"]
+        items.append({"@type": "ListItem", "position": i + 1, "item": {k: v for k, v in art.items() if v}})
+    return ld({"@context": "https://schema.org", "@type": "ItemList", "name": "Research by Md Sabbir Islam", "itemListElement": items})
+FUN_LD = ld({"@context": "https://schema.org", "@type": "WebApplication", "name": "Geography games: Pin the Place and Satellite Detective",
+             "url": SITE + "fun.html", "applicationCategory": "GameApplication", "operatingSystem": "Any web browser",
+             "description": "Free geography games on real satellite maps: find Bangladesh divisions, districts and upazilas, 167 countries and world wonders, or name famous places seen from space.",
+             "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": AUTHOR, "inLanguage": "en"})
+
 write("index.html", page("index.html","Md Sabbir Islam | Remote Sensing and Geospatial Deep Learning",
   "Md Sabbir Islam (Sabbir Islam Sojib), remote sensing and geospatial deep learning researcher at Pabna University of Science and Technology, Bangladesh.",
   f"""    <section class="band band--hero" aria-labelledby="name">
@@ -268,7 +284,7 @@ write("research.html", page("research.html","Research and publications | Md Sabb
       <div class="publications" data-render="research" aria-busy="true"></div>
       <p class="list-empty" hidden>Nothing here yet.</p>
 {NOSCRIPT}
-    </div>"""))
+    </div>""", extra_head=research_jsonld()))
 
 write("projects.html", page("projects.html","GIS and remote sensing projects on GitHub | Md Sabbir Islam","Open source GIS and remote sensing code by Md Sabbir Islam: Earth Engine, Python and deep learning projects on cyclones, heat, water and trees.", f"""    <div class="band">
       <div class="wrap">
@@ -448,7 +464,7 @@ fun = f"""    <div class="band">
       </section>
     </div>"""
 write("fun.html", page("fun.html","Geography games: Pin the Place, Satellite Detective | Md Sabbir Islam","Free geography games on real satellite maps: find Bangladesh districts, 167 countries and world wonders, or name famous places seen from space.", fun,
-    extra_head=f'  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">\n',
+    extra_head=f'  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">\n' + FUN_LD,
     extra_js=f'  <script src="assets/vendor/leaflet/leaflet.js" defer></script>\n  <script src="assets/js/game.js?v={VER}" defer></script>\n  <script src="assets/js/detective.js?v={VER}" defer></script>\n'))
 
 # ======================= 404 (GitHub Pages serves it for any missing address) =======================
@@ -494,6 +510,8 @@ def map_pages():
         name = slug(m["title"]); made.add(name + ".html")
         img = "/" + m["image"].lstrip("/"); w, h = image_dims(img)
         tags = [t for t in (m.get("tags") or []) if t]
+        alt = m.get("image_alt") or f'{m["title"]}, map by Md Sabbir Islam'
+        ptitle = f"{m['title']} | Map by Md Sabbir Islam" if len(m["title"]) <= 38 else f"{m['title']} | Md Sabbir Islam"
         desc = clip(f'{m["title"]}. A map by Md Sabbir Islam, Bangladesh. {m.get("description") or ""}')
         others = [o for o in maps if o is not m][:4]
         cards = "".join(
@@ -505,7 +523,7 @@ def map_pages():
                 "url": SITE + "maps/" + name + ".html", "author": AUTHOR, "creator": AUTHOR,
                 "dateCreated": m.get("date") or str(m.get("year", "")), "keywords": ", ".join(tags),
                 "image": {"@type": "ImageObject", "contentUrl": SITE + img.lstrip("/"), "width": w, "height": h,
-                          "caption": m.get("image_alt") or m["title"], "creator": AUTHOR, "creditText": "Md Sabbir Islam",
+                          "caption": alt, "creator": AUTHOR, "creditText": "Md Sabbir Islam",
                           "copyrightNotice": "Md Sabbir Islam"}}
         crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE},
@@ -524,7 +542,7 @@ def map_pages():
     <div class="wrap">
       <figure class="shot mapdetail">
         <button class="mat shot__btn" type="button" data-lightbox="m0" aria-label="Open {_html.escape(m["title"])} full size">
-          <img src="{img}" width="{w}" height="{h}" alt="{_html.escape(m.get("image_alt") or m["title"])}">
+          <img src="{img}" width="{w}" height="{h}" alt="{_html.escape(alt)}">
           <span class="shot__zoom" aria-hidden="true">{icon("expand")}View full size</span>
         </button>
         <figcaption>
@@ -542,8 +560,8 @@ def map_pages():
     </div>
 
 {LIGHTBOX}"""
-        html = page("maps/" + name + ".html", f"{m['title']} | Map by Md Sabbir Islam", _html.escape(desc, quote=True), body,
-                    extra_head=ld(data) + ld(crumbs), og=(SITE + img.lstrip("/"), w, h, _html.escape(m.get("image_alt") or m["title"], quote=True)))
+        html = page("maps/" + name + ".html", ptitle, _html.escape(desc, quote=True), body,
+                    extra_head=ld(data) + ld(crumbs), og=(SITE + img.lstrip("/"), w, h, _html.escape(alt, quote=True)))
         write("maps/" + name + ".html", absolutize(html))
     for old in glob.glob(os.path.join(OUT, "maps", "*.html")):
         if os.path.basename(old) not in made: os.remove(old)
