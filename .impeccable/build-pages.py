@@ -582,5 +582,22 @@ def images_for(h):
 urls = "\n".join(f"  <url><loc>{SITE if h == 'index.html' else SITE + h}</loc><lastmod>{today}</lastmod>{images_for(h)}</url>" for h, _ in NAV)
 urls += "".join(f"\n  <url><loc>{SITE}maps/{slug(m['title'])}.html</loc><lastmod>{today}</lastmod>\n    <image:image><image:loc>{_html.escape(SITE + m['image'].lstrip('/'))}</image:loc></image:image>\n  </url>" for m in MAP_PAGES)
 write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n{urls}\n</urlset>\n')
+# llms.txt: a plain summary of the site for AI search tools (ChatGPT, Perplexity, Google AI Overviews)
+def llms_txt():
+    lines = ["# Md Sabbir Islam", "",
+             "> Remote sensing and geospatial deep learning researcher at Pabna University of Science and Technology, Bangladesh. "
+             "Maps trees, floods, cyclones and land use from drone and satellite imagery.", "",
+             "## Pages", ""]
+    for h, name in NAV:
+        lines.append(f"- [{name}]({SITE if h == 'index.html' else SITE + h})")
+    lines += ["", "## Maps", ""]
+    for m in MAP_PAGES:
+        lines.append(f"- [{m['title']}]({SITE}maps/{slug(m['title'])}.html): " + clip(m.get("description", ""), 150))
+    lines += ["", "## Research", ""]
+    for r in newest_first(content("research")):
+        lines.append(f"- {r.get('title')} ({r.get('year', '')}, {r.get('status') or r.get('type', '')})")
+    lines += ["", "## Contact", "", "- Email: mdsabbirislam820@gmail.com", "- ORCID: https://orcid.org/0009-0001-9474-9287", ""]
+    return "\n".join(lines)
+write("llms.txt", llms_txt())
 write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n")
 print("pages written")

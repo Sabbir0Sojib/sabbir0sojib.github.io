@@ -1,0 +1,43 @@
+# Md Sabbir Islam
+
+> Remote sensing and geospatial deep learning researcher at Pabna University of Science and Technology, Bangladesh. Maps trees, floods, cyclones and land use from drone and satellite imagery.
+
+## Pages
+
+- [Profile](https://sabbir0sojib.github.io/)
+- [Research](https://sabbir0sojib.github.io/research.html)
+- [Projects](https://sabbir0sojib.github.io/projects.html)
+- [Maps](https://sabbir0sojib.github.io/maps.html)
+- [Gallery](https://sabbir0sojib.github.io/gallery.html)
+- [Fun](https://sabbir0sojib.github.io/fun.html)
+
+## Maps
+
+- [Maritime Traffic Density in the Bay of Bengal (2015-2021)](https://sabbir0sojib.github.io/maps/maritime-traffic-density-in-the-bay-of-bengal-2015-2021.html): Data Source: World Bank & IMF, Global Shipping Traffic Density (AIS) Method: Log-scaled density classification Tools: Python (rasterio, geopandas...
+- [The void in the Sundarbans](https://sabbir0sojib.github.io/maps/the-void-in-the-sundarbans.html): True-colour satellite view of the Sundarbans mangrove forest, where tidal channels carry sediment into the Bay of Bengal. Data: ESA Copernicus...
+- [Tree Cover Loss in Southeastern Bangladesh (2001-2025)](https://sabbir0sojib.github.io/maps/tree-cover-loss-in-southeastern-bangladesh-2001-2025.html): Data Source: University of Maryland, Hansen Global Forest Change v1.13 Method: Annual loss year classification (30 m, canopy ≥30% forest baseline)
+- [Elevation, southeastern Bangladesh](https://sabbir0sojib.github.io/maps/elevation-southeastern-bangladesh.html): Bandarban, Rangamati, Khagrachhari, Chittagong and Cox's Bazar. ALOS World 3D 30 m DEM.
+- [Zero Hour Index, Jamuna-Padma char corridor](https://sabbir0sojib.github.io/maps/zero-hour-index-jamuna-padma-char-corridor.html): Where flood peaks, failed road access and submerged mobile towers leave char settlements isolated. RIMES Mapathon 2026.
+- [Crop suitability, Bangladesh](https://sabbir0sojib.github.io/maps/crop-suitability-bangladesh.html): Five suitability classes from BARC data, weighted overlay.
+- [Prevailing 10 m wind, 2023](https://sabbir0sojib.github.io/maps/prevailing-10-m-wind-2023.html): ERA5 reanalysis via Open-Meteo, with wind roses for Dhaka, Khulna and Chattogram.
+- [Cyclone tracks and exposure corridor](https://sabbir0sojib.github.io/maps/cyclone-tracks-and-exposure-corridor.html): 12 major storm tracks from 1970 to 2024 turned into a severity-weighted exposure corridor. geopandas, scipy, matplotlib
+- [Cycling accessibility from Korail, Dhaka](https://sabbir0sojib.github.io/maps/cycling-accessibility-from-korail-dhaka.html): 2,000 sampled points routed with OpenRouteService, cubic spline interpolation.
+- [Cold wave, 29 December 2025](https://sabbir0sojib.github.io/maps/cold-wave-29-december-2025.html): Daily minimum temperature from BMD data, made with my temperature map generator. Lowest: Nikli, 9.8 °C.
+- [Surface water temperature, Pabna District](https://sabbir0sojib.github.io/maps/surface-water-temperature-pabna-district.html): Satellite thermal analysis of rivers and water bodies. Mean 25.39 °C, range 22.6 to 33.7 °C.
+- [Flood delineation, Sylhet and Sunamganj, 2023](https://sabbir0sojib.github.io/maps/flood-delineation-sylhet-and-sunamganj-2023.html): Flooded area mapped from Copernicus Sentinel-1 radar imagery.
+- [Groundwater depth, Pabna District](https://sabbir0sojib.github.io/maps/groundwater-depth-pabna-district.html): Depth to water interpolated from observation wells, 1.2 to 10.4 m.
+- [Stream order of the Padma River basin](https://sabbir0sojib.github.io/maps/stream-order-of-the-padma-river-basin.html): Stream orders 1 to 4 derived from a DEM, with the watershed boundary. QGIS.
+
+## Research
+
+- Characterization of Urban Trees with Deep Learning Techniques in Pabna Municipality (2026, Under review)
+- Spatio-temporal Patterns of Lightning Events and Associated Casualties in Bangladesh: Linkages with Land Use and Land Cover (2026, Under review)
+- Impact of Armed Conflict on Ambient Air Quality: A Multi-Pollutant Spatiotemporal Analysis Across Iranian Provinces, 2022 to 2026 (2026, Presented)
+- Urban Tree Cover Detection Using UAV, Remote Sensing and Deep Learning (2026, Poster presented)
+- CH4Rice Project (2025, field)
+- Urban Tree Cover Detection Using UAV, Remote Sensing and Deep Learning (2025, Presented)
+
+## Contact
+
+- Email: mdsabbirislam820@gmail.com
+- ORCID: https://orcid.org/0009-0001-9474-9287
