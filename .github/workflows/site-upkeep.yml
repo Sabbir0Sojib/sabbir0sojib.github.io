@@ -29,8 +29,11 @@ jobs:
   upkeep:
     runs-on: ubuntu-latest
     steps:
+      # Always start from the newest main, not the commit that started this run: when two saves
+      # come quickly, the earlier run has already pushed its own upkeep commit by the time this one starts.
       - uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
 
       - uses: actions/setup-python@v5
@@ -79,7 +82,14 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Site upkeep: images, pages and pre-rendered content"
-          git pull --no-rebase --no-edit origin main
+          # If a newer save landed on main while this ran, its own run rebuilds everything from it,
+          # so a clash in the generated files is not an error: step aside instead of failing.
+          if ! git pull --no-rebase --no-edit origin main; then
+            git merge --abort
+            echo "A newer change is on main; its own upkeep run will rebuild the site."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           git push origin HEAD:main
           echo "changed=true" >> "$GITHUB_OUTPUT"
 
