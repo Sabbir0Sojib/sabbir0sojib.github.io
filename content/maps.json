@@ -1,5 +1,16 @@
 [
   {
+    "title": "Walking access to public open space in Dhaka",
+    "year": "2026",
+    "date": "2026-10-01",
+    "tags": [
+      "Cities"
+    ],
+    "description": "Share of residents in each Dhaka ward who live within a 400 m walk of a public open space. Data: OpenStreetMap, WorldPop 2025. Method: network-based walking distance. Tools: QGIS.",
+    "image": "/assets/img/work/dhaka-walking-access-public-open-space.webp",
+    "image_alt": "Map of Dhaka wards showing the share of residents within a 400 m walk of public open space, high in the old city and low in the north and east"
+  },
+  {
     "title": "Elevation, southeastern Bangladesh",
     "year": "2026",
     "date": "2026-09-19",
