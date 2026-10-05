@@ -34,6 +34,8 @@
   }
   // Images saved by Pages CMS start with "/", which works on the live site; keep relative paths working too.
   function src(path) { return path ? String(path) : ""; }
+  // Links typed into Pages CMS: only web, email and site links are allowed (never javascript: or data:).
+  function safeUrl(u) { u = String(u || "").trim(); return /^(https?:\/\/|mailto:|\/|#|[a-z0-9_.\/-]+$)/i.test(u) && !/^(javascript|data|vbscript):/i.test(u) ? u : "#"; }
   // Each map has its own page, maps/<name>.html, made by the page generator with the same naming rule.
   function mapSlug(t) { return String(t || "").toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""); }
   function mapLink(m) { return '<a class="shot__link" href="' + ROOT + "maps/" + mapSlug(m.title) + '.html">' + esc(m.title) + "</a>"; }
@@ -103,7 +105,7 @@
     var card = function (ic, label, text, href, copyText, copyLabel, ext) {
       return '<li class="ccard"><span class="ccard__icon">' + icon(ic) + '</span>' +
         '<span class="ccard__body"><span class="ccard__label">' + esc(label) + '</span>' +
-        '<a class="ccard__value" href="' + esc(href) + '"' + (ext ? ' target="_blank" rel="me noopener"' : "") + '>' + esc(text) + "</a></span>" +
+        '<a class="ccard__value" href="' + esc(safeUrl(href)) + '"' + (ext ? ' target="_blank" rel="me noopener"' : "") + '>' + esc(text) + "</a></span>" +
         (copyText ? copyBtn(copyText, copyLabel) : "") + "</li>";
     };
     var cards = emails.map(function (e) { return card("envelope", e.label, e.address, "mailto:" + e.address, e.address, e.label); }).join("") +
@@ -156,7 +158,7 @@
   function renderHomeResearch(el, all) {
     el.innerHTML = newestFirst(all).slice(0, 3).map(function (r) {
       var done = /presented|published|accepted/i.test(r.status || "");
-      var title = r.link ? '<a href="' + esc(r.link) + '" target="_blank" rel="noopener">' + esc(r.title) + "</a>" : esc(r.title);
+      var title = r.link ? '<a href="' + esc(safeUrl(r.link)) + '" target="_blank" rel="noopener">' + esc(r.title) + "</a>" : esc(r.title);
       return '<li class="cite"><p class="cite__meta"><span class="mono">' + esc(r.year) + "</span><span>" + esc(TYPE_LABEL[r.type] || TYPE_LABEL.other) + "</span>" +
         (r.status ? '<span class="status' + (done ? " status--done" : "") + '">' + esc(r.status) + "</span>" : "") + "</p>" +
         '<p class="cite__title">' + title + "</p>" +
@@ -173,7 +175,7 @@
         ? '<img src="' + esc(src(p.image)) + '"' + dims(p.image) + ' alt="" loading="lazy">'
         : '<span class="proj__tile">' + icon("github") + "<span>" + esc(repoName) + "</span></span>";
       return '<article class="pcard"><div class="mat pcard__media" aria-hidden="true">' + media + "</div>" +
-        '<div class="pcard__top"><h3 class="pcard__title"><a href="' + esc(p.repo) + '" target="_blank" rel="noopener">' + esc(p.title) + "</a></h3>" +
+        '<div class="pcard__top"><h3 class="pcard__title"><a href="' + esc(safeUrl(p.repo)) + '" target="_blank" rel="noopener">' + esc(p.title) + "</a></h3>" +
         '<span class="mono shot__year">' + esc(p.year) + "</span></div>" +
         '<p class="pcard__text">' + esc(p.description) + "</p>" +
         (tools ? '<p class="pcard__tools">' + esc(tools) + "</p>" : "") + "</article>";
@@ -196,7 +198,7 @@
         '<ol class="publist">' + items.map(function (r, i) {
           var done = /presented|published|accepted/i.test(r.status || "");
           var status = r.status ? ' <span class="status' + (done ? " status--done" : "") + '">' + esc(r.status) + "</span>" : "";
-          var title = r.link ? '<a href="' + esc(r.link) + '" target="_blank" rel="noopener">' + esc(r.title) + "</a>" : esc(r.title);
+          var title = r.link ? '<a href="' + esc(safeUrl(r.link)) + '" target="_blank" rel="noopener">' + esc(r.title) + "</a>" : esc(r.title);
           return '<li class="pub">' +
             '<span class="pub__n">' + (i + 1) + "</span>" +
             '<div class="pub__body">' +
@@ -222,12 +224,12 @@
         ? '<img src="' + esc(src(p.image)) + '"' + dims(p.image) + ' alt="' + esc(p.image_alt || p.title) + '" loading="lazy">'
         : '<span class="proj__tile">' + icon("github") + "<span>" + esc(repoName) + "</span></span>";
       return '<article class="proj">' +
-        '<a class="mat proj__media" href="' + esc(p.repo) + '" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">' + media + "</a>" +
+        '<a class="mat proj__media" href="' + esc(safeUrl(p.repo)) + '" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">' + media + "</a>" +
         '<div class="proj__body">' +
-          '<div class="proj__top"><h2 class="proj__title"><a href="' + esc(p.repo) + '" target="_blank" rel="noopener">' + esc(p.title) + '</a></h2><span class="mono shot__year">' + esc(p.year) + "</span></div>" +
+          '<div class="proj__top"><h2 class="proj__title"><a href="' + esc(safeUrl(p.repo)) + '" target="_blank" rel="noopener">' + esc(p.title) + '</a></h2><span class="mono shot__year">' + esc(p.year) + "</span></div>" +
           '<p class="proj__text">' + esc(p.description) + "</p>" +
           (tools ? '<ul class="tags tags--quiet">' + tools + "</ul>" : "") +
-          '<a class="link" href="' + esc(p.repo) + '" target="_blank" rel="noopener">' + icon("github") + '<span class="proj__repo">' + esc(repoName) + "</span>" + icon("arrow") + "</a>" +
+          '<a class="link" href="' + esc(safeUrl(p.repo)) + '" target="_blank" rel="noopener">' + icon("github") + '<span class="proj__repo">' + esc(repoName) + "</span>" + icon("arrow") + "</a>" +
         "</div></article>";
     }).join("");
     var empty = document.querySelector(".list-empty");
@@ -265,7 +267,7 @@
     var withImg = list.filter(function (p) { return p.image; });
     var noImg = list.filter(function (p) { return !p.image; });
     el.innerHTML = withImg.map(function (p, i) {
-      var code = p.code ? '<a class="link" href="' + esc(p.code) + '" target="_blank" rel="noopener">View code' + icon("arrow") + "</a>" : "";
+      var code = p.code ? '<a class="link" href="' + esc(safeUrl(p.code)) + '" target="_blank" rel="noopener">View code' + icon("arrow") + "</a>" : "";
       return '<figure class="shot" data-cat="' + esc(tagsOf(p).map(tagKey).join("|")) + '">' +
         '<button class="mat shot__btn" type="button" data-lightbox="p' + i + '" aria-label="Open ' + esc(p.title) + ' full size">' +
         '<img src="' + esc(src(p.image)) + '"' + dims(p.image) + ' alt="' + esc(p.image_alt || p.title + ", map by Md Sabbir Islam") + '" loading="lazy">' +
@@ -278,7 +280,7 @@
     var wrap = document.querySelector('[data-render-wrap="projects-more"]');
     if (more && noImg.length) {
       more.innerHTML = noImg.map(function (p) {
-        var code = p.code ? ' <a class="link" href="' + esc(p.code) + '" target="_blank" rel="noopener">Code' + icon("arrow") + "</a>" : "";
+        var code = p.code ? ' <a class="link" href="' + esc(safeUrl(p.code)) + '" target="_blank" rel="noopener">Code' + icon("arrow") + "</a>" : "";
         return '<li><p class="more__title">' + esc(p.title) + '</p><p class="more__meta">' + esc(p.description) + code + "</p></li>";
       }).join("");
       if (wrap) wrap.hidden = false;

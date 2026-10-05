@@ -31,16 +31,16 @@ jobs:
     steps:
       # Always start from the newest main, not the commit that started this run: when two saves
       # come quickly, the earlier run has already pushed its own upkeep commit by the time this one starts.
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: main
           fetch-depth: 0
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: "22"
 
