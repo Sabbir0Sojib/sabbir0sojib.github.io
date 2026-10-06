@@ -79,6 +79,9 @@
   function setBest(id, v) { try { localStorage.setItem("pinPlaceBest_" + id, String(v)); } catch (e) {} }
   function esc(v) { return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
 
+  // A coordinate typed in Pages CMS; an empty field ("" or null) is not 0.
+  function isCoord(v) { return v !== "" && v != null && isFinite(v); }
+
   /* ---------- data per level ---------- */
   function loadLevel(level) {
     if (cache[level.id]) return Promise.resolve(cache[level.id]);
@@ -102,7 +105,7 @@
                    fact: level.id === "easy" ? p.n + " Division" : level.id === "medium" ? p.n + " District, " + p.v + " Division" : p.n + ", " + p.d + " District, " + p.v + " Division" };
         });
       } else {
-        items = (data || []).filter(function (p) { return p && p.name && isFinite(p.lat) && isFinite(p.lng); })
+        items = (data || []).filter(function (p) { return p && p.name && isCoord(p.lat) && isCoord(p.lng); })
           .map(function (p) { return { name: p.name, at: [Number(p.lat), Number(p.lng)], feature: null, hint: level.region === "world" ? "A famous place somewhere in the world" : "A famous place in Bangladesh", fact: p.fact || "" }; });
       }
       cache[level.id] = items;
@@ -240,20 +243,23 @@
     }
     function setLock(on) { el.lock.disabled = !on; el.lockFloat.disabled = !on; }
 
+    var gameId = 0;
     function newGame(lv) {
       level = lv || level;
+      var id = ++gameId; // a slower level that finishes loading after the player picked another is ignored
       setRegion(level.region);
       markLevel();
       el.loading.hidden = false;
       el.loading.textContent = "Loading " + level.sub.toLowerCase() + "...";
       loadLevel(level).then(function (items) {
+        if (id !== gameId) return;
         el.loading.hidden = true;
         if (!items.length) { el.loading.hidden = false; el.loading.textContent = "No places for this level yet."; return; }
         queue = shuffle(items).slice(0, Math.min(ROUNDS, items.length));
         round = 0; total = 0; history = [];
         el.score.textContent = "0";
         nextRound();
-      }).catch(function () { el.loading.hidden = false; el.loading.textContent = "This level could not load. Please refresh the page."; });
+      }).catch(function () { if (id !== gameId) return; el.loading.hidden = false; el.loading.textContent = "This level could not load. Please refresh the page."; });
     }
     function nextRound() {
       answerLayer.clearLayers();

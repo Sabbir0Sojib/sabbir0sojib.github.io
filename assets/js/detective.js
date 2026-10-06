@@ -33,7 +33,8 @@
     if (cache[region]) return Promise.resolve(cache[region]);
     var ver = document.documentElement.getAttribute("data-v") || "1";
     return fetch(REGIONS[region].data + "?v=" + ver, { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (data) {
-      var items = (data || []).filter(function (p) { return p && p.name && isFinite(p.lat) && isFinite(p.lng); }).map(function (p) {
+      var isCoord = function (v) { return v !== "" && v != null && isFinite(v); }; // an empty CMS field is not 0
+      var items = (data || []).filter(function (p) { return p && p.name && isCoord(p.lat) && isCoord(p.lng); }).map(function (p) {
         var z = Number(p.zoom);
         return { name: p.name, at: [Number(p.lat), Number(p.lng)], zoom: isFinite(z) && z >= 3 && z <= 18 ? z : 15, fact: p.fact || "" };
       });
@@ -122,13 +123,16 @@
     }
     function worth() { el.worth.textContent = POINTS[step].toLocaleString(); }
 
+    var gameId = 0;
     function newGame(r) {
       region = r || region;
+      var id = ++gameId; // places that finish loading after the player switched region are ignored
       markRegion();
       ensureMap();
       el.loading.hidden = false;
       el.loading.textContent = "Loading places...";
       load(region).then(function (items) {
+        if (id !== gameId) return;
         if (items.length < 4) { el.loading.textContent = "Not enough places for this game yet."; return; }
         pool = items;
         el.loading.hidden = true;
@@ -136,7 +140,7 @@
         round = 0; total = 0; history = [];
         el.score.textContent = "0";
         nextRound();
-      }).catch(function () { el.loading.hidden = false; el.loading.textContent = "The places could not load. Please refresh the page."; });
+      }).catch(function () { if (id !== gameId) return; el.loading.hidden = false; el.loading.textContent = "The places could not load. Please refresh the page."; });
     }
 
     function nextRound() {

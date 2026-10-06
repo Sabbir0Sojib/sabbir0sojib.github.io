@@ -54,7 +54,7 @@ jobs:
           BEFORE: ${{ github.event.before }}
         run: |
           if [ -n "$BEFORE" ] && git cat-file -e "$BEFORE" 2>/dev/null; then
-            git diff --name-only --diff-filter=AM "$BEFORE" HEAD -- assets/img > files.txt
+            git -c core.quotePath=false diff --name-only --diff-filter=AMR "$BEFORE" HEAD -- assets/img > files.txt
           else
             find assets/img -type f > files.txt
           fi

@@ -357,26 +357,32 @@
 
   // Sections may already hold a pre-rendered copy (.github/scripts/prerender.mjs). Render into a
   // scratch element and only swap it in when the content differs, so nothing flickers or replays.
+  // Editable page titles, intros and footer (content/site.json)
+  var siteText = load("site").catch(function () { return {}; });
+  function applySite(scope, t) {
+    scope.querySelectorAll("[data-site]").forEach(function (n) {
+      var v = t && t[n.getAttribute("data-site")];
+      if (v) n.textContent = v;
+    });
+  }
+
   var jobs = Array.prototype.slice.call(document.querySelectorAll("[data-render]")).map(function (el) {
     var spec = RENDER[el.getAttribute("data-render")];
     if (!spec) return Promise.resolve();
     var pre = !el.hasAttribute("aria-busy") && el.children.length > 0;
-    return sizesReady.then(function () { return load(spec[0]); }).then(function (data) {
+    return sizesReady.then(function () { return Promise.all([load(spec[0]), siteText]); }).then(function (res) {
       var tmp = document.createElement(el.tagName);
-      spec[1](tmp, data);
+      spec[1](tmp, res[0]);
+      // Rendered sections can hold editable text too (the contact band); the pre-rendered copy already has it.
+      applySite(tmp, res[1]);
       if (!pre || tmp.innerHTML !== el.innerHTML) el.innerHTML = tmp.innerHTML;
-      if (tmp.hidden) el.hidden = true;
+      el.hidden = tmp.hidden;
       el.removeAttribute("aria-busy");
     }).catch(function () { if (!pre) fail(el, spec[2]); });
   });
 
-  // Editable page titles, intros and footer (content/site.json)
-  var siteText = load("site").catch(function () { return {}; });
   Promise.all(jobs).then(function () { return siteText; }, function () { return siteText; }).then(function (t) {
-    document.querySelectorAll("[data-site]").forEach(function (n) {
-      var v = t && t[n.getAttribute("data-site")];
-      if (v) n.textContent = v;
-    });
+    applySite(document, t);
     init();
     document.documentElement.setAttribute("data-rendered", "");
   });

@@ -45,6 +45,17 @@ for arg in sys.argv[1:]:
 # Point content and pages at the new file names. This also repairs entries saved
 # later that still name the original upload (Pages CMS saves the image first and
 # the entry afterwards), by switching any missing JPG/PNG to its WebP twin.
+def newest_twin(p):
+    """The WebP made from p most recently: name.webp, or name-1.webp, name-2.webp... when an older
+    upload with the same name was converted first (the loop above takes the next free number)."""
+    twin, n = None, 0
+    cand = p.with_suffix(".webp")
+    while cand.exists():
+        twin = cand
+        n += 1
+        cand = p.with_name(f"{p.stem}-{n}.webp")
+    return twin
+
 files = list(pathlib.Path("content").glob("*.json")) + list(pathlib.Path(".").glob("*.html"))
 ref = re.compile(r"assets/img/[^\"'\s]+?\.(?:jpe?g|png)", re.IGNORECASE)
 for f in files:
@@ -53,8 +64,8 @@ for f in files:
     for old, rep in renamed.items():
         new = new.replace(old, rep)
     for m in set(ref.findall(new)):
-        twin = pathlib.Path(m).with_suffix(".webp")
-        if not pathlib.Path(m).exists() and twin.exists():
+        twin = newest_twin(pathlib.Path(m))
+        if twin and not pathlib.Path(m).exists():
             new = new.replace(m, twin.as_posix())
     if new != text:
         f.write_text(new, encoding="utf-8")

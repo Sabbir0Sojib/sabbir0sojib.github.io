@@ -17,7 +17,7 @@ key = keys[0][:-4]
 before = sys.argv[1] if len(sys.argv) > 1 else ""
 files = []
 if before and subprocess.run(["git", "cat-file", "-e", before], capture_output=True).returncode == 0:
-    out = subprocess.run(["git", "diff", "--name-only", before, "HEAD", "--", "*.html", "maps/*.html"], capture_output=True, text=True).stdout
+    out = subprocess.run(["git", "diff", "--name-only", before, "HEAD", "--", ":(glob)*.html", ":(glob)maps/*.html"], capture_output=True, text=True).stdout
     files = [f for f in out.split() if os.path.exists(f)]
 else:
     files = glob.glob("*.html") + glob.glob("maps/*.html")

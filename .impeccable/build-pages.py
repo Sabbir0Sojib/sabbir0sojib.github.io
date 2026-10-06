@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os, re, glob, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20261006a"   # bump to force browsers to load new CSS/JS
+VER = "20261006b"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -158,7 +158,8 @@ def page(fname, title, desc, body, extra_head="", extra_js="", og=None):
 </body>
 </html>
 '''
-def write(f, s): open(os.path.join(OUT, f), "w").write(s)
+def write(f, s):
+    with open(os.path.join(OUT, f), "w", encoding="utf-8", newline="\n") as fh: fh.write(s)
 
 def absolutize(html):
     """404.html is served at any missing address (for example /a/b/c), so every link must start at the site root."""
@@ -531,7 +532,10 @@ def map_pages():
     os.makedirs(os.path.join(OUT, "maps"), exist_ok=True)
     made = set()
     for m in maps:
-        name = slug(m["title"]); made.add(name + ".html")
+        name = slug(m["title"])
+        if not name or name + ".html" in made:   # site.js links by the same rule, so a clash cannot be renamed here
+            print(f'WARNING: map "{m["title"]}" gets the page name "maps/{name}.html", which is empty or used by another map. Give it a different title.')
+        made.add(name + ".html")
         img = "/" + m["image"].lstrip("/"); w, h = image_dims(img)
         tags = [t for t in (m.get("tags") or []) if t]
         alt = m.get("image_alt") or f'{m["title"]}, map by Md Sabbir Islam'
@@ -599,7 +603,7 @@ def map_pages():
     </div>
 
 {LIGHTBOX}"""
-        html = page("maps/" + name + ".html", ptitle, _html.escape(desc, quote=True), body,
+        html = page("maps/" + name + ".html", _html.escape(ptitle, quote=True), _html.escape(desc, quote=True), body,
                     extra_head=ld(data) + ld(crumbs), og=(SITE + img.lstrip("/"), w, h, _html.escape(alt, quote=True)))
         write("maps/" + name + ".html", absolutize(html))
     for old in glob.glob(os.path.join(OUT, "maps", "*.html")):
