@@ -650,5 +650,7 @@ def llms_txt():
     lines += ["", "## Contact", "", "- Email: mdsabbirislam820@gmail.com", "- ORCID: https://orcid.org/0009-0001-9474-9287", ""]
     return "\n".join(lines)
 write("llms.txt", llms_txt())
+# The same pages as a plain list: Google also accepts a .txt sitemap (a backup when the XML one is slow to be read)
+write("sitemap.txt", "\n".join(re.findall(r"<loc>([^<]+)</loc>", urls)) + "\n")
 write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n")
 print("pages written")
