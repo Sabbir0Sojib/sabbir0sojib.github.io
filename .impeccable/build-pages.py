@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os, re, glob, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20261005a"   # bump to force browsers to load new CSS/JS
+VER = "20261006a"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -27,6 +27,15 @@ def clip(text, n=158):
 
 AUTHOR = {"@type": "Person", "name": "Md Sabbir Islam", "url": "https://sabbir0sojib.github.io/"}
 
+import subprocess
+def changed(*paths):
+    """Date a file last changed in git (YYYY-MM-DD), so sitemap dates are real, not the build day."""
+    try:
+        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", *paths], cwd=OUT, capture_output=True, text=True, timeout=20).stdout.strip()
+        return out or datetime.date.today().isoformat()
+    except Exception:
+        return datetime.date.today().isoformat()
+
 def person_jsonld():
     """Structured data for search engines, built from content/profile.json on every build."""
     p = content("profile")
@@ -44,6 +53,9 @@ def person_jsonld():
         "knowsAbout": p.get("interests", []),
         "sameAs": [u for u in (orcid, p.get("linkedin"), p.get("github")) if u],
     }
+    data.pop("@context")
+    data = {"@context": "https://schema.org", "@type": "ProfilePage", "url": SITE, "name": f'{p.get("name")}, {p.get("role")}',
+            "dateModified": changed("content/profile.json"), "mainEntity": data}
     site = {"@context": "https://schema.org", "@type": "WebSite", "name": p.get("name"), "url": SITE}
     dump = lambda d: json.dumps(d, ensure_ascii=False).replace("</", "<\\/")
     return f'  <script type="application/ld+json">{dump(data)}</script>\n  <script type="application/ld+json">{dump(site)}</script>\n'
@@ -502,6 +514,18 @@ os.makedirs(os.path.join(OUT, "assets", "data"), exist_ok=True)
 write("assets/data/image-sizes.json", json.dumps(image_sizes(), indent=0) + "\n")
 
 # ======================= One page per map (maps/<slug>.html), for search engines and sharing =======================
+LABELS = {"data source": "Data", "data sources": "Data", "data": "Data", "source": "Data", "method": "Method", "methods": "Method", "tools": "Tools", "tool": "Tools", "software": "Tools"}
+def split_desc(text):
+    """Split a map description into its story and labelled facts (Data, Method, Tools), as typed in Pages CMS."""
+    text = str(text or "").strip()
+    pat = re.compile(r"(?:^|(?<=[\n.;])\s*)(" + "|".join(sorted(map(re.escape, LABELS), key=len, reverse=True)) + r")\s*:\s*", re.I)
+    parts = pat.split(text)
+    story = " ".join(parts[0].split()).strip()
+    facts = []
+    for i in range(1, len(parts) - 1, 2):
+        val = " ".join(parts[i + 1].split()).strip().rstrip(".").strip()
+        if val: facts.append((LABELS[parts[i].lower()], val[0].upper() + val[1:]))
+    return story, facts
 def map_pages():
     maps = [m for m in newest_first(content("maps")) if m.get("image")]
     os.makedirs(os.path.join(OUT, "maps"), exist_ok=True)
@@ -512,19 +536,27 @@ def map_pages():
         tags = [t for t in (m.get("tags") or []) if t]
         alt = m.get("image_alt") or f'{m["title"]}, map by Md Sabbir Islam'
         ptitle = f"{m['title']} | Map by Md Sabbir Islam" if len(m["title"]) <= 38 else f"{m['title']} | Md Sabbir Islam"
-        desc = clip(f'{m["title"]}. A map by Md Sabbir Islam, Bangladesh. {m.get("description") or ""}')
-        others = [o for o in maps if o is not m][:4]
+        story, facts = split_desc(m.get("description"))
+        about = " ".join(str(m.get("about") or "").split())
+        lead = story or about or f'{m["title"]}, a map by Md Sabbir Islam, a remote sensing researcher at Pabna University of Science and Technology, Bangladesh.'
+        desc = clip(f'{m["title"]}. A map by Md Sabbir Islam, Bangladesh. {story or about} ' + " ".join(f"{k}: {v}." for k, v in facts))
+        same = [o for o in maps if o is not m and set(o.get("tags") or []) & set(tags)]
+        others = (same + [o for o in maps if o is not m and o not in same])[:4]
+        rows = [("Made by", "Md Sabbir Islam"), ("Year", str(m.get("year", ""))), ("Topic", ", ".join(tags))] + facts
+        facts_html = "".join(f"<div><dt>{_html.escape(k)}</dt><dd>{_html.escape(v)}</dd></div>" for k, v in rows if v)
+        about_html = f'<p class="mapabout__text">{_html.escape(about)}</p>' if about and about != lead else ""
         cards = "".join(
             f'<article class="pcard"><div class="mat pcard__media" aria-hidden="true"><img src="/{o["image"].lstrip("/")}" alt="" loading="lazy"></div>'
             f'<div class="pcard__top"><h3 class="pcard__title"><a href="/maps/{slug(o["title"])}.html">{_html.escape(o["title"])}</a></h3>'
             f'<span class="mono shot__year">{_html.escape(str(o.get("year", "")))}</span></div>'
             f'<p class="pcard__text">{_html.escape(clip(o.get("description", ""), 110))}</p></article>' for o in others)
-        data = {"@context": "https://schema.org", "@type": "Map", "name": m["title"], "description": m.get("description", ""),
+        data = {"@context": "https://schema.org", "@type": "Map", "name": m["title"], "description": " ".join(filter(None, [lead, about if about != lead else ""] + [f"{k}: {v}." for k, v in facts])),
                 "url": SITE + "maps/" + name + ".html", "author": AUTHOR, "creator": AUTHOR,
-                "dateCreated": m.get("date") or str(m.get("year", "")), "keywords": ", ".join(tags),
+                "dateCreated": m.get("date") or str(m.get("year", "")), "datePublished": m.get("date") or str(m.get("year", "")),
+                "keywords": ", ".join(tags), "inLanguage": "en", "isPartOf": {"@type": "CollectionPage", "url": SITE + "maps.html"},
                 "image": {"@type": "ImageObject", "contentUrl": SITE + img.lstrip("/"), "width": w, "height": h,
                           "caption": alt, "creator": AUTHOR, "creditText": "Md Sabbir Islam",
-                          "copyrightNotice": "Md Sabbir Islam"}}
+                          "copyrightNotice": "Md Sabbir Islam", "acquireLicensePage": SITE + "#contact"}}
         crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE},
             {"@type": "ListItem", "position": 2, "name": "Maps", "item": SITE + "maps.html"},
@@ -535,7 +567,7 @@ def map_pages():
       <div class="wrap">
         <header class="page-head page-head--compact">
           <h1 class="page-head__title">{_html.escape(m["title"])}</h1>
-          <p class="page-head__lede">{_html.escape(m.get("description", ""))}</p>
+          <p class="page-head__lede">{_html.escape(lead)}</p>
         </header>
       </div>
     </div>
@@ -547,11 +579,18 @@ def map_pages():
         </button>
         <figcaption>
           <p class="shot__top"><span class="shot__title">{_html.escape(m["title"])}</span><span class="mono shot__year">{_html.escape(str(m.get("year", "")))}</span></p>
-          <p class="shot__meta">Map by Md Sabbir Islam. {_html.escape(m.get("description", ""))}</p>
+          <p class="shot__meta">Map by Md Sabbir Islam. {_html.escape(lead)}</p>
           {tag_line}
         </figcaption>
       </figure>
       <p class="btn-row mapdetail__actions"><a class="pill" href="{img}" target="_blank" rel="noopener">Open the full image{ARROW}</a><a class="btn" href="maps.html">See all maps</a></p>
+
+      <section class="mapabout" aria-labelledby="about-map">
+        <h2 class="sec-title" id="about-map">About this map</h2>
+        {about_html}
+        <dl class="mapfacts">{facts_html}</dl>
+        <p class="mapabout__use">Using this map: please credit Md Sabbir Islam and link to this page. For a full-resolution copy or permission to reuse it, <a href="/#contact">get in touch</a>.</p>
+      </section>
 
       <section class="home-sec" aria-labelledby="more-maps">
         <div class="sec-head"><h2 class="sec-title" id="more-maps">More maps</h2><a class="more-link" href="maps.html">See all maps{NEXT}</a></div>
@@ -579,8 +618,16 @@ def images_for(h):
         img = str(it.get("image") or "").lstrip("/")
         if img: out.append(f"    <image:image><image:loc>{_html.escape(SITE + img)}</image:loc></image:image>")
     return ("\n" + "\n".join(out) + "\n  ") if out else ""
-urls = "\n".join(f"  <url><loc>{SITE if h == 'index.html' else SITE + h}</loc><lastmod>{today}</lastmod>{images_for(h)}</url>" for h, _ in NAV)
-urls += "".join(f"\n  <url><loc>{SITE}maps/{slug(m['title'])}.html</loc><lastmod>{today}</lastmod>\n    <image:image><image:loc>{_html.escape(SITE + m['image'].lstrip('/'))}</image:loc></image:image>\n  </url>" for m in MAP_PAGES)
+GEN = ".impeccable/build-pages.py"
+GEN_DATE = changed(GEN)
+PAGE_SOURCES = {"index.html": ["content"], "research.html": ["content/research.json"], "projects.html": ["content/projects.json"],
+                "maps.html": ["content/maps.json"], "gallery.html": ["content/gallery.json"], "fun.html": ["content/places.json", "content/world-places.json"]}
+def map_date(m):
+    d = str(m.get("date") or "")
+    d = d if re.fullmatch(r"\d{4}-\d{2}-\d{2}", d) else changed("content/maps.json")
+    return max(d, GEN_DATE)   # a page also changes when its template changes
+urls = "\n".join(f"  <url><loc>{SITE if h == 'index.html' else SITE + h}</loc><lastmod>{changed(*PAGE_SOURCES.get(h, ['content']), GEN)}</lastmod>{images_for(h)}</url>" for h, _ in NAV)
+urls += "".join(f"\n  <url><loc>{SITE}maps/{slug(m['title'])}.html</loc><lastmod>{map_date(m)}</lastmod>\n    <image:image><image:loc>{_html.escape(SITE + m['image'].lstrip('/'))}</image:loc></image:image>\n  </url>" for m in MAP_PAGES)
 write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n{urls}\n</urlset>\n')
 # llms.txt: a plain summary of the site for AI search tools (ChatGPT, Perplexity, Google AI Overviews)
 def llms_txt():

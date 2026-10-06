@@ -99,3 +99,12 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages will pick it up on the next change"
+
+      # Tell Bing (and ChatGPT search, Copilot, DuckDuckGo) which pages changed, once the new pages are live.
+      - name: Ping IndexNow
+        continue-on-error: true
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          sleep 90
+          python .github/scripts/indexnow.py "$BEFORE"

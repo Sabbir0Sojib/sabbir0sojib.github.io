@@ -310,6 +310,16 @@ cite { font-style: normal; }
 .mapdetail .shot__meta { max-width: 70ch; }
 .mapdetail__tags { margin-top: 14px; }
 .mapdetail__actions { margin-top: 24px; align-items: center; }
+.mapabout { margin-top: clamp(40px, 5vw, 64px); padding-top: clamp(28px, 4vw, 40px); border-top: 1px solid var(--line); max-width: 760px; }
+.mapabout .sec-title { margin-bottom: 18px; }
+.mapabout__text { color: var(--ink-2); max-width: 66ch; margin-bottom: 20px; }
+.mapfacts { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.mapfacts > div { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.mapfacts dt { color: var(--muted); font-size: 0.9375rem; }
+.mapfacts dd { color: var(--ink); }
+.mapabout__use { margin-top: 18px; color: var(--muted); font-size: 0.9375rem; max-width: 66ch; }
+.mapabout__use a { color: var(--accent); }
+@media (max-width: 560px) { .mapfacts > div { grid-template-columns: 1fr; gap: 2px; } }
 
 /* ---------- Home: hero ---------- */
 .hero {

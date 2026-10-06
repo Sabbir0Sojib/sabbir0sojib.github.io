@@ -71,7 +71,11 @@ content:
         description: "Type a tag, for example Water. Add, rename or delete tags freely; the filter buttons on the Maps page update to match. Use the exact same spelling on maps that share a tag."
         type: string
         list: true
-      - { name: description, label: Description, type: text }
+      - name: description
+        label: Description
+        description: "One or two sentences on what the map shows, then optional lines like Data: ..., Method: ..., Tools: ... (these become a tidy list on the map's own page)."
+        type: text
+      - { name: about, label: "Longer story (optional, shown on the map's own page; helps Google)", type: text }
       - { name: image, label: Map image, type: image }
       - { name: image_alt, label: Image description (for screen readers), type: string }
 
