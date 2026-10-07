@@ -1,5 +1,16 @@
 [
   {
+    "title": "Kutupalong-Balukhali Refugee Camp",
+    "year": "2026",
+    "date": "2026-10-07",
+    "tags": [
+      "Cities"
+    ],
+    "description": "Mean density of structures per km² in each camp of the Kutupalong-Balukhali refugee camp complex, Cox's Bazar, Bangladesh. Structures include shelters, latrines, clinics and learning centers, not population. Data: OpenStreetMap. Tools: QGIS.",
+    "image": "/assets/img/work/kutupalong-balukhali-refugee-camp-structure-density.webp",
+    "image_alt": "Map of the Kutupalong-Balukhali refugee camps in Cox's Bazar, each camp shaded by structures per square kilometre, densest in Camps 3, 6, 15 and 18"
+  },
+  {
     "title": "Walking access to public open space in Dhaka",
     "year": "2026",
     "date": "2026-10-01",
