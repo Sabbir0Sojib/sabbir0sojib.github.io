@@ -1,16 +1,5 @@
 [
   {
-    "title": "Kutupalong-Balukhali Refugee Camp",
-    "year": "2026",
-    "date": "2026-10-07",
-    "tags": [
-      "Cities"
-    ],
-    "description": "Mean density of structures per km² in each camp of the Kutupalong-Balukhali refugee camp complex, Cox's Bazar, Bangladesh. Structures include shelters, latrines, clinics and learning centers, not population. Data: OpenStreetMap. Tools: QGIS.",
-    "image": "/assets/img/work/kutupalong-balukhali-refugee-camp-structure-density.webp",
-    "image_alt": "Map of the Kutupalong-Balukhali refugee camps in Cox's Bazar, each camp shaded by structures per square kilometre, densest in Camps 3, 6, 15 and 18"
-  },
-  {
     "title": "Walking access to public open space in Dhaka",
     "year": "2026",
     "date": "2026-10-01",
@@ -20,6 +9,49 @@
     "description": "Share of residents in each Dhaka ward who live within a 400 m walk of a public open space. Data: OpenStreetMap, WorldPop 2025. Method: network-based walking distance. Tools: QGIS.",
     "image": "/assets/img/work/dhaka-walking-access-public-open-space.webp",
     "image_alt": "Map of Dhaka wards showing the share of residents within a 400 m walk of public open space, high in the old city and low in the north and east"
+  },
+  {
+    "title": "Kutupalong-Balukhali Refugee Camp",
+    "year": "2026",
+    "date": "2026-09-30",
+    "tags": [
+      "Cities"
+    ],
+    "description": "Mean density of structures per km² in each camp of the Kutupalong-Balukhali refugee camp complex, Cox's Bazar, Bangladesh. Structures include shelters, latrines, clinics and learning centers, not population. Data: OpenStreetMap. Tools: QGIS.",
+    "image": "/assets/img/work/kutupalong-balukhali-refugee-camp-structure-density.webp",
+    "image_alt": "Map of the Kutupalong-Balukhali refugee camps in Cox's Bazar, each camp shaded by structures per square kilometre, densest in Camps 3, 6, 15 and 18"
+  },
+  {
+    "title": "Maritime Traffic Density in the Bay of Bengal (2015-2021)",
+    "year": "2015-2021",
+    "date": "2026-09-28",
+    "tags": [
+      "Water"
+    ],
+    "description": "Data Source: World Bank & IMF, Global Shipping Traffic Density (AIS)\nMethod: Log-scaled density classification\nTools: Python (rasterio, geopandas, matplotlib)",
+    "image": "/assets/img/work/bay-of-bengal-maritime-traffic-density.webp",
+    "image_alt": "Map of ship traffic density in the Bay of Bengal from AIS data, 2015 to 2021, showing routes to Chattogram, Mongla and Payra ports"
+  },
+  {
+    "title": "The void in the Sundarbans",
+    "year": "2026",
+    "date": "2026-09-27",
+    "tags": [
+      "Land and terrain"
+    ],
+    "description": "True-colour satellite view of the Sundarbans mangrove forest, where tidal channels carry sediment into the Bay of Bengal. Data: ESA Copernicus Sentinel-2 (Level-2A) from Microsoft Planetary Computer.",
+    "image": "/assets/img/work/sundarbans-sentinel-2-true-colour.webp",
+    "image_alt": "Sentinel-2 true-colour image of the Sundarbans mangrove forest and its tidal channels meeting the Bay of Bengal"
+  },
+  {
+    "title": "Tree Cover Loss in Southeastern Bangladesh (2001-2025)",
+    "year": "2026",
+    "date": "2026-09-25",
+    "tags": [
+      "Land and terrain"
+    ],
+    "description": "Data Source: University of Maryland, Hansen Global Forest Change v1.13\nMethod: Annual loss year classification (30 m, canopy ≥30% forest baseline)",
+    "image": "/assets/img/work/southeastern-bangladesh-tree-cover-loss-2001-2025.webp"
   },
   {
     "title": "Elevation, southeastern Bangladesh",
@@ -195,37 +227,5 @@
       "Land and terrain"
     ],
     "description": "Time series harmonic regression."
-  },
-  {
-    "title": "Tree Cover Loss in Southeastern Bangladesh (2001-2025)",
-    "year": "2026",
-    "date": "2026-09-25",
-    "tags": [
-      "Land and terrain"
-    ],
-    "description": "Data Source: University of Maryland, Hansen Global Forest Change v1.13\nMethod: Annual loss year classification (30 m, canopy ≥30% forest baseline)",
-    "image": "/assets/img/work/southeastern-bangladesh-tree-cover-loss-2001-2025.webp"
-  },
-  {
-    "title": "The void in the Sundarbans",
-    "year": "2026",
-    "date": "2026-09-27",
-    "tags": [
-      "Land and terrain"
-    ],
-    "description": "True-colour satellite view of the Sundarbans mangrove forest, where tidal channels carry sediment into the Bay of Bengal. Data: ESA Copernicus Sentinel-2 (Level-2A) from Microsoft Planetary Computer.",
-    "image": "/assets/img/work/sundarbans-sentinel-2-true-colour.webp",
-    "image_alt": "Sentinel-2 true-colour image of the Sundarbans mangrove forest and its tidal channels meeting the Bay of Bengal"
-  },
-  {
-    "title": "Maritime Traffic Density in the Bay of Bengal (2015-2021)",
-    "year": "2015-2021",
-    "date": "2026-09-28",
-    "tags": [
-      "Water"
-    ],
-    "description": "Data Source: World Bank & IMF, Global Shipping Traffic Density (AIS)\nMethod: Log-scaled density classification\nTools: Python (rasterio, geopandas, matplotlib)",
-    "image": "/assets/img/work/bay-of-bengal-maritime-traffic-density.webp",
-    "image_alt": "Map of ship traffic density in the Bay of Bengal from AIS data, 2015 to 2021, showing routes to Chattogram, Mongla and Payra ports"
   }
 ]
