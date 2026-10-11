@@ -55,7 +55,7 @@
   }
   function copyBtn(text, label) {
     return '<button class="copy" type="button" data-copy="' + esc(text) + '" aria-label="Copy ' + esc(label) + '">' +
-      icon("copy", "i i--copy") + icon("check", "i i--check") + '<span class="copy__label">Copy</span></button>';
+      icon("copy", "i i--copy") + icon("check", "i i--check") + '<span class="copy__label" aria-live="polite">Copy</span></button>';
   }
 
   /* ================= Renderers ================= */
@@ -77,7 +77,7 @@
         '<div class="hero__actions"><a class="pill" href="maps.html">See all maps' + icon("arrow-right") + "</a>" +
           '<a class="btn btn--ghost" href="research.html">Read all research</a></div>' +
       "</div>" +
-      (p.photo ? '<figure class="hero__photo"><img src="' + esc(src(p.photo)) + '" width="640" height="800" alt="' + esc(p.photo_alt) + '">' +
+      (p.photo ? '<figure class="hero__photo"><img src="' + esc(src(p.photo)) + '" width="640" height="800" fetchpriority="high" alt="' + esc(p.photo_alt) + '">' +
         (p.photo_caption ? '<figcaption class="hero__caption">' + esc(p.photo_caption) + "</figcaption>" : "") + "</figure>" : "") +
       "</div>";
   }
@@ -420,8 +420,15 @@
           if (on) shown++;
         });
         if (empty) empty.hidden = shown > 0;
+        try {
+          var url = new URL(location.href);
+          if (f === "all") url.searchParams.delete("topic"); else url.searchParams.set("topic", f);
+          history.replaceState(null, "", url);
+        } catch (e) {}
       });
     });
+    var startTopic = new URLSearchParams(location.search).get("topic");
+    chips.forEach(function (c) { if (startTopic && c.getAttribute("data-filter") === startTopic) c.click(); });
 
     initLightbox();
     initWall();

@@ -74,6 +74,7 @@
 html {
   -webkit-text-size-adjust: 100%; scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 16px);
+  -webkit-tap-highlight-color: transparent;   /* focus and hover states give the feedback */
   scrollbar-color: var(--line-2) var(--bg);
   background: var(--forest-2);
 }
@@ -610,6 +611,9 @@ cite { font-style: normal; }
   .lightbox[open] { animation: fade 200ms var(--ease); }
   @keyframes fade { from { opacity: 0; } }
 }
+
+a, button, [role="button"], label { touch-action: manipulation; }   /* no double-tap zoom delay on phones */
+.lightbox, .lightbox__view, .lightbox__meta { overscroll-behavior: contain; }
 
 /* ---------- Fun: Pin the Place game ---------- */
 .leaflet-container .leaflet-control-attribution { padding: 4px 8px; }

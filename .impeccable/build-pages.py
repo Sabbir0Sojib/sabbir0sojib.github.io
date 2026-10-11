@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os, re, glob, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20261011b"   # bump to force browsers to load new CSS/JS
+VER = "20261011c"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -23,7 +23,7 @@ def ld(data):
 
 def clip(text, n=158):
     text = " ".join(str(text).split())
-    return text if len(text) <= n else text[:n].rsplit(" ", 1)[0].rstrip(",;:") + "..."
+    return text if len(text) <= n else text[:n].rsplit(" ", 1)[0].rstrip(",;:") + "…"
 
 AUTHOR = {"@type": "Person", "name": "Md Sabbir Islam", "url": "https://sabbir0sojib.github.io/"}
 
@@ -381,7 +381,7 @@ fun = f"""    <div class="band">
 
           <div class="game__stage" data-stage="ask">
             <p class="game__round" data-round>Round 1 of 5</p>
-            <p class="game__ask">Where is <b data-place>...</b>?</p>
+            <p class="game__ask">Where is <b data-place>…</b>?</p>
             <p class="game__hint" data-hint></p>
             <button class="btn btn--primary game__btn" type="button" data-lock disabled>Lock in guess</button>
             <p class="game__tip">Tap the map to drop a pin. Tap again to move it.</p>
@@ -408,7 +408,7 @@ fun = f"""    <div class="band">
 
         <div class="game__map">
           <div id="game-map" tabindex="0" aria-label="Unlabeled satellite map of Bangladesh. Click to place your guess."></div>
-          <p class="game__loading" data-loading>Loading map...</p>
+          <p class="game__loading" data-loading>Loading map…</p>
           <div class="game__float" data-float hidden>
             <button class="btn btn--primary" type="button" data-lock-float disabled>Lock in guess</button>
           </div>
@@ -452,7 +452,7 @@ fun = f"""    <div class="band">
 
           <div class="game__map">
             <div id="detective-map" role="img" aria-label="Satellite view of the place to name"></div>
-            <p class="game__loading" data-dloading>Loading...</p>
+            <p class="game__loading" data-dloading>Loading…</p>
           </div>
         </div>
       </section>
@@ -550,7 +550,7 @@ def map_pages():
         facts_html = "".join(f"<div><dt>{_html.escape(k)}</dt><dd>{_html.escape(v)}</dd></div>" for k, v in rows if v)
         about_html = f'<p class="mapabout__text">{_html.escape(about)}</p>' if about and about != lead else ""
         cards = "".join(
-            f'<article class="pcard"><div class="mat pcard__media" aria-hidden="true"><img src="/{o["image"].lstrip("/")}" alt="" loading="lazy"></div>'
+            f'<article class="pcard"><div class="mat pcard__media" aria-hidden="true"><img src="/{o["image"].lstrip("/")}" width="{image_dims("/" + o["image"].lstrip("/"))[0]}" height="{image_dims("/" + o["image"].lstrip("/"))[1]}" alt="" loading="lazy"></div>'
             f'<div class="pcard__top"><h3 class="pcard__title"><a href="/maps/{slug(o["title"])}.html">{_html.escape(o["title"])}</a></h3>'
             f'<span class="mono shot__year">{_html.escape(str(o.get("year", "")))}</span></div>'
             f'<p class="pcard__text">{_html.escape(clip(o.get("description", ""), 110))}</p></article>' for o in others)
@@ -578,7 +578,7 @@ def map_pages():
     <div class="wrap">
       <figure class="shot mapdetail">
         <button class="mat shot__btn" type="button" data-lightbox="m0" aria-label="Open {_html.escape(m["title"])} full size">
-          <img src="{img}" width="{w}" height="{h}" alt="{_html.escape(alt)}">
+          <img src="{img}" width="{w}" height="{h}" fetchpriority="high" alt="{_html.escape(alt)}">
           <span class="shot__zoom" aria-hidden="true">{icon("expand")}View full size</span>
         </button>
         <figcaption>

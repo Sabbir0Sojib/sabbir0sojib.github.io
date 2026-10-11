@@ -250,7 +250,7 @@
       setRegion(level.region);
       markLevel();
       el.loading.hidden = false;
-      el.loading.textContent = "Loading " + level.sub.toLowerCase() + "...";
+      el.loading.textContent = "Loading " + level.sub.toLowerCase() + "…";
       loadLevel(level).then(function (items) {
         if (id !== gameId) return;
         el.loading.hidden = true;

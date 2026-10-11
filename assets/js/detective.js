@@ -130,7 +130,7 @@
       markRegion();
       ensureMap();
       el.loading.hidden = false;
-      el.loading.textContent = "Loading places...";
+      el.loading.textContent = "Loading places…";
       load(region).then(function (items) {
         if (id !== gameId) return;
         if (items.length < 4) { el.loading.textContent = "Not enough places for this game yet."; return; }
