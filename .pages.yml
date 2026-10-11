@@ -104,7 +104,7 @@ content:
       - { name: authors, label: Authors, type: string }
       - { name: venue, label: "Journal, conference or place", type: string }
       - { name: note, label: One-line summary (optional), type: text }
-      - { name: link, label: Link to paper or DOI (optional), type: string }
+      - { name: link, label: "Link to paper, DOI or PDF (optional; a PDF in assets/docs works too)", type: string }
 
   - name: gallery
     label: Gallery (photos)
