@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os, re, glob, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20261011d"   # bump to force browsers to load new CSS/JS
+VER = "20261011e"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -234,8 +234,9 @@ def research_jsonld():
                "creativeWorkStatus": r.get("status", ""), "about": r.get("note", ""),
                "isPartOf": {"@type": "CreativeWork", "name": r.get("venue", "")}}
         if r.get("link"): art["url"] = r["link"]
-        if r.get("poster"): art["image"] = SITE + str(r["poster"]).lstrip("/")
-        if r.get("pdf"): art["encoding"] = {"@type": "MediaObject", "contentUrl": SITE + str(r["pdf"]).lstrip("/"), "encodingFormat": "application/pdf"}
+        full = lambda v: v if str(v).startswith("http") else SITE + str(v).lstrip("/")
+        if r.get("poster"): art["image"] = full(r["poster"])
+        if r.get("pdf"): art["encoding"] = {"@type": "MediaObject", "contentUrl": full(r["pdf"]), "encodingFormat": "application/pdf"}
         items.append({"@type": "ListItem", "position": i + 1, "item": {k: v for k, v in art.items() if v}})
     return ld({"@context": "https://schema.org", "@type": "ItemList", "name": "Research by Md Sabbir Islam", "itemListElement": items})
 FUN_LD = ld({"@context": "https://schema.org", "@type": "WebApplication", "name": "Geography games: Pin the Place and Satellite Detective",
@@ -553,10 +554,11 @@ def map_pages():
         facts_html = "".join(f"<div><dt>{_html.escape(k)}</dt><dd>{_html.escape(v)}</dd></div>" for k, v in rows if v)
         about_html = f'<p class="mapabout__text">{_html.escape(about)}</p>' if about and about != lead else ""
         cards = "".join(
-            f'<article class="pcard"><div class="mat pcard__media" aria-hidden="true"><img src="/{o["image"].lstrip("/")}" width="{image_dims("/" + o["image"].lstrip("/"))[0]}" height="{image_dims("/" + o["image"].lstrip("/"))[1]}" alt="" loading="lazy"></div>'
+            f'<article class="pcard"><div class="mat pcard__media" aria-hidden="true"><img src="/{o["image"].lstrip("/")}" width="{ow}" height="{oh}" alt="" loading="lazy"></div>'
             f'<div class="pcard__top"><h3 class="pcard__title"><a href="/maps/{slug(o["title"])}.html">{_html.escape(o["title"])}</a></h3>'
             f'<span class="mono shot__year">{_html.escape(str(o.get("year", "")))}</span></div>'
-            f'<p class="pcard__text">{_html.escape(clip(o.get("description", ""), 110))}</p></article>' for o in others)
+            f'<p class="pcard__text">{_html.escape(clip(o.get("description", ""), 110))}</p></article>'
+            for o in others for ow, oh in [image_dims("/" + o["image"].lstrip("/"))])
         data = {"@context": "https://schema.org", "@type": "Map", "name": m["title"], "description": " ".join(filter(None, [lead, about if about != lead else ""] + [f"{k}: {v}." for k, v in facts])),
                 "url": SITE + "maps/" + name + ".html", "author": AUTHOR, "creator": AUTHOR,
                 "dateCreated": m.get("date") or str(m.get("year", "")), "datePublished": m.get("date") or str(m.get("year", "")),
@@ -620,7 +622,7 @@ def images_for(h):
     """Map and project images listed per page, so they can show up in Google Images."""
     items = {"maps.html": content("maps"), "projects.html": content("projects"), "index.html": content("maps")[:0]}.get(h, [])
     if h == "gallery.html": items = content("gallery")
-    if h == "research.html": items = [{"image": r.get("poster")} for r in content("research") if r.get("poster")]
+    if h == "research.html": items = [{"image": r.get("poster")} for r in content("research") if r.get("poster") and not str(r["poster"]).startswith("http")]
     out = []
     for it in items:
         img = str(it.get("image") or "").lstrip("/")
@@ -655,6 +657,6 @@ def llms_txt():
     return "\n".join(lines)
 write("llms.txt", llms_txt())
 # The same pages as a plain list: Google also accepts a .txt sitemap (a backup when the XML one is slow to be read)
-write("sitemap.txt", "\n".join(re.findall(r"<loc>([^<]+)</loc>", urls)) + "\n")
+write("sitemap.txt", "\n".join([SITE if h == "index.html" else SITE + h for h, _ in NAV] + [f"{SITE}maps/{slug(m['title'])}.html" for m in MAP_PAGES]) + "\n")
 write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n")
 print("pages written")

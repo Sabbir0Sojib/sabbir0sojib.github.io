@@ -316,7 +316,7 @@ cite { font-style: normal; }
 .mapabout__text { color: var(--ink-2); max-width: 66ch; margin-bottom: 20px; }
 .mapfacts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 32px; }
 .mapfacts > div { display: grid; gap: 4px; align-content: start; }
-.mapfacts dt { color: var(--muted); font-size: 0.875rem; }
+.mapfacts dt { color: var(--muted); font-size: 0.8125rem; }
 .mapfacts dd { color: var(--ink); line-height: 1.5; }
 .mapabout__use { margin-top: 18px; color: var(--muted); font-size: 0.9375rem; max-width: 66ch; }
 .mapabout__use a { color: var(--accent); }
@@ -747,7 +747,7 @@ a, button, [role="button"], label { touch-action: manipulation; }   /* no double
 
 /* ---------- Footer ---------- */
 .site-foot { background: var(--forest-2); color: var(--on-forest-2); font-size: 0.9375rem; }
-main > :last-child:not(.band) { margin-bottom: clamp(56px, 8vw, 104px); }
+main > :last-child:not(.band), main > :not(.band):not(.contact-sec):has(+ .lightbox:last-child) { margin-bottom: clamp(56px, 8vw, 104px); }   /* the lightbox dialog sits last but takes no space */
 .site-foot__grid {
   display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 1fr);
   gap: 40px; padding-top: clamp(44px, 6vw, 64px); padding-bottom: 40px;

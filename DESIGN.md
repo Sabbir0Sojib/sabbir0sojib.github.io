@@ -200,7 +200,7 @@ After the Overlake School website (owner's reference, overlake.org): a deep fore
 References used: Overlake School (green bands, yellow action pill, utility bar, serif statement), Apple (work on a quiet pedestal, full footer), Wired (equal research rows), Pinterest (filter chips).
 
 **Key Characteristics:**
-- Rhythm on every page: dark utility bar, green header, green band (page title, or the home hero), warm paper content, dark green footer. Home adds a green contact band before the footer.
+- Rhythm on every page: dark utility bar, green header, green band (page title, or the home hero), warm paper content, dark green footer. Home ends with Contact on the paper page, then the footer.
 - Serif (Newsreader) for the brand, statements, titles, the bio line, citations. Archivo for everything else. JetBrains Mono only for years, repository paths and tool lists.
 - Yellow (sun) only for actions and small highlights on green: the Email me and See my maps pills, the Menu button, the current-page underline, contact icons, footer headings.
 - Maps are never cropped: they sit whole on a mat with a soft print shadow.

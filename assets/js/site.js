@@ -55,7 +55,7 @@
   }
   function copyBtn(text, label) {
     return '<button class="copy" type="button" data-copy="' + esc(text) + '" aria-label="Copy ' + esc(label) + '">' +
-      icon("copy", "i i--copy") + icon("check", "i i--check") + '<span class="copy__label" aria-live="polite">Copy</span></button>';
+      icon("copy", "i i--copy") + icon("check", "i i--check") + '<span class="copy__label">Copy</span></button>';
   }
 
   /* ================= Renderers ================= */
@@ -150,8 +150,6 @@
         '<figcaption><p class="shot__top"><span class="shot__title">' + mapLink(m) + '</span><span class="mono shot__year">' + esc(m.year) + "</span></p>" +
         '<p class="shot__meta visually-hidden">' + esc(m.description) + "</p></figcaption></figure>";
     }).join("");
-    var count = document.querySelector('[data-count="maps"]');
-    if (count && all.length) count.textContent = "See all maps";
   }
 
   // Home: the three newest research items, all equal
@@ -395,6 +393,18 @@
   });
 
   /* ================= Behaviour (after render) ================= */
+  // One polite live region for short status messages (screen readers hear "Copied" once)
+  function announce(msg) {
+    var live = document.getElementById("sr-status");
+    if (!live) {
+      live = document.createElement("p");
+      live.id = "sr-status"; live.className = "visually-hidden"; live.setAttribute("aria-live", "polite");
+      document.body.appendChild(live);
+    }
+    live.textContent = "";
+    setTimeout(function () { live.textContent = msg; }, 50);
+  }
+
   function init() {
     // Copy buttons
     document.querySelectorAll("[data-copy]").forEach(function (btn) {
@@ -404,6 +414,7 @@
         var done = function () {
           btn.classList.add("is-copied");
           if (label) label.textContent = "Copied";
+          announce("Copied to the clipboard");
           setTimeout(function () { btn.classList.remove("is-copied"); if (label) label.textContent = "Copy"; }, 1800);
         };
         if (navigator.clipboard && navigator.clipboard.writeText) {
