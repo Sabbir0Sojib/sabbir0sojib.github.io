@@ -493,6 +493,15 @@ cite { font-style: normal; }
 .pub__venue { font-style: italic; }
 .pub__cite .status { margin-left: 4px; vertical-align: 2px; }
 .pub__note { color: var(--muted); font-size: 0.9375rem; line-height: 1.6; margin-top: 8px; max-width: 72ch; }
+.pub__actions { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 12px; }
+.pub--poster { grid-template-columns: 36px minmax(0, 1fr) 150px; column-gap: 24px; }
+.pub__poster { margin: 0; }
+.pub__poster .mat { padding: 8px; border-radius: var(--radius); }
+.pub__poster img { width: 100%; height: auto; box-shadow: var(--print-shadow); }
+@media (max-width: 640px) {
+  .pub--poster { grid-template-columns: 28px minmax(0, 1fr); }
+  .pub__poster { grid-column: 2; max-width: 180px; margin-top: 6px; }
+}
 .list-empty, .gallery__soon { color: var(--muted); padding: 20px 0; }
 
 /* ---------- Projects page: code projects as rows ---------- */

@@ -199,7 +199,14 @@
           var done = /presented|published|accepted/i.test(r.status || "");
           var status = r.status ? ' <span class="status' + (done ? " status--done" : "") + '">' + esc(r.status) + "</span>" : "";
           var title = r.link ? '<a href="' + esc(safeUrl(r.link)) + '" target="_blank" rel="noopener">' + esc(r.title) + "</a>" : esc(r.title);
-          return '<li class="pub">' +
+          var pdf = r.pdf ? esc(safeUrl(r.pdf)) : "";
+          var actions = pdf ? '<p class="pub__actions"><a class="link" href="' + pdf + '" target="_blank" rel="noopener">Open PDF' + icon("arrow") + "</a>" +
+            '<a class="link" href="' + pdf + '" download>Download PDF</a></p>' : "";
+          var poster = r.poster ? '<figure class="shot pub__poster"><button class="mat shot__btn" type="button" data-lightbox="r' + g[0] + i + '" aria-label="Open the poster for ' + esc(r.title) + ' full size">' +
+            '<img src="' + esc(src(r.poster)) + '"' + dims(r.poster) + ' alt="Poster: ' + esc(r.title) + '" loading="lazy">' +
+            '<span class="shot__zoom" aria-hidden="true">' + icon("expand") + "View</span></button>" +
+            '<figcaption hidden><span class="shot__title">' + esc(r.title) + '</span><span class="shot__meta">' + esc(r.venue || "") + "</span></figcaption></figure>" : "";
+          return '<li class="pub' + (poster ? " pub--poster" : "") + '">' +
             '<span class="pub__n">' + (i + 1) + "</span>" +
             '<div class="pub__body">' +
               '<p class="pub__cite">' +
@@ -208,8 +215,8 @@
                 '<span class="pub__title">' + title + ".</span> " +
                 (r.venue ? '<span class="pub__venue">' + esc(r.venue) + ".</span>" : "") + status +
               "</p>" +
-              (r.note ? '<p class="pub__note">' + esc(r.note) + "</p>" : "") +
-            "</div></li>";
+              (r.note ? '<p class="pub__note">' + esc(r.note) + "</p>" : "") + actions +
+            "</div>" + poster + "</li>";
         }).join("") + "</ol></section>";
     }).join("");
   }

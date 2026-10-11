@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os, re, glob, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20261011c"   # bump to force browsers to load new CSS/JS
+VER = "20261011d"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -234,6 +234,8 @@ def research_jsonld():
                "creativeWorkStatus": r.get("status", ""), "about": r.get("note", ""),
                "isPartOf": {"@type": "CreativeWork", "name": r.get("venue", "")}}
         if r.get("link"): art["url"] = r["link"]
+        if r.get("poster"): art["image"] = SITE + str(r["poster"]).lstrip("/")
+        if r.get("pdf"): art["encoding"] = {"@type": "MediaObject", "contentUrl": SITE + str(r["pdf"]).lstrip("/"), "encodingFormat": "application/pdf"}
         items.append({"@type": "ListItem", "position": i + 1, "item": {k: v for k, v in art.items() if v}})
     return ld({"@context": "https://schema.org", "@type": "ItemList", "name": "Research by Md Sabbir Islam", "itemListElement": items})
 FUN_LD = ld({"@context": "https://schema.org", "@type": "WebApplication", "name": "Geography games: Pin the Place and Satellite Detective",
@@ -297,7 +299,8 @@ write("research.html", page("research.html","Research and publications | Md Sabb
       <div class="publications" data-render="research" aria-busy="true"></div>
       <p class="list-empty" hidden>Nothing here yet.</p>
 {NOSCRIPT}
-    </div>""", extra_head=research_jsonld()))
+    </div>
+{LIGHTBOX}""", extra_head=research_jsonld()))
 
 write("projects.html", page("projects.html","GIS and remote sensing projects on GitHub | Md Sabbir Islam","Open source GIS and remote sensing code by Md Sabbir Islam: Earth Engine, Python and deep learning projects on cyclones, heat, water and trees.", f"""    <div class="band">
       <div class="wrap">
@@ -617,6 +620,7 @@ def images_for(h):
     """Map and project images listed per page, so they can show up in Google Images."""
     items = {"maps.html": content("maps"), "projects.html": content("projects"), "index.html": content("maps")[:0]}.get(h, [])
     if h == "gallery.html": items = content("gallery")
+    if h == "research.html": items = [{"image": r.get("poster")} for r in content("research") if r.get("poster")]
     out = []
     for it in items:
         img = str(it.get("image") or "").lstrip("/")

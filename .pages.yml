@@ -104,7 +104,9 @@ content:
       - { name: authors, label: Authors, type: string }
       - { name: venue, label: "Journal, conference or place", type: string }
       - { name: note, label: One-line summary (optional), type: text }
-      - { name: link, label: "Link to paper, DOI or PDF (optional; a PDF in assets/docs works too)", type: string }
+      - { name: link, label: "Link to paper or DOI (optional)", type: string }
+      - { name: poster, label: "Poster or slide image (optional; shown as a preview that opens full screen)", type: image }
+      - { name: pdf, label: "PDF of the paper or poster (optional; adds Open PDF and Download PDF)", type: file }
 
   - name: gallery
     label: Gallery (photos)
