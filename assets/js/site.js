@@ -74,8 +74,8 @@
         '<h1 id="name" class="hero__name">' + esc(p.name) + "</h1>" +
         '<p class="hero__role">' + esc(p.role) + "</p>" +
         '<p class="hero__bio">' + esc(p.bio) + "</p>" +
-        '<div class="hero__actions"><a class="pill" href="maps.html">See my maps' + icon("arrow-right") + "</a>" +
-          '<a class="btn btn--ghost" href="research.html">Read my research</a></div>' +
+        '<div class="hero__actions"><a class="pill" href="maps.html">See all maps' + icon("arrow-right") + "</a>" +
+          '<a class="btn btn--ghost" href="research.html">Read all research</a></div>' +
       "</div>" +
       (p.photo ? '<figure class="hero__photo"><img src="' + esc(src(p.photo)) + '" width="640" height="800" alt="' + esc(p.photo_alt) + '">' +
         (p.photo_caption ? '<figcaption class="hero__caption">' + esc(p.photo_caption) + "</figcaption>" : "") + "</figure>" : "") +
@@ -151,7 +151,7 @@
         '<p class="shot__meta visually-hidden">' + esc(m.description) + "</p></figcaption></figure>";
     }).join("");
     var count = document.querySelector('[data-count="maps"]');
-    if (count && all.length) count.textContent = "See all " + all.length + " maps";
+    if (count && all.length) count.textContent = "See all maps";
   }
 
   // Home: the three newest research items, all equal

@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os, re, glob, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20261006b"   # bump to force browsers to load new CSS/JS
+VER = "20261011a"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -489,7 +489,7 @@ nf = page("404.html", "Page not found | Md Sabbir Islam", "This page does not ex
           <p class="notfound__text" data-site="notfound_text">The page you are looking for does not exist or has moved.</p>
           <div class="hero__actions">
             <a class="pill" href="index.html">Go to the home page{NEXT}</a>
-            <a class="btn btn--ghost" href="maps.html">See my maps</a>
+            <a class="btn btn--ghost" href="maps.html">See all maps</a>
           </div>
         </div>
       </div>
@@ -593,7 +593,7 @@ def map_pages():
         <h2 class="sec-title" id="about-map">About this map</h2>
         {about_html}
         <dl class="mapfacts">{facts_html}</dl>
-        <p class="mapabout__use">Using this map: please credit Md Sabbir Islam and link to this page. For a full-resolution copy or permission to reuse it, <a href="/#contact">get in touch</a>.</p>
+        <p class="mapabout__use">Using this map: please credit Md Sabbir Islam and link to this page. For a full-resolution copy or permission to reuse it, <a href="/#contact">email me</a>.</p>
       </section>
 
       <section class="home-sec" aria-labelledby="more-maps">
