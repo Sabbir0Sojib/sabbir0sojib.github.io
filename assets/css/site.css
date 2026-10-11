@@ -431,28 +431,24 @@ cite { font-style: normal; }
 .plain-list .mono { color: var(--muted); margin-right: 12px; }
 
 /* ---------- Contact band (home) ---------- */
-.band--contact { margin-top: clamp(40px, 6vw, 72px); }
-.band--contact::before { background-position: right bottom; }
-.contact { padding: clamp(56px, 8vw, 104px) 0; }
+.contact-sec { margin-top: clamp(40px, 6vw, 72px); }
+.contact { padding: clamp(44px, 6vw, 80px) 0 clamp(56px, 8vw, 104px); border-top: 1px solid var(--line); }
 .contact .ccards { margin-top: clamp(28px, 3.5vw, 40px); }
-.contact__title { font-family: var(--serif); font-weight: 500; font-size: clamp(2.5rem, 1.7rem + 3.2vw, 4rem); line-height: 1.02; letter-spacing: -0.025em; color: #fff; margin-bottom: 14px; }
-.contact__note { color: var(--on-forest-2); max-width: 44ch; }
+.contact__title { font-family: var(--serif); font-weight: 500; font-size: clamp(2.5rem, 1.7rem + 3.2vw, 4rem); line-height: 1.02; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 14px; }
+.contact__note { color: var(--ink-2); max-width: 44ch; }
 .ccards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 12px; }
 .ccard {
   display: flex; align-items: center; gap: 14px; min-width: 0;
   padding: 16px 14px 16px 16px;
-  background: rgba(255, 255, 255, 0.05); border: 1px solid var(--forest-line); border-radius: var(--radius-lg);
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg);
   transition: border-color 200ms var(--ease), background-color 200ms var(--ease);
 }
-.ccard:hover { border-color: rgba(255, 255, 255, 0.32); background: rgba(255, 255, 255, 0.08); }
+.ccard:hover { border-color: var(--line-2); }
 .ccard__icon { display: grid; place-items: center; width: 40px; height: 40px; flex: none; border-radius: 50%; background: var(--sun); color: var(--ink); }
 .ccard__body { display: flex; flex-direction: column; min-width: 0; flex: 1; }
-.ccard__label { font-size: 0.8125rem; font-weight: 650; color: var(--on-forest-2); }
-.band .ccard__value { font-weight: 600; color: #fff; text-decoration: none; overflow-wrap: anywhere; }
-.band .ccard__value:hover { color: var(--sun); text-decoration: underline; }
-.band .copy { background: transparent; border-color: rgba(255, 255, 255, 0.35); color: #fff; }
-.band .copy:hover { border-color: #fff; }
-.band .copy.is-copied { background: var(--sun); border-color: var(--sun); color: var(--ink); }
+.ccard__label { font-size: 0.8125rem; font-weight: 650; color: var(--muted); }
+.ccard__value { font-weight: 600; color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
+.ccard__value:hover { color: var(--accent); text-decoration: underline; }
 .copy {
   position: relative;
   display: inline-flex; align-items: center; gap: 6px; flex: none;
@@ -851,7 +847,7 @@ main > :last-child:not(.band) { margin-bottom: clamp(56px, 8vw, 104px); }
   .fact__label, .fact__value, .fact__note { grid-column: 2; }
   .fact__label { align-self: end; margin-top: 2px; }
   .hero__actions .pill, .hero__actions .btn { flex: 1 1 auto; justify-content: center; }
-  .band .ccard__value { font-size: 0.9375rem; }
+  .ccard__value { font-size: 0.9375rem; }
   .ccard { gap: 12px; padding: 14px 12px 14px 14px; }
   .pub { grid-template-columns: 28px minmax(0, 1fr); gap: 10px; }
   .pub__n { width: 26px; height: 26px; font-size: 0.8125rem; }

@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os, re, glob, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20261011a"   # bump to force browsers to load new CSS/JS
+VER = "20261011b"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -279,7 +279,7 @@ write("index.html", page("index.html","Md Sabbir Islam | Remote Sensing and Geos
       <div data-render="about" aria-busy="true"></div>
     </div>
 
-    <section class="band band--contact" id="contact" aria-labelledby="contact-title">
+    <section class="contact-sec" id="contact" aria-labelledby="contact-title">
       <div class="wrap" data-render="contact" aria-busy="true"></div>
     </section>
 
