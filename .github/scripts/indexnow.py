@@ -21,7 +21,7 @@ if before and subprocess.run(["git", "cat-file", "-e", before], capture_output=T
     files = [f for f in out.split() if os.path.exists(f)]
 else:
     files = glob.glob("*.html") + glob.glob("maps/*.html")
-skip = {"404.html"}
+skip = {"404.html", "maps/index.html"}
 urls = sorted({SITE if f == "index.html" else SITE + f for f in files if f not in skip and not f.startswith("google")})
 if not urls:
     print("No page changed; nothing to send.")

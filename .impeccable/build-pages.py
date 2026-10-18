@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os, re, glob, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20261011e"   # bump to force browsers to load new CSS/JS
+VER = "20261018a"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -56,7 +56,7 @@ def person_jsonld():
     data.pop("@context")
     data = {"@context": "https://schema.org", "@type": "ProfilePage", "url": SITE, "name": f'{p.get("name")}, {p.get("role")}',
             "dateModified": changed("content/profile.json"), "mainEntity": data}
-    site = {"@context": "https://schema.org", "@type": "WebSite", "name": p.get("name"), "url": SITE}
+    site = {"@context": "https://schema.org", "@type": "WebSite", "name": p.get("name"), "alternateName": ["Sabbir Islam Sojib", "Md Sabbir Islam, GIS and Remote Sensing"], "url": SITE}
     dump = lambda d: json.dumps(d, ensure_ascii=False).replace("</", "<\\/")
     return f'  <script type="application/ld+json">{dump(data)}</script>\n  <script type="application/ld+json">{dump(site)}</script>\n'
 
@@ -93,6 +93,8 @@ def page(fname, title, desc, body, extra_head="", extra_js="", og=None):
   <meta name="twitter:image" content="{og_img}">
   <meta name="theme-color" content="#0F3B24">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-48.png" sizes="48x48" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
 {extra_head}  <link rel="stylesheet" href="assets/css/site.css?v={VER}">
@@ -612,7 +614,21 @@ def map_pages():
                     extra_head=ld(data) + ld(crumbs), og=(SITE + img.lstrip("/"), w, h, _html.escape(alt, quote=True)))
         write("maps/" + name + ".html", absolutize(html))
     for old in glob.glob(os.path.join(OUT, "maps", "*.html")):
-        if os.path.basename(old) not in made: os.remove(old)
+        if os.path.basename(old) not in made and os.path.basename(old) != "index.html": os.remove(old)
+    # Google indexed /maps (served by maps.html) before maps/ existed; send /maps/ to the Maps page
+    write("maps/index.html", f'''<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>GIS Maps of Bangladesh | Md Sabbir Islam</title>
+  <link rel="canonical" href="{SITE}maps.html">
+  <meta name="robots" content="noindex, follow">
+  <meta http-equiv="refresh" content="0; url=/maps.html">
+  <script>location.replace("/maps.html" + location.search + location.hash);</script>
+</head>
+<body><p><a href="/maps.html">See all maps</a></p></body>
+</html>
+''')
     return maps
 MAP_PAGES = map_pages()
 
