@@ -50,7 +50,7 @@ def person_jsonld():
         "jobTitle": p.get("role"),
         "affiliation": {"@type": "CollegeOrUniversity", "name": "Pabna University of Science and Technology"},
         "address": {"@type": "PostalAddress", "addressLocality": "Pabna", "addressCountry": "BD"},
-        "knowsAbout": p.get("interests", []),
+        "knowsAbout": ["GIS", "Remote sensing", "Cartography"] + p.get("interests", []),
         "sameAs": [u for u in (orcid, p.get("linkedin"), p.get("github")) if u],
     }
     data.pop("@context")
@@ -198,7 +198,7 @@ def image_dims(path):
 
 def maps_jsonld():
     maps = [m for m in newest_first(content("maps")) if m.get("image")]
-    return ld({"@context": "https://schema.org", "@type": "CollectionPage", "name": "Maps of Bangladesh by Md Sabbir Islam",
+    return ld({"@context": "https://schema.org", "@type": "CollectionPage", "name": "GIS maps of Bangladesh by Md Sabbir Islam",
                "url": SITE + "maps.html", "author": AUTHOR,
                "mainEntity": {"@type": "ItemList", "itemListElement": [
                    {"@type": "ListItem", "position": i + 1, "url": SITE + "maps/" + slug(m["title"]) + ".html", "name": m["title"]}
@@ -244,8 +244,8 @@ FUN_LD = ld({"@context": "https://schema.org", "@type": "WebApplication", "name"
              "description": "Free geography games on real satellite maps: find Bangladesh divisions, districts and upazilas, 167 countries and world wonders, or name famous places seen from space.",
              "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": AUTHOR, "inLanguage": "en"})
 
-write("index.html", page("index.html","Md Sabbir Islam | Remote Sensing and Geospatial Deep Learning",
-  "Md Sabbir Islam (Sabbir Islam Sojib), remote sensing and geospatial deep learning researcher at Pabna University of Science and Technology, Bangladesh.",
+write("index.html", page("index.html","Md Sabbir Islam | GIS and Remote Sensing Researcher, Bangladesh",
+  "Md Sabbir Islam (Sabbir Islam Sojib), GIS and remote sensing researcher at Pabna University of Science and Technology (PUST), Bangladesh. Maps and research.",
   f"""    <section class="band band--hero" aria-labelledby="name">
       <div class="wrap" data-render="hero" aria-busy="true">
 {NOSCRIPT}
@@ -317,7 +317,7 @@ write("projects.html", page("projects.html","GIS and remote sensing projects on 
 {NOSCRIPT}
     </div>""", extra_head=projects_jsonld()))
 
-write("maps.html", page("maps.html","Maps of Bangladesh | Md Sabbir Islam","Maps of Bangladesh by Md Sabbir Islam: cyclone tracks, floods, sea level rise, tree cover loss, elevation, wind, groundwater and land use.", f"""    <div class="band">
+write("maps.html", page("maps.html","GIS Maps of Bangladesh | Md Sabbir Islam","GIS maps of Bangladesh by Md Sabbir Islam: cyclone tracks, floods, sea level rise, tree cover loss, elevation, wind, groundwater and land use.", f"""    <div class="band">
       <div class="wrap wrap--wide">
         <header class="page-head">
           <h1 class="page-head__title" data-site="maps_title">Maps</h1>
@@ -642,7 +642,7 @@ write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="ht
 # llms.txt: a plain summary of the site for AI search tools (ChatGPT, Perplexity, Google AI Overviews)
 def llms_txt():
     lines = ["# Md Sabbir Islam", "",
-             "> Remote sensing and geospatial deep learning researcher at Pabna University of Science and Technology, Bangladesh. "
+             "> GIS, remote sensing and geospatial deep learning researcher at Pabna University of Science and Technology (PUST), Bangladesh. "
              "Maps trees, floods, cyclones and land use from drone and satellite imagery.", "",
              "## Pages", ""]
     for h, name in NAV:

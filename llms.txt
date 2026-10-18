@@ -1,6 +1,6 @@
 # Md Sabbir Islam
 
-> Remote sensing and geospatial deep learning researcher at Pabna University of Science and Technology, Bangladesh. Maps trees, floods, cyclones and land use from drone and satellite imagery.
+> GIS, remote sensing and geospatial deep learning researcher at Pabna University of Science and Technology (PUST), Bangladesh. Maps trees, floods, cyclones and land use from drone and satellite imagery.
 
 ## Pages
 
