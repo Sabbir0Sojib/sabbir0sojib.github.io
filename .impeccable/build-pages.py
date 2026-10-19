@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os, re, glob, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20261018a"   # bump to force browsers to load new CSS/JS
+VER = "20261019a"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -51,7 +51,7 @@ def person_jsonld():
         "affiliation": {"@type": "CollegeOrUniversity", "name": "Pabna University of Science and Technology"},
         "address": {"@type": "PostalAddress", "addressLocality": "Pabna", "addressCountry": "BD"},
         "knowsAbout": ["GIS", "Remote sensing", "Cartography"] + p.get("interests", []),
-        "sameAs": [u for u in (orcid, p.get("linkedin"), p.get("github")) if u],
+        "sameAs": [u for u in (orcid, p.get("linkedin"), p.get("github"), p.get("scholar"), p.get("researchgate"), p.get("academia")) if u],
     }
     data.pop("@context")
     data = {"@context": "https://schema.org", "@type": "ProfilePage", "url": SITE, "name": f'{p.get("name")}, {p.get("role")}',
@@ -153,7 +153,7 @@ def page(fname, title, desc, body, extra_head="", extra_js="", og=None):
       </div>
     </div>
     <div class="wrap site-foot__base">
-      <p data-site="footer">&copy; 2026 Md Sabbir Islam. Pabna University of Science and Technology, Bangladesh.</p>
+      <p data-site="footer">&copy; 2026 Md Sabbir Islam (Sabbir Islam Sojib). Pabna University of Science and Technology, Bangladesh.</p>
       <a class="site-foot__top" href="#main">Back to top{icon("arrow-right", "i i--up")}</a>
     </div>
   </footer>
@@ -545,6 +545,7 @@ def map_pages():
         img = "/" + m["image"].lstrip("/"); w, h = image_dims(img)
         tags = [t for t in (m.get("tags") or []) if t]
         alt = m.get("image_alt") or f'{m["title"]}, map by Md Sabbir Islam'
+        if "Sabbir" not in alt: alt = alt.rstrip(". ") + ". Map by Md Sabbir Islam."   # full name in every map's image description
         ptitle = f"{m['title']} | Map by Md Sabbir Islam" if len(m["title"]) <= 38 else f"{m['title']} | Md Sabbir Islam"
         story, facts = split_desc(m.get("description"))
         about = " ".join(str(m.get("about") or "").split())

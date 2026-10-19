@@ -111,7 +111,10 @@
     var cards = emails.map(function (e) { return card("envelope", e.label, e.address, "mailto:" + e.address, e.address, e.label); }).join("") +
       (orcidUrl ? card("orcid", "ORCID", p.orcid, orcidUrl, p.orcid, "ORCID iD", true) : "") +
       (p.linkedin ? card("linkedin", "LinkedIn", cleanUrl(p.linkedin), p.linkedin, "", "", true) : "") +
-      (p.github ? card("github", "GitHub", cleanUrl(p.github), p.github, "", "", true) : "");
+      (p.github ? card("github", "GitHub", cleanUrl(p.github), p.github, "", "", true) : "") +
+      (p.scholar ? card("graduation-cap", "Google Scholar", "Google Scholar profile", p.scholar, "", "", true) : "") +
+      (p.researchgate ? card("flask", "ResearchGate", cleanUrl(p.researchgate), p.researchgate, "", "", true) : "") +
+      (p.academia ? card("target", "Academia.edu", cleanUrl(p.academia), p.academia, "", "", true) : "");
     el.innerHTML = '<div class="contact"><div><h2 id="contact-title" class="contact__title" data-site="contact_title">Contact</h2>' +
       '<p class="contact__note" data-site="contact_note">Open to research collaboration, mapping work and questions about any project.</p></div>' +
       '<ul class="ccards">' + cards + "</ul></div>";

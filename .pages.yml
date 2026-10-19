@@ -170,6 +170,9 @@ content:
           - { name: label, label: "Label (for example: Personal email)", type: string }
           - { name: address, label: Email address, type: string }
       - { name: orcid, label: "ORCID iD (just the number, for example 0009-0001-9474-9287)", type: string }
+      - { name: scholar, label: "Google Scholar profile link (optional; strongly helps Google search)", type: string }
+      - { name: researchgate, label: "ResearchGate profile link (optional)", type: string }
+      - { name: academia, label: "Academia.edu profile link (optional)", type: string }
       - { name: linkedin, label: LinkedIn URL, type: string }
       - { name: github, label: GitHub URL, type: string }
       - { name: interests, label: Research interests, type: string, list: true }
