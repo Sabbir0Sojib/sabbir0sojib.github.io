@@ -22,7 +22,7 @@
 - [Zero Hour Index, Jamuna-Padma char corridor](https://sabbir0sojib.github.io/maps/zero-hour-index-jamuna-padma-char-corridor.html): Where flood peaks, failed road access and submerged mobile towers leave char settlements isolated. RIMES Mapathon 2026.
 - [Crop suitability, Bangladesh](https://sabbir0sojib.github.io/maps/crop-suitability-bangladesh.html): Five suitability classes from BARC data, weighted overlay.
 - [Prevailing 10 m wind, 2023](https://sabbir0sojib.github.io/maps/prevailing-10-m-wind-2023.html): ERA5 reanalysis via Open-Meteo, with wind roses for Dhaka, Khulna and Chattogram.
-- [Cyclone tracks and exposure corridor](https://sabbir0sojib.github.io/maps/cyclone-tracks-and-exposure-corridor.html): 12 major storm tracks from 1970 to 2024 turned into a severity-weighted exposure corridor. geopandas, scipy, matplotlib
+- [Cyclone tracks and exposure corridor](https://sabbir0sojib.github.io/maps/cyclone-tracks-and-exposure-corridor.html): 12 major storm tracks from 1970 to 2024 turned into a severity-weighted exposure corridor. Tools: geopandas, scipy, matplotlib
 - [Cycling accessibility from Korail, Dhaka](https://sabbir0sojib.github.io/maps/cycling-accessibility-from-korail-dhaka.html): 2,000 sampled points routed with OpenRouteService, cubic spline interpolation.
 - [Cold wave, 29 December 2025](https://sabbir0sojib.github.io/maps/cold-wave-29-december-2025.html): Daily minimum temperature from BMD data, made with my temperature map generator. Lowest: Nikli, 9.8 °C.
 - [Surface water temperature, Pabna District](https://sabbir0sojib.github.io/maps/surface-water-temperature-pabna-district.html): Satellite thermal analysis of rivers and water bodies. Mean 25.39 °C, range 22.6 to 33.7 °C.

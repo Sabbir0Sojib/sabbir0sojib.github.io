@@ -34,6 +34,19 @@
   }
   // Images saved by Pages CMS start with "/", which works on the live site; keep relative paths working too.
   function src(path) { return path ? String(path) : ""; }
+  // Map descriptions typed as "Data Source: ... Method: ... Tools: ..." read as one run-on line;
+  // tidy them into sentences: "Story. Data: X. Method: Y. Tools: Z." (same labels as the map pages)
+  var LABELS = { "data sources": "Data", "data source": "Data", "data": "Data", "source": "Data", "methods": "Method", "method": "Method", "tools": "Tools", "tool": "Tools", "software": "Tools" };
+  function tidyDesc(t) {
+    var parts = String(t || "").replace(/\s+/g, " ").trim().split(/\b(data sources?|data|source|methods?|tools?|software)\s*:\s*/i);
+    var dot = function (s) { s = s.trim().replace(/[\s.;,]+$/, ""); return s ? s + "." : ""; };
+    var out = [dot(parts[0])];
+    for (var i = 1; i < parts.length - 1; i += 2) {
+      var v = parts[i + 1].trim().replace(/[\s.;,]+$/, "");
+      if (v) out.push(LABELS[parts[i].toLowerCase()] + ": " + v.charAt(0).toUpperCase() + v.slice(1) + ".");
+    }
+    return out.filter(Boolean).join(" ");
+  }
   // Links typed into Pages CMS: only web, email and site links are allowed (never javascript: or data:).
   function safeUrl(u) { u = String(u || "").trim(); return /^(https?:\/\/|mailto:|\/|#|[a-z0-9_.\/-]+$)/i.test(u) && !/^(javascript|data|vbscript):/i.test(u) ? u : "#"; }
   // Each map has its own page, maps/<name>.html, made by the page generator with the same naming rule.
@@ -151,7 +164,7 @@
         '<img src="' + esc(src(m.image)) + '"' + dims(m.image) + ' alt="' + esc(m.image_alt || m.title + ", map by Md Sabbir Islam") + '" loading="lazy">' +
         '<span class="shot__zoom" aria-hidden="true">' + icon("expand") + "View full size</span></button>" +
         '<figcaption><p class="shot__top"><span class="shot__title">' + mapLink(m) + '</span><span class="mono shot__year">' + esc(m.year) + "</span></p>" +
-        '<p class="shot__meta visually-hidden">' + esc(m.description) + "</p></figcaption></figure>";
+        '<p class="shot__meta visually-hidden">' + esc(tidyDesc(m.description)) + "</p></figcaption></figure>";
     }).join("");
   }
 
@@ -281,7 +294,7 @@
         '<img src="' + esc(src(p.image)) + '"' + dims(p.image) + ' alt="' + esc(p.image_alt || p.title + ", map by Md Sabbir Islam") + '" loading="lazy">' +
         '<span class="shot__zoom" aria-hidden="true">' + icon("expand") + "View full size</span></button>" +
         '<figcaption><p class="shot__top"><span class="shot__title">' + mapLink(p) + '</span><span class="mono shot__year">' + esc(p.year) + "</span></p>" +
-        '<p class="shot__meta">' + esc(p.description) + "</p>" + code + "</figcaption></figure>";
+        '<p class="shot__meta">' + esc(tidyDesc(p.description)) + "</p>" + code + "</figcaption></figure>";
     }).join("");
     renderChips(withImg);
     var more = document.querySelector('[data-render="projects-more"]');
@@ -289,7 +302,7 @@
     if (more && noImg.length) {
       more.innerHTML = noImg.map(function (p) {
         var code = p.code ? ' <a class="link" href="' + esc(safeUrl(p.code)) + '" target="_blank" rel="noopener">Code' + icon("arrow") + "</a>" : "";
-        return '<li><p class="more__title">' + esc(p.title) + '</p><p class="more__meta">' + esc(p.description) + code + "</p></li>";
+        return '<li><p class="more__title">' + esc(p.title) + '</p><p class="more__meta">' + esc(tidyDesc(p.description)) + code + "</p></li>";
       }).join("");
       if (wrap) wrap.hidden = false;
     }

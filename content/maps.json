@@ -113,7 +113,7 @@
     "tags": [
       "Hazards and climate"
     ],
-    "description": "12 major storm tracks from 1970 to 2024 turned into a severity-weighted exposure corridor. geopandas, scipy, matplotlib",
+    "description": "12 major storm tracks from 1970 to 2024 turned into a severity-weighted exposure corridor. Tools: geopandas, scipy, matplotlib",
     "image": "/assets/img/work/cyclone-tracks-bangladesh.webp",
     "image_alt": "Map of Bangladesh showing 12 historical cyclone tracks from 1970 to 2024 over a coloured exposure corridor"
   },

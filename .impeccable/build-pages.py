@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os, re, glob, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20261019a"   # bump to force browsers to load new CSS/JS
+VER = "20261019b"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -153,7 +153,7 @@ def page(fname, title, desc, body, extra_head="", extra_js="", og=None):
       </div>
     </div>
     <div class="wrap site-foot__base">
-      <p data-site="footer">&copy; 2026 Md Sabbir Islam (Sabbir Islam Sojib). Pabna University of Science and Technology, Bangladesh.</p>
+      <p data-site="footer">&copy; 2026 Md Sabbir Islam (Sabbir Islam Sojib), PUST, Bangladesh.</p>
       <a class="site-foot__top" href="#main">Back to top{icon("arrow-right", "i i--up")}</a>
     </div>
   </footer>
@@ -344,7 +344,7 @@ write("gallery.html", page("gallery.html","Gallery | Md Sabbir Islam","Photos of
       <div class="wrap">
         <header class="page-head">
           <h1 class="page-head__title" data-site="gallery_title">Gallery</h1>
-          <p class="page-head__lede" data-site="gallery_intro">Moments from conferences, fieldwork and the lab.</p>
+          <p class="page-head__lede" data-site="gallery_intro">Photos from conferences, fieldwork and community events.</p>
         </header>
       </div>
     </div>
@@ -522,6 +522,11 @@ write("assets/data/image-sizes.json", json.dumps(image_sizes(), indent=0) + "\n"
 
 # ======================= One page per map (maps/<slug>.html), for search engines and sharing =======================
 LABELS = {"data source": "Data", "data sources": "Data", "data": "Data", "source": "Data", "method": "Method", "methods": "Method", "tools": "Tools", "tool": "Tools", "software": "Tools"}
+def tidy_desc(text):
+    """The description as tidy sentences: "Story. Data: X. Method: Y. Tools: Z." (matches tidyDesc() in site.js)"""
+    story, facts = split_desc(text)
+    story = story.rstrip(" .;,")
+    return " ".join(([story + "."] if story else []) + [f"{k}: {v.rstrip(' .;,')}." for k, v in facts])
 def split_desc(text):
     """Split a map description into its story and labelled facts (Data, Method, Tools), as typed in Pages CMS."""
     text = str(text or "").strip()
@@ -549,7 +554,7 @@ def map_pages():
         ptitle = f"{m['title']} | Map by Md Sabbir Islam" if len(m["title"]) <= 38 else f"{m['title']} | Md Sabbir Islam"
         story, facts = split_desc(m.get("description"))
         about = " ".join(str(m.get("about") or "").split())
-        lead = story or about or f'{m["title"]}, a map by Md Sabbir Islam, a remote sensing researcher at Pabna University of Science and Technology, Bangladesh.'
+        lead = story or about or tidy_desc(m.get("description")) or f'{m["title"]}, a map by Md Sabbir Islam.'
         desc = clip(f'{m["title"]}. A map by Md Sabbir Islam, Bangladesh. {story or about} ' + " ".join(f"{k}: {v}." for k, v in facts))
         same = [o for o in maps if o is not m and set(o.get("tags") or []) & set(tags)]
         others = (same + [o for o in maps if o is not m and o not in same])[:4]
@@ -560,7 +565,7 @@ def map_pages():
             f'<article class="pcard"><div class="mat pcard__media" aria-hidden="true"><img src="/{o["image"].lstrip("/")}" width="{ow}" height="{oh}" alt="" loading="lazy"></div>'
             f'<div class="pcard__top"><h3 class="pcard__title"><a href="/maps/{slug(o["title"])}.html">{_html.escape(o["title"])}</a></h3>'
             f'<span class="mono shot__year">{_html.escape(str(o.get("year", "")))}</span></div>'
-            f'<p class="pcard__text">{_html.escape(clip(o.get("description", ""), 110))}</p></article>'
+            f'<p class="pcard__text">{_html.escape(clip(tidy_desc(o.get("description", "")), 110))}</p></article>'
             for o in others for ow, oh in [image_dims("/" + o["image"].lstrip("/"))])
         data = {"@context": "https://schema.org", "@type": "Map", "name": m["title"], "description": " ".join(filter(None, [lead, about if about != lead else ""] + [f"{k}: {v}." for k, v in facts])),
                 "url": SITE + "maps/" + name + ".html", "author": AUTHOR, "creator": AUTHOR,
@@ -591,7 +596,8 @@ def map_pages():
         </button>
         <figcaption>
           <p class="shot__top"><span class="shot__title">{_html.escape(m["title"])}</span><span class="mono shot__year">{_html.escape(str(m.get("year", "")))}</span></p>
-          <p class="shot__meta">Map by Md Sabbir Islam. {_html.escape(lead)}</p>
+          <p class="mapdetail__by">Map by Md Sabbir Islam</p>
+          <p class="shot__meta" hidden>{_html.escape(lead)}</p>
           {tag_line}
         </figcaption>
       </figure>
