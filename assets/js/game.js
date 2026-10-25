@@ -328,7 +328,7 @@
         if (h.q.feature) L.geoJSON(h.q.feature, { interactive: false, style: { color: "#FACC15", weight: 2, fillColor: "#FACC15", fillOpacity: 0.22 } }).addTo(answerLayer);
         else L.marker(h.q.at, { icon: pinIcon("gpin--answer"), interactive: false }).addTo(answerLayer);
         L.marker(h.guess, { icon: pinIcon("gpin--guess"), interactive: false }).addTo(answerLayer)
-          .bindTooltip(h.name, { permanent: true, direction: "right", offset: [10, 0], className: "gtip" });
+          .bindTooltip(esc(h.name), { permanent: true, direction: "right", offset: [10, 0], className: "gtip" });
       });
       map.flyToBounds(view(), { padding: [6, 6], duration: 0.9 });
       show("end"); drawDots();

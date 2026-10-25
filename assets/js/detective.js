@@ -200,7 +200,7 @@
       marker = L.marker(q.at, {
         icon: L.divIcon({ className: "", html: '<span class="gpin gpin--answer"></span>', iconSize: [26, 26], iconAnchor: [13, 13] }),
         interactive: false, keyboard: false
-      }).addTo(map).bindTooltip(q.name, { permanent: true, direction: "right", offset: [12, 0], className: "gtip" });
+      }).addTo(map).bindTooltip(esc(q.name), { permanent: true, direction: "right", offset: [12, 0], className: "gtip" });
       map.setView(q.at, Math.max(3, q.zoom - 4), { animate: true });
       round++;
       el.next.textContent = round >= queue.length ? "See your score" : "Next place";
