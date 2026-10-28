@@ -88,6 +88,7 @@
     "year": "2026",
     "date": "2026-10-28",
     "description": "StudyMap makes the location map for a paper or thesis. Type a place name, pick your journal, and you get a finished figure with the study area, an inset, coordinates, a scale bar and a north arrow. Export it as PDF, SVG, TIFF or PNG.",
+    "tools": "Python, Gis, Cartography",
     "repo": "https://github.com/Sabbir0Sojib/Studymap",
     "image": "/assets/img/image-1793197438219.webp"
   }
