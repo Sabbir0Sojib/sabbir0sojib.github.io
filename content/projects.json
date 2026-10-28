@@ -35,9 +35,7 @@
     "date": "2026-08-28",
     "description": "Code for my thesis: a canopy model trained on UAV imagery labels a city-wide satellite classifier, then crowns are converted to biomass, carbon and ward statistics for Pabna Municipality.",
     "tools": "Python, PyTorch, Random Forest, UAV",
-    "repo": "https://github.com/Sabbir0Sojib/Pabna_Urban_Forest",
-    "image": "",
-    "image_alt": ""
+    "repo": "https://github.com/Sabbir0Sojib/Pabna_Urban_Forest"
   },
   {
     "title": "CVI-HazardFusion",
@@ -45,9 +43,7 @@
     "date": "2026-03-26",
     "description": "Fuses the Climate Vulnerability Index with satellite flood, drought and landslide signals into a Dynamic Risk Score for all 64 districts of Bangladesh.",
     "tools": "Python, Google Earth Engine, Sentinel-1, MODIS, CHIRPS",
-    "repo": "https://github.com/Sabbir0Sojib/CVI_Hazard_Fusion",
-    "image": "",
-    "image_alt": ""
+    "repo": "https://github.com/Sabbir0Sojib/CVI_Hazard_Fusion"
   },
   {
     "title": "Bangladesh Temperature Map Generator",
@@ -85,8 +81,14 @@
     "date": "2025-03-15",
     "description": "Harmonic regression on Landsat 8 time series for Pabna District to model seasonal land surface change.",
     "tools": "Google Earth Engine, Landsat 8",
-    "repo": "https://github.com/Sabbir0Sojib/Landsat8-Harmonic-Modeling-",
-    "image": "",
-    "image_alt": ""
+    "repo": "https://github.com/Sabbir0Sojib/Landsat8-Harmonic-Modeling-"
+  },
+  {
+    "title": "Studymap",
+    "year": "2026",
+    "date": "2026-10-28",
+    "description": "StudyMap makes the location map for a paper or thesis. Type a place name, pick your journal, and you get a finished figure with the study area, an inset, coordinates, a scale bar and a north arrow. Export it as PDF, SVG, TIFF or PNG.",
+    "repo": "https://github.com/Sabbir0Sojib/Studymap",
+    "image": "/assets/img/image-1793197438219.png"
   }
 ]
