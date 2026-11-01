@@ -227,5 +227,15 @@
       "Land and terrain"
     ],
     "description": "Time series harmonic regression."
+  },
+  {
+    "title": "Monsoon Sediment Plume of the GBM Delta",
+    "year": "2003–2025",
+    "date": "2026-11-01",
+    "tags": [
+      "Water"
+    ],
+    "description": "Data Source: MODIS,  Sentinel-2, JRC Global Surface Water\nMethod: Satellite-derived suspended sediment (Nechad algorithm)\nTools: Python (Microsoft Planetary Computer, Kaggle), QGIS",
+    "image": "/assets/img/work/Final Monsoon.webp"
   }
 ]
