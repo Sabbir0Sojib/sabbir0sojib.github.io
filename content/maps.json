@@ -234,5 +234,15 @@
     "date": "2026-11-02",
     "description": "Data Source: MODIS,  Sentinel-2, JRC Global Surface Water\nMethod: Satellite-derived suspended sediment (Nechad algorithm)\nTools: Python (Microsoft Planetary Computer, Kaggle), QGIS",
     "image": "/assets/img/work/Final Monsoon.webp"
+  },
+  {
+    "title": "Bangladesh Railway Intercity Network and Travel Time from Dhaka",
+    "year": "2026",
+    "date": "2026-11-17",
+    "tags": [
+      "Creative"
+    ],
+    "description": "Data Source: OpenStreetMap, Bangladesh Railway intercity timetable\nMethod: Octilinear schematic network design\nTools: Python (PyQGIS), QGIS",
+    "image": "/assets/img/work/BD_Railway_Map_A4_600dpi.png"
   }
 ]
