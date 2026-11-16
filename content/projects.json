@@ -90,6 +90,7 @@
     "description": "StudyMap makes the location map for a paper or thesis. Type a place name, pick your journal, and you get a finished figure with the study area, an inset, coordinates, a scale bar and a north arrow. Export it as PDF, SVG, TIFF or PNG.",
     "tools": "Python, Gis, Cartography",
     "repo": "https://github.com/Sabbir0Sojib/Studymap",
-    "image": "/assets/img/image-1793197438219.webp"
+    "image": "/assets/img/work/studymap-study-area-location-map-maker.webp",
+    "image_alt": "StudyMap web app making a study area map of Dhaka District, with an inset of Bangladesh, coordinates, a legend, a scale bar and a north arrow on a journal-sized page."
   }
 ]

@@ -51,7 +51,8 @@
       "Land and terrain"
     ],
     "description": "Data Source: University of Maryland, Hansen Global Forest Change v1.13\nMethod: Annual loss year classification (30 m, canopy ≥30% forest baseline)",
-    "image": "/assets/img/work/southeastern-bangladesh-tree-cover-loss-2001-2025.webp"
+    "image": "/assets/img/work/southeastern-bangladesh-tree-cover-loss-2001-2025.webp",
+    "image_alt": "Map of tree cover loss from 2001 to 2025 across Khagrachhari, Rangamati, Bandarban, Chattogram and Cox's Bazar, with loss coloured by year from yellow to dark red over green remaining forest."
   },
   {
     "title": "Elevation, southeastern Bangladesh",
@@ -233,7 +234,8 @@
     "year": "2003-2025",
     "date": "2026-11-02",
     "description": "Data Source: MODIS,  Sentinel-2, JRC Global Surface Water\nMethod: Satellite-derived suspended sediment (Nechad algorithm)\nTools: Python (Microsoft Planetary Computer, Kaggle), QGIS",
-    "image": "/assets/img/work/Final Monsoon.webp"
+    "image": "/assets/img/work/ganges-brahmaputra-meghna-delta-monsoon-sediment-plume.webp",
+    "image_alt": "Satellite map of the monsoon sediment plume spreading from the Ganges-Brahmaputra-Meghna delta into the Bay of Bengal, with high sediment in red near the coast fading to blue offshore."
   },
   {
     "title": "Bangladesh Railway Intercity Network and Travel Time from Dhaka",

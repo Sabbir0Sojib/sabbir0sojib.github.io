@@ -292,7 +292,7 @@ write("index.html", page("index.html","Md Sabbir Islam | GIS and Remote Sensing 
 
 {LIGHTBOX}""", extra_head=person_jsonld()))
 
-write("research.html", page("research.html","Research and publications | Md Sabbir Islam","Research by Md Sabbir Islam: urban tree mapping with UAV imagery and deep learning, lightning and land cover in Bangladesh, and air quality in Iran.", f"""    <div class="band">
+write("research.html", page("research.html","GIS and Remote Sensing Research and Publications | Md Sabbir Islam","Research by Md Sabbir Islam: urban tree mapping with UAV imagery and deep learning, lightning and land cover in Bangladesh, and air quality in Iran.", f"""    <div class="band">
       <div class="wrap">
         <header class="page-head">
           <h1 class="page-head__title" data-site="research_title">Research</h1>
@@ -342,7 +342,7 @@ write("maps.html", page("maps.html","GIS Maps of Bangladesh | Md Sabbir Islam","
 
 {LIGHTBOX}""", extra_head=maps_jsonld()))
 
-write("gallery.html", page("gallery.html","Gallery | Md Sabbir Islam","Photos of Md Sabbir Islam presenting research at EFAST 2026, ETSD 2026 and ICLESSD-2025, UAV fieldwork, PUST YouthMappers and a disaster hackathon.", f"""    <div class="band">
+write("gallery.html", page("gallery.html","Conference and Fieldwork Photos | Md Sabbir Islam","Photos of Md Sabbir Islam presenting research at EFAST 2026, ETSD 2026 and ICLESSD-2025, UAV fieldwork, PUST YouthMappers and a disaster hackathon.", f"""    <div class="band">
       <div class="wrap">
         <header class="page-head">
           <h1 class="page-head__title" data-site="gallery_title">Gallery</h1>
