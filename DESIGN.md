@@ -253,7 +253,7 @@ Flat. The only shadows: the facts card over the hero edge, the print shadow unde
 - **Facts card:** white card overlapping the hero's lower edge; each fact has a yellow icon circle (Phosphor: graduation cap, flask, target, map pin), a small label, the value in serif and an optional small mono note in green (coordinates under Based in). Columns sized to the text (1.25 / 0.95 / 1.3 / 0.9, for Studying, Lab, Research focus, Based in); 2 columns on tablets; on phones each fact is a row with the icon on the left.
 - **Latest maps (Home):** the three newest maps: one lead map on the left, two on the right, each on a mat; click opens the viewer.
 - **Recent research (Home):** the three newest items as short citations: year, type and status, serif title, italic venue. All equal.
-- **Code projects (Home):** 2 by 2 cards: preview on a mat (or the repository path), serif title, year, one-line description, tools in mono; the whole card links to GitHub.
+- **Projects (Home):** 2 by 2 cards: preview on a mat (or the repository path), serif title, year, one-line description, tools in mono; the whole card links to GitHub.
 - **Skills (Home):** one white panel with the skill groups in three columns.
 - **Interests, awards, languages (Home):** three columns side by side under one rule.
 - **Projects page:** one row per repository: preview on a mat (or the repository path with a GitHub mark when there is no image), serif title, year, description, tool tags and the repository link.

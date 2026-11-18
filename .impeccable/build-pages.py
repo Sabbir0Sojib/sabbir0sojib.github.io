@@ -277,7 +277,7 @@ write("index.html", page("index.html","Md Sabbir Islam | GIS and Remote Sensing 
 
       <section class="home-sec" aria-labelledby="h-projects">
         <div class="sec-head">
-          <h2 class="sec-title" id="h-projects" data-site="home_projects_title">Code projects</h2>
+          <h2 class="sec-title" id="h-projects" data-site="home_projects_title">Projects</h2>
           <a class="more-link" href="projects.html">See all projects{NEXT}</a>
         </div>
         <div class="pgrid" data-render="home-projects" aria-busy="true"></div>
@@ -311,7 +311,7 @@ write("projects.html", page("projects.html","GIS and remote sensing projects on 
       <div class="wrap">
         <header class="page-head">
           <h1 class="page-head__title" data-site="projects_title">Projects</h1>
-          <p class="page-head__lede" data-site="projects_intro">Code projects with open repositories on GitHub, newest first.</p>
+          <p class="page-head__lede" data-site="projects_intro">Projects with open repositories on GitHub, newest first.</p>
         </header>
       </div>
     </div>
