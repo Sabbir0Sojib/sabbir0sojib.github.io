@@ -16,9 +16,9 @@
   "home_research_title": "Recent research",
   "home_projects_title": "Projects",
   "footer_tagline": "Maps, research and code on remote sensing and geospatial deep learning in Bangladesh.",
-  "notfound_title": "This page is off the map.",
+  "notfound_title": "This page is off the map",
   "notfound_text": "The page you are looking for does not exist or has moved.",
   "fun_howto_title": "How to play",
-  "fun_howto": "Pick a game and a region, Bangladesh or the whole world. In Pin the Place, tap the map to drop a pin and lock in your guess: a pin inside the right area, or right on the landmark, scores 1000 points, and the further away it lands, the fewer points you get. In Satellite Detective, name the place you see from above; zooming out helps, but lowers the points.",
+  "fun_howto": "Pick a game and a region, Bangladesh or the whole world. In Pin the Place, tap the map to drop a pin and lock in your guess: a pin inside the right area, or right on the landmark, scores 1000 points, and the further away it lands, the fewer points you get. In Satellite Detective, name the place you see from above; zooming out helps, but lowers the points (1000, 600 or 300). Bangladesh covers 8 divisions, 64 districts, 544 upazilas and famous landmarks; World covers 167 countries and famous places.",
   "fun_places_title": "Landmarks in the games"
 }

@@ -233,7 +233,7 @@ Tracking stays between -0.01em and -0.03em on serif headings; body text never tr
 
 ## Layout
 
-A centred 1200px column (Maps page 1360px). Page titles sit in a green band with generous padding; content follows on paper. On Home the facts card overlaps the hero's lower edge; sections are separated by 1px rules with 44 to 80px of space; side-heading sections use a 15rem title column. Side headings collapse below 960px, the hero, grids and the utility bar below 820px (the header then shows a yellow Menu pill that opens a green dropdown).
+A centred 1200px column (Maps page 1360px). Page titles sit in a green band with generous padding; content follows on paper. On Home the facts card overlaps the hero's lower edge; sections are separated by 44 to 80px of space, not divider lines; side-heading sections use a 15rem title column. Side headings collapse below 960px, the hero, grids and the utility bar below 820px (the header then shows a yellow Menu pill that opens a green dropdown).
 
 ## Elevation & Depth
 
@@ -250,23 +250,23 @@ Flat. The only shadows: the facts card over the hero edge, the print shadow unde
 - **Header:** green, sticky; white serif name left, white page links with a yellow underline on hover and on the current page, and a yellow Email me pill. Up to 820px: a yellow Menu pill that opens a full-width green dropdown.
 - **Page band:** green band with the terrain on the right (fading out on the left), white serif page title and a green-tinted intro line.
 - **Hero (Home):** on the green band, at most four text elements (Taste rule): the name in display serif, the role line in yellow, the bio (max 20 words), and two buttons with different intents (yellow See all maps, white-outline Read all research); photo on the right, no caption. On load the terrain settles in and the text rises in sequence; this is the site's only entrance animation.
-- **Facts card:** white card overlapping the hero's lower edge; each fact has a yellow icon circle (Phosphor: graduation cap, flask, target, map pin), a small label, the value in serif and an optional small mono note in green (coordinates under Based in). Columns sized to the text (1.25 / 0.95 / 1.3 / 0.9, for Studying, Lab, Research focus, Based in); 2 columns on tablets; on phones each fact is a row with the icon on the left.
+- **Facts card:** white card overlapping the hero's lower edge; each fact has a yellow icon circle (Phosphor: graduation cap, flask, target, map pin), a small label, the value in serif and an optional small green note with tabular figures (coordinates under Based in). Columns sized to the text (1.25 / 0.95 / 1.3 / 0.9, for Studying, Lab, Research focus, Based in); 2 columns on tablets; on phones each fact is a row with the icon on the left.
 - **Latest maps (Home):** the three newest maps: one lead map on the left, two on the right, each on a mat; click opens the viewer.
 - **Recent research (Home):** the three newest items as short citations: year, type and status, serif title, italic venue. All equal.
-- **Projects (Home):** 2 by 2 cards: preview on a mat (or the repository path), serif title, year, one-line description, tools in mono; the whole card links to GitHub.
+- **Projects (Home):** 2 by 2 cards: preview on a mat (or a GitHub mark), serif title, year, one-line description, tools as a quiet comma list; the whole card links to GitHub.
 - **Skills (Home):** one white panel with the skill groups in three columns.
 - **Interests, awards, languages (Home):** three columns side by side under one rule.
-- **Projects page:** one row per repository: preview on a mat (or the repository path with a GitHub mark when there is no image), serif title, year, description, tool tags and the repository link.
+- **Projects page:** one row per repository: preview on a mat (or a GitHub mark when there is no image), serif title, year, description, tools as a quiet comma list and a View the code on GitHub link. Rows are separated by space, not lines; no repository paths in code font.
 - **Maps page (map wall):** two columns, each map whole on its mat at full column width, placed in the shorter column in date order so reading order stays newest first. Filter chips are built from the tags in use.
-- **Map page (`maps/<name>.html`):** one per map, generated. Page band with the map title and description; the map whole on its mat (at most 82% of the screen height, click opens the viewer); caption with year, description and quiet tags; yellow Open the full image pill and a See all maps button; then More maps as 2 by 2 cards (title links to that map's page). Map titles on Home and Maps link here. Below the buttons: About this map (serif section title, optional longer story, then a ruled list of facts with muted labels: Made by, Year, Topic, Data, Method, Tools; one column on phones) and a muted Using this map line linking to the contact section.
+- **Map page (`maps/<name>.html`):** one per map, generated. Page band with the map title and description; the map whole on its mat (at most 82% of the screen height, click opens the viewer); no visible caption (the band already shows title and description, the facts show year, author and topic); yellow Open the full image pill; then More maps as 2 by 2 cards (title links to that map's page). Map titles on Home and Maps link here. Below the buttons: About this map (serif section title, optional longer story, then a ruled list of facts with muted labels: Made by, Year, Topic, Data, Method, Tools; one column on phones) and a muted Using this map line linking to the contact section.
 - **Gallery page:** photos grouped by event. Each group: the event name in serif (sticky on the left from 900px, above the photos on phones) and a tight photo grid (8 to 10px gaps, 10px radius, photos cropped to fill). The first photo leads (2 by 2) in groups of 3 to 5; pairs alternate a wide and a narrow photo; 6 or more photos become an even 3-column grid. No visible captions: title and caption show in the viewer. A View chip appears on hover.
 - **Viewer (lightbox):** full screen on a very dark green (`--viewer-bg`). Title and buttons (open original, previous, next, close) in a bar at the top, the caption centred at the bottom, and the photo or map fitted whole in between, whatever its shape. Click to zoom in, click again to fit.
-- **Research page:** academic list grouped by type with a count badge and a 2px ink rule; numbered entries in citation form (owner bold). No cards, no filters. An entry with a poster shows a 150px preview on a mat at the right (below the text on phones) that opens in the viewer; a PDF adds Open PDF and Download PDF links under the note.
+- **Research page:** academic list grouped by type (serif group heading, no count badge, no rules); numbered entries (plain "1.") in citation form (owner bold); status (Under review, Presented) as plain words, green when done, not a pill. No cards, no filters. An entry with a poster shows a 150px preview on a mat at the right (below the text on phones) that opens in the viewer; a PDF adds Open PDF and Download PDF links under the note.
 - **Contact (Home):** on the paper page under a hairline (not a green band, so Home has one green block at the top and the footer at the end): big serif title with the note under it, then white cards (yellow icon circle, muted label, value, copy button).
 - **Footer:** dark green; serif name and tagline, all pages, all profiles (yellow column headings), then the copyright line and Back to top.
-- **404 page:** a tall green band with the terrain, a yellow mono "404", serif title "This page is off the map.", one line of text and two buttons (Go to the home page, See my maps).
+- **404 page:** a tall green band with the terrain, a yellow mono "404", serif title "This page is off the map" (no period in titles), one line of text and two buttons (Go to the home page, See my maps).
 - **Link preview card (1200x630):** green with terrain, name in display serif, role in yellow, university line, the site address after a short yellow bar, photo on the right.
-- **Fun page:** two game tabs as white cards (icon circle turns yellow on the active one, forest outline). Each game sits in the same frame: a surface bar with the Bangladesh / World switch (white segmented control, forest fill when on) and level tabs, a 360px panel and the satellite map. Satellite Detective answers are full-width buttons (2 columns on phones, map above the panel); the right one turns forest green, a wrong pick is struck through. How to play lists both landmark sets as quiet tags.
+- **Fun page:** two game tabs as white cards (icon circle turns yellow on the active one, forest outline). Each game sits in the same frame: a surface bar with the Bangladesh / World switch (white segmented control, forest fill when on) and level tabs, a 360px panel and the satellite map. Satellite Detective answers are full-width buttons (2 columns on phones, map above the panel); the right one turns forest green, a wrong pick is struck through. How to play is one paragraph (it includes the level counts) and lists both landmark sets as plain names in two columns.
 - **Pin the Place / Satellite Detective:** see CLAUDE.md for levels and scoring.
 
 ## Do's and Don'ts
@@ -284,3 +284,15 @@ Flat. The only shadows: the facts card over the hero edge, the print shadow unde
 - **Don't** put eyebrow labels above headings or number the sections.
 - **Don't** put a long statement headline in the hero; the name is the headline.
 - **Don't** add decorative patterns or empty diagrams; the terrain is real elevation data, and every other visual shows real work.
+
+## Anti-slop rules (2026-11-22)
+
+Checked against two "AI design slop" lists the owner shared. Keep to these:
+- No pills for labels: tags, statuses, counts and tool lists are plain text. Pills are only for buttons and the map filter chips.
+- Code font (JetBrains Mono) only for the 404 number. Years and numbers use the text font with tabular figures (`.num`, `.shot__year`).
+- Group with space, not divider lines. Lines stay only where they carry meaning (header, footer, form fields, the game frame).
+- No negative letter spacing below display size; display titles at most -0.01em.
+- Headings use `text-wrap: balance`; titles never end with a period.
+- No eyebrows, no ALL CAPS labels, no gradient backgrounds, no decorative numbering.
+- Inner radius = outer radius minus padding (6px controls inside a 10px frame with 4px padding).
+- Say a thing once: no caption, badge or label that repeats what a heading already says.

@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os, re, glob, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20261025a"   # bump to force browsers to load new CSS/JS
+VER = "20261122a"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -23,7 +23,7 @@ def ld(data):
 
 def clip(text, n=158):
     text = " ".join(str(text).split())
-    return text if len(text) <= n else text[:n].rsplit(" ", 1)[0].rstrip(",;:") + "…"
+    return text if len(text) <= n else text[:n].rsplit(" ", 1)[0].rstrip(",;:.") + "…"
 
 AUTHOR = {"@type": "Person", "name": "Md Sabbir Islam", "url": "https://sabbir0sojib.github.io/"}
 
@@ -468,18 +468,12 @@ fun = f"""    <div class="band">
       <section class="howto" aria-labelledby="howto-title">
         <div class="howto__intro">
           <h2 class="sec-title" id="howto-title" data-site="fun_howto_title">How to play</h2>
-          <p data-site="fun_howto">Pick a game and a region, Bangladesh or the whole world. In Pin the Place, tap the map to drop a pin and lock in your guess: a pin inside the right area, or right on the landmark, scores 1000 points, and the further away it lands, the fewer points you get. In Satellite Detective, name the place you see from above; zooming out helps, but lowers the points.</p>
+          <p data-site="fun_howto">Pick a game and a region, Bangladesh or the whole world. In Pin the Place, tap the map to drop a pin and lock in your guess: a pin inside the right area, or right on the landmark, scores 1000 points, and the further away it lands, the fewer points you get. In Satellite Detective, name the place you see from above; zooming out helps, but lowers the points (1000, 600 or 300). Bangladesh covers 8 divisions, 64 districts, 544 upazilas and famous landmarks; World covers 167 countries and famous places.</p>
         </div>
-        <dl class="howto__levels">
-          <div><dt>Bangladesh</dt><dd>8 divisions, 64 districts, 544 upazilas and famous landmarks.</dd></div>
-          <div><dt>World</dt><dd>167 countries and famous places, from the Pyramids to Machu Picchu.</dd></div>
-          <div><dt>Pin the Place</dt><dd>Drop a pin on the unlabeled satellite map. Five places per game.</dd></div>
-          <div><dt>Satellite Detective</dt><dd>Four choices per view. 1000, 600 or 300 points depending on zoom.</dd></div>
-        </dl>
         <h3 class="howto__sub" data-site="fun_places_title">Landmarks in the games</h3>
         <div class="howto__lists">
-          <div><p class="howto__list-title">Bangladesh</p><ul class="tags tags--quiet" data-render="places" aria-busy="true"></ul></div>
-          <div><p class="howto__list-title">World</p><ul class="tags tags--quiet" data-render="world-places" aria-busy="true"></ul></div>
+          <div><p class="howto__list-title">Bangladesh</p><ul class="namelist" data-render="places" aria-busy="true"></ul></div>
+          <div><p class="howto__list-title">World</p><ul class="namelist" data-render="world-places" aria-busy="true"></ul></div>
         </div>
         <p class="howto__credit">Boundaries: geoBoundaries (BBS and OCHA, CC BY 3.0 IGO) and Natural Earth (public domain). Imagery: Esri World Imagery, with Sentinel-2 cloudless by EOX as a fallback.</p>
       </section>
@@ -493,7 +487,7 @@ nf = page("404.html", "Page not found | Md Sabbir Islam", "This page does not ex
       <div class="wrap">
         <div class="notfound">
           <p class="notfound__code mono">404</p>
-          <h1 class="notfound__title" id="nf-title" data-site="notfound_title">This page is off the map.</h1>
+          <h1 class="notfound__title" id="nf-title" data-site="notfound_title">This page is off the map</h1>
           <p class="notfound__text" data-site="notfound_text">The page you are looking for does not exist or has moved.</p>
           <div class="hero__actions">
             <a class="pill" href="index.html">Go to the home page{NEXT}</a>
@@ -566,7 +560,7 @@ def map_pages():
         cards = "".join(
             f'<article class="pcard"><div class="mat pcard__media" aria-hidden="true"><img src="/{o["image"].lstrip("/")}" width="{ow}" height="{oh}" alt="" loading="lazy"></div>'
             f'<div class="pcard__top"><h3 class="pcard__title"><a href="/maps/{slug(o["title"])}.html">{_html.escape(o["title"])}</a></h3>'
-            f'<span class="mono shot__year">{_html.escape(str(o.get("year", "")))}</span></div>'
+            f'<span class="shot__year">{_html.escape(str(o.get("year", "")))}</span></div>'
             f'<p class="pcard__text">{_html.escape(clip(tidy_desc(o.get("description", "")), 110))}</p></article>'
             for o in others for ow, oh in [image_dims("/" + o["image"].lstrip("/"))])
         data = {"@context": "https://schema.org", "@type": "Map", "name": m["title"], "description": " ".join(filter(None, [lead, about if about != lead else ""] + [f"{k}: {v}." for k, v in facts])),
@@ -580,8 +574,6 @@ def map_pages():
             {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE},
             {"@type": "ListItem", "position": 2, "name": "Maps", "item": SITE + "maps.html"},
             {"@type": "ListItem", "position": 3, "name": m["title"], "item": SITE + "maps/" + name + ".html"}]}
-        spans = " ".join('<span class="tag">' + _html.escape(t) + "</span>" for t in tags)
-        tag_line = '<p class="tags tags--quiet mapdetail__tags">' + spans + "</p>" if tags else ""
         body = f"""    <div class="band">
       <div class="wrap">
         <header class="page-head page-head--compact">
@@ -596,11 +588,9 @@ def map_pages():
           <img src="{img}" width="{w}" height="{h}" fetchpriority="high" alt="{_html.escape(alt)}">
           <span class="shot__zoom" aria-hidden="true">{icon("expand")}View full size</span>
         </button>
-        <figcaption>
-          <p class="shot__top"><span class="shot__title">{_html.escape(m["title"])}</span><span class="mono shot__year">{_html.escape(str(m.get("year", "")))}</span></p>
-          <p class="mapdetail__by">Map by Md Sabbir Islam</p>
-          <p class="shot__meta" hidden>{_html.escape(lead)}</p>
-          {tag_line}
+        <figcaption class="visually-hidden">
+          <span class="shot__title">{_html.escape(m["title"])}</span>
+          <span class="shot__meta">{_html.escape(lead)}</span>
         </figcaption>
       </figure>
       <p class="btn-row mapdetail__actions"><a class="pill" href="{img}" target="_blank" rel="noopener">Open the full image{ARROW}</a></p>

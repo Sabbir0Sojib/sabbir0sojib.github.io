@@ -106,7 +106,7 @@
   function renderGlance(el, p) {
     var facts = list(p.facts, function (f) {
       return '<div class="fact"><dt><span class="fact__icon">' + icon(factIcon(f)) + '</span><span class="fact__label">' + esc(f.label) + "</span></dt>" +
-        '<dd class="fact__value">' + esc(f.value) + "</dd>" + (f.note ? '<dd class="fact__note mono">' + esc(f.note) + "</dd>" : "") + "</div>";
+        '<dd class="fact__value">' + esc(f.value) + "</dd>" + (f.note ? '<dd class="fact__note num">' + esc(f.note) + "</dd>" : "") + "</div>";
     });
     if (facts) el.innerHTML = facts; else el.hidden = true;
   }
@@ -140,8 +140,8 @@
         esc(x.title) + '</h3><p class="timeline__org">' + esc(x.detail) + "</p></div></li>";
     });
     var skills = list(p.skills, function (x) { return "<div><dt>" + esc(x.group) + "</dt><dd>" + esc(x.items) + "</dd></div>"; });
-    var interests = list(p.interests, function (t) { return '<li class="tag">' + esc(t) + "</li>"; });
-    var awards = list(p.awards, function (x) { return '<li><span class="mono">' + esc(x.year) + "</span>" + esc(x.text) + "</li>"; });
+    var interests = list(p.interests, function (t) { return "<li>" + esc(t) + "</li>"; });
+    var awards = list(p.awards, function (x) { return '<li><span class="num">' + esc(x.year) + "</span>" + esc(x.text) + "</li>"; });
     var langs = list(p.languages, function (x) { return "<li>" + esc(x) + "</li>"; });
     var col = function (id, title, body) { return '<section aria-labelledby="' + id + '"><h2 class="trio__title" id="' + id + '">' + title + "</h2>" + body + "</section>"; };
     el.innerHTML =
@@ -149,7 +149,7 @@
       (skills ? '<section class="home-sec" aria-labelledby="skills"><div class="sec-head"><h2 class="sec-title" id="skills">Skills</h2></div>' +
         '<dl class="skill-panel">' + skills + "</dl></section>" : "") +
       (interests || awards || langs ? '<div class="trio">' +
-        (interests ? col("interests", "Research interests", '<ul class="tags">' + interests + "</ul>") : "") +
+        (interests ? col("interests", "Research interests", '<ul class="plain-list plain-list--cols">' + interests + "</ul>") : "") +
         (awards ? col("awards", "Awards", '<ul class="plain-list">' + awards + "</ul>") : "") +
         (langs ? col("languages", "Languages", '<ul class="plain-list">' + langs + "</ul>") : "") +
       "</div>" : "");
@@ -163,7 +163,7 @@
         '<button class="mat shot__btn" type="button" data-lightbox="h' + i + '" aria-label="Open ' + esc(m.title) + ' full size">' +
         '<img src="' + esc(src(m.image)) + '"' + dims(m.image) + ' alt="' + esc(m.image_alt || m.title + ", map by Md Sabbir Islam") + '" loading="lazy">' +
         '<span class="shot__zoom" aria-hidden="true">' + icon("expand") + "View full size</span></button>" +
-        '<figcaption><p class="shot__top"><span class="shot__title">' + mapLink(m) + '</span><span class="mono shot__year">' + esc(m.year) + "</span></p>" +
+        '<figcaption><p class="shot__top"><span class="shot__title">' + mapLink(m) + '</span><span class="shot__year">' + esc(m.year) + "</span></p>" +
         '<p class="shot__meta visually-hidden">' + esc(tidyDesc(m.description)) + "</p></figcaption></figure>";
     }).join("");
   }
@@ -173,7 +173,7 @@
     el.innerHTML = newestFirst(all).slice(0, 3).map(function (r) {
       var done = /presented|published|accepted/i.test(r.status || "");
       var title = r.link ? '<a href="' + esc(safeUrl(r.link)) + '" target="_blank" rel="noopener">' + esc(r.title) + "</a>" : esc(r.title);
-      return '<li class="cite"><p class="cite__meta"><span class="mono">' + esc(r.year) + "</span><span>" + esc(TYPE_LABEL[r.type] || TYPE_LABEL.other) + "</span>" +
+      return '<li class="cite"><p class="cite__meta"><span class="num">' + esc(r.year) + "</span><span>" + esc(TYPE_LABEL[r.type] || TYPE_LABEL.other) + "</span>" +
         (r.status ? '<span class="status' + (done ? " status--done" : "") + '">' + esc(r.status) + "</span>" : "") + "</p>" +
         '<p class="cite__title">' + title + "</p>" +
         (r.venue ? '<p class="cite__venue">' + esc(r.venue) + "</p>" : "") + "</li>";
@@ -184,13 +184,12 @@
   function renderHomeProjects(el, all) {
     el.innerHTML = newestFirst(all).slice(0, 4).map(function (p) {
       var tools = String(p.tools || "").split(",").map(function (t) { return t.trim(); }).filter(Boolean).join(", ");
-      var repoName = cleanUrl(p.repo).replace(/^github\.com\//, "");
       var media = p.image
         ? '<img src="' + esc(src(p.image)) + '"' + dims(p.image) + ' alt="" loading="lazy">'
-        : '<span class="proj__tile">' + icon("github") + "<span>" + esc(repoName) + "</span></span>";
+        : '<span class="proj__tile">' + icon("github") + "</span>";
       return '<article class="pcard"><div class="mat pcard__media" aria-hidden="true">' + media + "</div>" +
         '<div class="pcard__top"><h3 class="pcard__title"><a href="' + esc(safeUrl(p.repo)) + '" target="_blank" rel="noopener">' + esc(p.title) + "</a></h3>" +
-        '<span class="mono shot__year">' + esc(p.year) + "</span></div>" +
+        '<span class="shot__year">' + esc(p.year) + "</span></div>" +
         '<p class="pcard__text">' + esc(p.description) + "</p>" +
         (tools ? '<p class="pcard__tools">' + esc(tools) + "</p>" : "") + "</article>";
     }).join("");
@@ -208,7 +207,7 @@
       var items = list.filter(function (r) { return (r.type || "other") === g[0]; });
       if (!items.length) return "";
       return '<section class="pubgroup" aria-labelledby="pg-' + g[0] + '">' +
-        '<h2 class="pubgroup__title" id="pg-' + g[0] + '">' + g[1] + ' <span class="pubgroup__count">' + items.length + "</span></h2>" +
+        '<h2 class="pubgroup__title" id="pg-' + g[0] + '">' + g[1] + "</h2>" +
         '<ol class="publist">' + items.map(function (r, i) {
           var done = /presented|published|accepted/i.test(r.status || "");
           var status = r.status ? ' <span class="status' + (done ? " status--done" : "") + '">' + esc(r.status) + "</span>" : "";
@@ -221,7 +220,7 @@
             '<span class="shot__zoom" aria-hidden="true">' + icon("expand") + "View</span></button>" +
             '<figcaption hidden><span class="shot__title">' + esc(r.title) + '</span><span class="shot__meta">' + esc(r.venue || "") + "</span></figcaption></figure>" : "";
           return '<li class="pub' + (poster ? " pub--poster" : "") + '">' +
-            '<span class="pub__n">' + (i + 1) + "</span>" +
+            '<span class="pub__n">' + (i + 1) + ".</span>" +
             '<div class="pub__body">' +
               '<p class="pub__cite">' +
                 (r.authors ? '<span class="pub__authors">' + boldOwner(r.authors) + "</span> " : "") +
@@ -238,19 +237,17 @@
   function renderRepos(el, all) {
     var items = newestFirst(all);
     el.innerHTML = items.map(function (p) {
-      var tools = String(p.tools || "").split(",").map(function (t) { return t.trim(); }).filter(Boolean)
-        .map(function (t) { return '<li class="tag">' + esc(t) + "</li>"; }).join("");
-      var repoName = cleanUrl(p.repo).replace(/^github\.com\//, "");
+      var tools = String(p.tools || "").split(",").map(function (t) { return t.trim(); }).filter(Boolean).join(", ");
       var media = p.image
         ? '<img src="' + esc(src(p.image)) + '"' + dims(p.image) + ' alt="' + esc(p.image_alt || p.title) + '" loading="lazy">'
-        : '<span class="proj__tile">' + icon("github") + "<span>" + esc(repoName) + "</span></span>";
+        : '<span class="proj__tile">' + icon("github") + "</span>";
       return '<article class="proj">' +
         '<a class="mat proj__media" href="' + esc(safeUrl(p.repo)) + '" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">' + media + "</a>" +
         '<div class="proj__body">' +
-          '<div class="proj__top"><h2 class="proj__title"><a href="' + esc(safeUrl(p.repo)) + '" target="_blank" rel="noopener">' + esc(p.title) + '</a></h2><span class="mono shot__year">' + esc(p.year) + "</span></div>" +
+          '<div class="proj__top"><h2 class="proj__title"><a href="' + esc(safeUrl(p.repo)) + '" target="_blank" rel="noopener">' + esc(p.title) + '</a></h2><span class="shot__year">' + esc(p.year) + "</span></div>" +
           '<p class="proj__text">' + esc(p.description) + "</p>" +
-          (tools ? '<ul class="tags tags--quiet">' + tools + "</ul>" : "") +
-          '<a class="link" href="' + esc(safeUrl(p.repo)) + '" target="_blank" rel="noopener">' + icon("github") + '<span class="proj__repo">' + esc(repoName) + "</span>" + icon("arrow") + "</a>" +
+          (tools ? '<p class="pcard__tools">' + esc(tools) + "</p>" : "") +
+          '<a class="link" href="' + esc(safeUrl(p.repo)) + '" target="_blank" rel="noopener">' + icon("github") + "View the code on GitHub" + icon("arrow") + "</a>" +
         "</div></article>";
     }).join("");
     var empty = document.querySelector(".list-empty");
@@ -293,7 +290,7 @@
         '<button class="mat shot__btn" type="button" data-lightbox="p' + i + '" aria-label="Open ' + esc(p.title) + ' full size">' +
         '<img src="' + esc(src(p.image)) + '"' + dims(p.image) + ' alt="' + esc(p.image_alt || p.title + ", map by Md Sabbir Islam") + '" loading="lazy">' +
         '<span class="shot__zoom" aria-hidden="true">' + icon("expand") + "View full size</span></button>" +
-        '<figcaption><p class="shot__top"><span class="shot__title">' + mapLink(p) + '</span><span class="mono shot__year">' + esc(p.year) + "</span></p>" +
+        '<figcaption><p class="shot__top"><span class="shot__title">' + mapLink(p) + '</span><span class="shot__year">' + esc(p.year) + "</span></p>" +
         '<p class="shot__meta">' + esc(tidyDesc(p.description)) + "</p>" + code + "</figcaption></figure>";
     }).join("");
     renderChips(withImg);
@@ -310,7 +307,7 @@
 
   // Fun page: names of the places in the Landmarks level
   function renderPlaces(el, all) {
-    el.innerHTML = all.map(function (p) { return '<li class="tag">' + esc(p.name) + "</li>"; }).join("");
+    el.innerHTML = all.map(function (p) { return "<li>" + esc(p.name) + "</li>"; }).join("");
   }
 
   // Gallery: photos grouped by their Event (in the order they are listed), each group a tidy grid.
