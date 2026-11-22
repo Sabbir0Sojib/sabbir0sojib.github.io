@@ -247,5 +247,16 @@
     "description": "Data Source: OpenStreetMap, Bangladesh Railway intercity timetable\nMethod: Octilinear schematic network design\nTools: Python (PyQGIS), QGIS",
     "image": "/assets/img/work/bangladesh-railway-intercity-network-travel-time-from-dhaka.webp",
     "image_alt": "Schematic map of the Bangladesh Railway intercity network, with each line coloured and every station labelled with its travel time from Dhaka (Kamalapur)."
+  },
+  {
+    "title": "Minutes to a Ride",
+    "year": "2026",
+    "date": "2026-11-22",
+    "tags": [
+      "Cities"
+    ],
+    "description": "How long it takes to walk to public transport in Dhaka, Bangladesh: under 5 minutes, 5 to 10, 10 to 20 or more than 20 minutes to the nearest bus, metro rail, railway or launch stop. Data: OpenStreetMap (vector), WorldPop 2020. Tools: Google Colab, QGIS.",
+    "image": "/assets/img/work/dhaka-walking-time-to-public-transport.webp",
+    "image_alt": "Map of Dhaka showing walking time to the nearest public transport stop, with short walks in pink along the metro rail line and the old city, and long walks of over 20 minutes in dark grey across the eastern side"
   }
 ]
