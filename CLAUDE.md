@@ -99,7 +99,7 @@ Image paths in JSON start with `/assets/img/...` (Pages CMS writes them this way
 
 ## Design skills (installed in `.claude/skills/`)
 
-Use all four on design work:
+Use all of them on design work (the owner calls them "the 4 skills", now 5 with Unslop):
 1. **Taste** (`design-taste-frontend`, `minimalist-ui`, `redesign-existing-projects`): design read, redesign audit, pre-flight checklist (zero em dashes, one accent, no wrapped buttons, no scroll listeners, contrast).
 2. **Impeccable** (`impeccable`): reference guides in `.claude/skills/impeccable/reference/`, and the detector:
    `sh .claude/skills/impeccable/scripts/impeccable detect --json index.html research.html projects.html maps.html gallery.html fun.html assets/css/site.css`
@@ -107,6 +107,7 @@ Use all four on design work:
    Image provenance: `sh .claude/skills/impeccable/scripts/impeccable embed-prompt <img> --prompt "Origin: ..."`, check with `--scan assets/img`.
 3. **Playwright CLI** (`playwright-cli`, skill in `.claude/skills/playwright-cli`): screenshots and click tests at 1440 and 390 px widths. In cloud sessions the config `.playwright/cli.config.json` points at `/opt/pw-browsers/chromium`; on a local machine delete or edit that file.
 5. **Vercel Web Interface Guidelines** (`web-design-guidelines`, from vercel-labs/agent-skills): fetches the latest rules from `https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md` and reviews UI files against them (accessibility, focus, typography such as `…` and curly quotes, image sizes, touch, URL state). Skip its Title Case and "avoid first person" copy rules: the site uses sentence case and the owner writes in first person.
+6. **Unslop** (`unslop`, by Damir Sokolovsky, CC BY 4.0, from github.com/heydamir/unslop, copied into `.claude/skills/unslop` on 2026-11-22): audit against `references/signs.md`, then nine passes (spacing, color, icons, copy, type, layout, details, visuals, motion). This site counts as light slop, so use its polish mode: fix only what the audit finds and keep the palette, type and layout. Rules it added here: font weights at most 600, spacing on a 4px grid, no period on one-sentence intros, labels or buttons. Its "no italic" rule does not cover citation venues (academic style).
 4. **Awesome Design** (`.claude/design-references/<brand>/DESIGN.md`, 74 brands): consult for patterns. Used so far: Overlake School (owner's reference, not in the folder: green bands, yellow action pill, utility bar), Apple (work on a quiet pedestal, full footer), Pinterest (filter chips; Gallery: the photo is the card, 8px gutters, chrome out of the photo's way), Airbnb (Gallery: one lead photo with smaller ones, as on a listing page), Wired (equal research rows).
 
 Reinstall skills in a new project:
@@ -115,6 +116,7 @@ npx skills add https://github.com/Leonxlnx/taste-skill --skill design-taste-fron
 npx skills add pbakaus/impeccable --agent claude-code -y
 npm install -g @playwright/cli@latest && playwright-cli install --skills
 git clone --depth 1 https://github.com/VoltAgent/awesome-design-md && cp -r awesome-design-md/design-md .claude/design-references
+git clone --depth 1 https://github.com/heydamir/unslop && cp -r unslop/skills/unslop .claude/skills/unslop && cp unslop/LICENSE .claude/skills/unslop/
 ```
 
 ## Reusing this for a new portfolio

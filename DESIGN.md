@@ -296,3 +296,4 @@ Checked against two "AI design slop" lists the owner shared. Keep to these:
 - No eyebrows, no ALL CAPS labels, no gradient backgrounds, no decorative numbering.
 - Inner radius = outer radius minus padding (6px controls inside a 10px frame with 4px padding).
 - Say a thing once: no caption, badge or label that repeats what a heading already says.
+- From the Unslop skill (polish mode): font weights 400 to 600 only (no 650 or 700), spacing values on a 4px grid (2px only inside small controls), no period at the end of one-sentence intros, taglines, labels or buttons, no zoom on hover (gallery photos brighten slightly instead), the hero background fades in without scaling.

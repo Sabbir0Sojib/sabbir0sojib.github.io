@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os, re, glob, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20261122a"   # bump to force browsers to load new CSS/JS
+VER = "20261122c"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -136,7 +136,7 @@ def page(fname, title, desc, body, extra_head="", extra_js="", og=None):
     <div class="wrap site-foot__grid">
       <div class="site-foot__id">
         <p class="site-foot__name">Md Sabbir Islam</p>
-        <p class="site-foot__tag" data-site="footer_tagline">Maps, research and code on remote sensing and geospatial deep learning in Bangladesh.</p>
+        <p class="site-foot__tag" data-site="footer_tagline">Maps, research and code on remote sensing and geospatial deep learning in Bangladesh</p>
       </div>
       <nav aria-label="Footer">
         <p class="site-foot__h">Pages</p>
@@ -187,7 +187,7 @@ LIGHTBOX = f'''    <dialog class="lightbox" aria-labelledby="lb-title">
           <button class="icon-btn" type="button" data-lb-close aria-label="Close">{icon("close")}</button>
         </div>
       </div>
-      <div class="lightbox__view"><img class="lightbox__img" src="assets/img/work/cyclone-tracks-bangladesh.webp" alt=""></div>
+      <div class="lightbox__view"><img class="lightbox__img" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt=""></div>
       <p class="lightbox__meta"></p>
     </dialog>'''
 
@@ -296,7 +296,7 @@ write("research.html", page("research.html","GIS and Remote Sensing Research and
       <div class="wrap">
         <header class="page-head">
           <h1 class="page-head__title" data-site="research_title">Research</h1>
-          <p class="page-head__lede" data-site="research_intro">Papers, manuscripts and field work, newest first.</p>
+          <p class="page-head__lede" data-site="research_intro">Papers, manuscripts and field work, newest first</p>
         </header>
       </div>
     </div>
@@ -311,7 +311,7 @@ write("projects.html", page("projects.html","GIS and remote sensing projects on 
       <div class="wrap">
         <header class="page-head">
           <h1 class="page-head__title" data-site="projects_title">Projects</h1>
-          <p class="page-head__lede" data-site="projects_intro">Projects with open repositories on GitHub, newest first.</p>
+          <p class="page-head__lede" data-site="projects_intro">Projects with open repositories on GitHub, newest first</p>
         </header>
       </div>
     </div>
@@ -346,7 +346,7 @@ write("gallery.html", page("gallery.html","Conference and Fieldwork Photos | Md 
       <div class="wrap">
         <header class="page-head">
           <h1 class="page-head__title" data-site="gallery_title">Gallery</h1>
-          <p class="page-head__lede" data-site="gallery_intro">Photos from conferences, fieldwork and community events.</p>
+          <p class="page-head__lede" data-site="gallery_intro">Photos from conferences, fieldwork and community events</p>
         </header>
       </div>
     </div>
@@ -488,7 +488,7 @@ nf = page("404.html", "Page not found | Md Sabbir Islam", "This page does not ex
         <div class="notfound">
           <p class="notfound__code mono">404</p>
           <h1 class="notfound__title" id="nf-title" data-site="notfound_title">This page is off the map</h1>
-          <p class="notfound__text" data-site="notfound_text">The page you are looking for does not exist or has moved.</p>
+          <p class="notfound__text" data-site="notfound_text">The page you are looking for does not exist or has moved</p>
           <div class="hero__actions">
             <a class="pill" href="index.html">Go to the home page{NEXT}</a>
             <a class="btn btn--ghost" href="maps.html">See all maps</a>
@@ -588,7 +588,7 @@ def map_pages():
           <img src="{img}" width="{w}" height="{h}" fetchpriority="high" alt="{_html.escape(alt)}">
           <span class="shot__zoom" aria-hidden="true">{icon("expand")}View full size</span>
         </button>
-        <figcaption class="visually-hidden">
+        <figcaption hidden>
           <span class="shot__title">{_html.escape(m["title"])}</span>
           <span class="shot__meta">{_html.escape(lead)}</span>
         </figcaption>
