@@ -547,7 +547,9 @@ def map_pages():
         tags = [t for t in (m.get("tags") or []) if t]
         alt = m.get("image_alt") or f'{m["title"]}, map by Md Sabbir Islam'
         if "Sabbir" not in alt: alt = alt.rstrip(". ") + ". Map by Md Sabbir Islam."   # full name in every map's image description
-        ptitle = f"{m['title']} | Map by Md Sabbir Islam" if len(m["title"]) <= 38 else f"{m['title']} | Md Sabbir Islam"
+        # Google shows about 60 characters; very long map titles go without the name (Google adds the site name itself)
+        ptitle = (f"{m['title']} | Map by Md Sabbir Islam" if len(m["title"]) <= 38
+                  else f"{m['title']} | Md Sabbir Islam" if len(m["title"]) <= 46 else m["title"])
         story, facts = split_desc(m.get("description"))
         about = " ".join(str(m.get("about") or "").split())
         lead = story or about or tidy_desc(m.get("description")) or f'{m["title"]}, a map by Md Sabbir Islam.'
