@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os, re, glob, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20261122c"   # bump to force browsers to load new CSS/JS
+VER = "20261122d"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -572,6 +572,12 @@ def map_pages():
                 "image": {"@type": "ImageObject", "contentUrl": SITE + img.lstrip("/"), "width": w, "height": h,
                           "caption": alt, "creator": AUTHOR, "creditText": "Md Sabbir Islam",
                           "copyrightNotice": "Md Sabbir Islam", "acquireLicensePage": SITE + "#contact"}}
+        # Optional story map or interactive version (Pages CMS: link, link_label); only web addresses
+        link = str(m.get("link") or "").strip()
+        link = link if re.match(r"^https?://", link, re.I) else ""
+        link_label = str(m.get("link_label") or "").strip() or "Open the interactive map"
+        link_btn = (f'<a class="btn" href="{_html.escape(link, quote=True)}" target="_blank" rel="noopener">{_html.escape(link_label)}{ARROW}</a>' if link else "")
+        if link: data["subjectOf"] = {"@type": "CreativeWork", "name": link_label.replace("Open the ", "").capitalize(), "url": link}
         crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE},
             {"@type": "ListItem", "position": 2, "name": "Maps", "item": SITE + "maps.html"},
@@ -595,7 +601,7 @@ def map_pages():
           <span class="shot__meta">{_html.escape(lead)}</span>
         </figcaption>
       </figure>
-      <p class="btn-row mapdetail__actions"><a class="pill" href="{img}" target="_blank" rel="noopener">Open the full image{ARROW}</a></p>
+      <p class="btn-row mapdetail__actions"><a class="pill" href="{img}" target="_blank" rel="noopener">Open the full image{ARROW}</a>{link_btn}</p>
 
       <section class="mapabout" aria-labelledby="about-map">
         <h2 class="sec-title" id="about-map">About this map</h2>

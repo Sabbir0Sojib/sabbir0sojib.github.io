@@ -149,7 +149,7 @@ cite { font-style: normal; }
 
 .pill {
   display: inline-flex; align-items: center; gap: 8px;
-  height: 44px; padding: 0 20px; border: 0; border-radius: 999px;
+  height: 48px; padding: 0 20px; border: 0; border-radius: 999px;
   background: var(--sun); color: var(--ink);
   font-weight: 600; font-size: 0.9375rem; text-decoration: none; white-space: nowrap; cursor: pointer;
   transition: background-color 160ms var(--ease), transform 120ms;

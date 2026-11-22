@@ -78,6 +78,8 @@ content:
       - { name: about, label: "Longer story (optional, shown on the map's own page; helps Google)", type: text }
       - { name: image, label: Map image, type: image }
       - { name: image_alt, label: Image description (for screen readers), type: string }
+      - { name: link, label: "Story map or interactive map link (optional, for example an ArcGIS StoryMap)", type: string }
+      - { name: link_label, label: "Button text for that link (optional, default: Open the interactive map)", type: string }
 
   - name: research
     label: Research

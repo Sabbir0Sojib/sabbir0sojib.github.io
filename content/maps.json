@@ -257,6 +257,8 @@
     ],
     "description": "How long it takes to walk to public transport in Dhaka, Bangladesh: under 5 minutes, 5 to 10, 10 to 20 or more than 20 minutes to the nearest bus, metro rail, railway or launch stop. Data: OpenStreetMap (vector), WorldPop 2020. Tools: Google Colab, QGIS.",
     "image": "/assets/img/work/dhaka-walking-time-to-public-transport.webp",
-    "image_alt": "Map of Dhaka showing walking time to the nearest public transport stop, with short walks in pink along the metro rail line and the old city, and long walks of over 20 minutes in dark grey across the eastern side"
+    "image_alt": "Map of Dhaka showing walking time to the nearest public transport stop, with short walks in pink along the metro rail line and the old city, and long walks of over 20 minutes in dark grey across the eastern side",
+    "link": "https://arcg.is/aq08X2",
+    "link_label": "Open the story map"
   }
 ]
