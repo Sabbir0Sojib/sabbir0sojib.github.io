@@ -1,7 +1,7 @@
 # Page generator for sabbir0sojib.github.io. Run: python3 .impeccable/build-pages.py
 import os, re, glob, datetime, json, html as _html
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # the repository folder
-VER = "20261122d"   # bump to force browsers to load new CSS/JS
+VER = "20261125a"   # bump to force browsers to load new CSS/JS
 NAV = [("index.html","Profile"),("research.html","Research"),("projects.html","Projects"),("maps.html","Maps"),("gallery.html","Gallery"),("fun.html","Fun")]
 CUR = ' aria-current="page"'
 ORCID = "https://orcid.org/0009-0001-9474-9287"
@@ -63,7 +63,6 @@ def person_jsonld():
 SHARE = SITE + "assets/img/share-card.jpg"   # 1200x630 link preview, built from .impeccable/share-card.html
 def icon(n, cls="i"): return f'<svg class="{cls}" aria-hidden="true"><use href="assets/icons.svg?v={VER}#{n}"/></svg>'
 ARROW = icon("arrow")
-NEXT = icon("arrow-right")
 
 def page(fname, title, desc, body, extra_head="", extra_js="", og=None):
     url = SITE if fname in ("index.html", "404.html") else SITE + fname
@@ -156,7 +155,7 @@ def page(fname, title, desc, body, extra_head="", extra_js="", og=None):
     </div>
     <div class="wrap site-foot__base">
       <p data-site="footer">&copy; 2026 Md Sabbir Islam (Sabbir Islam Sojib), PUST, Bangladesh.</p>
-      <a class="site-foot__top" href="#main">Back to top{icon("arrow-right", "i i--up")}</a>
+      <a class="site-foot__top" href="#main">Back to top</a>
     </div>
   </footer>
 </body>
@@ -262,7 +261,7 @@ write("index.html", page("index.html","Md Sabbir Islam | GIS and Remote Sensing 
       <section class="home-sec" aria-labelledby="h-maps">
         <div class="sec-head">
           <h2 class="sec-title" id="h-maps" data-site="home_maps_title">Latest maps</h2>
-          <a class="more-link" href="maps.html"><span data-count="maps">See all maps</span>{NEXT}</a>
+          <a class="more-link" href="maps.html"><span data-count="maps">See all maps</span></a>
         </div>
         <div class="bento" data-render="home-maps" aria-busy="true"></div>
       </section>
@@ -270,7 +269,7 @@ write("index.html", page("index.html","Md Sabbir Islam | GIS and Remote Sensing 
       <section class="split" aria-labelledby="h-research">
         <div class="split__head">
           <h2 class="sec-title" id="h-research" data-site="home_research_title">Recent research</h2>
-          <a class="more-link" href="research.html">Read all research{NEXT}</a>
+          <a class="more-link" href="research.html">Read all research</a>
         </div>
         <ol class="cites" data-render="home-research" aria-busy="true"></ol>
       </section>
@@ -278,7 +277,7 @@ write("index.html", page("index.html","Md Sabbir Islam | GIS and Remote Sensing 
       <section class="home-sec" aria-labelledby="h-projects">
         <div class="sec-head">
           <h2 class="sec-title" id="h-projects" data-site="home_projects_title">Projects</h2>
-          <a class="more-link" href="projects.html">See all projects{NEXT}</a>
+          <a class="more-link" href="projects.html">See all projects</a>
         </div>
         <div class="pgrid" data-render="home-projects" aria-busy="true"></div>
       </section>
@@ -490,7 +489,7 @@ nf = page("404.html", "Page not found | Md Sabbir Islam", "This page does not ex
           <h1 class="notfound__title" id="nf-title" data-site="notfound_title">This page is off the map</h1>
           <p class="notfound__text" data-site="notfound_text">The page you are looking for does not exist or has moved</p>
           <div class="hero__actions">
-            <a class="pill" href="index.html">Go to the home page{NEXT}</a>
+            <a class="pill" href="index.html">Go to the home page</a>
             <a class="btn btn--ghost" href="maps.html">See all maps</a>
           </div>
         </div>
@@ -611,7 +610,7 @@ def map_pages():
       </section>
 
       <section class="home-sec" aria-labelledby="more-maps">
-        <div class="sec-head"><h2 class="sec-title" id="more-maps">More maps</h2><a class="more-link" href="maps.html">See all maps{NEXT}</a></div>
+        <div class="sec-head"><h2 class="sec-title" id="more-maps">More maps</h2><a class="more-link" href="maps.html">See all maps</a></div>
         <div class="pgrid">{cards}</div>
       </section>
     </div>

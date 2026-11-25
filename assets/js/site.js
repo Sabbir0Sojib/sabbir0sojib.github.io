@@ -87,7 +87,7 @@
         '<h1 id="name" class="hero__name">' + esc(p.name) + "</h1>" +
         '<p class="hero__role">' + esc(p.role) + "</p>" +
         '<p class="hero__bio">' + esc(p.bio) + "</p>" +
-        '<div class="hero__actions"><a class="pill" href="maps.html">See all maps' + icon("arrow-right") + "</a>" +
+        '<div class="hero__actions"><a class="pill" href="maps.html">See all maps</a>' +
           '<a class="btn btn--ghost" href="research.html">Read all research</a></div>' +
       "</div>" +
       (p.photo ? '<figure class="hero__photo"><img src="' + esc(src(p.photo)) + '" width="640" height="800" fetchpriority="high" alt="' + esc(p.photo_alt) + '">' +
@@ -96,16 +96,9 @@
   }
 
   // Home: the four facts, in a card over the hero's lower edge
-  var FACT_ICON = { study: "graduation-cap", lab: "flask", focus: "target", place: "map-pin" };
-  function factIcon(f) {
-    if (FACT_ICON[f.icon]) return FACT_ICON[f.icon];
-    var l = String(f.label || "").toLowerCase();
-    return /stud|degree|educat/.test(l) ? FACT_ICON.study : /lab|group|institut/.test(l) ? FACT_ICON.lab :
-      /based|locat|city|live/.test(l) ? FACT_ICON.place : FACT_ICON.focus;
-  }
   function renderGlance(el, p) {
     var facts = list(p.facts, function (f) {
-      return '<div class="fact"><dt><span class="fact__icon">' + icon(factIcon(f)) + '</span><span class="fact__label">' + esc(f.label) + "</span></dt>" +
+      return '<div class="fact"><dt class="fact__label">' + esc(f.label) + "</dt>" +
         '<dd class="fact__value">' + esc(f.value) + "</dd>" + (f.note ? '<dd class="fact__note num">' + esc(f.note) + "</dd>" : "") + "</div>";
     });
     if (facts) el.innerHTML = facts; else el.hidden = true;
@@ -116,7 +109,7 @@
     var orcidUrl = p.orcid ? "https://orcid.org/" + p.orcid : "";
     var emails = (p.emails || []).map(function (e) { return typeof e === "string" ? { label: "Email", address: e } : e; });
     var card = function (ic, label, text, href, copyText, copyLabel, ext) {
-      return '<li class="ccard"><span class="ccard__icon">' + icon(ic) + '</span>' +
+      return '<li class="ccard">' +
         '<span class="ccard__body"><span class="ccard__label">' + esc(label) + '</span>' +
         '<a class="ccard__value" href="' + esc(safeUrl(href)) + '"' + (ext ? ' target="_blank" rel="me noopener"' : "") + '>' + esc(text) + "</a></span>" +
         (copyText ? copyBtn(copyText, copyLabel) : "") + "</li>";

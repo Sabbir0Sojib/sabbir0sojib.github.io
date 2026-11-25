@@ -13,12 +13,12 @@ colors:
   ink: "#14201A"
   ink-soft: "#3B463F"
   muted: "#5B635D"
-  paper: "#FBF9F4"
+  paper: "#F7F8F6"
   card: "#FFFFFF"
-  surface: "#F2EFE6"
-  surface-hover: "#E9E5DA"
-  line: "#E5E0D4"
-  line-strong: "#D2CCBE"
+  surface: "#EDEFEB"
+  surface-hover: "#E3E6E1"
+  line: "#E0E3DE"
+  line-strong: "#CCD1CA"
   on-forest: "#FFFFFF"
   on-forest-soft: "#BFE0C8"
   forest-line: "rgba(255, 255, 255, 0.14)"
@@ -202,9 +202,9 @@ References used: Overlake School (green bands, yellow action pill, utility bar, 
 **Key Characteristics:**
 - Rhythm on every page: dark utility bar, green header, green band (page title, or the home hero), warm paper content, dark green footer. Home ends with Contact on the paper page, then the footer.
 - Serif (Newsreader) for the brand, statements, titles, the bio line, citations. Archivo for everything else. JetBrains Mono only for years, repository paths and tool lists.
-- Yellow (sun) only for actions and small highlights on green: the Email me and See my maps pills, the Menu button, the current-page underline, contact icons, footer headings.
+- Yellow (sun) only for actions and small highlights on green: the Email me and See my maps pills, the Menu button, the current-page underline, footer headings.
 - Maps are never cropped: they sit whole on a mat with a soft print shadow.
-- Warm paper page (#FBF9F4) is deliberate (Overlake reference), not a default cream.
+- Light paper page (#F7F8F6, faintly green toward the forest bands). It replaced the warm cream (#FBF9F4) on 2026-11-25 at the owner's request, after a slop check named cream backgrounds.
 
 ## Colors
 
@@ -250,7 +250,7 @@ Flat. The only shadows: the facts card over the hero edge, the print shadow unde
 - **Header:** green, sticky; white serif name left, white page links with a yellow underline on hover and on the current page, and a yellow Email me pill. Up to 820px: a yellow Menu pill that opens a full-width green dropdown.
 - **Page band:** green band with the terrain on the right (fading out on the left), white serif page title and a green-tinted intro line.
 - **Hero (Home):** on the green band, at most four text elements (Taste rule): the name in display serif, the role line in yellow, the bio (max 20 words), and two buttons with different intents (yellow See all maps, white-outline Read all research); photo on the right, no caption. On load the terrain settles in and the text rises in sequence; this is the site's only entrance animation.
-- **Facts card:** white card overlapping the hero's lower edge; each fact has a yellow icon circle (Phosphor: graduation cap, flask, target, map pin), a small label, the value in serif and an optional small green note with tabular figures (coordinates under Based in). Columns sized to the text (1.25 / 0.95 / 1.3 / 0.9, for Studying, Lab, Research focus, Based in); 2 columns on tablets; on phones each fact is a row with the icon on the left.
+- **Facts card:** white card overlapping the hero's lower edge; each fact has a small label (no icons), the value in serif and an optional small green note with tabular figures (coordinates under Based in). Columns sized to the text (1.25 / 0.95 / 1.3 / 0.9, for Studying, Lab, Research focus, Based in); 2 columns on tablets; on phones each fact is a row with the icon on the left.
 - **Latest maps (Home):** the three newest maps: one lead map on the left, two on the right, each on a mat; click opens the viewer.
 - **Recent research (Home):** the three newest items as short citations: year, type and status, serif title, italic venue. All equal.
 - **Projects (Home):** 2 by 2 cards: preview on a mat (or a GitHub mark), serif title, year, one-line description, tools as a quiet comma list; the whole card links to GitHub.
@@ -262,7 +262,7 @@ Flat. The only shadows: the facts card over the hero edge, the print shadow unde
 - **Gallery page:** photos grouped by event. Each group: the event name in serif (sticky on the left from 900px, above the photos on phones) and a tight photo grid (8 to 10px gaps, 10px radius, photos cropped to fill). The first photo leads (2 by 2) in groups of 3 to 5; pairs alternate a wide and a narrow photo; 6 or more photos become an even 3-column grid. No visible captions: title and caption show in the viewer. A View chip appears on hover.
 - **Viewer (lightbox):** full screen on a very dark green (`--viewer-bg`). Title and buttons (open original, previous, next, close) in a bar at the top, the caption centred at the bottom, and the photo or map fitted whole in between, whatever its shape. Click to zoom in, click again to fit.
 - **Research page:** academic list grouped by type (serif group heading, no count badge, no rules); numbered entries (plain "1.") in citation form (owner bold); status (Under review, Presented) as plain words, green when done, not a pill. No cards, no filters. An entry with a poster shows a 150px preview on a mat at the right (below the text on phones) that opens in the viewer; a PDF adds Open PDF and Download PDF links under the note.
-- **Contact (Home):** on the paper page under a hairline (not a green band, so Home has one green block at the top and the footer at the end): big serif title with the note under it, then white cards (yellow icon circle, muted label, value, copy button).
+- **Contact (Home):** on the paper page under a hairline (not a green band, so Home has one green block at the top and the footer at the end): big serif title with the note under it, then a plain two-column list of contacts (small label, the address or link, a copy button where useful), with no boxes and no icons.
 - **Footer:** dark green; serif name and tagline, all pages, all profiles (yellow column headings), then the copyright line and Back to top.
 - **404 page:** a tall green band with the terrain, a yellow mono "404", serif title "This page is off the map" (no period in titles), one line of text and two buttons (Go to the home page, See my maps).
 - **Link preview card (1200x630):** green with terrain, name in display serif, role in yellow, university line, the site address after a short yellow bar, photo on the right.
@@ -296,4 +296,6 @@ Checked against two "AI design slop" lists the owner shared. Keep to these:
 - No eyebrows, no ALL CAPS labels, no gradient backgrounds, no decorative numbering.
 - Inner radius = outer radius minus padding (6px controls inside a 10px frame with 4px padding).
 - Say a thing once: no caption, badge or label that repeats what a heading already says.
+- Arrows only on links that open in a new tab or another site (↗: Open the full image, Open the story map, Open PDF, View the code on GitHub). Links within the site (See all maps, Read all research, Back to top) have no arrow.
+- Few boxes: the facts card under the hero and the map mats stay; Skills and Contact sit on the page without boxes. No icon circles in rows of facts or contacts.
 - From the Unslop skill (polish mode): font weights 400 to 600 only (no 650 or 700), spacing values on a 4px grid (2px only inside small controls), no period at the end of one-sentence intros, taglines, labels or buttons, no zoom on hover (gallery photos brighten slightly instead), the hero background fades in without scaling.
