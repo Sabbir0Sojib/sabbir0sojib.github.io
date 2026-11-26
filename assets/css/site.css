@@ -347,7 +347,12 @@ cite { font-style: normal; }
 }
 .fact { padding: clamp(24px, 2.4vw, 32px) clamp(20px, 1.9vw, 28px) clamp(24px, 2.6vw, 32px); }
 .fact + .fact { border-left: 1px solid var(--line); }
-.fact__label { display: block; margin-bottom: 8px; }
+.fact dt { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 8px; }
+.fact__icon {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--sun); color: var(--ink);
+}
+.fact__icon .i { width: 20px; height: 20px; }
 .fact__label { font-size: 0.8125rem; font-weight: 600; color: var(--muted); }
 .fact__value { font-family: var(--serif); font-weight: 500; font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem); line-height: 1.35; color: var(--ink); text-wrap: pretty; }
 .fact__note { margin-top: 8px; font-size: 0.8125rem; color: var(--accent); }
@@ -826,8 +831,12 @@ main > :last-child:not(.band), main > :not(.band):not(.contact-sec):has(+ .light
 }
 @media (max-width: 560px) {
   .glance { grid-template-columns: 1fr; }
-  .fact, .fact + .fact { padding: 20px; border-left: 0; }
+  .fact, .fact + .fact { padding: 20px 20px; border-left: 0; display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 16px; }
   .fact + .fact { border-top: 1px solid var(--line); }
+  .fact dt { display: contents; }
+  .fact__icon { grid-row: 1 / span 3; }
+  .fact__label, .fact__value, .fact__note { grid-column: 2; }
+  .fact__label { align-self: end; margin-top: 4px; }
   .hero__actions .pill, .hero__actions .btn { flex: 1 1 auto; justify-content: center; }
   .ccard__value { font-size: 0.9375rem; }
   .ccard { gap: 12px; }

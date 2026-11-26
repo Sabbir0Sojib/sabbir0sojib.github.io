@@ -155,6 +155,15 @@ content:
           - { name: label, label: Label, type: string }
           - { name: value, label: Value, type: string }
           - { name: note, label: "Small extra line (optional, for example coordinates)", type: string }
+          - name: icon
+            label: Icon
+            type: select
+            options:
+              values:
+                - { value: study, label: Graduation cap (study) }
+                - { value: lab, label: Flask (lab) }
+                - { value: focus, label: Target (focus) }
+                - { value: place, label: Map pin (place) }
       - name: emails
         label: Emails
         type: object
